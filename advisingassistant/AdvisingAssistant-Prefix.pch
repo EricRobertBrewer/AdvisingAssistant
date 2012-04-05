@@ -1,6 +1,9 @@
-//
-// Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
-//
+/*
+ AdvisingAssistant-Prefix.pch
+ Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
+ Eric Brewer
+ 4/4/12
+*/
 
 #import <Availability.h>
 
