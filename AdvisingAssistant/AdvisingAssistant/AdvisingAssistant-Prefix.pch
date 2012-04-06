@@ -1,9 +1,6 @@
-/*
- AdvisingAssistant-Prefix.pch
- Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
- Eric Brewer, Garrett Mulroney
- 4/4/12
-*/
+//
+// Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
+//
 
 #import <Availability.h>
 
