@@ -1,6 +1,7 @@
 //
-// Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
-//
+/* Prefix header for all source files of the 'AdvisingAssistant' target in the 'AdvisingAssistant' project
+ Garrett Mulroney
+*/
 
 #import <Availability.h>
 
