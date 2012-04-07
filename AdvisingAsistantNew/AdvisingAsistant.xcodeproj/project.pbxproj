@@ -1,0 +1,308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F5C6BB8152FB77000835DBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5C6BB7152FB77000835DBA /* UIKit.framework */; };
+		3F5C6BBA152FB77000835DBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5C6BB9152FB77000835DBA /* Foundation.framework */; };
+		3F5C6BBC152FB77000835DBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5C6BBB152FB77000835DBA /* CoreGraphics.framework */; };
+		3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC0152FB77000835DBA /* InfoPlist.strings */; };
+		3F5C6BC4152FB77000835DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC3152FB77000835DBA /* main.m */; };
+		3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC7152FB77000835DBA /* AppDelegate.m */; };
+		3F5C6BCB152FB77000835DBA /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCA152FB77000835DBA /* MasterViewController.m */; };
+		3F5C6BCE152FB77000835DBA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCD152FB77000835DBA /* DetailViewController.m */; };
+		3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCF152FB77000835DBA /* MasterViewController.xib */; };
+		3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BD2152FB77000835DBA /* DetailViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3F5C6BB3152FB77000835DBA /* AdvisingAsistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdvisingAsistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F5C6BB7152FB77000835DBA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3F5C6BB9152FB77000835DBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3F5C6BBB152FB77000835DBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3F5C6BBF152FB77000835DBA /* AdvisingAsistant-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AdvisingAsistant-Info.plist"; sourceTree = "<group>"; };
+		3F5C6BC1152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3F5C6BC3152FB77000835DBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F5C6BC5152FB77000835DBA /* AdvisingAsistant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdvisingAsistant-Prefix.pch"; sourceTree = "<group>"; };
+		3F5C6BC6152FB77000835DBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F5C6BC7152FB77000835DBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F5C6BC9152FB77000835DBA /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		3F5C6BCA152FB77000835DBA /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		3F5C6BCC152FB77000835DBA /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3F5C6BCD152FB77000835DBA /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3F5C6BD0152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
+		3F5C6BD3152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F5C6BB0152FB77000835DBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5C6BB8152FB77000835DBA /* UIKit.framework in Frameworks */,
+				3F5C6BBA152FB77000835DBA /* Foundation.framework in Frameworks */,
+				3F5C6BBC152FB77000835DBA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F5C6BA8152FB77000835DBA = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BBD152FB77000835DBA /* AdvisingAsistant */,
+				3F5C6BB6152FB77000835DBA /* Frameworks */,
+				3F5C6BB4152FB77000835DBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F5C6BB4152FB77000835DBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BB3152FB77000835DBA /* AdvisingAsistant.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F5C6BB6152FB77000835DBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BB7152FB77000835DBA /* UIKit.framework */,
+				3F5C6BB9152FB77000835DBA /* Foundation.framework */,
+				3F5C6BBB152FB77000835DBA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F5C6BBD152FB77000835DBA /* AdvisingAsistant */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BC6152FB77000835DBA /* AppDelegate.h */,
+				3F5C6BC7152FB77000835DBA /* AppDelegate.m */,
+				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
+				3F5C6BBE152FB77000835DBA /* Supporting Files */,
+			);
+			path = AdvisingAsistant;
+			sourceTree = "<group>";
+		};
+		3F5C6BBE152FB77000835DBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BBF152FB77000835DBA /* AdvisingAsistant-Info.plist */,
+				3F5C6BC0152FB77000835DBA /* InfoPlist.strings */,
+				3F5C6BC3152FB77000835DBA /* main.m */,
+				3F5C6BC5152FB77000835DBA /* AdvisingAsistant-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */ = {
+			isa = PBXGroup;
+			children = (
+				3F5C6BC9152FB77000835DBA /* MasterViewController.h */,
+				3F5C6BCA152FB77000835DBA /* MasterViewController.m */,
+				3F5C6BCC152FB77000835DBA /* DetailViewController.h */,
+				3F5C6BCD152FB77000835DBA /* DetailViewController.m */,
+				3F5C6BCF152FB77000835DBA /* MasterViewController.xib */,
+				3F5C6BD2152FB77000835DBA /* DetailViewController.xib */,
+			);
+			name = ScheduleBuilderView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F5C6BB2152FB77000835DBA /* AdvisingAsistant */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F5C6BD7152FB77000835DBA /* Build configuration list for PBXNativeTarget "AdvisingAsistant" */;
+			buildPhases = (
+				3F5C6BAF152FB77000835DBA /* Sources */,
+				3F5C6BB0152FB77000835DBA /* Frameworks */,
+				3F5C6BB1152FB77000835DBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdvisingAsistant;
+			productName = AdvisingAsistant;
+			productReference = 3F5C6BB3152FB77000835DBA /* AdvisingAsistant.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F5C6BAA152FB77000835DBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 3F5C6BAD152FB77000835DBA /* Build configuration list for PBXProject "AdvisingAsistant" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3F5C6BA8152FB77000835DBA;
+			productRefGroup = 3F5C6BB4152FB77000835DBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F5C6BB2152FB77000835DBA /* AdvisingAsistant */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F5C6BB1152FB77000835DBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */,
+				3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */,
+				3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F5C6BAF152FB77000835DBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F5C6BC4152FB77000835DBA /* main.m in Sources */,
+				3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */,
+				3F5C6BCB152FB77000835DBA /* MasterViewController.m in Sources */,
+				3F5C6BCE152FB77000835DBA /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3F5C6BC0152FB77000835DBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F5C6BC1152FB77000835DBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3F5C6BCF152FB77000835DBA /* MasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F5C6BD0152FB77000835DBA /* en */,
+			);
+			name = MasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		3F5C6BD2152FB77000835DBA /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F5C6BD3152FB77000835DBA /* en */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F5C6BD5152FB77000835DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		3F5C6BD6152FB77000835DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F5C6BD8152FB77000835DBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AdvisingAsistant/AdvisingAsistant-Prefix.pch";
+				INFOPLIST_FILE = "AdvisingAsistant/AdvisingAsistant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3F5C6BD9152FB77000835DBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AdvisingAsistant/AdvisingAsistant-Prefix.pch";
+				INFOPLIST_FILE = "AdvisingAsistant/AdvisingAsistant-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F5C6BAD152FB77000835DBA /* Build configuration list for PBXProject "AdvisingAsistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F5C6BD5152FB77000835DBA /* Debug */,
+				3F5C6BD6152FB77000835DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F5C6BD7152FB77000835DBA /* Build configuration list for PBXNativeTarget "AdvisingAsistant" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F5C6BD8152FB77000835DBA /* Debug */,
+				3F5C6BD9152FB77000835DBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F5C6BAA152FB77000835DBA /* Project object */;
+}
