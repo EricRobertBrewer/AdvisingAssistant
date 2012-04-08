@@ -1,6 +1,13 @@
 //
-// Prefix header for all source files of the 'AdvisingAsistant' target in the 'AdvisingAsistant' project
-//
+/* Prefix header for all source files of the 'AdvisingAsistant' target in the 'AdvisingAsistant' project
+
+ Garrett Mulroney
+ Daniel DePaolo
+ Savanna Valdes
+ Ryan Shaul
+ Eric Brewer
+
+*/
 
 #import <Availability.h>
 
