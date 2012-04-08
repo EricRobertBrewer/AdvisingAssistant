@@ -17,6 +17,11 @@
 		3F5C6BCE152FB77000835DBA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCD152FB77000835DBA /* DetailViewController.m */; };
 		3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCF152FB77000835DBA /* MasterViewController.xib */; };
 		3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BD2152FB77000835DBA /* DetailViewController.xib */; };
+		E3861E401531642600D9073A /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E3F1531642600D9073A /* Course.m */; };
+		E3861E431531647600D9073A /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E421531647600D9073A /* Student.m */; };
+		E3861E47153167BF00D9073A /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E46153167BF00D9073A /* Department.m */; };
+		E3861E4A153169CA00D9073A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E49153169CA00D9073A /* Template.m */; };
+		E3861E4D15316A8200D9073A /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E4C15316A8200D9073A /* Schedule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,17 @@
 		3F5C6BCD152FB77000835DBA /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		3F5C6BD0152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
 		3F5C6BD3152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		E3861E3E1531642600D9073A /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		E3861E3F1531642600D9073A /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		E3861E411531647600D9073A /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		E3861E421531647600D9073A /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		E3861E441531658700D9073A /* Semester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Semester.h; sourceTree = "<group>"; };
+		E3861E45153167BF00D9073A /* Department.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Department.h; sourceTree = "<group>"; };
+		E3861E46153167BF00D9073A /* Department.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Department.m; sourceTree = "<group>"; };
+		E3861E48153169C900D9073A /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Template.h; sourceTree = "<group>"; };
+		E3861E49153169CA00D9073A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
+		E3861E4B15316A8200D9073A /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
+		E3861E4C15316A8200D9073A /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +98,7 @@
 		3F5C6BBD152FB77000835DBA /* AdvisingAsistant */ = {
 			isa = PBXGroup;
 			children = (
+				E3861E3C153163F700D9073A /* Model */,
 				3F5C6BC6152FB77000835DBA /* AppDelegate.h */,
 				3F5C6BC7152FB77000835DBA /* AppDelegate.m */,
 				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
@@ -112,6 +129,24 @@
 				3F5C6BD2152FB77000835DBA /* DetailViewController.xib */,
 			);
 			name = ScheduleBuilderView;
+			sourceTree = "<group>";
+		};
+		E3861E3C153163F700D9073A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E3861E3E1531642600D9073A /* Course.h */,
+				E3861E3F1531642600D9073A /* Course.m */,
+				E3861E411531647600D9073A /* Student.h */,
+				E3861E421531647600D9073A /* Student.m */,
+				E3861E441531658700D9073A /* Semester.h */,
+				E3861E45153167BF00D9073A /* Department.h */,
+				E3861E46153167BF00D9073A /* Department.m */,
+				E3861E48153169C900D9073A /* Template.h */,
+				E3861E49153169CA00D9073A /* Template.m */,
+				E3861E4B15316A8200D9073A /* Schedule.h */,
+				E3861E4C15316A8200D9073A /* Schedule.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +216,11 @@
 				3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */,
 				3F5C6BCB152FB77000835DBA /* MasterViewController.m in Sources */,
 				3F5C6BCE152FB77000835DBA /* DetailViewController.m in Sources */,
+				E3861E401531642600D9073A /* Course.m in Sources */,
+				E3861E431531647600D9073A /* Student.m in Sources */,
+				E3861E47153167BF00D9073A /* Department.m in Sources */,
+				E3861E4A153169CA00D9073A /* Template.m in Sources */,
+				E3861E4D15316A8200D9073A /* Schedule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
