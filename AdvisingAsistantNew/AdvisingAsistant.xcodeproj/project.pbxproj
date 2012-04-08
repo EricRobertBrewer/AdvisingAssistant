@@ -22,6 +22,9 @@
 		E3861E47153167BF00D9073A /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E46153167BF00D9073A /* Department.m */; };
 		E3861E4A153169CA00D9073A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E49153169CA00D9073A /* Template.m */; };
 		E3861E4D15316A8200D9073A /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E4C15316A8200D9073A /* Schedule.m */; };
+		E3CB4F181531753400D766DD /* Semester.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CB4F171531753400D766DD /* Semester.m */; };
+		E3CB4F221531758100D766DD /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CB4F201531758100D766DD /* CourseDetailViewController.m */; };
+		E3CB4F231531758100D766DD /* CourseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CB4F211531758100D766DD /* CourseDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +55,10 @@
 		E3861E49153169CA00D9073A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
 		E3861E4B15316A8200D9073A /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
 		E3861E4C15316A8200D9073A /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
+		E3CB4F171531753400D766DD /* Semester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Semester.m; sourceTree = "<group>"; };
+		E3CB4F1F1531758100D766DD /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
+		E3CB4F201531758100D766DD /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		E3CB4F211531758100D766DD /* CourseDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +108,7 @@
 				E3861E3C153163F700D9073A /* Model */,
 				3F5C6BC6152FB77000835DBA /* AppDelegate.h */,
 				3F5C6BC7152FB77000835DBA /* AppDelegate.m */,
+				E3CB4F1A1531756900D766DD /* DanielsWork */,
 				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
 				3F5C6BBE152FB77000835DBA /* Supporting Files */,
 			);
@@ -139,6 +147,7 @@
 				E3861E411531647600D9073A /* Student.h */,
 				E3861E421531647600D9073A /* Student.m */,
 				E3861E441531658700D9073A /* Semester.h */,
+				E3CB4F171531753400D766DD /* Semester.m */,
 				E3861E45153167BF00D9073A /* Department.h */,
 				E3861E46153167BF00D9073A /* Department.m */,
 				E3861E48153169C900D9073A /* Template.h */,
@@ -147,6 +156,16 @@
 				E3861E4C15316A8200D9073A /* Schedule.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E3CB4F1A1531756900D766DD /* DanielsWork */ = {
+			isa = PBXGroup;
+			children = (
+				E3CB4F1F1531758100D766DD /* CourseDetailViewController.h */,
+				E3CB4F201531758100D766DD /* CourseDetailViewController.m */,
+				E3CB4F211531758100D766DD /* CourseDetailViewController.xib */,
+			);
+			name = DanielsWork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +221,7 @@
 				3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */,
 				3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */,
 				3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */,
+				E3CB4F231531758100D766DD /* CourseDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +241,8 @@
 				E3861E47153167BF00D9073A /* Department.m in Sources */,
 				E3861E4A153169CA00D9073A /* Template.m in Sources */,
 				E3861E4D15316A8200D9073A /* Schedule.m in Sources */,
+				E3CB4F181531753400D766DD /* Semester.m in Sources */,
+				E3CB4F221531758100D766DD /* CourseDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
