@@ -17,6 +17,10 @@
 		3F5C6BCE152FB77000835DBA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCD152FB77000835DBA /* DetailViewController.m */; };
 		3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BCF152FB77000835DBA /* MasterViewController.xib */; };
 		3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BD2152FB77000835DBA /* DetailViewController.xib */; };
+		E09988441533953000C56ADC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988421533953000C56ADC /* LoginViewController.m */; };
+		E09988451533953000C56ADC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09988431533953000C56ADC /* LoginViewController.xib */; };
+		E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988491533954B00C56ADC /* NewStudentViewController.m */; };
+		E099884C1533954B00C56ADC /* NewStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E099884A1533954B00C56ADC /* NewStudentViewController.xib */; };
 		E301AC40153209F500EE05F9 /* StudentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC3F153209F500EE05F9 /* StudentRepo.m */; };
 		E301AC4415320D2600EE05F9 /* ScheduleRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC4315320D2600EE05F9 /* ScheduleRepo.m */; };
 		E301AC5F15320DD600EE05F9 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC4715320DD600EE05F9 /* NSObject+SBJson.m */; };
@@ -60,6 +64,12 @@
 		3F5C6BCD152FB77000835DBA /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		3F5C6BD0152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
 		3F5C6BD3152FB77000835DBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		E09988411533953000C56ADC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		E09988421533953000C56ADC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		E09988431533953000C56ADC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		E09988481533954B00C56ADC /* NewStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStudentViewController.h; sourceTree = "<group>"; };
+		E09988491533954B00C56ADC /* NewStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStudentViewController.m; sourceTree = "<group>"; };
+		E099884A1533954B00C56ADC /* NewStudentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewStudentViewController.xib; sourceTree = "<group>"; };
 		E301AC3E153209F500EE05F9 /* StudentRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentRepo.h; sourceTree = "<group>"; };
 		E301AC3F153209F500EE05F9 /* StudentRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentRepo.m; sourceTree = "<group>"; };
 		E301AC4215320D2600EE05F9 /* ScheduleRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleRepo.h; sourceTree = "<group>"; };
@@ -127,6 +137,8 @@
 		3F5C6BA8152FB77000835DBA = {
 			isa = PBXGroup;
 			children = (
+				E099884D1533955100C56ADC /* NewStudentViewController */,
+				E09988471533953600C56ADC /* LoginViewController */,
 				3F5C6BBD152FB77000835DBA /* AdvisingAsistant */,
 				3F5C6BB6152FB77000835DBA /* Frameworks */,
 				3F5C6BB4152FB77000835DBA /* Products */,
@@ -187,6 +199,26 @@
 				3F5C6BD2152FB77000835DBA /* DetailViewController.xib */,
 			);
 			name = ScheduleBuilderView;
+			sourceTree = "<group>";
+		};
+		E09988471533953600C56ADC /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E09988411533953000C56ADC /* LoginViewController.h */,
+				E09988421533953000C56ADC /* LoginViewController.m */,
+				E09988431533953000C56ADC /* LoginViewController.xib */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		E099884D1533955100C56ADC /* NewStudentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E09988481533954B00C56ADC /* NewStudentViewController.h */,
+				E09988491533954B00C56ADC /* NewStudentViewController.m */,
+				E099884A1533954B00C56ADC /* NewStudentViewController.xib */,
+			);
+			name = NewStudentViewController;
 			sourceTree = "<group>";
 		};
 		E301AC4515320DC000EE05F9 /* SBJSON */ = {
@@ -312,6 +344,8 @@
 				3F5C6BD1152FB77000835DBA /* MasterViewController.xib in Resources */,
 				3F5C6BD4152FB77000835DBA /* DetailViewController.xib in Resources */,
 				E3CB4F231531758100D766DD /* CourseDetailViewController.xib in Resources */,
+				E09988451533953000C56ADC /* LoginViewController.xib in Resources */,
+				E099884C1533954B00C56ADC /* NewStudentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +383,8 @@
 				E301AC6A15320DD600EE05F9 /* SBJsonWriter.m in Sources */,
 				E301AC6D15320F2200EE05F9 /* TemplateRepo.m in Sources */,
 				E301AC701532128300EE05F9 /* DepartmentRepo.m in Sources */,
+				E09988441533953000C56ADC /* LoginViewController.m in Sources */,
+				E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
