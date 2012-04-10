@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewStudentViewController : UIViewController
+@interface NewStudentViewController : UIViewController <UITextFieldDelegate> {
+    
+}
 
 @end
