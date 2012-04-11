@@ -250,7 +250,7 @@
 				E301AC5D15320DD600EE05F9 /* SBJsonWriter.h */,
 				E301AC5E15320DD600EE05F9 /* SBJsonWriter.m */,
 			);
-			name = SBJSON;
+			path = SBJSON;
 			sourceTree = "<group>";
 		};
 		E3861E3C153163F700D9073A /* Model */ = {
