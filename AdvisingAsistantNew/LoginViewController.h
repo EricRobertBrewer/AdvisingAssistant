@@ -10,6 +10,13 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     
+    IBOutlet UITextField *usrnmTextField;
+    IBOutlet UITextField *psswrdTextField;
+    IBOutlet UITextField *stndIDTextField;
+    IBOutlet UIButton *goBttn;
+    IBOutlet UIButton *editBttn;
 }
+- (IBAction)didTapGo:(id)sender;
+- (IBAction)didTapEdit:(id)sender;
 
 @end

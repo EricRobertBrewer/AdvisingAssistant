@@ -12,6 +12,8 @@
 
 #import "DetailViewController.h"
 
+#import "LoginViewController.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -42,6 +44,10 @@
     self.splitViewController.delegate = detailViewController;
     self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
     self.window.rootViewController = self.splitViewController;
+    
+    LoginViewController *lgnin = [[[LoginViewController alloc] init] autorelease];
+    self.window.rootViewController = lgnin;
+    
     [self.window makeKeyAndVisible];
      [originalVals release];
     return YES;

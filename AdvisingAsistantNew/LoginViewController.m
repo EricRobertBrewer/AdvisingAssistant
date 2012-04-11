@@ -19,18 +19,48 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        usrnmTextField.delegate = self;
+        psswrdTextField.delegate = self;
+        stndIDTextField.delegate = self;
     }
     return self;
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == usrnmTextField || textField == psswrdTextField) {
+        [textField resignFirstResponder];
+        return YES;
+    }
+    if (textField == stndIDTextField) {
+        [self didTapGo:(UITextField *)textField];
+        return YES;
+    }
+    return NO;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    usrnmTextField.delegate = self;
+    stndIDTextField.delegate = self;
+    psswrdTextField.delegate = self;
 }
 
 - (void)viewDidUnload
 {
+    [usrnmTextField release];
+    usrnmTextField = nil;
+    [psswrdTextField release];
+    psswrdTextField = nil;
+    [stndIDTextField release];
+    stndIDTextField = nil;
+    [goBttn release];
+    goBttn = nil;
+    [editBttn release];
+    editBttn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -41,4 +71,22 @@
 	return YES;
 }
 
+- (void)dealloc {
+    [usrnmTextField release];
+    [psswrdTextField release];
+    [stndIDTextField release];
+    [goBttn release];
+    [editBttn release];
+    [super dealloc];
+}
+- (IBAction)didTapGo:(id)sender {
+    [usrnmTextField resignFirstResponder];
+    [psswrdTextField resignFirstResponder];
+    [stndIDTextField resignFirstResponder];
+    
+    NSLog(@"User did tap go.\n");
+}
+
+- (IBAction)didTapEdit:(id)sender {
+}
 @end
