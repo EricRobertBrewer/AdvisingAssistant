@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Repo.h"
 #import "Student.h"
 
-@interface StudentRepo : NSObject
+@interface StudentRepo : Repo
 
 +(StudentRepo*)defaultRepo;
 
@@ -17,7 +18,5 @@
 -(Student*)studentWithId:(int)id;
 
 -(void)saveStudent:(Student*)student;
-
-@property (nonatomic, retain) NSString *error;
 
 @end

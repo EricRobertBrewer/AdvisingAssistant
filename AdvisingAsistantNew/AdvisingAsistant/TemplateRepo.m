@@ -11,12 +11,6 @@
 static TemplateRepo *instance = nil;
 
 @implementation TemplateRepo
-@synthesize error = _error;
-
--(void)dealloc {
-	self.error = nil;
-	[super dealloc];
-}
 
 +(TemplateRepo *)defaultRepo {
 	if (instance == nil) {

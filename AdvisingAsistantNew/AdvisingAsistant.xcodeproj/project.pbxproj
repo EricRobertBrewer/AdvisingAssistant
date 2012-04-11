@@ -42,6 +42,7 @@
 		E3861E47153167BF00D9073A /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E46153167BF00D9073A /* Department.m */; };
 		E3861E4A153169CA00D9073A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E49153169CA00D9073A /* Template.m */; };
 		E3861E4D15316A8200D9073A /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E4C15316A8200D9073A /* Schedule.m */; };
+		E3A28009153617BF00053E40 /* Repo.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A28008153617BE00053E40 /* Repo.m */; };
 		E3CB4F181531753400D766DD /* Semester.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CB4F171531753400D766DD /* Semester.m */; };
 		E3CB4F221531758100D766DD /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CB4F201531758100D766DD /* CourseDetailViewController.m */; };
 		E3CB4F231531758100D766DD /* CourseDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3CB4F211531758100D766DD /* CourseDetailViewController.xib */; };
@@ -114,6 +115,8 @@
 		E3861E49153169CA00D9073A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Template.m; sourceTree = "<group>"; };
 		E3861E4B15316A8200D9073A /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
 		E3861E4C15316A8200D9073A /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
+		E3A28007153617BE00053E40 /* Repo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repo.h; sourceTree = "<group>"; };
+		E3A28008153617BE00053E40 /* Repo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repo.m; sourceTree = "<group>"; };
 		E3CB4F171531753400D766DD /* Semester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Semester.m; sourceTree = "<group>"; };
 		E3CB4F1F1531758100D766DD /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
 		E3CB4F201531758100D766DD /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				E3861E4C15316A8200D9073A /* Schedule.m */,
 				E301AC4215320D2600EE05F9 /* ScheduleRepo.h */,
 				E301AC4315320D2600EE05F9 /* ScheduleRepo.m */,
+				E3A28007153617BE00053E40 /* Repo.h */,
+				E3A28008153617BE00053E40 /* Repo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,7 +321,7 @@
 		3F5C6BAA152FB77000835DBA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 3F5C6BAD152FB77000835DBA /* Build configuration list for PBXProject "AdvisingAsistant" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -385,6 +390,7 @@
 				E301AC701532128300EE05F9 /* DepartmentRepo.m in Sources */,
 				E09988441533953000C56ADC /* LoginViewController.m in Sources */,
 				E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */,
+				E3A28009153617BF00053E40 /* Repo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

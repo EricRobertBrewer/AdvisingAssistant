@@ -11,12 +11,6 @@
 static StudentRepo *instance = nil;
 
 @implementation StudentRepo
-@synthesize error = _error;
-
--(void)dealloc {
-	self.error = nil;
-	[super dealloc];
-}
 
 +(StudentRepo*)defaultRepo {
 	if (instance == nil) {

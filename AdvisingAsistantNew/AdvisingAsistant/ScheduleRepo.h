@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Repo.h"
 #import "Student.h"
 #import "Template.h"
 
-@interface ScheduleRepo : NSObject
+@interface ScheduleRepo : Repo
 
 +(ScheduleRepo*)defaultRepo;
 
@@ -19,7 +20,5 @@
 
 -(void)saveSchedules:(NSArray *)schedules forStudent:(Student*)student;
 -(void)saveSchedules:(NSArray *)schedules forTemplate:(Template*)template;
-
-@property (nonatomic, retain) NSString *error;
 
 @end

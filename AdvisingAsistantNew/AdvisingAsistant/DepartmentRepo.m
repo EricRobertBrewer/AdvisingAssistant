@@ -11,7 +11,6 @@
 static DepartmentRepo *instance = nil;
 
 @implementation DepartmentRepo
-@synthesize error = _error;
 
 +(DepartmentRepo *)defaultRepo {
 	if (instance == nil) {

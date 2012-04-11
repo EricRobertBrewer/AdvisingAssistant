@@ -7,16 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Repo.h"
 #import "Department.h"
 #import "Template.h"
 
-@interface TemplateRepo : NSObject
+@interface TemplateRepo : Repo
 
 +(TemplateRepo *)defaultRepo;
 
 -(NSArray *)templatesForDepartment:(Department *)department;
 -(void)saveTemplate:(Template *)template;
-
-@property (nonatomic, retain) NSString *error;
 
 @end

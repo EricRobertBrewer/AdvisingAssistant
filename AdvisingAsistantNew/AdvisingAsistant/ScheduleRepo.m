@@ -11,12 +11,6 @@
 static ScheduleRepo *instance = nil;
 
 @implementation ScheduleRepo
-@synthesize error = _error;
-
--(void)dealloc {
-	self.error = nil;
-	[super dealloc];
-}
 
 +(ScheduleRepo *)defaultRepo {
 	if (instance == nil) {

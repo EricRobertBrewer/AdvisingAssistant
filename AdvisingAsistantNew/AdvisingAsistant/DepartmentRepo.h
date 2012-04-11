@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Repo.h"
 
-@interface DepartmentRepo : NSObject
+@interface DepartmentRepo : Repo
 
 +(DepartmentRepo *)defaultRepo;
 
 -(NSArray *)allDepartments;
-
-@property (nonatomic, retain) NSString *error;
 
 @end
