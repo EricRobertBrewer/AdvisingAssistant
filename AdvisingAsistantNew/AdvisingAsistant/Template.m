@@ -10,6 +10,7 @@
 
 @implementation Template
 
+@synthesize id;
 @synthesize department;
 @synthesize name;
 

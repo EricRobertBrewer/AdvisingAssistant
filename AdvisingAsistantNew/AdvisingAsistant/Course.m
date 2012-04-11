@@ -11,13 +11,15 @@
 @implementation Course
 
 @synthesize department;
-@synthesize number;
 @synthesize available;
 @synthesize description;
+@synthesize units;
+@synthesize name;
 
 -(void)dealloc {
 	self.department = nil;
 	self.description = nil;
+	self.name = nil;
 	[super dealloc];
 }
 

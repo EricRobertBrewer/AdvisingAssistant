@@ -11,6 +11,7 @@
 
 @interface Template : NSObject
 
+@property (nonatomic, assign) int id;
 @property (nonatomic, retain) Department *department;
 @property (nonatomic, retain) NSString *name;
 

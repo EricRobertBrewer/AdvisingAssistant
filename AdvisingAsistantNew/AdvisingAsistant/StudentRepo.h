@@ -13,7 +13,7 @@
 
 +(StudentRepo*)defaultRepo;
 
-// Retuns null if no student found
+// Retuns nil if no student found
 -(Student*)studentWithId:(int)id;
 
 -(void)saveStudent:(Student*)student;

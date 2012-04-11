@@ -10,16 +10,17 @@
 #import "Department.h"
 
 typedef enum {
-	CourseAvailabileAll,
-	CourseAvailabileFall,
-	CourseAvailabileSpring
-} CourseAvailabile;
+	AvailabileAll,
+	AvailabileFall,
+	AvailabileSpring
+} Availabile;
 
 @interface Course : NSObject
 
-@property (nonatomic, retain) Department *department;
-@property (nonatomic, assign) int number; // ie 315
-@property (nonatomic, assign) CourseAvailabile available;
+@property (nonatomic, retain) Department *department; // ie ES
+@property (nonatomic, assign) Availabile available;
 @property (nonatomic, retain) NSString *description;
+@property (nonatomic, assign) int units;
+@property (nonatomic, retain) NSString *name; // ie ES 101A
 
 @end

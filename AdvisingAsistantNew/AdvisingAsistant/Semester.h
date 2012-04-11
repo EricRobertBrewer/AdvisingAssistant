@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Humanity All rights reserved.
 //
 
-typedef enum _Season {
+typedef enum {
 	SeasonFall,
 	SeasonSpring
 } Season;
 
-typedef struct _Semester {
+typedef struct {
 	Season season;
 	int year;
 } Semester;
