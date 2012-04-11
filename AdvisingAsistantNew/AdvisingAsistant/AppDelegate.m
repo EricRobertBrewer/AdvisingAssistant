@@ -46,7 +46,8 @@
     self.window.rootViewController = self.splitViewController;
     
     LoginViewController *lgnin = [[[LoginViewController alloc] init] autorelease];
-    self.window.rootViewController = lgnin;
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:lgnin] autorelease];
+    self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
      [originalVals release];

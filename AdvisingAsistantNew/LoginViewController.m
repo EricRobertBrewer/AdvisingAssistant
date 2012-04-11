@@ -19,24 +19,24 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        usrnmTextField.delegate = self;
-        psswrdTextField.delegate = self;
-        stndIDTextField.delegate = self;
     }
     return self;
 }
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == usrnmTextField || textField == psswrdTextField) {
-        [textField resignFirstResponder];
-        return YES;
+    if (textField == usrnmTextField) {
+        usrnm = usrnmTextField.text;
+    }
+    else if (textField == psswrdTextField) {
+        psswrd = psswrdTextField.text;
     }
     if (textField == stndIDTextField) {
         [self didTapGo:(UITextField *)textField];
         return YES;
     }
-    return NO;
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)viewDidLoad
@@ -46,7 +46,8 @@
     
     usrnmTextField.delegate = self;
     stndIDTextField.delegate = self;
-    psswrdTextField.delegate = self;
+    psswrdTextField.delegate = self; psswrdTextField.secureTextEntry = YES;
+    repo = [[StudentRepo defaultRepo] retain];
 }
 
 - (void)viewDidUnload
@@ -77,6 +78,7 @@
     [stndIDTextField release];
     [goBttn release];
     [editBttn release];
+    
     [super dealloc];
 }
 - (IBAction)didTapGo:(id)sender {
@@ -85,6 +87,20 @@
     [stndIDTextField resignFirstResponder];
     
     NSLog(@"User did tap go.\n");
+    studentID = [stndIDTextField.text intValue];
+    Student *temp = [repo studentWithId:studentID];
+    if (temp == nil)
+    {
+        if (repo.error == nil)
+        {
+            [self.navigationController pushViewController:[[[NewStudentViewController alloc] initWithStudentID:studentID] autorelease]  animated:YES];
+        }
+        else
+        {
+            NSLog(@"%@", repo.error);
+        }
+    }
+    
 }
 
 - (IBAction)didTapEdit:(id)sender {

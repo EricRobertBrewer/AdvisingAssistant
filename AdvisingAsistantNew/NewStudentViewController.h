@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NewStudentViewController : UIViewController <UITextFieldDelegate> {
-    
+    int studentID;
 }
+
+- (id) initWithStudentID: (int) ID;
 
 @end

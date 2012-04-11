@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Student.h"
+#import "StudentRepo.h"
+#import "NewStudentViewController.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     
@@ -15,6 +18,10 @@
     IBOutlet UITextField *stndIDTextField;
     IBOutlet UIButton *goBttn;
     IBOutlet UIButton *editBttn;
+    
+    NSString *usrnm, *psswrd;
+    int studentID;
+    StudentRepo *repo;
 }
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;

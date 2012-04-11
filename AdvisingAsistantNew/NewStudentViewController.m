@@ -23,6 +23,14 @@
     return self;
 }
 
+- (id) initWithStudentID:(int)ID {
+    self = [super init];
+    if (self) {
+        studentID = ID;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
