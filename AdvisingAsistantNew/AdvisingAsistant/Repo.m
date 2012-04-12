@@ -18,11 +18,9 @@
 
 // Singleton stuff
 
-+(id)allocWithZone:(NSZone *)zone {
-	assert(0); // Not sure what "Zone" methods do
-}
+
 -(id)copyWithZone:(NSZone *)zone {
-	assert(0);
+	return self;
 }
 
 -(id)retain {

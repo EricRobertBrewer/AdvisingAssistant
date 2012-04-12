@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 
+
 @interface LoginViewController ()
 
 @end
@@ -27,16 +28,19 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == usrnmTextField) {
         usrnm = usrnmTextField.text;
+        [psswrdTextField becomeFirstResponder];
+        return YES;
     }
     else if (textField == psswrdTextField) {
+        [stndIDTextField becomeFirstResponder];
         psswrd = psswrdTextField.text;
+        return YES;
     }
     if (textField == stndIDTextField) {
         [self didTapGo:(UITextField *)textField];
         return YES;
     }
-    [textField resignFirstResponder];
-    return YES;
+    return NO;
 }
 
 - (void)viewDidLoad
@@ -44,10 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    usrnmTextField.delegate = self;
-    stndIDTextField.delegate = self;
-    psswrdTextField.delegate = self; psswrdTextField.secureTextEntry = YES;
-    repo = [[StudentRepo defaultRepo] retain];
+    repo = [StudentRepo defaultRepo];
 }
 
 - (void)viewDidUnload
@@ -62,6 +63,8 @@
     goBttn = nil;
     [editBttn release];
     editBttn = nil;
+    [savvyButtn release];
+    savvyButtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -79,12 +82,16 @@
     [goBttn release];
     [editBttn release];
     
+    [savvyButtn release];
     [super dealloc];
 }
 - (IBAction)didTapGo:(id)sender {
     [usrnmTextField resignFirstResponder];
     [psswrdTextField resignFirstResponder];
     [stndIDTextField resignFirstResponder];
+    
+    if ([stndIDTextField.text length] <= 0)
+        return;
     
     NSLog(@"User did tap go.\n");
     studentID = [stndIDTextField.text intValue];
@@ -104,5 +111,10 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
+}
+
+- (IBAction)didTapSavvy:(id)sender {
+    ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] init] autorelease];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 @end

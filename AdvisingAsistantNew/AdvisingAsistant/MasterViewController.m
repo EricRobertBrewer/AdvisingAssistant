@@ -8,8 +8,6 @@
 
 #import "MasterViewController.h"
 
-#import "DetailViewController.h"
-
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;

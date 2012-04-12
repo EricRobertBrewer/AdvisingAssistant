@@ -8,21 +8,14 @@
 
 #import "AppDelegate.h"
 
-#import "MasterViewController.h"
-
-#import "DetailViewController.h"
-
-#import "LoginViewController.h"
-
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize splitViewController = _splitViewController;
+@synthesize login;
 
 - (void)dealloc
 {
     [_window release];
-    [_splitViewController release];
     [super dealloc];
 }
 
@@ -30,27 +23,13 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+
     
-    NSArray *originalVals = [[NSArray alloc] initWithObjects:@"GE Courses", @"Computer Science Courses", nil];
-
-    MasterViewController *masterViewController = [[[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil] autorelease];
-    [masterViewController initWithValues:originalVals andTitle:@"Graduation Requirements"];
-    UINavigationController *masterNavigationController = [[[UINavigationController alloc] initWithRootViewController:masterViewController] autorelease];
-
-    DetailViewController *detailViewController = [[[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil] autorelease];
-    UINavigationController *detailNavigationController = [[[UINavigationController alloc] initWithRootViewController:detailViewController] autorelease];
-
-    self.splitViewController = [[[UISplitViewController alloc] init] autorelease];
-    self.splitViewController.delegate = detailViewController;
-    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
-    self.window.rootViewController = self.splitViewController;
-    
-    LoginViewController *lgnin = [[[LoginViewController alloc] init] autorelease];
-    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:lgnin] autorelease];
+    self.login = [[[LoginViewController alloc] init] autorelease];
+    UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:self.login] autorelease];
     self.window.rootViewController = nav;
     
     [self.window makeKeyAndVisible];
-     [originalVals release];
     return YES;
 }
 

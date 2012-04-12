@@ -10,6 +10,7 @@
 #import "Student.h"
 #import "StudentRepo.h"
 #import "NewStudentViewController.h"
+#import "ScheduleBuilderViewController.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     
@@ -18,6 +19,7 @@
     IBOutlet UITextField *stndIDTextField;
     IBOutlet UIButton *goBttn;
     IBOutlet UIButton *editBttn;
+    IBOutlet UIButton *savvyButtn;
     
     NSString *usrnm, *psswrd;
     int studentID;
@@ -25,5 +27,6 @@
 }
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;
+- (IBAction)didTapSavvy:(id)sender;
 
 @end
