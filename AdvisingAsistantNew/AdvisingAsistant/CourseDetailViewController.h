@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseDetailViewController : UIViewController
+{
+    
+    IBOutlet UILabel *lblCourseName;
+    IBOutlet UILabel *lblUnits;
+    IBOutlet UILabel *lblGrade;
+    IBOutlet UITextView *txtCourseDesc;
+    IBOutlet UIStepper *semesterStepper;
+    IBOutlet UILabel *semesterLabel;
+    IBOutlet UIButton *btnAddCourse;
+}
+- (IBAction)addCourseClicked:(id)sender;
 
 @end

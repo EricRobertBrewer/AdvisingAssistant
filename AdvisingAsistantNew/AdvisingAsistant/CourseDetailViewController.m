@@ -37,6 +37,20 @@
 
 - (void)viewDidUnload
 {
+    [lblCourseName release];
+    lblCourseName = nil;
+    [lblUnits release];
+    lblUnits = nil;
+    [lblGrade release];
+    lblGrade = nil;
+    [txtCourseDesc release];
+    txtCourseDesc = nil;
+    [semesterStepper release];
+    semesterStepper = nil;
+    [semesterLabel release];
+    semesterLabel = nil;
+    [btnAddCourse release];
+    btnAddCourse = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +62,16 @@
 	return YES;
 }
 
+- (void)dealloc {
+    [lblCourseName release];
+    [lblUnits release];
+    [lblGrade release];
+    [txtCourseDesc release];
+    [semesterStepper release];
+    [semesterLabel release];
+    [btnAddCourse release];
+    [super dealloc];
+}
+- (IBAction)addCourseClicked:(id)sender {
+}
 @end
