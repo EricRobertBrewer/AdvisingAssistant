@@ -14,10 +14,14 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Main Table
+        NSArray *temp = [[NSArray alloc] initWithObjects:@"A", @"B", nil];
+        [self initMainTableWithValues:temp andTitle:@"Graduation Requirements"];
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height);
+        [temp release];
     }
     return self;
-}
+};
 
 - (void)didReceiveMemoryWarning
 {
@@ -37,6 +41,22 @@
 
 - (void)viewDidUnload
 {
+    [mainTable release];
+    mainTable = nil;
+    [semester1 release];
+    semester1 = nil;
+    [semester2 release];
+    semester2 = nil;
+    [semester3 release];
+    semester3 = nil;
+    [semester4 release];
+    semester4 = nil;
+    [scrollView release];
+    scrollView = nil;
+    [semester5 release];
+    semester5 = nil;
+    [semester6 release];
+    semester6 = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +68,47 @@
 	return YES;
 }
 
+// ----- Table Controller -----
+
+- (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
+{
+    data = [[NSArray alloc] initWithArray:vals];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView.tag == 0)
+        return [data count];
+    else
+        return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    
+    int idx = indexPath.row;
+    
+    if (tableView.tag == 0)
+        cell.textLabel.text = [data objectAtIndex:idx];
+    
+    return cell;
+}
+
+- (void)dealloc {
+    [mainTable release];
+    [semester1 release];
+    [semester2 release];
+    [semester3 release];
+    [semester4 release];
+    [scrollView release];
+    [semester5 release];
+    [semester6 release];
+    [super dealloc];
+}
 @end

@@ -115,6 +115,13 @@
 
 - (IBAction)didTapSavvy:(id)sender {
     ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] init] autorelease];
+    UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
+                                   initWithTitle:@"Logout"                                            
+                                   style:UIBarButtonItemStyleBordered 
+                                   target:self 
+                                   action:nil];
+    self.navigationItem.rightBarButtonItem = logoutBtn;
     [self.navigationController pushViewController:temp animated:YES];
+    [logoutBtn release];
 }
 @end
