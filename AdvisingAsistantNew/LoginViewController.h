@@ -11,6 +11,7 @@
 #import "StudentRepo.h"
 #import "NewStudentViewController.h"
 #import "ScheduleBuilderViewController.h"
+#import "CourseDetailViewController.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     
@@ -28,5 +29,6 @@
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapSavvy:(id)sender;
+- (IBAction)didtapDanny:(id)sender;
 
 @end

@@ -115,13 +115,18 @@
 
 - (IBAction)didTapSavvy:(id)sender {
     ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] init] autorelease];
-    UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
+    /*UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
                                    initWithTitle:@"Logout"                                            
                                    style:UIBarButtonItemStyleBordered 
                                    target:self 
                                    action:nil];
-    self.navigationItem.rightBarButtonItem = logoutBtn;
+    self.navigationItem.rightBarButtonItem = logoutBtn;*/
     [self.navigationController pushViewController:temp animated:YES];
-    [logoutBtn release];
+}
+
+- (IBAction)didtapDanny:(id)sender {
+    CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
+    [self.navigationController pushViewController:temp animated:YES];
+    
 }
 @end
