@@ -20,8 +20,11 @@
     IBOutlet UIButton *btnAddCourse;
     
     NSMutableArray *semesters;
+    NSString *courseName;
 }
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
+
+- (id)initWithCourse:(NSString *)course;
 
 @end

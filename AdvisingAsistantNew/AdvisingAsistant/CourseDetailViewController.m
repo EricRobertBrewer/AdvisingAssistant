@@ -10,12 +10,14 @@
 
 @implementation CourseDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithCourse:(NSString *)course
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
+        courseName = course;
+        lblCourseName.text = courseName;
+        
         semesters = [[NSMutableArray alloc] init];
-        // Custom initialization
     }
     return self;
 }
@@ -42,7 +44,7 @@
     [semesters addObject:@"Spring 2012"];
     
     semesterStepper.minimumValue = 0;
-    semesterStepper.maximumValue = semesters.count - 1;
+    semesterStepper.maximumValue = (double)(semesters.count - 1);
     semesterStepper.value = 1;
     
     
@@ -92,6 +94,6 @@
 
 - (IBAction)StepperPressed:(id)sender {
     int stepperValue = (int)semesterStepper.value;
-    semesterLabel.text = [semesters objectAtIndex:stepperValue];
+    semesterLabel.text = [semesters objectAtIndex:stepperValue];;
 }
 @end
