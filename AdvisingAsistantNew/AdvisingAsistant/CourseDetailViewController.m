@@ -2,8 +2,8 @@
 //  CourseDetailViewController.m
 //  AdvisingAssistant
 //
-//  Created by Kirsten Helgeson on 4/6/12.
-//  Copyright (c) 2012 University of California, Los Angeles. All rights reserved.
+//  Created by Daniel DePaolo on 4/6/12.
+//  Copyright (c) 2012 Sonoma State University. All rights reserved.
 //
 
 #import "CourseDetailViewController.h"
@@ -14,6 +14,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        semesters = [[NSMutableArray alloc] init];
         // Custom initialization
     }
     return self;
@@ -32,6 +33,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [semesters addObject:@"Fall 2009"];
+    [semesters addObject:@"Spring 2010"];
+    [semesters addObject:@"Fall 2010"];
+    [semesters addObject:@"Spring 2011"];
+    [semesters addObject:@"Fall 2011"];
+    [semesters addObject:@"Spring 2012"];
+    
+    semesterStepper.minimumValue = 0;
+    semesterStepper.maximumValue = semesters.count - 1;
+    semesterStepper.value = 1;
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -70,8 +84,14 @@
     [semesterStepper release];
     [semesterLabel release];
     [btnAddCourse release];
+    [semesters release];
     [super dealloc];
 }
 - (IBAction)addCourseClicked:(id)sender {
+}
+
+- (IBAction)StepperPressed:(id)sender {
+    int stepperValue = (int)semesterStepper.value;
+    semesterLabel.text = [semesters objectAtIndex:stepperValue];
 }
 @end

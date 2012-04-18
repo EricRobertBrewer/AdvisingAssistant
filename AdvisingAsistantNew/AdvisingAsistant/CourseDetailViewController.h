@@ -2,8 +2,8 @@
 //  CourseDetailViewController.h
 //  AdvisingAssistant
 //
-//  Created by Kirsten Helgeson on 4/6/12.
-//  Copyright (c) 2012 University of California, Los Angeles. All rights reserved.
+//  Created by Daniel DePaolo on 4/6/12.
+//  Copyright (c) 2012 Sonoma State University. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,7 +18,10 @@
     IBOutlet UIStepper *semesterStepper;
     IBOutlet UILabel *semesterLabel;
     IBOutlet UIButton *btnAddCourse;
+    
+    NSMutableArray *semesters;
 }
 - (IBAction)addCourseClicked:(id)sender;
+- (IBAction)StepperPressed:(id)sender;
 
 @end
