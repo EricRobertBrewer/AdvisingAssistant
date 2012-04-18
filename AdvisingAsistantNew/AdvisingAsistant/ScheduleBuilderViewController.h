@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Student.h"
+#import "Department.h"
+#import "Template.h"
+#import "SemesterRepo.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
     
     IBOutlet UIScrollView *scrollView;
 
     IBOutlet UITableView *mainTable;
+    
     NSArray *data;
     
     IBOutlet UITableView *semester1;
@@ -25,5 +30,7 @@
 }
 
 - (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
+- (id)initWithStudent:(Student *)student andDepartment:(Department *)department;
+- (id)initWithTemplate:(Template *)temp;
 
 @end

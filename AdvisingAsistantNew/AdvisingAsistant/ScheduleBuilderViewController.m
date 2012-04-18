@@ -68,6 +68,24 @@
 	return YES;
 }
 
+- (id)initWithStudent:(Student *)student andDepartment:(Department *)department {
+    self = [super init];
+    if (self) {
+        // Make a semester repo with student, returns array of semesters
+        // Each semester is an array of courses and has a date (term and year)
+    }
+    return self;
+}
+
+- (id)initWithTemplate:(Template *)temp {
+    self = [super init];
+    if (self) {
+        // Make a semester repo (semesterForTemplate), returns array of semesters
+        // Each semester is an array of courses and has a date (term and year)
+    }
+    return self;
+}
+
 // ----- Table Controller -----
 
 - (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
