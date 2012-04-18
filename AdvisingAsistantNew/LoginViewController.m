@@ -107,6 +107,11 @@
             NSLog(@"%@", repo.error);
         }
     }
+    else
+    {
+        ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        [self.navigationController pushViewController:schedule animated:YES];
+    }
     
 }
 
