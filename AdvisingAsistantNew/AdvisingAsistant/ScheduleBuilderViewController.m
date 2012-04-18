@@ -17,11 +17,14 @@
         // Main Table
         NSArray *temp = [[NSArray alloc] initWithObjects:@"A", @"B", nil];
         [self initMainTableWithValues:temp andTitle:@"Graduation Requirements"];
-        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height);
         [temp release];
     }
     return self;
 };
+
+- (void)didTapLogout:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -36,7 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*1.2);
+    UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
+                                  initWithTitle:@"Logout"                                            
+                                  style:UIBarButtonItemStyleBordered 
+                                  target:self
+                                  action:@selector(didTapLogout:)];
+    self.navigationItem.rightBarButtonItem = logoutBtn;
 }
 
 - (void)viewDidUnload
@@ -73,6 +82,7 @@
     if (self) {
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
+        self.navigationController.title = student.name;
     }
     return self;
 }
