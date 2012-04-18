@@ -13,6 +13,6 @@
 
 @property (nonatomic, assign) int id; // SSU Student ID#
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, assign) Semester started;
+@property (nonatomic, assign) SemesterDate started;
 
 @end

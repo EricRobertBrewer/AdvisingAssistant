@@ -19,9 +19,21 @@ static DepartmentRepo *instance = nil;
 	return instance;
 }
 
+-(Department*)departmentFromDict:(NSDictionary *)dict {
+	Department *d = [[Department alloc] init];
+	d.code = [dict objectForKey:@"DepartmentID"];
+	d.name = [dict objectForKey:@"Name"];
+	return d;
+}
+
 -(NSArray *)allDepartments {
-	self.error = nil;
-	return [NSArray array];
+	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getDepartment.php"];
+	NSArray *dicts = [self connect:options];
+	NSMutableArray *departments = [[NSMutableArray alloc] init];
+	for (NSDictionary *dict in dicts) {
+		[departments addObject:[self departmentFromDict:dict]];
+	}
+	return departments;
 }
 
 +(id)allocWithZone:(NSZone *)zone {

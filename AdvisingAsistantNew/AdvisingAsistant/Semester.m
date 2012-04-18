@@ -1,5 +1,5 @@
 //
-//  Semester.m
+//  Schedule.m
 //  AdvisingAsistant
 //
 //  Created by Ryan Shaul on 4/7/12.
@@ -8,9 +8,14 @@
 
 #import "Semester.h"
 
-Semester SemesterMake(Season season, int year) {
-	Semester s;
-	s.season = season;
-	s.year = year;
-	return s;
+@implementation Semester
+
+@synthesize semester;
+@synthesize courses;
+
+-(void)dealloc {
+	self.courses = nil;
+	[super dealloc];
 }
+
+@end

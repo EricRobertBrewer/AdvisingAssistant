@@ -19,12 +19,42 @@ static StudentRepo *instance = nil;
 	return instance;
 }
 
+-(Student*)studentFromDict:(NSDictionary*)dict {
+	Student *student = [[Student alloc] init];
+	student.id = [[dict objectForKey:@"StudentID"] intValue];
+	student.name = [dict objectForKey:@"Name"];
+	Season season = [[dict objectForKey:@"StartSemester"] isEqualToString:@"F"] ? SeasonFall : SeasonSpring;
+	int year = [[dict objectForKey:@"StartYear"] intValue];
+	student.started = SemesterDateMake(season, year);
+	return [student autorelease];
+}
+
+-(NSDictionary *)dictFromStudent:(Student *)student {
+	NSDictionary *dict = [[NSDictionary alloc] init];
+	NSString *id = [NSString stringWithFormat:@"%i", student.id];
+	NSString *season = (student.started.season == SeasonFall) ? @"F" : @"S";
+	NSString *year = [NSString stringWithFormat:@"%i", student.started.year];
+	[dict setValue:id forKey:@"StudentID"];
+	[dict setValue:student.name forKey:@"Name"];
+	[dict setValue:season forKey:@"StartSemester"];
+	[dict setValue:year forKey:@"StartYear"];
+	return [dict autorelease];
+}
+
 -(Student*)studentWithId:(int)id {
+	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getStudent.php"];
+	NSArray *students = [self connect:options];
+	for (NSDictionary *dict in students) {
+		Student *student = [self studentFromDict:dict];
+		if (student.id == id) return student;
+	}
 	return nil;
 }
 
 -(void)saveStudent:(Student *)student {
-	self.error = @"Could not connect to server";
+	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"saveStudent.php"];
+	options.postData = [self dictFromStudent:student];
+	[self connect:options];
 }
 
 +(id)allocWithZone:(NSZone *)zone {

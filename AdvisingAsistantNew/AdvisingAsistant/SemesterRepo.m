@@ -6,32 +6,32 @@
 //  Copyright (c) 2012 The Children All rights reserved.
 //
 
-#import "ScheduleRepo.h"
+#import "SemesterRepo.h"
 
-static ScheduleRepo *instance = nil;
+static SemesterRepo *instance = nil;
 
-@implementation ScheduleRepo
+@implementation SemesterRepo
 
-+(ScheduleRepo *)defaultRepo {
++(SemesterRepo *)defaultRepo {
 	if (instance == nil) {
-		instance = [[ScheduleRepo alloc] init];
+		instance = [[SemesterRepo alloc] init];
 	}
 	return instance;
 }
 
--(NSArray*)schedulesForStudent:(Student*)student {
+-(NSArray*)semestersForStudent:(Student*)student {
 	self.error = nil;
 	return [NSArray array];
 }
--(NSArray*)schedulesForTemplate:(Template*)template {
+-(NSArray*)semestersForTemplate:(Template*)template {
 	self.error = nil;
 	return [NSArray array];
 }
 
--(void)saveSchedules:(NSArray *)schedules forStudent:(Student*)student {
+-(void)saveSemesters:(NSArray *)schedules forStudent:(Student*)student {
 	self.error = @"Could not connect to server";
 }
--(void)saveSchedules:(NSArray *)schedules forTemplate:(Template*)template {
+-(void)saveSemesters:(NSArray *)schedules forTemplate:(Template*)template {
 	self.error = @"Could not connect to server";
 }
 

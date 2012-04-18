@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Repo.h"
+#import "Department.h"
 
 @interface DepartmentRepo : Repo
 
