@@ -11,8 +11,8 @@
 @interface ConnectOptions : NSObject
 
 @property (nonatomic, retain) NSString *url;
-@property (nonatomic, retain) NSDictionary *getData;
-@property (nonatomic, retain) NSDictionary *postData;
+@property (nonatomic, retain) NSMutableDictionary *getData;
+@property (nonatomic, retain) NSMutableDictionary *postData;
 
 +(ConnectOptions *)optionsWithUrl:(NSString *)url;
 

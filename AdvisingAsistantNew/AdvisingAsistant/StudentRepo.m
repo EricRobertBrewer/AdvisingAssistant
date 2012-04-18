@@ -29,8 +29,8 @@ static StudentRepo *instance = nil;
 	return [student autorelease];
 }
 
--(NSDictionary *)dictFromStudent:(Student *)student {
-	NSDictionary *dict = [[NSDictionary alloc] init];
+-(NSMutableDictionary *)dictFromStudent:(Student *)student {
+	NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 	NSString *id = [NSString stringWithFormat:@"%i", student.id];
 	NSString *season = (student.started.season == SeasonFall) ? @"F" : @"S";
 	NSString *year = [NSString stringWithFormat:@"%i", student.started.year];
@@ -43,6 +43,8 @@ static StudentRepo *instance = nil;
 
 -(Student*)studentWithId:(int)id {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getStudent.php"];
+    NSString *stringId = [NSString stringWithFormat:@"%i", id];
+    [options.postData setValue:stringId forKey:@"StudentID"];
 	NSArray *students = [self connect:options];
 	for (NSDictionary *dict in students) {
 		Student *student = [self studentFromDict:dict];

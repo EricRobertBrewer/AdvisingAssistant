@@ -8,6 +8,7 @@
 
 #import "Repo.h"
 #import "ASIHttpRequest.h"
+#import "ASIFormDataRequest.h"
 #import "SBJson.h"
 
 @implementation Repo
@@ -35,13 +36,22 @@
 		url = [url stringByAppendingFormat:@"%@%@=%@", separator, key, value];
 		separator = @"&";
 	}
+    NSLog(@"Sending request to URL: %@", url);
 	return [NSURL URLWithString:url];
 }
 
 -(ASIHTTPRequest*)getRequest:(ConnectOptions*)options {
 	NSURL *url = [self getUrl:options];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	return request;
+    if ([options.postData count] > 0) {
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        for (NSString *key in options.postData.allKeys) {
+            NSString *value = [options.postData objectForKey:key];
+            [request setPostValue:value forKey:key];
+            NSLog(@"Request Post Data [%@=%@]", key, value);
+        }
+        return request;
+    }
+	return [ASIHTTPRequest requestWithURL:url];
 }
 
 -(id)connect:(ConnectOptions *)options {
@@ -50,7 +60,9 @@
 	NSError *error = [request error];
 	if (!error) {
 		self.error = nil;
-		return [[request responseString] JSONValue];
+        NSString *response = [request responseString];
+        NSLog(@"Got Response: %@", response);
+		return [response JSONValue];
 	}
 	self.error = error.description;
 	return nil;

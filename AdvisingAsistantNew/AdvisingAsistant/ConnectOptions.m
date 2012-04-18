@@ -22,8 +22,8 @@
 
 -(id)init {
 	if ((self = [super init])) {
-		self.getData = [NSDictionary dictionary];
-		self.postData = [NSDictionary dictionary];
+		self.getData = [NSMutableDictionary dictionary];
+		self.postData = [NSMutableDictionary dictionary];
 	}
 	return self;
 }

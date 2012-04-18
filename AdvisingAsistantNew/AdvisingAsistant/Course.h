@@ -13,12 +13,12 @@ typedef enum {
 	AvailabileAll,
 	AvailabileFall,
 	AvailabileSpring
-} Availabile;
+} Available;
 
 @interface Course : NSObject
 
 @property (nonatomic, retain) Department *department; // ie ES
-@property (nonatomic, assign) Availabile available;
+@property (nonatomic, assign) Available available;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, assign) int units;
 @property (nonatomic, retain) NSString *name; // ie ES 101A
