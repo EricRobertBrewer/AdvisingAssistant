@@ -82,7 +82,7 @@
     if (self) {
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
-        self.navigationController.title = student.name;
+        self.title = student.name;
     }
     return self;
 }
