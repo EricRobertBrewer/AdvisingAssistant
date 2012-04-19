@@ -114,7 +114,7 @@
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
-        
+
         SemesterRepo *semArray = [[SemesterRepo alloc] init];
         numberOfSemesters = [[semArray semestersForStudent:student] count];
         

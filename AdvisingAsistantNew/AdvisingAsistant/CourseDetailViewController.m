@@ -9,13 +9,13 @@
 #import "CourseDetailViewController.h"
 
 @implementation CourseDetailViewController
+@synthesize semesters;
 
 -(id)initWithCourse:(NSString *)course
 {
     self = [super init];
     if (self) {
-        courseName = course;
-        lblCourseName.text = courseName;
+        courseName = [[NSString alloc] initWithString:course];
         
         semesters = [[NSMutableArray alloc] init];
     }
@@ -35,7 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    assert(semesters);
     
+    // set course name title to course name passed in
+    [lblCourseName setText:courseName];
+    
+    // Add the student's semesters here
+    // (Won't be hardcoded later!)
     [semesters addObject:@"Fall 2009"];
     [semesters addObject:@"Spring 2010"];
     [semesters addObject:@"Fall 2010"];
@@ -43,9 +50,10 @@
     [semesters addObject:@"Fall 2011"];
     [semesters addObject:@"Spring 2012"];
     
-    semesterStepper.minimumValue = 0;
-    semesterStepper.maximumValue = (double)(semesters.count - 1);
-    semesterStepper.value = 1;
+    // set up stepper
+    [semesterStepper setMinimumValue:0];
+    [semesterStepper setMaximumValue:(double)[semesters count]-1];
+    [semesterStepper setValue:0];
     
     
     // Do any additional setup after loading the view from its nib.
@@ -87,13 +95,14 @@
     [semesterLabel release];
     [btnAddCourse release];
     [semesters release];
+    [courseName release];
     [super dealloc];
 }
 - (IBAction)addCourseClicked:(id)sender {
 }
 
 - (IBAction)StepperPressed:(id)sender {
-    int stepperValue = (int)semesterStepper.value;
-    semesterLabel.text = [semesters objectAtIndex:stepperValue];;
+    NSLog(@"Value of stepper: %d", (int)semesterStepper.value);
+    [semesterLabel setText:[semesters objectAtIndex:(int)semesterStepper.value]];
 }
 @end
