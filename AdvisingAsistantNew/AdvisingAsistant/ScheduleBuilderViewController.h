@@ -12,14 +12,18 @@
 #import "Template.h"
 #import "SemesterRepo.h"
 #import "AppDelegate.h"
+#import "Semester.h"
 
-@interface ScheduleBuilderViewController : UIViewController {
+@interface ScheduleBuilderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     
     IBOutlet UIScrollView *scrollView;
 
-    IBOutlet UITableView *mainTable;
-    
+    UITableViewController *mainTable;
     NSArray *data;
+    
+    int numberOfSemesters;
+    
+    NSMutableArray *semesterTables;
     
     IBOutlet UITableView *semester1;
     IBOutlet UITableView *semester2;
@@ -27,6 +31,9 @@
     IBOutlet UITableView *semester4;
     IBOutlet UITableView *semester5;
     IBOutlet UITableView *semester6;
+    IBOutlet UINavigationBar *sideNavBar;
+    
+    UINavigationController *sideNavBarController;
     
 }
 
