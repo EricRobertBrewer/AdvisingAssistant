@@ -11,6 +11,7 @@
 #import "Department.h"
 #import "Template.h"
 #import "SemesterRepo.h"
+#import "AppDelegate.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
     
@@ -29,6 +30,7 @@
     
 }
 
+- (void)didTapLogout:(id)sender;
 - (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;
 - (id)initWithTemplate:(Template *)temp;

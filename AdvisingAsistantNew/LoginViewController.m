@@ -107,6 +107,11 @@
             NSLog(@"%@", repo.error);
         }
     }
+    else
+    {
+        ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        [self.navigationController pushViewController:schedule animated:YES];
+    }
     
 }
 
@@ -115,12 +120,6 @@
 
 - (IBAction)didTapSavvy:(id)sender {
     ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] init] autorelease];
-    /*UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
-                                   initWithTitle:@"Logout"                                            
-                                   style:UIBarButtonItemStyleBordered 
-                                   target:self 
-                                   action:nil];
-    self.navigationItem.rightBarButtonItem = logoutBtn;*/
     [self.navigationController pushViewController:temp animated:YES];
 }
 

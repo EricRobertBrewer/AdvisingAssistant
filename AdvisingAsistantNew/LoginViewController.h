@@ -12,6 +12,8 @@
 #import "NewStudentViewController.h"
 #import "ScheduleBuilderViewController.h"
 #import "CourseDetailViewController.h"
+#import "TemplateRepo.h"
+#import "Department.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     

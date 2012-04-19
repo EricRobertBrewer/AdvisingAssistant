@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Student.h"
+#import "StudentRepo.h"
+#import "ScheduleBuilderViewController.h"
 
-@interface NewStudentViewController : UIViewController <UITextFieldDelegate> {
+@interface NewStudentViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     int studentID;
+    IBOutlet UITextField *studentIDField;
+    IBOutlet UITextField *studentName;
+    IBOutlet UITextField *semesterStarted;
 }
 
+@property (nonatomic, retain) NSString *year, *season;
+
 - (id) initWithStudentID: (int) ID;
+- (IBAction)didTapSubmit:(id)sender;
 
 @end
