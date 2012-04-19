@@ -10,7 +10,17 @@
 
 static DepartmentRepo *instance = nil;
 
+@interface DepartmentRepo ()
+@property (nonatomic, retain) NSArray *allCache;
+@end
+
 @implementation DepartmentRepo
+@synthesize allCache = _allCache;
+
+-(void)dealloc {
+    self.allCache = nil;
+    [super dealloc];
+}
 
 +(DepartmentRepo *)defaultRepo {
 	if (instance == nil) {
@@ -26,7 +36,7 @@ static DepartmentRepo *instance = nil;
 	return d;
 }
 
--(NSArray *)allDepartments {
+-(NSArray *)getAllDepartments {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getDepartment.php"];
 	NSArray *dicts = [self connect:options];
 	NSMutableArray *departments = [[NSMutableArray alloc] init];
@@ -34,6 +44,18 @@ static DepartmentRepo *instance = nil;
 		[departments addObject:[self departmentFromDict:dict]];
 	}
 	return departments;
+}
+
+-(NSArray *)allDepartments {
+    if (!self.allCache) self.allCache = [self getAllDepartments];
+    return self.allCache;
+}
+
+-(Department *)departmentFromCode:(NSString *)code {
+    for (Department *department in self.allCache) {
+        if (department.code == code) return department;
+    }
+    return nil;
 }
 
 +(id)allocWithZone:(NSZone *)zone {
