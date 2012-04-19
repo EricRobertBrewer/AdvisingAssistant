@@ -14,9 +14,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Main Table
-        NSArray *temp = [[NSArray alloc] initWithObjects:@"A", @"B", nil];
-        [temp release];
+        
     }
     return self;
 };
@@ -49,6 +47,8 @@
     if (!sideNavBarController) {
         
         sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"First"];
+        // Call initWithStudent or initWithTemplate
+        
         [sideTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         
         sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
@@ -91,9 +91,17 @@
         numberOfSemesters = [[semArray semestersForStudent:student] count];
         
         for (int i = 0; i < numberOfSemesters; i++) {
-            
+            // Create tables for scrollview
+            // Send it the semester and it can take out the array of courses and semester date
         }
+        
+        // Load courses into main table (sideTable) based on department
+        
+        
+        
+        [semArray release];
     }
+    
     return self;
 }
 
@@ -106,7 +114,17 @@
         
         SemesterRepo *semArray = [[SemesterRepo alloc] init];
         numberOfSemesters = [[semArray semestersForTemplate:temp] count];
+        
+        for (int i = 0; i < numberOfSemesters; i++) {
+            // Create tables for scrollview
+            // Send it the template and it can take out the array of courses and semester date
+        }
+        
+        // Load courses into main table (sideTable) based on department (template.department)
+        
+        [semArray release];
     }
+    
     return self;
 }
 

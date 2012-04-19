@@ -18,18 +18,13 @@
 @interface ScheduleBuilderViewController : UIViewController {
     
     IBOutlet UIScrollView *scrollView;
-
-    NSArray *data;
     
+    IBOutlet UINavigationBar *sideNavBar;
+    UINavigationController *sideNavBarController;
     SideTableViewController *sideTable;
     
     int numberOfSemesters;
-    
     NSMutableArray *semesterTables;
-    
-    IBOutlet UINavigationBar *sideNavBar;
-    
-    UINavigationController *sideNavBarController;
     
 }
 

@@ -1,22 +1,20 @@
 //
-//  SideTableViewController.m
+//  SemesterTableViewController.m
 //  AdvisingAsistant
 //
 //  Created by student on 4/18/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SideTableViewController.h"
+#import "SemesterTableViewController.h"
 
-@implementation SideTableViewController
+@implementation SemesterTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title
+- (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.title = title;
-        GEArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
-        [GEArray release];
+        // Custom initialization
     }
     return self;
 }
@@ -35,6 +33,11 @@
 {
     [super viewDidLoad];
 
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -44,31 +47,15 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-        return @"General Education Courses";
-
-    if (section == 1)
-        return @"Deprtment Courses";
-    
-    return 0;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-        return 7;
-    
-    else if (section == 1)
-        return 3;
-    
-    return 0;
+    // Return the number of rows in the section.
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,19 +67,14 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    // Configure the cell...
+    
     return cell;
 }
-
-
-#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    SideTableViewController *temp = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Second"];
-    
-    [self.navigationController pushViewController:temp animated:YES];
 }
 
 @end

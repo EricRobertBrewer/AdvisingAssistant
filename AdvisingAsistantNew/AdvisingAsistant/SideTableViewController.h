@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SideTableViewController : UITableViewController {
-    
+    NSArray *GEArray;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title;
