@@ -7,18 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Student.h"
-#import "StudentRepo.h"
-#import "ScheduleBuilderViewController.h"
+//#import "Student.h"
+//#import "StudentRepo.h"
+//#import "ScheduleBuilderViewController.h"
+//#import "Department.h"
+#import "LoginViewController.h"
+
+@class LoginViewController;
 
 @interface NewStudentViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     int studentID;
     IBOutlet UITextField *studentIDField;
     IBOutlet UITextField *studentName;
     IBOutlet UITextField *semesterStarted;
+    LoginViewController *parentController;
 }
 
 @property (nonatomic, retain) NSString *year, *season;
+@property (nonatomic, retain) LoginViewController *parentController;
 
 - (id) initWithStudentID: (int) ID;
 - (IBAction)didTapSubmit:(id)sender;

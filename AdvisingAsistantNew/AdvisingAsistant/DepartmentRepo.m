@@ -23,7 +23,7 @@ static DepartmentRepo *instance = nil;
 	Department *d = [[Department alloc] init];
 	d.code = [dict objectForKey:@"DepartmentID"];
 	d.name = [dict objectForKey:@"Name"];
-	return d;
+	return [d autorelease];
 }
 
 -(NSArray *)allDepartments {
@@ -33,7 +33,7 @@ static DepartmentRepo *instance = nil;
 	for (NSDictionary *dict in dicts) {
 		[departments addObject:[self departmentFromDict:dict]];
 	}
-	return departments;
+	return [departments autorelease];
 }
 
 +(id)allocWithZone:(NSZone *)zone {

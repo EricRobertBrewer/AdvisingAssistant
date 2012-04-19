@@ -10,10 +10,12 @@
 #import "Student.h"
 #import "StudentRepo.h"
 #import "NewStudentViewController.h"
-#import "ScheduleBuilderViewController.h"
+//#import "ScheduleBuilderViewController.h"
 #import "CourseDetailViewController.h"
 #import "TemplateRepo.h"
 #import "Department.h"
+
+@class ScheduleBuilderViewController;
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> {
     
@@ -27,7 +29,12 @@
     NSString *usrnm, *psswrd;
     int studentID;
     StudentRepo *repo;
+    ScheduleBuilderViewController * nextController;
 }
+
+@property (nonatomic, retain) ScheduleBuilderViewController *nextController;
+@property (nonatomic, retain) IBOutlet UITextField *stndIDTextField;
+
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapSavvy:(id)sender;

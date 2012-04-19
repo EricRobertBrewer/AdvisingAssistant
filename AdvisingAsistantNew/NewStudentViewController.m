@@ -7,9 +7,11 @@
 //
 
 #import "NewStudentViewController.h"
+#import "LoginViewController.h"
+#import "ScheduleBuilderViewController.h"
 
 @implementation NewStudentViewController
-@synthesize season, year;
+@synthesize season, year, parentController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +31,31 @@
 }
 
 - (IBAction)didTapSubmit:(id)sender {
-    
+    if ([studentName.text length] > 0 && [studentIDField.text length] > 0 && [semesterStarted.text length] > 0)
+    {
+        Student * stud = [[[Student alloc] init] autorelease];
+        stud.name = studentName.text;
+        stud.id = [studentIDField.text intValue];
+        Season t = (season == @"Fall") ? SeasonFall: SeasonSpring;
+        stud.started = SemesterDateMake(t, [year intValue]);
+        
+        StudentRepo *repo = [StudentRepo defaultRepo];
+        [repo saveStudent:stud];
+        if (repo.error != nil)
+        {
+            NSLog(@"%@", repo.error);
+            return;
+        }
+        
+        ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] initWithStudent:stud andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        parentController.nextController = temp;
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+-(void) viewDidDisappear:(BOOL)animated {
+    parentController.stndIDTextField.text = @"";
+    [parentController.navigationController pushViewController:parentController.nextController animated:YES];
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -85,6 +111,23 @@
     semesterStarted.text = [NSString stringWithFormat:@"%@ %@", season, year];
 
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == studentIDField) {
+        [studentName becomeFirstResponder];
+        return YES;
+    }
+    else if (textField == studentName) {
+        [semesterStarted becomeFirstResponder];
+        return YES;
+    }
+    if (textField == semesterStarted) {
+        [self didTapSubmit:(UITextField *)textField];
+        return YES;
+    }
+    return NO;
+}
+
 
 - (void)viewDidUnload
 {

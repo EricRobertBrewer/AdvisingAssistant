@@ -40,7 +40,7 @@
 					<object class="IBUILabel" id="573075377">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{267, 46}, {168, 57}}</string>
+						<string key="NSFrame">{{186, 41}, {168, 57}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView" ref="20480886"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -71,7 +71,7 @@
 					<object class="IBUITextField" id="20480886">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{285, 131}, {132, 31}}</string>
+						<string key="NSFrame">{{204, 131}, {132, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView" ref="405328362"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -107,9 +107,9 @@
 					<object class="IBUITextField" id="405328362">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{285, 193}, {132, 31}}</string>
+						<string key="NSFrame">{{204, 195}, {132, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="845173953"/>
+						<reference key="NSNextKeyView" ref="1050843532"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -131,12 +131,12 @@
 						<reference key="IBUIFontDescription" ref="435659238"/>
 						<reference key="IBUIFont" ref="46493878"/>
 					</object>
-					<object class="IBUITextField" id="845173953">
+					<object class="IBUITextField" id="1050843532">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{285, 258}, {132, 31}}</string>
+						<string key="NSFrame">{{204, 259}, {132, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="311523328"/>
+						<reference key="NSNextKeyView" ref="1011432131"/>
 						<string key="NSReuseIdentifierKey">_NS:320</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -158,10 +158,10 @@
 						<reference key="IBUIFontDescription" ref="435659238"/>
 						<reference key="IBUIFont" ref="46493878"/>
 					</object>
-					<object class="IBUIButton" id="311523328">
+					<object class="IBUIButton" id="1011432131">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{315, 328}, {72, 37}}</string>
+						<string key="NSFrame">{{234, 327}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:241</string>
@@ -171,7 +171,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">Submit</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="423106934">
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="942089530">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -194,17 +194,34 @@
 						</object>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 20}, {1024, 748}}</string>
+				<string key="NSFrame">{{0, 20}, {540, 600}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="573075377"/>
-				<reference key="IBUIBackgroundColor" ref="423106934"/>
+				<reference key="IBUIBackgroundColor" ref="942089530"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<int key="IBUIContentMode">4</int>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
 				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 					<int key="IBUIInterfaceOrientation">3</int>
 					<int key="interfaceOrientation">3</int>
+				</object>
+				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
+					<string key="IBUISimulatedSizeMetricsClass">IBUIModalFormSheetSimulatedSizeMetrics</string>
+					<object class="NSMutableDictionary" key="IBUINormalizedOrientationToSizeMap">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<array key="dict.sortedKeys">
+							<integer value="1"/>
+							<integer value="3"/>
+						</array>
+						<array class="NSMutableArray" key="dict.values">
+							<string>{540, 620}</string>
+							<string>{540, 620}</string>
+						</array>
+					</object>
+					<string key="IBUITargetRuntime">IBIPadFramework</string>
+					<string key="IBUIDisplayName">Form Sheet</string>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
@@ -231,7 +248,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">semesterStarted</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="845173953"/>
+						<reference key="destination" ref="1050843532"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -246,7 +263,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">didTapSubmit:</string>
-						<reference key="source" ref="311523328"/>
+						<reference key="source" ref="1011432131"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -279,8 +296,8 @@
 							<reference ref="573075377"/>
 							<reference ref="20480886"/>
 							<reference ref="405328362"/>
-							<reference ref="845173953"/>
-							<reference ref="311523328"/>
+							<reference ref="1050843532"/>
+							<reference ref="1011432131"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -301,12 +318,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">14</int>
-						<reference key="object" ref="845173953"/>
+						<reference key="object" ref="1050843532"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="311523328"/>
+						<reference key="object" ref="1011432131"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>

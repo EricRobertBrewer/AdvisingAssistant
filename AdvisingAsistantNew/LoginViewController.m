@@ -7,13 +7,14 @@
 //
 
 #import "LoginViewController.h"
-
+#import "ScheduleBuilderViewController.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+@synthesize nextController, stndIDTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -100,7 +101,10 @@
     {
         if (repo.error == nil)
         {
-            [self.navigationController pushViewController:[[[NewStudentViewController alloc] initWithStudentID:studentID] autorelease]  animated:YES];
+            NewStudentViewController *modalView = [[[NewStudentViewController alloc] initWithStudentID:studentID] autorelease];
+            modalView.parentController = self;
+            modalView.modalPresentationStyle = UIModalPresentationFormSheet;
+            [self presentModalViewController:modalView animated:YES];
         }
         else
         {
@@ -110,6 +114,7 @@
     else
     {
         ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        stndIDTextField.text = @"";
         [self.navigationController pushViewController:schedule animated:YES];
     }
     
@@ -120,11 +125,13 @@
 
 - (IBAction)didTapSavvy:(id)sender {
     ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] init] autorelease];
+    stndIDTextField.text = @"";
     [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (IBAction)didtapDanny:(id)sender {
     CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
+    stndIDTextField.text = @"";
     [self.navigationController pushViewController:temp animated:YES];
     
 }
