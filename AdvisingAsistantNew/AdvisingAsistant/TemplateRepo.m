@@ -7,10 +7,21 @@
 //
 
 #import "TemplateRepo.h"
+#import "DepartmentRepo.h"
 
 static TemplateRepo *instance = nil;
 
+@interface TemplateRepo ()
+@property (nonatomic, retain) NSArray *allTemplates;
+@end
+
 @implementation TemplateRepo
+@synthesize allTemplates = _allTemplates;
+
+-(void)dealloc {
+    self.allTemplates = nil;
+    [super dealloc];
+}
 
 +(TemplateRepo *)defaultRepo {
 	if (instance == nil) {
@@ -19,8 +30,27 @@ static TemplateRepo *instance = nil;
 	return instance;
 }
 
+-(Template *)templateFromDict:(NSDictionary *)dict {
+    Template *template = [[Template alloc] init];
+    template.id = [[dict objectForKey:@"TemplateId"] intValue];
+    template.name = [dict objectForKey:@"Name"];
+    NSString *department = [dict objectForKey:@"DepartmentID"];
+    template.department = [[DepartmentRepo defaultRepo] departmentFromCode:department];
+    return template;
+}
+
+-(NSArray *)getAllTemplates {
+    NSMutableArray *templates = [[NSMutableArray alloc] init];
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullTemplate.php"];
+    NSArray *dicts = [self connect:options];
+    for (NSDictionary *dict in dicts) {
+        [templates addObject:[self templateFromDict:dict]];
+    }
+    return templates;
+}
+
 -(NSArray *)templatesForDepartment:(Department *)department {
-	self.error = nil;
+	if (!self.allTemplates) self.allTemplates = [self getAllTemplates];
 	return [NSArray array];
 }
 

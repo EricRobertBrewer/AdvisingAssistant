@@ -16,4 +16,7 @@
 
 -(NSArray *)allDepartments;
 
+// returns nil if no department found
+-(Department *)departmentFromCode:(NSString *)code;
+
 @end

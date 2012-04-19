@@ -46,6 +46,35 @@
                                   target:self
                                   action:@selector(didTapLogout:)];
     self.navigationItem.rightBarButtonItem = logoutBtn;
+    
+    if (!sideNavBarController) {
+//        assert(mainTable);
+//        UIViewController *temp = [[UIViewController alloc] init];
+//        assert(temp.view);
+//        [temp.view setFrame:CGRectMake(0, 0, 351, 1000)];
+//        [temp.view addSubview:mainTable];
+//        temp.view.backgroundColor = [UIColor yellowColor];
+//        [mainTable setFrame:CGRectMake(0, 0, 351, 100)];
+//        
+        
+//        temp.tableView = mainTable;
+        
+        
+        
+        mainTable = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        [mainTable.tableView setDelegate:self];
+        [mainTable.tableView setDataSource:self];
+        [mainTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
+        
+        sideNavBarController = [[UINavigationController alloc] initWithRootViewController:mainTable];
+
+        [self.view addSubview:sideNavBarController.navigationBar];
+        [self.view addSubview:mainTable.tableView];
+        [sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
+        
+        
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -66,6 +95,8 @@
     semester5 = nil;
     [semester6 release];
     semester6 = nil;
+    [sideNavBar release];
+    sideNavBar = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -83,6 +114,13 @@
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
+
+        SemesterRepo *semArray = [[SemesterRepo alloc] init];
+        numberOfSemesters = [[semArray semestersForStudent:student] count];
+        
+        for (int i = 0; i < numberOfSemesters; i++) {
+            
+        }
     }
     return self;
 }
@@ -92,6 +130,10 @@
     if (self) {
         // Make a semester repo (semesterForTemplate), returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
+        self.title = temp.name;
+        
+        SemesterRepo *semArray = [[SemesterRepo alloc] init];
+        numberOfSemesters = [[semArray semestersForTemplate:temp] count];
     }
     return self;
 }
@@ -128,6 +170,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (tableView.tag == 0) {
+        // they selected a row!
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+//        sideNavBar
+
+        
+        [sideNavBarController pushViewController:nil animated:YES];
+        
+        
+    }
+    
+    
+}
+
 - (void)dealloc {
     [mainTable release];
     [semester1 release];
@@ -137,6 +196,7 @@
     [scrollView release];
     [semester5 release];
     [semester6 release];
+    [sideNavBar release];
     [super dealloc];
 }
 @end
