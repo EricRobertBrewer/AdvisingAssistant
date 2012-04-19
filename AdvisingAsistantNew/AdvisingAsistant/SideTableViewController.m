@@ -1,20 +1,20 @@
 //
-//  TableViewController.m
+//  SideTableViewController.m
 //  AdvisingAsistant
 //
 //  Created by student on 4/18/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TableViewController.h"
+#import "SideTableViewController.h"
 
-@implementation TableViewController
+@implementation SideTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        self.title = title;
     }
     return self;
 }
@@ -47,20 +47,16 @@
     // e.g. self.myOutlet = nil;
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -77,18 +73,14 @@
     return cell;
 }
 
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    SideTableViewController *temp = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Second"];
+    
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 @end

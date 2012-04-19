@@ -13,25 +13,20 @@
 #import "SemesterRepo.h"
 #import "AppDelegate.h"
 #import "Semester.h"
-#import "TableViewController.h"
+#import "SideTableViewController.h"
 
-@interface ScheduleBuilderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface ScheduleBuilderViewController : UIViewController {
     
     IBOutlet UIScrollView *scrollView;
 
-    UITableViewController *mainTable;
     NSArray *data;
+    
+    SideTableViewController *sideTable;
     
     int numberOfSemesters;
     
     NSMutableArray *semesterTables;
     
-    IBOutlet UITableView *semester1;
-    IBOutlet UITableView *semester2;
-    IBOutlet UITableView *semester3;
-    IBOutlet UITableView *semester4;
-    IBOutlet UITableView *semester5;
-    IBOutlet UITableView *semester6;
     IBOutlet UINavigationBar *sideNavBar;
     
     UINavigationController *sideNavBarController;
@@ -39,7 +34,6 @@
 }
 
 - (void)didTapLogout:(id)sender;
-- (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;
 - (id)initWithTemplate:(Template *)temp;
 

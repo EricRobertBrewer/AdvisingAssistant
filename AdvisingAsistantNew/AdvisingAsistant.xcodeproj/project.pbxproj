@@ -13,9 +13,9 @@
 		3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC0152FB77000835DBA /* InfoPlist.strings */; };
 		3F5C6BC4152FB77000835DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC3152FB77000835DBA /* main.m */; };
 		3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC7152FB77000835DBA /* AppDelegate.m */; };
+		3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3565153FB4B5002FB67B /* SideTableViewController.m */; };
 		3FD0B4C91536608C00C938E2 /* ScheduleBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */; };
 		3FD0B4CA1536608C00C938E2 /* ScheduleBuilderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C81536608C00C938E2 /* ScheduleBuilderViewController.xib */; };
-		3FFBF00F153F9AD0004D78F6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBF00E153F9AD0004D78F6 /* TableViewController.m */; };
 		E09988441533953000C56ADC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988421533953000C56ADC /* LoginViewController.m */; };
 		E09988451533953000C56ADC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09988431533953000C56ADC /* LoginViewController.xib */; };
 		E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988491533954B00C56ADC /* NewStudentViewController.m */; };
@@ -72,11 +72,11 @@
 		3F5C6BC5152FB77000835DBA /* AdvisingAsistant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdvisingAsistant-Prefix.pch"; sourceTree = "<group>"; };
 		3F5C6BC6152FB77000835DBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5C6BC7152FB77000835DBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F9C3564153FB4B5002FB67B /* SideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideTableViewController.h; sourceTree = "<group>"; };
+		3F9C3565153FB4B5002FB67B /* SideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideTableViewController.m; sourceTree = "<group>"; };
 		3FD0B4C61536608C00C938E2 /* ScheduleBuilderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleBuilderViewController.h; sourceTree = "<group>"; };
 		3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleBuilderViewController.m; sourceTree = "<group>"; };
 		3FD0B4C81536608C00C938E2 /* ScheduleBuilderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleBuilderViewController.xib; sourceTree = "<group>"; };
-		3FFBF00D153F9AD0004D78F6 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		3FFBF00E153F9AD0004D78F6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		E09988411533953000C56ADC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E09988421533953000C56ADC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E09988431533953000C56ADC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -251,8 +251,8 @@
 		3FD0B4CB1536608F00C938E2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3FFBF00D153F9AD0004D78F6 /* TableViewController.h */,
-				3FFBF00E153F9AD0004D78F6 /* TableViewController.m */,
+				3F9C3564153FB4B5002FB67B /* SideTableViewController.h */,
+				3F9C3565153FB4B5002FB67B /* SideTableViewController.m */,
 				3FD0B4C61536608C00C938E2 /* ScheduleBuilderViewController.h */,
 				3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */,
 				3FD0B4C81536608C00C938E2 /* ScheduleBuilderViewController.xib */,
@@ -496,7 +496,7 @@
 				E39184FC153F6E640072B49B /* ASIInputStream.m in Sources */,
 				E39184FD153F6E640072B49B /* ASINetworkQueue.m in Sources */,
 				E39184FE153F6E640072B49B /* Reachability.m in Sources */,
-				3FFBF00F153F9AD0004D78F6 /* TableViewController.m in Sources */,
+				3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

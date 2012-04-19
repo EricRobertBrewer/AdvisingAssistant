@@ -130,12 +130,9 @@
 }
 
 - (IBAction)didtapDanny:(id)sender {
-<<<<<<< HEAD
     CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
     stndIDTextField.text = @"";
-=======
-    CourseDetailViewController * temp = [[CourseDetailViewController alloc] initWithCourse:@"CS 355"];
->>>>>>> 9f17a9795b40bfb87a99e523ddd0b18246ba20a9
+    
     [self.navigationController pushViewController:temp animated:YES];
     [temp release];
 }

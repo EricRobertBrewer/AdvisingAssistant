@@ -16,7 +16,6 @@
     if (self) {
         // Main Table
         NSArray *temp = [[NSArray alloc] initWithObjects:@"A", @"B", nil];
-        [self initMainTableWithValues:temp andTitle:@"Graduation Requirements"];
         [temp release];
     }
     return self;
@@ -48,30 +47,15 @@
     self.navigationItem.rightBarButtonItem = logoutBtn;
     
     if (!sideNavBarController) {
-//        assert(mainTable);
-//        UIViewController *temp = [[UIViewController alloc] init];
-//        assert(temp.view);
-//        [temp.view setFrame:CGRectMake(0, 0, 351, 1000)];
-//        [temp.view addSubview:mainTable];
-//        temp.view.backgroundColor = [UIColor yellowColor];
-//        [mainTable setFrame:CGRectMake(0, 0, 351, 100)];
-//        
         
-//        temp.tableView = mainTable;
+        sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"First"];
+        [sideTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         
+        sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
         
-        
-        mainTable = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        [mainTable.tableView setDelegate:self];
-        [mainTable.tableView setDataSource:self];
-        [mainTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
-        
-        sideNavBarController = [[UINavigationController alloc] initWithRootViewController:mainTable];
-
         [self.view addSubview:sideNavBarController.navigationBar];
-        [self.view addSubview:mainTable.tableView];
+        [self.view addSubview:sideTable.tableView];
         [sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
-        
         
     }
     
@@ -79,22 +63,10 @@
 
 - (void)viewDidUnload
 {
-    [mainTable release];
-    mainTable = nil;
-    [semester1 release];
-    semester1 = nil;
-    [semester2 release];
-    semester2 = nil;
-    [semester3 release];
-    semester3 = nil;
-    [semester4 release];
-    semester4 = nil;
+    [sideTable release];
+    sideTable = nil;
     [scrollView release];
     scrollView = nil;
-    [semester5 release];
-    semester5 = nil;
-    [semester6 release];
-    semester6 = nil;
     [sideNavBar release];
     sideNavBar = nil;
     [super viewDidUnload];
@@ -138,64 +110,9 @@
     return self;
 }
 
-// ----- Table Controller -----
-
-- (void)initMainTableWithValues:(NSArray *)vals andTitle:(NSString *)title;
-{
-    data = [[NSArray alloc] initWithArray:vals];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (tableView.tag == 0)
-        return [data count];
-    else
-        return 5;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    
-    int idx = indexPath.row;
-    
-    if (tableView.tag == 0)
-        cell.textLabel.text = [data objectAtIndex:idx];
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (tableView.tag == 0) {
-        // they selected a row!
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-//        sideNavBar
-
-        
-        [sideNavBarController pushViewController:nil animated:YES];
-        
-        
-    }
-    
-    
-}
-
 - (void)dealloc {
-    [mainTable release];
-    [semester1 release];
-    [semester2 release];
-    [semester3 release];
-    [semester4 release];
+    [sideTable release];
     [scrollView release];
-    [semester5 release];
-    [semester6 release];
     [sideNavBar release];
     [super dealloc];
 }
