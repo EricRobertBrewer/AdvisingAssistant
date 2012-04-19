@@ -125,8 +125,8 @@
 }
 
 - (IBAction)didtapDanny:(id)sender {
-    CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
+    CourseDetailViewController * temp = [[CourseDetailViewController alloc] initWithCourse:@"CS 355"];
     [self.navigationController pushViewController:temp animated:YES];
-    
+    [temp release];
 }
 @end
