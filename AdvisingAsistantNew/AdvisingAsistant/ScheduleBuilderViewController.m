@@ -59,16 +59,18 @@
         
 //        temp.tableView = mainTable;
         
-        mainTable = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        
+        mainTable = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [mainTable.tableView setDelegate:self];
         [mainTable.tableView setDataSource:self];
-        [mainTable.tableView setFrame:CGRectMake(655, 44, 351, 1000)];
+        [mainTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         
         sideNavBarController = [[UINavigationController alloc] initWithRootViewController:mainTable];
 
         [self.view addSubview:sideNavBarController.navigationBar];
         [self.view addSubview:mainTable.tableView];
-        [sideNavBarController.navigationBar setFrame:CGRectMake(655, 0, 351, 44)];
+        [sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
         
         
     }
@@ -175,9 +177,7 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
 //        sideNavBar
-        
 
-        
         
         [sideNavBarController pushViewController:nil animated:YES];
         

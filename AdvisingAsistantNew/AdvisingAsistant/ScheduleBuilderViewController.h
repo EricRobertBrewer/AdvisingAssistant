@@ -13,6 +13,7 @@
 #import "SemesterRepo.h"
 #import "AppDelegate.h"
 #import "Semester.h"
+#import "TableViewController.h"
 
 @interface ScheduleBuilderViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     
