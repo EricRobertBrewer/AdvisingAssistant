@@ -11,7 +11,7 @@
 
 @interface Semester : NSObject
 
-@property (nonatomic, assign) SemesterDate semester;
-@property (nonatomic, retain) NSArray *courses;
+@property (nonatomic, assign) SemesterDate date;
+@property (nonatomic, retain) NSMutableArray *courses;
 
 @end

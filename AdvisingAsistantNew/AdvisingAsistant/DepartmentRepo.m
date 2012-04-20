@@ -10,15 +10,10 @@
 
 static DepartmentRepo *instance = nil;
 
-@interface DepartmentRepo ()
-@property (nonatomic, retain) NSArray *allCache;
-@end
-
 @implementation DepartmentRepo
-@synthesize allCache = _allCache;
 
 -(void)dealloc {
-    self.allCache = nil;
+    [_allDepartments release];
     [super dealloc];
 }
 
@@ -36,23 +31,23 @@ static DepartmentRepo *instance = nil;
 	return [d autorelease];
 }
 
--(NSArray *)getAllDepartments {
-	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getDepartment.php"];
-	NSArray *dicts = [self connect:options];
-	NSMutableArray *departments = [[NSMutableArray alloc] init];
-	for (NSDictionary *dict in dicts) {
-		[departments addObject:[self departmentFromDict:dict]];
-	}
-	return [departments autorelease];
-}
-
 -(NSArray *)allDepartments {
-    if (!self.allCache) self.allCache = [self getAllDepartments];
-    return self.allCache;
+	if (!_allDepartments) {
+		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getDepartment.php"];
+		NSArray *dicts = [self connect:options];
+		if (dicts) {
+			NSMutableArray *departments = [[NSMutableArray alloc] init];
+			for (NSDictionary *dict in dicts) {
+				[departments addObject:[self departmentFromDict:dict]];
+			}
+			_allDepartments = departments;
+		}
+	}
+    return _allDepartments;
 }
 
--(Department *)departmentFromCode:(NSString *)code {
-    for (Department *department in self.allCache) {
+-(Department *)departmentWithCode:(NSString *)code {
+    for (Department *department in self.allDepartments) {
         if (department.code == code) return department;
     }
     return nil;

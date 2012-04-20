@@ -43,10 +43,9 @@ static StudentRepo *instance = nil;
 
 -(Student*)studentWithId:(int)id {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getStudent.php"];
-    NSString *stringId = [NSString stringWithFormat:@"%i", id];
-    [options.postData setValue:stringId forKey:@"StudentID"];
-	NSArray *students = [self connect:options];
-	for (NSDictionary *dict in students) {
+	[options.postData setInt:id forKey:@"StudentID"];
+	NSArray *dicts = [self connect:options];
+	for (NSDictionary *dict in dicts) {
 		Student *student = [self studentFromDict:dict];
 		if (student.id == id) return student;
 	}
@@ -54,7 +53,7 @@ static StudentRepo *instance = nil;
 }
 
 -(void)saveStudent:(Student *)student {
-	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"saveStudent.php"];
+	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"insertStudent.php"];
 	options.postData = [self dictFromStudent:student];
 	[self connect:options];
 }

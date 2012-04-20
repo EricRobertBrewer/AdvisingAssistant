@@ -11,15 +11,11 @@
 
 static TemplateRepo *instance = nil;
 
-@interface TemplateRepo ()
-@property (nonatomic, retain) NSArray *allTemplates;
-@end
 
 @implementation TemplateRepo
-@synthesize allTemplates = _allTemplates;
 
 -(void)dealloc {
-    self.allTemplates = nil;
+    [_allTemplates release];
     [super dealloc];
 }
 
@@ -35,23 +31,33 @@ static TemplateRepo *instance = nil;
     template.id = [[dict objectForKey:@"TemplateId"] intValue];
     template.name = [dict objectForKey:@"Name"];
     NSString *department = [dict objectForKey:@"DepartmentID"];
-    template.department = [[DepartmentRepo defaultRepo] departmentFromCode:department];
+    template.department = [[DepartmentRepo defaultRepo] departmentWithCode:department];
     return template;
 }
 
--(NSArray *)getAllTemplates {
-    NSMutableArray *templates = [[NSMutableArray alloc] init];
-    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullTemplate.php"];
-    NSArray *dicts = [self connect:options];
-    for (NSDictionary *dict in dicts) {
-        [templates addObject:[self templateFromDict:dict]];
-    }
-    return templates;
+-(NSArray *)allTemplates {
+	if (!_allTemplates) {
+		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullTemplate.php"];
+		NSArray *dicts = [self connect:options];
+		if (dicts) {
+			NSMutableArray *templates = [[NSMutableArray alloc] init];
+			for (NSDictionary *dict in dicts) {
+				[templates addObject:[self templateFromDict:dict]];
+			}
+			_allTemplates = templates;
+		}
+	}
+	return _allTemplates;
 }
 
 -(NSArray *)templatesForDepartment:(Department *)department {
-	if (!self.allTemplates) self.allTemplates = [self getAllTemplates];
-	return [NSArray array];
+	NSMutableArray *templates = [[NSMutableArray alloc] init];
+	for (Template *t in self.allTemplates) {
+		if ([t.department isEqualToDepartment:department]) {
+			[templates addObject:t];
+		}
+	}
+	return templates;
 }
 
 -(void)saveTemplate:(Template *)template {

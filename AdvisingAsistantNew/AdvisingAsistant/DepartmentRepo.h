@@ -10,13 +10,15 @@
 #import "Repo.h"
 #import "Department.h"
 
-@interface DepartmentRepo : Repo
+@interface DepartmentRepo : Repo {
+	NSArray *_allDepartments;
+}
 
 +(DepartmentRepo *)defaultRepo;
 
 -(NSArray *)allDepartments;
 
 // returns nil if no department found
--(Department *)departmentFromCode:(NSString *)code;
+-(Department *)departmentWithCode:(NSString *)code;
 
 @end

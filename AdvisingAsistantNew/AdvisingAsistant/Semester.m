@@ -10,8 +10,8 @@
 
 @implementation Semester
 
-@synthesize semester;
-@synthesize courses;
+@synthesize date = _date;
+@synthesize courses = _courses;
 
 -(void)dealloc {
 	self.courses = nil;

@@ -13,4 +13,6 @@
 @property (nonatomic, retain) NSString *code; // eg CS
 @property (nonatomic, retain) NSString *name; // eg Computer Science
 
+-(BOOL)isEqualToDepartment:(Department*)department;
+
 @end

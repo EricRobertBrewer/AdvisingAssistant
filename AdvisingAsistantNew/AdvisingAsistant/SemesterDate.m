@@ -14,3 +14,7 @@ SemesterDate SemesterDateMake(Season season, int year) {
 	s.year = year;
 	return s;
 }
+
+BOOL SemesterDateEqual(SemesterDate d1, SemesterDate d2) {
+	return d1.season == d2.season && d1.year == d2.year;
+}

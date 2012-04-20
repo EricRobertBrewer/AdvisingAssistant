@@ -18,9 +18,13 @@ typedef enum {
 @interface Course : NSObject
 
 @property (nonatomic, retain) Department *department; // ie ES
+@property (nonatomic, retain) NSString *number; // ie 101A
+@property (nonatomic, readonly) NSString *name; // ie ES 101A
+@property (nonatomic, retain) NSString *title; // ie Theory of Computation
+@property (nonatomic, retain) NSString *description; // ie Lecture 4 hourse. Mathematical study of...
 @property (nonatomic, assign) Available available;
-@property (nonatomic, retain) NSString *description;
 @property (nonatomic, assign) int units;
-@property (nonatomic, retain) NSString *name; // ie ES 101A
+
+@property (nonatomic, retain) NSString *customName;
 
 @end

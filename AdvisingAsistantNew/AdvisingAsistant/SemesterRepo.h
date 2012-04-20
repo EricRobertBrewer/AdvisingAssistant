@@ -10,6 +10,7 @@
 #import "Repo.h"
 #import "Student.h"
 #import "Template.h"
+#import "Course.h"
 
 @interface SemesterRepo : Repo
 
@@ -18,7 +19,7 @@
 -(NSArray*)semestersForStudent:(Student*)student;
 -(NSArray*)semestersForTemplate:(Template*)template;
 
--(void)saveSemesters:(NSArray *)schedules forStudent:(Student*)student;
--(void)saveSemesters:(NSArray *)schedules forTemplate:(Template*)template;
+-(void)saveSemesters:(NSArray *)semesters forStudent:(Student*)student;
+-(void)saveSemesters:(NSArray *)semesters forTemplate:(Template*)template;
 
 @end

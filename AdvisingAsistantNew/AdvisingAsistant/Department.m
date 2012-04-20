@@ -19,4 +19,8 @@
 	[super dealloc];
 }
 
+-(BOOL)isEqualToDepartment:(Department *)department {
+	return self.code == department.code;
+}
+
 @end
