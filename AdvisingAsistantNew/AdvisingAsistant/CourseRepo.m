@@ -18,12 +18,9 @@ static CourseRepo *instance = nil;
 	[super dealloc];
 }
 
-+(CourseRepo *)defaultRepo {
-	if (instance == nil) {
-		instance = [[CourseRepo alloc] init];
-	}
-	return instance;
-}
+/*
+	DICTIONARY SERIALIZING
+*/
 
 -(Course *)courseFromDict:(NSDictionary *)dict {
 	Course *course = [[Course alloc] init];
@@ -41,8 +38,12 @@ static CourseRepo *instance = nil;
 	course.description = [dict objectForKey:@"Description"];
 	course.units = [[dict objectForKey:@"Units"] intValue];
 	
-	return course;
+	return [course autorelease];
 }
+
+/*
+	GETTING COURSES
+*/
 
 -(NSArray *)allCourses {
 	if (!_allCourses) {
@@ -67,6 +68,17 @@ static CourseRepo *instance = nil;
 		}
 	}
 	return nil;
+}
+
+/*
+	SINGLETON STUFF
+*/
+
++(CourseRepo *)defaultRepo {
+	if (instance == nil) {
+		instance = [[CourseRepo alloc] init];
+	}
+	return instance;
 }
 
 +(id)allocWithZone:(NSZone *)zone {

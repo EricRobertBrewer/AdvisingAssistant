@@ -6,13 +6,20 @@
 //  Copyright (c) 2012 Allied Information Networks. All rights reserved.
 //
 
-#import "NSDictionary+setInt.h"
+#import "NSMutableDictionary+setInt.h"
 
-@implementation NSDictionary (setInt)
+@implementation NSMutableDictionary (setInt)
 
 -(void)setInt:(int)value forKey:(NSString *)key {
 	NSString *s = [NSString stringWithFormat:@"%i", value];
 	[self setValue:s forKey:key];
+}
+
+-(void)setValues:(NSDictionary *)other {
+	for (NSString *key in other.allKeys) {
+		id value = [other objectForKey:value];
+		[self setValue:value forKey:key];
+	}
 }
 
 @end

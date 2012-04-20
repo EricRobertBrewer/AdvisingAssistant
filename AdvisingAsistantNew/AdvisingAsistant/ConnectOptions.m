@@ -34,4 +34,12 @@
 	return [options autorelease];
 }
 
++(ConnectOptions *)optionsWithOptions:(ConnectOptions *)options {
+	ConnectOptions *copy = [[ConnectOptions alloc] init];
+	copy.url = options.url;
+	[copy.getData setValues:options.getData];
+	[copy.postData setValues:options.postData];
+	return [copy autorelease];
+}
+
 @end

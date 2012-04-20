@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (setInt)
+@interface NSMutableDictionary (setInt)
 
 -(void)setInt:(int)value forKey:(NSString *)key;
+-(void)setValues:(NSDictionary *)other;
 
 @end

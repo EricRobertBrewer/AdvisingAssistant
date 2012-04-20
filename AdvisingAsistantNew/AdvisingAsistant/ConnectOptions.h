@@ -16,4 +16,6 @@
 
 +(ConnectOptions *)optionsWithUrl:(NSString *)url;
 
++(ConnectOptions *)optionsWithOptions:(ConnectOptions *)options; // Copy
+
 @end

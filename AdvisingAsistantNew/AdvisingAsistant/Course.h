@@ -27,4 +27,8 @@ typedef enum {
 
 @property (nonatomic, retain) NSString *customName;
 
+-(id)init;
+-(id)initWithCourse:(Course *)course;
++(Course *)courseWithCourse:(Course *)course; // Make a copy
+
 @end

@@ -32,4 +32,24 @@
 	return [NSString stringWithFormat:@"%@ %@", self.department.code, self.number];
 }
 
+-(id)init {
+	return [super init];
+}
+-(id)initWithCourse:(Course *)course {
+	if ((self = [super init])) {
+		self.department = course.department;
+		self.available = course.available;
+		self.title = course.title;
+		self.description = course.description;
+		self.units = course.units;
+		self.number = course.number;
+		self.customName = course.customName;
+	}
+	return self;
+}
+
++(Course *)courseWithCourse:(Course *)course {
+	return [[[Course alloc] initWithCourse:course] autorelease];
+}
+
 @end

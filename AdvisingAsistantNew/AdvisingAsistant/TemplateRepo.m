@@ -19,12 +19,9 @@ static TemplateRepo *instance = nil;
     [super dealloc];
 }
 
-+(TemplateRepo *)defaultRepo {
-	if (instance == nil) {
-		instance = [[TemplateRepo alloc] init];
-	}
-	return instance;
-}
+/*
+	SERIALIZING TO/FROM DICTIONARIES
+*/
 
 -(Template *)templateFromDict:(NSDictionary *)dict {
     Template *template = [[Template alloc] init];
@@ -34,6 +31,20 @@ static TemplateRepo *instance = nil;
     template.department = [[DepartmentRepo defaultRepo] departmentWithCode:department];
     return template;
 }
+
+-(NSMutableDictionary *)dictFromTemplate:(Template *)template {
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	if (template.id > 0) {
+		[dict setInt:template.id forKey:@"TemplateId"];
+	}
+	[dict setValue:template.name forKey:@"Name"];
+	[dict setValue:template.department.code forKey:@"DepartmentID"];
+	return dict;
+}
+
+/*
+	GETTING TEMPLATES
+*/
 
 -(NSArray *)allTemplates {
 	if (!_allTemplates) {
@@ -60,8 +71,25 @@ static TemplateRepo *instance = nil;
 	return templates;
 }
 
+/*
+	SAVING TEMPLATES
+*/
+
 -(void)saveTemplate:(Template *)template {
-	self.error = @"Could not connect to server";
+	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"insertTemplate.php"];
+	options.postData = [self dictFromTemplate:template];
+	[self connect:options];
+}
+
+/*
+	SINGLETON STUFF
+*/
+
++(TemplateRepo *)defaultRepo {
+	if (instance == nil) {
+		instance = [[TemplateRepo alloc] init];
+	}
+	return instance;
 }
 
 +(id)allocWithZone:(NSZone *)zone {

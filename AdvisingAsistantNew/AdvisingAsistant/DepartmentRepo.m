@@ -17,12 +17,9 @@ static DepartmentRepo *instance = nil;
     [super dealloc];
 }
 
-+(DepartmentRepo *)defaultRepo {
-	if (instance == nil) {
-		instance = [[DepartmentRepo alloc] init];
-	}
-	return instance;
-}
+/*
+	DICTIONARY SERIALIZING
+*/
 
 -(Department*)departmentFromDict:(NSDictionary *)dict {
 	Department *d = [[Department alloc] init];
@@ -30,6 +27,10 @@ static DepartmentRepo *instance = nil;
 	d.name = [dict objectForKey:@"Name"];
 	return [d autorelease];
 }
+
+/*
+	GETTING DEPARTMENTS
+*/
 
 -(NSArray *)allDepartments {
 	if (!_allDepartments) {
@@ -51,6 +52,17 @@ static DepartmentRepo *instance = nil;
         if (department.code == code) return department;
     }
     return nil;
+}
+
+/*
+	SINGLETON STUFF
+*/
+
++(DepartmentRepo *)defaultRepo {
+	if (instance == nil) {
+		instance = [[DepartmentRepo alloc] init];
+	}
+	return instance;
 }
 
 +(id)allocWithZone:(NSZone *)zone {

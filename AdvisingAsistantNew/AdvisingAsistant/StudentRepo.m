@@ -12,14 +12,11 @@ static StudentRepo *instance = nil;
 
 @implementation StudentRepo
 
-+(StudentRepo*)defaultRepo {
-	if (instance == nil) {
-		instance = [[StudentRepo alloc] init];
-	}
-	return instance;
-}
+/*
+	SERIALIZING TO/FROM DICTIONARIES
+*/
 
--(Student*)studentFromDict:(NSDictionary*)dict {
+-(Student *)studentFromDict:(NSDictionary*)dict {
 	Student *student = [[Student alloc] init];
 	student.id = [[dict objectForKey:@"StudentID"] intValue];
 	student.name = [dict objectForKey:@"Name"];
@@ -41,6 +38,10 @@ static StudentRepo *instance = nil;
 	return [dict autorelease];
 }
 
+/*
+	GETTING STUDENTS
+*/
+
 -(Student*)studentWithId:(int)id {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getStudent.php"];
 	[options.postData setInt:id forKey:@"StudentID"];
@@ -52,10 +53,25 @@ static StudentRepo *instance = nil;
 	return nil;
 }
 
+/*
+	SAVING STUDENTS
+*/
+
 -(void)saveStudent:(Student *)student {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"insertStudent.php"];
 	options.postData = [self dictFromStudent:student];
 	[self connect:options];
+}
+
+/*
+	SINGLETON STUFF
+*/
+
++(StudentRepo*)defaultRepo {
+	if (instance == nil) {
+		instance = [[StudentRepo alloc] init];
+	}
+	return instance;
 }
 
 +(id)allocWithZone:(NSZone *)zone {
