@@ -130,10 +130,13 @@
 }
 
 - (IBAction)didtapDanny:(id)sender {
-    CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
+    NSArray *semesters = [[NSArray alloc] initWithObjects:@"Fall 2013", @"Spring 2014", @"Fall 2014",
+                          @"Spring 2015", @"Fall 2015", @"Spring 2016", @"Fall 2016", @"Spring 2017", nil];
+    CourseDetailViewController * temp = [[CourseDetailViewController alloc] initWithCourse:@"CS 355" andUnits:4 andDescription:@"This course is useful. It's also required. Take it or feel the wrath of Ali Kooshesh come down upon you." andSemesters:semesters];
     stndIDTextField.text = @"";
     
     [self.navigationController pushViewController:temp animated:YES];
     [temp release];
+    [semesters release];
 }
 @end
