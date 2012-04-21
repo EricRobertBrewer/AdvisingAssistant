@@ -20,14 +20,16 @@
     IBOutlet UIButton *btnAddCourse;
     
     NSMutableArray *semesters;
-    int numSemesters;
     NSString *courseName;
+    int localUnits;
+    NSString *description;
 }
 @property (atomic, retain) NSMutableArray *semesters;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
 
-- (id)initWithCourse:(NSString *)course;
+- (id)initWithCourse:(NSString *)course andUnits:(int)units andDescription:(NSString *)desc andSemesters:(NSArray *)sems;
+- (void)setGrade:(NSString *)grade;
 
 @end

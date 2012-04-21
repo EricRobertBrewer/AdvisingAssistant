@@ -11,15 +11,26 @@
 @implementation CourseDetailViewController
 @synthesize semesters;
 
--(id)initWithCourse:(NSString *)course
+-(id)initWithCourse:(NSString *)course andUnits:(int)units andDescription:(NSString *)desc andSemesters:(NSArray *)sems
 {
     self = [super init];
     if (self) {
         courseName = [[NSString alloc] initWithString:course];
         
         semesters = [[NSMutableArray alloc] init];
+        for (NSString *sem in sems) {
+            [semesters addObject:sem];
+        }
+        
+        localUnits = units;
+        description = desc;
     }
     return self;
+}
+
+-(void)setGrade:(NSString *)grade
+{
+    [lblGrade setText:grade];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,15 +51,8 @@
     
     // set course name title to course name passed in
     [lblCourseName setText:courseName];
-    
-    // Add the student's semesters here
-    // (Won't be hardcoded later!)
-    [semesters addObject:@"Fall 2009"];
-    [semesters addObject:@"Spring 2010"];
-    [semesters addObject:@"Fall 2010"];
-    [semesters addObject:@"Spring 2011"];
-    [semesters addObject:@"Fall 2011"];
-    [semesters addObject:@"Spring 2012"];
+    [lblUnits setText:[NSString stringWithFormat:@"%d",localUnits]];
+    [txtCourseDesc setText:description];
     
     // set up stepper
     [semesterStepper setMinimumValue:0];
