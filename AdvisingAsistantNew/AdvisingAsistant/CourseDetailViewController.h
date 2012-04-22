@@ -23,6 +23,7 @@
     IBOutlet UIStepper *semesterStepper;
     IBOutlet UILabel *semesterLabel;
     IBOutlet UIButton *btnAddCourse;
+    IBOutlet UIButton *closeView;
     
     NSMutableArray *semesters;
     Course *currentCourse;
@@ -36,6 +37,7 @@
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
+- (IBAction)tappedCloseView:(id)sender;
 
 - (id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems;
 - (void)showGrade:(NSString *)grade;

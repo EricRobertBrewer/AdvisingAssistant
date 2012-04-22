@@ -93,6 +93,8 @@
     semesterLabel = nil;
     [btnAddCourse release];
     btnAddCourse = nil;
+    [closeView release];
+    closeView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -113,6 +115,7 @@
     [semesterLabel release];
     [btnAddCourse release];
     [semesters release];
+    [closeView release];
     [super dealloc];
 }
 - (IBAction)addCourseClicked:(id)sender {
@@ -122,5 +125,9 @@
     NSLog(@"Value of stepper: %d", (int)semesterStepper.value);
     Semester *newSelectedSemester = [semesters objectAtIndex:(int)semesterStepper.value];
     [semesterLabel setText:[newSelectedSemester getDateAsString]];
+}
+
+- (IBAction)tappedCloseView:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 @end
