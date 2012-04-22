@@ -17,8 +17,6 @@
 		3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */; };
 		3FD0B4C91536608C00C938E2 /* ScheduleBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */; };
 		3FD0B4CA1536608C00C938E2 /* test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C81536608C00C938E2 /* test.xib */; };
-		3FFC92D61544CB2A0002B4B1 /* comppic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC92D41544CB2A0002B4B1 /* comppic.png */; };
-		3FFC92D71544CB2A0002B4B1 /* psychpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FFC92D51544CB2A0002B4B1 /* psychpic.jpg */; };
 		E09988441533953000C56ADC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988421533953000C56ADC /* LoginViewController.m */; };
 		E09988451533953000C56ADC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09988431533953000C56ADC /* LoginViewController.xib */; };
 		E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988491533954B00C56ADC /* NewStudentViewController.m */; };
@@ -84,8 +82,6 @@
 		3FD0B4C61536608C00C938E2 /* ScheduleBuilderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleBuilderViewController.h; sourceTree = "<group>"; };
 		3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleBuilderViewController.m; sourceTree = "<group>"; };
 		3FD0B4C81536608C00C938E2 /* test.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = test.xib; sourceTree = "<group>"; };
-		3FFC92D41544CB2A0002B4B1 /* comppic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comppic.png; sourceTree = "<group>"; };
-		3FFC92D51544CB2A0002B4B1 /* psychpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = psychpic.jpg; sourceTree = "<group>"; };
 		E09988411533953000C56ADC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E09988421533953000C56ADC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E09988431533953000C56ADC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -407,8 +403,6 @@
 				E3CB4F1F1531758100D766DD /* CourseDetailViewController.h */,
 				E3CB4F201531758100D766DD /* CourseDetailViewController.m */,
 				E3CB4F211531758100D766DD /* CourseDetailViewController.xib */,
-				3FFC92D41544CB2A0002B4B1 /* comppic.png */,
-				3FFC92D51544CB2A0002B4B1 /* psychpic.jpg */,
 			);
 			name = DanielsWork;
 			sourceTree = "<group>";
@@ -468,8 +462,6 @@
 				E09988451533953000C56ADC /* LoginViewController.xib in Resources */,
 				E099884C1533954B00C56ADC /* NewStudentViewController.xib in Resources */,
 				3FD0B4CA1536608C00C938E2 /* test.xib in Resources */,
-				3FFC92D61544CB2A0002B4B1 /* comppic.png in Resources */,
-				3FFC92D71544CB2A0002B4B1 /* psychpic.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
