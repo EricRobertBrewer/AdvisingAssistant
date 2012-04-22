@@ -26,6 +26,9 @@
     
     NSMutableArray *semesters;
     Course *currentCourse;
+    
+    UIImageView *iconPicView;
+    UIImage *iconPic;
 }
 @property (atomic, retain) NSMutableArray *semesters;
 

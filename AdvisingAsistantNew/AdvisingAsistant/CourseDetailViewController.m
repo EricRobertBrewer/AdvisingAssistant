@@ -46,6 +46,17 @@
 
     assert(semesters);
     
+    // set up the image
+    if (currentCourse.department.code == @"CS")
+        iconPic = [UIImage imageNamed:@"comppic.png"];
+    else
+        iconPic = [UIImage imageNamed:@"Sonoma_State_University.gif"];
+    
+    iconPicView = [[UIImageView alloc] initWithImage:iconPic];
+    iconPicView.frame = CGRectMake(25, 25, iconPic.size.width*0.7, iconPic.size.height*0.7);
+    [self.view addSubview:iconPicView];
+        
+    
     // set initial semester setting
     Semester *initialSemester = [semesters objectAtIndex:0];
     [semesterLabel setText:[initialSemester getDateAsString]];
