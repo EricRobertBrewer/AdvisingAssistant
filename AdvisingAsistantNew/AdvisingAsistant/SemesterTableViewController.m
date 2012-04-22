@@ -10,11 +10,10 @@
 
 @implementation SemesterTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (id)initWithSemester:(Semester *)semester {
+    self = [super init];
     if (self) {
-        // Custom initialization
+        courses = [[NSArray alloc] initWithArray:semester.courses];
     }
     return self;
 }
@@ -54,8 +53,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 1;
+    return [courses count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -67,7 +65,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+    cell.textLabel.text = [courses objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -75,6 +73,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // Pull up daniel's view (course description) - send course and array of semesters
 }
 
 @end

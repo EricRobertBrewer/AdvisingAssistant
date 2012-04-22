@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Semester.h"
+#import "SemesterDate.h"
 
 @interface SemesterTableViewController : UITableViewController {
-    
+    NSArray *courses;
 }
+
+- (id)initWithSemester:(Semester *)semester;
 
 @end

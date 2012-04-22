@@ -15,6 +15,7 @@
     self = [super initWithStyle:style];
     if (self) {
         self.title = title;
+        [self.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         GEArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
         [GEArray release];
     }
@@ -46,29 +47,41 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
-        return @"General Education Courses";
+    if (self.title == @"Required Courses") {
+        if (section == 0)
+            return @"General Education Courses";
 
-    if (section == 1)
-        return @"Deprtment Courses";
+        if (section == 1)
+            return @"Deprtment Courses";
+    }
+    
+    if (self.title == @"Second") {
+        if (section == 0)
+            return @"A";
+    }
     
     return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    if (self.title == @"Required Courses") {
+        return 2;
+    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-        return 7;
+    if (self.title == @"Required Courses") {
+        if (section == 0)
+            return 7;
     
-    else if (section == 1)
-        return 3;
+        else if (section == 1)
+            return 3;
+    }
     
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

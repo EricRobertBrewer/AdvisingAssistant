@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "Semester.h"
 #import "SideTableViewController.h"
+#import "SemesterTableViewController.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
     

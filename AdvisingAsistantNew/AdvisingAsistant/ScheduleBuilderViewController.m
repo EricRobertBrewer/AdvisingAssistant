@@ -46,7 +46,7 @@
     
     if (!sideNavBarController) {
         
-        sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"First"];
+        sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
         // Call initWithStudent or initWithTemplate
         
         [sideTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
@@ -58,7 +58,6 @@
         [sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
         
     }
-    
 }
 
 - (void)viewDidUnload
@@ -87,19 +86,62 @@
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
 
-        SemesterRepo *semArray = [[SemesterRepo alloc] init];
-        numberOfSemesters = [[semArray semestersForStudent:student] count];
+        SemesterRepo *semRepo = [[SemesterRepo alloc] init];
+        NSArray *semArray = [semRepo semestersForStudent:student];
+        numberOfSemesters = [semArray count];
+        
+        // Edit scrollview size based on number of semesters
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
         
         for (int i = 0; i < numberOfSemesters; i++) {
             // Create tables for scrollview
-            // Send it the semester and it can take out the array of courses and semester date
+            Semester *tempSemester = [semArray objectAtIndex:i];
+            SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:[semArray objectAtIndex:i]];
+            
+            // for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)
+            // EDIT talk to someone from group, fall always even?
+            
+            UILabel *semesterLabel = [[UILabel alloc] init];
+            int multiplier = 0;
+            if (tempSemester.date.season == SeasonFall) {
+                semesterLabel.text = [NSString stringWithFormat:@"Fall %i", tempSemester.date.year];
+                if (i == 0) {
+                    // special case - no need to multiply
+                    semesterLabel.frame = CGRectMake(154, 88, 52, 21);
+                }
+                else {
+                    // multpily value of label+table by multiplier (295) and add to starting Y value (88)
+                    multiplier = i/2;
+                    semesterLabel.frame = CGRectMake(154, ((295*multiplier)+88), 52, 21);
+                }
+                
+                [tempSemesterTable.tableView setFrame:CGRectMake(62, ((295*multiplier)+123), 236, 230)];
+            }
+            
+            if (tempSemester.date.season == SeasonSpring) {
+                semesterLabel.text = [NSString stringWithFormat:@"Spring %i", tempSemester.date.year];
+                if (i == 1) {
+                   // special case - no need to multiply
+                    semesterLabel.frame = CGRectMake(442, 88, 52, 21);
+                }
+                else {
+                    // multpily value of label+table by multiplier (295) and add to starting Y value (88)
+                    multiplier = (i-1)/2;
+                    semesterLabel.frame = CGRectMake(442, ((295*multiplier)+88), 52, 21);
+                }
+                
+                [tempSemesterTable.tableView setFrame:CGRectMake(367, ((295*multiplier)+123), 236, 230)];
+            }
+            
+            [self.view addSubview:semesterLabel];
+            [semesterTables addObject:tempSemesterTable];
+            [self.view addSubview:tempSemesterTable.tableView];
+            
+            [semesterLabel release];
+            [tempSemesterTable release];
         }
         
-        // Load courses into main table (sideTable) based on department
-        
-        
-        
-        [semArray release];
+        [semRepo release];
     }
     
     return self;
@@ -112,17 +154,62 @@
         // Each semester is an array of courses and has a date (term and year)
         self.title = temp.name;
         
-        SemesterRepo *semArray = [[SemesterRepo alloc] init];
-        numberOfSemesters = [[semArray semestersForTemplate:temp] count];
+        SemesterRepo *semRepo = [[SemesterRepo alloc] init];
+        NSArray *semArray = [semRepo semestersForTemplate:temp];
+        numberOfSemesters = [semArray count];
+        
+        // Edit scrollview size based on number of semesters
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
         
         for (int i = 0; i < numberOfSemesters; i++) {
             // Create tables for scrollview
-            // Send it the template and it can take out the array of courses and semester date
+            Semester *tempSemester = [semArray objectAtIndex:i];
+            SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:[semArray objectAtIndex:i]];
+            
+            // for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)
+            // EDIT talk to someone from group, fall always even?
+            
+            UILabel *semesterLabel = [[UILabel alloc] init];
+            int multiplier = 0;
+            if (tempSemester.date.season == SeasonFall) {
+                semesterLabel.text = [NSString stringWithFormat:@"Fall %i", tempSemester.date.year];
+                if (i == 0) {
+                    // special case - no need to multiply
+                    semesterLabel.frame = CGRectMake(154, 88, 52, 21);
+                }
+                else {
+                    // multpily value of label+table by multiplier (295) and add to starting Y value (88)
+                    multiplier = i/2;
+                    semesterLabel.frame = CGRectMake(154, ((295*multiplier)+88), 52, 21);
+                }
+                
+                [tempSemesterTable.tableView setFrame:CGRectMake(62, ((295*multiplier)+123), 236, 230)];
+            }
+            
+            if (tempSemester.date.season == SeasonSpring) {
+                semesterLabel.text = [NSString stringWithFormat:@"Spring %i", tempSemester.date.year];
+                if (i == 1) {
+                    // special case - no need to multiply
+                    semesterLabel.frame = CGRectMake(442, 88, 52, 21);
+                }
+                else {
+                    // multpily value of label+table by multiplier (295) and add to starting Y value (88)
+                    multiplier = (i-1)/2;
+                    semesterLabel.frame = CGRectMake(442, ((295*multiplier)+88), 52, 21);
+                }
+                
+                [tempSemesterTable.tableView setFrame:CGRectMake(367, ((295*multiplier)+123), 236, 230)];
+            }
+            
+            [self.view addSubview:semesterLabel];
+            [semesterTables addObject:tempSemesterTable];
+            [self.view addSubview:tempSemesterTable.tableView];
+            
+            [semesterLabel release];
+            [tempSemesterTable release];
         }
         
-        // Load courses into main table (sideTable) based on department (template.department)
-        
-        [semArray release];
+        [semRepo release];
     }
     
     return self;
