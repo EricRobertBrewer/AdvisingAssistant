@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Course.h"
+#import "SemesterRepo.h"
+#import "Student.h"
+#import "Semester.h"
+#import "Department.h"
 
 @interface CourseDetailViewController : UIViewController
 {
@@ -20,16 +25,14 @@
     IBOutlet UIButton *btnAddCourse;
     
     NSMutableArray *semesters;
-    NSString *courseName;
-    int localUnits;
-    NSString *description;
+    Course *currentCourse;
 }
 @property (atomic, retain) NSMutableArray *semesters;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
 
-- (id)initWithCourse:(NSString *)course andUnits:(int)units andDescription:(NSString *)desc andSemesters:(NSArray *)sems;
-- (void)setGrade:(NSString *)grade;
+- (id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems;
+- (void)showGrade:(NSString *)grade;
 
 @end

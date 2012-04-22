@@ -130,10 +130,55 @@
 }
 
 - (IBAction)didtapDanny:(id)sender {
-    CourseDetailViewController * temp = [[[CourseDetailViewController alloc] init] autorelease];
-    stndIDTextField.text = @"";
+    
+    Semester *semNum1 = [[Semester alloc] init];
+    [semNum1 setDate:SemesterDateMake(SeasonFall, 2013)];
+    Semester *semNum2 = [[Semester alloc] init];
+    [semNum2 setDate:SemesterDateMake(SeasonSpring, 2014)];
+    Semester *semNum3 = [[Semester alloc] init];
+    [semNum3 setDate:SemesterDateMake(SeasonFall, 2014)];
+    Semester *semNum4 = [[Semester alloc] init];
+    [semNum4 setDate:SemesterDateMake(SeasonSpring, 2015)];
+    Semester *semNum5 = [[Semester alloc] init];
+    [semNum5 setDate:SemesterDateMake(SeasonFall, 2015)];
+    Semester *semNum6 = [[Semester alloc] init];
+    [semNum6 setDate:SemesterDateMake(SeasonSpring, 2016)];
+    Semester *semNum7 = [[Semester alloc] init];
+    [semNum7 setDate:SemesterDateMake(SeasonFall, 2016)];
+    Semester *semNum8 = [[Semester alloc] init];
+    [semNum8 setDate:SemesterDateMake(SeasonSpring, 2017)];
+     
+    NSArray *semesters = [[NSArray alloc] initWithObjects:semNum1, semNum2, semNum3, semNum4, semNum5, semNum6, semNum7, semNum8, nil];
+                          
+    Course *CS355 = [[Course alloc] init];
+    Department *CompSci = [[Department alloc] init];
+    
+    // set up the test CS Course
+    [CS355 setUnits:4];
+    [CS355 setTitle:@"Database Management System Design"];
+    [CS355 setDescription:@"This course covers SQL queries, ER Diagrams, Normal Forms, and other Database design stuff."];
+    [CS355 setNumber:@"355"];
+    CS355.available = AvailabileSpring;
+    
+    // set department for the course
+    [CompSci setName:@"Computer Science"];
+    [CompSci setCode:@"CS"];
+    [CS355 setDepartment:CompSci];
+    
+    CourseDetailViewController * temp = [[CourseDetailViewController alloc] initWithCourse:CS355 andSemesters:semesters];
     
     [self.navigationController pushViewController:temp animated:YES];
     [temp release];
+    [semesters release];
+    [CompSci release];
+    [CS355 release];
+    [semNum1 release];
+    [semNum2 release];
+    [semNum3 release];
+    [semNum4 release];
+    [semNum5 release];
+    [semNum6 release];
+    [semNum7 release];
+    [semNum8 release];
 }
 @end

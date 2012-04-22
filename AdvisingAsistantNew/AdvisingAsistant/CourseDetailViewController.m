@@ -11,24 +11,21 @@
 @implementation CourseDetailViewController
 @synthesize semesters;
 
--(id)initWithCourse:(NSString *)course andUnits:(int)units andDescription:(NSString *)desc andSemesters:(NSArray *)sems
+-(id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems
 {
     self = [super init];
     if (self) {
-        courseName = [[NSString alloc] initWithString:course];
+        currentCourse = course;
         
         semesters = [[NSMutableArray alloc] init];
-        for (NSString *sem in sems) {
+        for (Semester *sem in sems) {
             [semesters addObject:sem];
         }
-        
-        localUnits = units;
-        description = desc;
     }
     return self;
 }
 
--(void)setGrade:(NSString *)grade
+-(void)showGrade:(NSString *)grade
 {
     [lblGrade setText:grade];
 }
@@ -49,10 +46,14 @@
 
     assert(semesters);
     
+    // set initial semester setting
+    Semester *initialSemester = [semesters objectAtIndex:0];
+    [semesterLabel setText:[initialSemester getDateAsString]];
+    
     // set course name title to course name passed in
-    [lblCourseName setText:courseName];
-    [lblUnits setText:[NSString stringWithFormat:@"%d",localUnits]];
-    [txtCourseDesc setText:description];
+    [lblCourseName setText:currentCourse.name];
+    [lblUnits setText:[NSString stringWithFormat:@"%d",currentCourse.units]];
+    [txtCourseDesc setText:currentCourse.description];
     
     // set up stepper
     [semesterStepper setMinimumValue:0];
@@ -87,7 +88,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+	return NO;
 }
 
 - (void)dealloc {
@@ -99,7 +100,6 @@
     [semesterLabel release];
     [btnAddCourse release];
     [semesters release];
-    [courseName release];
     [super dealloc];
 }
 - (IBAction)addCourseClicked:(id)sender {
@@ -107,6 +107,7 @@
 
 - (IBAction)StepperPressed:(id)sender {
     NSLog(@"Value of stepper: %d", (int)semesterStepper.value);
-    [semesterLabel setText:[semesters objectAtIndex:(int)semesterStepper.value]];
+    Semester *newSelectedSemester = [semesters objectAtIndex:(int)semesterStepper.value];
+    [semesterLabel setText:[newSelectedSemester getDateAsString]];
 }
 @end
