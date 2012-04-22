@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Semester.h"
 #import "SemesterDate.h"
+#import "CourseDetailViewController.h"
 
 @interface SemesterTableViewController : UITableViewController {
     NSArray *courses;
+    NSArray *semesterArray;
 }
 
-- (id)initWithSemester:(Semester *)semester;
+- (id)initWithSemester:(Semester *)semester andSemesterArray:(NSArray *)semesters;
+
 
 @end
