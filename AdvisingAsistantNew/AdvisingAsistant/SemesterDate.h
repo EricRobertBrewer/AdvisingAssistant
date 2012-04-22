@@ -18,3 +18,6 @@ typedef struct {
 
 SemesterDate SemesterDateMake(Season season, int year);
 BOOL SemesterDateEqual(SemesterDate d1, SemesterDate d2);
+
+NSString *FormatSeason(Season s);
+NSString *FormatSemesterDate(SemesterDate d);

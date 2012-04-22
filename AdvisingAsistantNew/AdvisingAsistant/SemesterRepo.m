@@ -36,7 +36,6 @@ static SemesterRepo *instance = nil;
 	Department *department = [[DepartmentRepo defaultRepo] departmentWithCode:code];
 	NSString *number = [dict objectForKey:@"CourseID"];
 	Course *course = [[CourseRepo defaultRepo] courseWithDepartment:department andNumber:number];
-	course = [Course courseWithCourse:course]; // Make a copy
 	course.customName = [dict objectForKey:@"Custom"];
 	if (course.customName.length == 0) course.customName = nil;
 	return course;
@@ -56,12 +55,14 @@ static SemesterRepo *instance = nil;
 	GETTING SEMESTERS
 */
 
+// The schedule comes from the server as a single flat list.
+// We group the courses by (Semester,Year) here
 -(NSArray*)semestersFromDicts:(NSArray *)dicts {
 	NSMutableArray *semesters = [NSMutableArray array];
 	Semester *semester = nil;
 	for (NSDictionary *dict in dicts) {
 		SemesterDate date = [self semesterDateFromDict:dict];
-		if (!SemesterDateEqual(date, semester.date)) {
+		if (semester && !SemesterDateEqual(date, semester.date)) {
 			[semesters addObject:semester];
 			semester = nil;
 		}

@@ -18,3 +18,11 @@ SemesterDate SemesterDateMake(Season season, int year) {
 BOOL SemesterDateEqual(SemesterDate d1, SemesterDate d2) {
 	return d1.season == d2.season && d1.year == d2.year;
 }
+
+NSString *FormatSeason(Season s) {
+	return (s == SeasonFall) ? @"Fall" : @"Spring";
+}
+NSString *FormatSemesterDate(SemesterDate d) {
+	NSString *season = FormatSeason(d.season);
+	return [NSString stringWithFormat:@"%@ %i", season, d.year];
+}

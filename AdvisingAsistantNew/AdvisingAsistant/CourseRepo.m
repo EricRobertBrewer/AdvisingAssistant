@@ -64,7 +64,7 @@ static CourseRepo *instance = nil;
 	for (Course *course in self.allCourses) {
 		if ([course.department isEqualToDepartment:department]
 			&& [course.number isEqualToString:number]) {
-			return course;
+			return [Course courseWithCourse:course]; // Make a copy
 		}
 	}
 	return nil;
