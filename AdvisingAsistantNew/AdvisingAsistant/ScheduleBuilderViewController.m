@@ -10,33 +10,14 @@
 
 @implementation ScheduleBuilderViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
-    return self;
-};
-
 - (void)didTapLogout:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, scrollView.frame.size.height*1.2);
+    
     UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
                                   initWithTitle:@"Logout"                                            
                                   style:UIBarButtonItemStyleBordered 
@@ -49,13 +30,12 @@
         sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
         // Call initWithStudent or initWithTemplate
         
-        [sideTable.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
-        
         sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
         
-        [self.view addSubview:sideNavBarController.navigationBar];
-        [self.view addSubview:sideTable.tableView];
-        [sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
+        [self.view addSubview:sideNavBarController.view];
+        [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
+        //[self.view addSubview:sideTable.tableView];
+        //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
         
     }
 }
@@ -66,8 +46,6 @@
     sideTable = nil;
     [scrollView release];
     scrollView = nil;
-    [sideNavBar release];
-    sideNavBar = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -82,20 +60,40 @@
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department {
     self = [super init];
     if (self) {
+        
+        scrollView = [[UIScrollView alloc] init];
+        scrollView.frame = CGRectMake(0, 0, 673, 1000);
+        scrollView.alwaysBounceVertical = YES;
+        scrollView.scrollEnabled = YES;
+        [self.view addSubview:scrollView];
+        
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
+        
+        /*if (!sideNavBarController) {
+            sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
+            // Call initWithStudent or initWithTemplate
+         
+            sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
+         
+            [self.view addSubview:sideNavBarController.view];
+            [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
+            //[self.view addSubview:sideTable.tableView];
+            //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
+        }*/
 
-        SemesterRepo *semRepo = [[SemesterRepo alloc] init];
+        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         NSArray *semArray = [semRepo semestersForStudent:student];
         numberOfSemesters = [semArray count];
         
         // Edit scrollview size based on number of semesters
-        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
+        scrollView.contentSize = CGSizeMake(673, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
         
         for (int i = 0; i < numberOfSemesters; i++) {
             // Create tables for scrollview
             Semester *tempSemester = [semArray objectAtIndex:i];
+            NSArray *tempCourses = [tempSemester courses];
             SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:[semArray objectAtIndex:i]];
             
             // for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)
@@ -107,12 +105,12 @@
                 semesterLabel.text = [NSString stringWithFormat:@"Fall %i", tempSemester.date.year];
                 if (i == 0) {
                     // special case - no need to multiply
-                    semesterLabel.frame = CGRectMake(154, 88, 52, 21);
+                    semesterLabel.frame = CGRectMake(154, 88, 100, 21);
                 }
                 else {
                     // multpily value of label+table by multiplier (295) and add to starting Y value (88)
                     multiplier = i/2;
-                    semesterLabel.frame = CGRectMake(154, ((295*multiplier)+88), 52, 21);
+                    semesterLabel.frame = CGRectMake(154, ((295*multiplier)+88), 100, 21);
                 }
                 
                 [tempSemesterTable.tableView setFrame:CGRectMake(62, ((295*multiplier)+123), 236, 230)];
@@ -122,26 +120,23 @@
                 semesterLabel.text = [NSString stringWithFormat:@"Spring %i", tempSemester.date.year];
                 if (i == 1) {
                    // special case - no need to multiply
-                    semesterLabel.frame = CGRectMake(442, 88, 52, 21);
+                    semesterLabel.frame = CGRectMake(442, 88, 100, 21);             
                 }
                 else {
                     // multpily value of label+table by multiplier (295) and add to starting Y value (88)
                     multiplier = (i-1)/2;
-                    semesterLabel.frame = CGRectMake(442, ((295*multiplier)+88), 52, 21);
+                    semesterLabel.frame = CGRectMake(442, ((295*multiplier)+88), 100, 21);
                 }
                 
                 [tempSemesterTable.tableView setFrame:CGRectMake(367, ((295*multiplier)+123), 236, 230)];
             }
             
-            [self.view addSubview:semesterLabel];
+            [scrollView addSubview:semesterLabel];
             [semesterTables addObject:tempSemesterTable];
-            [self.view addSubview:tempSemesterTable.tableView];
+            [scrollView addSubview:tempSemesterTable.tableView];
             
             [semesterLabel release];
-            [tempSemesterTable release];
         }
-        
-        [semRepo release];
     }
     
     return self;
@@ -154,7 +149,7 @@
         // Each semester is an array of courses and has a date (term and year)
         self.title = temp.name;
         
-        SemesterRepo *semRepo = [[SemesterRepo alloc] init];
+        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         NSArray *semArray = [semRepo semestersForTemplate:temp];
         numberOfSemesters = [semArray count];
         
@@ -208,8 +203,6 @@
             [semesterLabel release];
             [tempSemesterTable release];
         }
-        
-        [semRepo release];
     }
     
     return self;
@@ -218,7 +211,6 @@
 - (void)dealloc {
     [sideTable release];
     [scrollView release];
-    [sideNavBar release];
     [super dealloc];
 }
 @end

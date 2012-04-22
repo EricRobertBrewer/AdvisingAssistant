@@ -13,7 +13,7 @@
 - (id)initWithSemester:(Semester *)semester {
     self = [super init];
     if (self) {
-        courses = [[NSArray alloc] initWithArray:semester.courses];
+        courses = [semester.courses retain];
     }
     return self;
 }
@@ -53,7 +53,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [courses count];
+    int temp = [courses count];
+    return temp;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -17,7 +17,7 @@
         self.title = title;
         [self.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         GEArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
-        [GEArray release];
+        DepartmentSectionsArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
     }
     return self;
 }
@@ -91,6 +91,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    if (self.title == @"Required Courses") {
+        if (indexPath.section == 0) {
+            cell.textLabel.text = [GEArray objectAtIndex:indexPath.row];
+            cell.textLabel.textAlignment = UITextAlignmentCenter;
+        }
+        if (indexPath.section == 1) {
+            
+        }
     }
     
     return cell;

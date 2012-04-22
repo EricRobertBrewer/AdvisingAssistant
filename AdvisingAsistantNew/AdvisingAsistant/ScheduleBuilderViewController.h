@@ -18,9 +18,8 @@
 
 @interface ScheduleBuilderViewController : UIViewController {
     
-    IBOutlet UIScrollView *scrollView;
+    UIScrollView *scrollView;
     
-    IBOutlet UINavigationBar *sideNavBar;
     UINavigationController *sideNavBarController;
     SideTableViewController *sideTable;
     

@@ -10,6 +10,7 @@
 
 @interface SideTableViewController : UITableViewController {
     NSArray *GEArray;
+    NSArray *DepartmentSectionsArray;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title;

@@ -34,7 +34,7 @@ static DepartmentRepo *instance = nil;
 
 -(NSArray *)allDepartments {
 	if (!_allDepartments) {
-		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getDepartment.php"];
+		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullDepartment.php"];
 		NSArray *dicts = [self connect:options];
 		if (dicts) {
 			NSMutableArray *departments = [[NSMutableArray alloc] init];
