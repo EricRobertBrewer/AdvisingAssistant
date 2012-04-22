@@ -37,7 +37,8 @@ static SemesterRepo *instance = nil;
 	NSString *number = [dict objectForKey:@"CourseID"];
 	Course *course = [[CourseRepo defaultRepo] courseWithDepartment:department andNumber:number];
 	course.customName = [dict objectForKey:@"Custom"];
-	if (course.customName.length == 0) course.customName = nil;
+    if (course.customName == [NSNull null]) course.customName = nil;
+	if (course.customName && course.customName.length == 0) course.customName = nil;
 	return course;
 }
 

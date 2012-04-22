@@ -93,7 +93,6 @@
         for (int i = 0; i < numberOfSemesters; i++) {
             // Create tables for scrollview
             Semester *tempSemester = [semArray objectAtIndex:i];
-            NSArray *tempCourses = [tempSemester courses];
             SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:[semArray objectAtIndex:i]];
             
             // for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)

@@ -17,6 +17,13 @@
 	[super dealloc];
 }
 
+-(id)init {
+    if ((self = [super init])) {
+        self.courses = [NSMutableArray array];
+    }
+    return self;
+}
+
 -(NSString *)getDateAsString {
 	return FormatSemesterDate(self.date);
 }

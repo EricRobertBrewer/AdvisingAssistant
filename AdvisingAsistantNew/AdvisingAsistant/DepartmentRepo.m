@@ -49,7 +49,7 @@ static DepartmentRepo *instance = nil;
 
 -(Department *)departmentWithCode:(NSString *)code {
     for (Department *department in self.allDepartments) {
-        if (department.code == code) return department;
+        if ([department.code isEqualToString:code]) return department;
     }
     return nil;
 }
