@@ -10,10 +10,11 @@
 
 @implementation SemesterTableViewController
 
-- (id)initWithSemester:(Semester *)semester {
+- (id)initWithSemester:(Semester *)semester andSemesterArray:(NSArray *)semesters{
     self = [super init];
     if (self) {
         courses = [semester.courses retain];
+        semesterArray = [semesters retain];
     }
     return self;
 }
@@ -74,6 +75,9 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
+    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:courseDetail animated:YES];
 }
 
 @end
