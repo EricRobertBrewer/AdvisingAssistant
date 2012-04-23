@@ -36,9 +36,12 @@ static SemesterRepo *instance = nil;
 	Department *department = [[DepartmentRepo defaultRepo] departmentWithCode:code];
 	NSString *number = [dict objectForKey:@"CourseID"];
 	Course *course = [[CourseRepo defaultRepo] courseWithDepartment:department andNumber:number];
-	course.customName = [dict objectForKey:@"Custom"];
-    if (course.customName == [NSNull null]) course.customName = nil;
-	if (course.customName && course.customName.length == 0) course.customName = nil;
+	
+	id custom = [dict objectForKey:@"Custom"];
+	if (custom && custom != [NSNull null] && [custom length] > 0) {
+		course.customName = custom;
+	}
+
 	return course;
 }
 
@@ -56,38 +59,80 @@ static SemesterRepo *instance = nil;
 	GETTING SEMESTERS
 */
 
+
+-(Semester *)semesterForDate:(SemesterDate)date inArray:(NSMutableArray *)semesters {
+	for (Semester *semester in semesters) {
+		if (SemesterDateEqual(date, semester.date)) return semester;
+	}
+	Semester *newSemester = [[Semester alloc] init];
+	newSemester.date = date;
+	[semesters addObject:newSemester];
+	return [newSemester autorelease];
+}
+
 // The schedule comes from the server as a single flat list.
 // We group the courses by (Semester,Year) here
--(NSArray*)semestersFromDicts:(NSArray *)dicts {
-	NSMutableArray *semesters = [NSMutableArray array];
-	Semester *semester = nil;
+// And make sure we return them in a normalized fashion
+-(NSArray *)semestersFromDicts:(NSArray *)dicts startDate:(SemesterDate)start {
+	NSMutableArray *normal = [NSMutableArray array];
+	
+	// Start with initial 4 semesters
+	for (int i=0; i < 4; i++) {
+		Semester *semester = [[Semester alloc] init];
+		Season season = (i % 2 == 0) ? SeasonFall : SeasonSpring;
+		int year = start.year + (i/2);
+		semester.date = SemesterDateMake(season, year);
+		[normal addObject:semester];
+		[semester release];
+	}
+	
+	// Add courses
 	for (NSDictionary *dict in dicts) {
 		SemesterDate date = [self semesterDateFromDict:dict];
-		if (semester && !SemesterDateEqual(date, semester.date)) {
-			[semesters addObject:semester];
-			semester = nil;
-		}
-		if (!semester) {
-			semester = [[Semester alloc] init];
-			semester.date = date;
-		}
-		Course *course = [self courseFromDict:dict];
-		[semester.courses addObject:course];
+		Semester *semester = [self semesterForDate:date inArray:normal];
+		[semester.courses addObject:[self courseFromDict:dict]];
 	}
-	if (semester) [semesters addObject:semester];
-	return semesters;
+	
+	// Fill in any gaps with blank semesters
+	for (int i=0; i < normal.count; i++) {
+		Semester *semester = [normal objectAtIndex:i];
+		if (semester.date.season == SeasonSpring && i % 2 == 0) {
+			Semester *blankFall = [[Semester alloc] init];
+			blankFall.date = SemesterDateMake(SeasonFall, semester.date.year-1);
+			[normal insertObject:blankFall atIndex:i];
+			[blankFall release];
+		} else if (semester.date.season == SeasonFall && i % 2 == 1) {
+			Semester *blankSpring = [[Semester alloc] init];
+			blankSpring.date = SemesterDateMake(SeasonSpring, semester.date.year+1);
+			[normal insertObject:blankSpring atIndex:i];
+			[blankSpring release];
+		}
+	}
+	
+	// Make sure we end with spring and not fall
+	if (normal.count % 2 == 1) {
+		Semester *lastSemester = [normal objectAtIndex:(normal.count-1)];
+		//assert(lastSemester.date.season == SeasonFall);
+		Semester *blankSpring = [[Semester alloc] init];
+		blankSpring.date = SemesterDateMake(SeasonSpring, lastSemester.date.year+1);
+		[normal addObject:blankSpring];
+		[blankSpring release];
+	}
+
+	return normal;
 }
 
 -(NSArray*)semestersForStudent:(Student*)student {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getStudentSchedule.php"];
 	[options.postData setInt:student.id forKey:@"StudentID"];
-	return [self semestersFromDicts:[self connect:options]];
+	return [self semestersFromDicts:[self connect:options] startDate:student.started];
 }
 
 -(NSArray*)semestersForTemplate:(Template*)template {
 	ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getTemplateSchedule.php"];
 	[options.postData setInt:template.id forKey:@"TemplateID"];
-	return [self semestersFromDicts:[self connect:options]];
+	SemesterDate start = SemesterDateMake(SeasonFall, 0);
+	return [self semestersFromDicts:[self connect:options] startDate:start];
 }
 
 

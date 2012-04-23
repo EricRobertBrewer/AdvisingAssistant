@@ -45,6 +45,11 @@ static CourseRepo *instance = nil;
 	GETTING COURSES
 */
 
+-(NSArray *)coursesForArea:(Area *)area {
+	self.error = @"Not yet implemented";
+	return [NSArray array];
+}
+
 -(NSArray *)allCourses {
 	if (!_allCourses) {
 		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullCourse.php"];

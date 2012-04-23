@@ -37,6 +37,9 @@
 		E301AC6A15320DD600EE05F9 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC5E15320DD600EE05F9 /* SBJsonWriter.m */; };
 		E301AC6D15320F2200EE05F9 /* TemplateRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC6C15320F2200EE05F9 /* TemplateRepo.m */; };
 		E301AC701532128300EE05F9 /* DepartmentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC6F1532128200EE05F9 /* DepartmentRepo.m */; };
+		E324D6AF1545BBF700CFA21D /* Area.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6AE1545BBF700CFA21D /* Area.m */; };
+		E324D6B21545BC9000CFA21D /* AreaRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6B11545BC9000CFA21D /* AreaRepo.m */; };
+		E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6B41545BD3200CFA21D /* GEPattern.m */; };
 		E3861E401531642600D9073A /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E3F1531642600D9073A /* Course.m */; };
 		E3861E431531647600D9073A /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E421531647600D9073A /* Student.m */; };
 		E3861E47153167BF00D9073A /* Department.m in Sources */ = {isa = PBXBuildFile; fileRef = E3861E46153167BF00D9073A /* Department.m */; };
@@ -121,6 +124,12 @@
 		E301AC6C15320F2200EE05F9 /* TemplateRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateRepo.m; sourceTree = "<group>"; };
 		E301AC6E1532128200EE05F9 /* DepartmentRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartmentRepo.h; sourceTree = "<group>"; };
 		E301AC6F1532128200EE05F9 /* DepartmentRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartmentRepo.m; sourceTree = "<group>"; };
+		E324D6AD1545BBF700CFA21D /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Area.h; sourceTree = "<group>"; };
+		E324D6AE1545BBF700CFA21D /* Area.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Area.m; sourceTree = "<group>"; };
+		E324D6B01545BC9000CFA21D /* AreaRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaRepo.h; sourceTree = "<group>"; };
+		E324D6B11545BC9000CFA21D /* AreaRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaRepo.m; sourceTree = "<group>"; };
+		E324D6B31545BD3200CFA21D /* GEPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEPattern.h; sourceTree = "<group>"; };
+		E324D6B41545BD3200CFA21D /* GEPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEPattern.m; sourceTree = "<group>"; };
 		E3861E3E1531642600D9073A /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E3861E3F1531642600D9073A /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E3861E411531647600D9073A /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
@@ -353,6 +362,12 @@
 				E3861E3F1531642600D9073A /* Course.m */,
 				E3CF9A4C1541C9490091EBBE /* CourseRepo.h */,
 				E3CF9A4D1541C9490091EBBE /* CourseRepo.m */,
+				E324D6AD1545BBF700CFA21D /* Area.h */,
+				E324D6AE1545BBF700CFA21D /* Area.m */,
+				E324D6B01545BC9000CFA21D /* AreaRepo.h */,
+				E324D6B11545BC9000CFA21D /* AreaRepo.m */,
+				E324D6B31545BD3200CFA21D /* GEPattern.h */,
+				E324D6B41545BD3200CFA21D /* GEPattern.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -515,6 +530,9 @@
 				3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */,
 				E3CF9A4E1541C9490091EBBE /* CourseRepo.m in Sources */,
 				E3CF9A551541DBC50091EBBE /* NSMutableDictionary+setInt.m in Sources */,
+				E324D6AF1545BBF700CFA21D /* Area.m in Sources */,
+				E324D6B21545BC9000CFA21D /* AreaRepo.m in Sources */,
+				E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

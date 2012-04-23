@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Course.h"
 #import "Repo.h"
+#import "Area.h"
+#import "Course.h"
 
 @interface CourseRepo : Repo {
 	NSArray *_allCourses;
@@ -16,6 +17,7 @@
 
 +(CourseRepo *)defaultRepo;
 
+-(NSArray *)coursesForArea:(Area *)area;
 -(Course *)courseWithDepartment:(Department *)department andNumber:(NSString *)number;
 
 @end
