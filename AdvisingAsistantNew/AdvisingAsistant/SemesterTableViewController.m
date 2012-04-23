@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         courses = [semester.courses retain];
-        semesterArray = [semesters retain];
+        semesterArray = [[NSMutableArray alloc] initWithArray:semesters];
     }
     return self;
 }

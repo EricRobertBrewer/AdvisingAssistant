@@ -12,8 +12,8 @@
 #import "CourseDetailViewController.h"
 
 @interface SemesterTableViewController : UITableViewController {
-    NSArray *courses;
-    NSArray *semesterArray;
+    NSMutableArray *courses;
+    NSMutableArray *semesterArray;
 }
 
 - (id)initWithSemester:(Semester *)semester andSemesterArray:(NSArray *)semesters;
