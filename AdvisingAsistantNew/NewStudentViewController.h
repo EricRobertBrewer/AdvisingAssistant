@@ -12,9 +12,9 @@
 //#import "ScheduleBuilderViewController.h"
 //#import "Department.h"
 #import "LoginViewController.h"
-#import "TemplateRepo.h"
 
 @class LoginViewController;
+@class Template;
 
 @interface NewStudentViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     int studentID;

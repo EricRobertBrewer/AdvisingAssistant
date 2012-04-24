@@ -21,6 +21,8 @@
 		E09988451533953000C56ADC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09988431533953000C56ADC /* LoginViewController.xib */; };
 		E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988491533954B00C56ADC /* NewStudentViewController.m */; };
 		E099884C1533954B00C56ADC /* NewStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E099884A1533954B00C56ADC /* NewStudentViewController.xib */; };
+		E0AE350E15475B4D006CACEB /* EditTemplateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0AE350C15475B4D006CACEB /* EditTemplateViewController.m */; };
+		E0AE350F15475B4D006CACEB /* EditTemplateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0AE350D15475B4D006CACEB /* EditTemplateViewController.xib */; };
 		E301AC40153209F500EE05F9 /* StudentRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC3F153209F500EE05F9 /* StudentRepo.m */; };
 		E301AC4415320D2600EE05F9 /* SemesterRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC4315320D2600EE05F9 /* SemesterRepo.m */; };
 		E301AC5F15320DD600EE05F9 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E301AC4715320DD600EE05F9 /* NSObject+SBJson.m */; };
@@ -91,6 +93,9 @@
 		E09988481533954B00C56ADC /* NewStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStudentViewController.h; sourceTree = "<group>"; };
 		E09988491533954B00C56ADC /* NewStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStudentViewController.m; sourceTree = "<group>"; };
 		E099884A1533954B00C56ADC /* NewStudentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewStudentViewController.xib; sourceTree = "<group>"; };
+		E0AE350B15475B4D006CACEB /* EditTemplateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTemplateViewController.h; sourceTree = "<group>"; };
+		E0AE350C15475B4D006CACEB /* EditTemplateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTemplateViewController.m; sourceTree = "<group>"; };
+		E0AE350D15475B4D006CACEB /* EditTemplateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTemplateViewController.xib; sourceTree = "<group>"; };
 		E301AC3E153209F500EE05F9 /* StudentRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentRepo.h; sourceTree = "<group>"; };
 		E301AC3F153209F500EE05F9 /* StudentRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentRepo.m; sourceTree = "<group>"; };
 		E301AC4215320D2600EE05F9 /* SemesterRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterRepo.h; sourceTree = "<group>"; };
@@ -235,7 +240,6 @@
 			children = (
 				E3861E3C153163F700D9073A /* Model */,
 				E3CB4F1A1531756900D766DD /* DanielsWork */,
-				E099884D1533955100C56ADC /* NewStudentViewController */,
 				E09988471533953600C56ADC /* LoginViewController */,
 				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
 				3F5C6BBE152FB77000835DBA /* Supporting Files */,
@@ -288,6 +292,8 @@
 				E09988411533953000C56ADC /* LoginViewController.h */,
 				E09988421533953000C56ADC /* LoginViewController.m */,
 				E09988431533953000C56ADC /* LoginViewController.xib */,
+				E099884D1533955100C56ADC /* NewStudentViewController */,
+				E0AE351115475B51006CACEB /* EditTemplateViewController */,
 			);
 			name = LoginViewController;
 			path = ..;
@@ -301,7 +307,16 @@
 				E099884A1533954B00C56ADC /* NewStudentViewController.xib */,
 			);
 			name = NewStudentViewController;
-			path = ..;
+			sourceTree = "<group>";
+		};
+		E0AE351115475B51006CACEB /* EditTemplateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E0AE350B15475B4D006CACEB /* EditTemplateViewController.h */,
+				E0AE350C15475B4D006CACEB /* EditTemplateViewController.m */,
+				E0AE350D15475B4D006CACEB /* EditTemplateViewController.xib */,
+			);
+			name = EditTemplateViewController;
 			sourceTree = "<group>";
 		};
 		E301AC4515320DC000EE05F9 /* SBJSON */ = {
@@ -477,6 +492,7 @@
 				E09988451533953000C56ADC /* LoginViewController.xib in Resources */,
 				E099884C1533954B00C56ADC /* NewStudentViewController.xib in Resources */,
 				3FD0B4CA1536608C00C938E2 /* test.xib in Resources */,
+				E0AE350F15475B4D006CACEB /* EditTemplateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +549,7 @@
 				E324D6AF1545BBF700CFA21D /* Area.m in Sources */,
 				E324D6B21545BC9000CFA21D /* AreaRepo.m in Sources */,
 				E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */,
+				E0AE350E15475B4D006CACEB /* EditTemplateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
