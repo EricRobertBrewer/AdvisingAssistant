@@ -122,6 +122,10 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
+    EditTemplateViewController *modalView = [[[EditTemplateViewController alloc] init] autorelease];
+    modalView.parentController = self;
+    modalView.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentModalViewController:modalView animated:YES];
 }
 
 - (IBAction)didTapSavvy:(id)sender {

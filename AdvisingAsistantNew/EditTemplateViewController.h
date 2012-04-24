@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
+#import "ScheduleBuilderViewController.h"
 
 @class Template;
 @class LoginViewController;
@@ -20,6 +21,7 @@
     NSArray *templates;
     LoginViewController *parentController;
     BOOL submit;
+    Template *editedTemplate;
 }
 
 @property (nonatomic, retain) LoginViewController  *parentController;

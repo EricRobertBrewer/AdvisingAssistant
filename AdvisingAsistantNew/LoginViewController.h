@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "StudentRepo.h"
 #import "NewStudentViewController.h"
+#import "EditTemplateViewController.h"
 //#import "ScheduleBuilderViewController.h"
 #import "CourseDetailViewController.h"
 #import "TemplateRepo.h"

@@ -33,10 +33,12 @@
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [templates objectAtIndex:row];;
+    Template *temp = [templates objectAtIndex:row];
+    return temp.name;
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    editedTemplate = [templates objectAtIndex:row];
     editTemplateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 
@@ -48,6 +50,12 @@
         return YES;
     }
     return  NO;
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+    ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
+    parentController.nextController = nextController;
+    [parentController.navigationController pushViewController:nextController animated:YES];
 }
 
 - (void)viewDidLoad
@@ -95,6 +103,7 @@
    if ([editTemplateField.text length] > 0 && [templates containsObject:editTemplateField.text])
    {
        submit = YES;
+       [self dismissModalViewControllerAnimated:YES];
    }
 }
 
@@ -102,6 +111,7 @@
     if ([createTemplateField.text length] > 0)
     {
         submit = YES;
+        [self dismissModalViewControllerAnimated:YES];
     }
 }
 
