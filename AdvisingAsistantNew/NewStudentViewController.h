@@ -26,6 +26,7 @@
     UIPickerView *pickerView1, *pickerView2;
     NSArray *templates;
     LoginViewController *parentController;
+    BOOL submit;
 }
 
 @property (nonatomic, retain) NSString *year, *season;
@@ -34,5 +35,6 @@
 
 - (id) initWithStudentID: (int) ID;
 - (IBAction)didTapSubmit:(id)sender;
+- (IBAction)didTapExit:(id)sender;
 
 @end

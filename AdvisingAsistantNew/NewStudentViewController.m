@@ -33,6 +33,7 @@
 - (IBAction)didTapSubmit:(id)sender {
     if ([studentName.text length] > 0 && [studentIDField.text length] > 0 && [semesterStarted.text length] > 0)
     {
+        submit = YES;
         Student * stud = [[[Student alloc] init] autorelease];
         stud.name = studentName.text;
         stud.id = [studentIDField.text intValue];
@@ -53,9 +54,17 @@
     }
 }
 
+- (IBAction)didTapExit:(id)sender {
+    submit = NO;
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 -(void) viewDidDisappear:(BOOL)animated {
-    parentController.stndIDTextField.text = @"";
-    [parentController.navigationController pushViewController:parentController.nextController animated:YES];
+    if (submit)
+    {
+        parentController.stndIDTextField.text = @"";
+        [parentController.navigationController pushViewController:parentController.nextController animated:YES];
+    }
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -117,6 +126,7 @@
     // Do any additional setup after loading the view from its nib.
     TemplateRepo *repo = [TemplateRepo defaultRepo];
     DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
+    submit = NO;
     
     studentIDField.text = [NSString stringWithFormat:@"%d", studentID];
     
