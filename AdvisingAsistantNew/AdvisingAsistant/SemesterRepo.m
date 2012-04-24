@@ -76,8 +76,8 @@ static SemesterRepo *instance = nil;
 -(NSArray *)semestersFromDicts:(NSArray *)dicts startDate:(SemesterDate)start {
 	NSMutableArray *normal = [NSMutableArray array];
 	
-	// Start with initial 4 semesters
-	for (int i=0; i < 4; i++) {
+	// Start with initial 8 semesters
+	for (int i=0; i < 8; i++) {
 		Semester *semester = [[Semester alloc] init];
 		Season season = (i % 2 == 0) ? SeasonFall : SeasonSpring;
 		int year = start.year + (i/2);

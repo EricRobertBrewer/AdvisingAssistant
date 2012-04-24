@@ -31,6 +31,7 @@
         // Call initWithStudent or initWithTemplate
         
         sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
+        sideNavBarController.view.autoresizingMask = UIViewAutoresizingNone;
         
         [self.view addSubview:sideNavBarController.view];
         [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
@@ -65,6 +66,7 @@
         scrollView.frame = CGRectMake(0, 0, 673, 1000);
         scrollView.alwaysBounceVertical = YES;
         scrollView.scrollEnabled = YES;
+        scrollView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:scrollView];
         
         // Make a semester repo with student, returns array of semesters
@@ -167,6 +169,7 @@
         scrollView.frame = CGRectMake(0, 0, 673, 1000);
         scrollView.alwaysBounceVertical = YES;
         scrollView.scrollEnabled = YES;
+        scrollView.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:scrollView];
         
         // Make a semester repo with student, returns array of semesters
