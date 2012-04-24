@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Student.h"
 #import "StudentRepo.h"
 #import "NewStudentViewController.h"
 //#import "ScheduleBuilderViewController.h"
 #import "CourseDetailViewController.h"
 #import "TemplateRepo.h"
-#import "Department.h"
+#import "DepartmentRepo.h"
 
 @class ScheduleBuilderViewController;
 

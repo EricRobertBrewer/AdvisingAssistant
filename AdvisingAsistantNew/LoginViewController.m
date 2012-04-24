@@ -113,7 +113,8 @@
     }
     else
     {
-        ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
+        ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[dRepo departmentWithCode:@"CS"]] autorelease];
         stndIDTextField.text = @"";
         [self.navigationController pushViewController:schedule animated:YES];
     }

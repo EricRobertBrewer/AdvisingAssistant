@@ -11,7 +11,7 @@
 #import "ScheduleBuilderViewController.h"
 
 @implementation NewStudentViewController
-@synthesize season, year, parentController;
+@synthesize season, year, parentController, T;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,53 +63,90 @@
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == 0)
-        return 2;
-    return 50;
+    if (pickerView == pickerView1)
+    {
+        if (component == 0)
+            return 2;
+        return 50;
+    }
+    else if (pickerView == pickerView2)
+        return [templates count];
+    return 0;
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (component == 0)
+    if (pickerView == pickerView1)
     {
-        if (row == 0)
-            return @"Fall";
+        if (component == 0)
+        {
+            if (row == 0)
+                return @"Fall";
+            else
+                return @"Spring";
+        }
         else
-            return @"Spring";
+            return [NSString stringWithFormat:@"%d", row+2000];
     }
-    else
-        return [NSString stringWithFormat:@"%d", row+2000];
+    else if (pickerView == pickerView2)
+    {
+        Template *temp = [templates objectAtIndex:row];
+        return temp.name;
+    }
+    return  @"WRONG PICKERVIEW";
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (component == 1)
-        self.year = [self pickerView:pickerView titleForRow:row forComponent:component];
-    else
-        self.season = [self pickerView:pickerView titleForRow:row forComponent:component];
-    semesterStarted.text = [NSString stringWithFormat:@"%@ %@", self.season, self.year];
+    if (pickerView == pickerView1) 
+    {
+        if (component == 1)
+            self.year = [self pickerView:pickerView titleForRow:row forComponent:component];
+        else
+            self.season = [self pickerView:pickerView titleForRow:row forComponent:component];
+        semesterStarted.text = [NSString stringWithFormat:@"%@ %@", self.season, self.year];
+    }
+    else if (pickerView == pickerView2)
+    {
+        self.T = [templates objectAtIndex:row];
+        templateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    TemplateRepo *repo = [TemplateRepo defaultRepo];
+    DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
     
     studentIDField.text = [NSString stringWithFormat:@"%d", studentID];
     
-    UIPickerView *pickerView = [[UIPickerView alloc] init];
-    pickerView.delegate = self;
-    pickerView.dataSource = self;
-    pickerView.showsSelectionIndicator = YES;
+    pickerView1 = [[UIPickerView alloc] init];
+    pickerView1.delegate = self;
+    pickerView1.dataSource = self;
+    pickerView1.showsSelectionIndicator = YES;
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *components = [cal components:NSYearCalendarUnit fromDate:[NSDate date]];
     int yearRow = [components year] - 2000;
     int seasonRow = 0;
-    
-    [pickerView selectRow:yearRow inComponent:1 animated:YES];
-    self.year = [self pickerView:pickerView titleForRow:yearRow forComponent:1];
-    self.season = [self pickerView:pickerView titleForRow:seasonRow forComponent:0];
-    semesterStarted.inputView = pickerView;
+    [pickerView1 selectRow:yearRow inComponent:1 animated:YES];
+    self.year = [self pickerView:pickerView1 titleForRow:yearRow forComponent:1];
+    self.season = [self pickerView:pickerView1 titleForRow:seasonRow forComponent:0];
+    semesterStarted.inputView = pickerView1;
     semesterStarted.text = [NSString stringWithFormat:@"%@ %@", season, year];
-
+    
+    pickerView2 = [[UIPickerView alloc] init];
+    pickerView2.delegate = self;
+    pickerView2.dataSource = self;
+    [pickerView2 selectRow:0 inComponent:0 animated:YES];
+    templateField.inputView = pickerView2;
+    self.T = [Template new];
+    templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
+    assert(templates);
+    Template *n = [templates lastObject];
+    NSLog(@"%@", @"YES");
+    NSLog(@"%@", n.name);
+    templateField.text = n.name;
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -122,8 +159,12 @@
         return YES;
     }
     if (textField == semesterStarted) {
-        [self didTapSubmit:(UITextField *)textField];
+        [templateField becomeFirstResponder];
         return YES;
+    }
+    if (textField == templateField) {
+        [self didTapSubmit:(UITextField *)textField];
+        return  YES;
     }
     return NO;
 }
@@ -137,6 +178,8 @@
     semesterStarted = nil;
     [studentIDField release];
     studentIDField = nil;
+    [templateField release];
+    templateField = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -151,6 +194,7 @@
     [studentName release];
     [semesterStarted release];
     [studentIDField release];
+    [templateField release];
     [super dealloc];
 }
 @end

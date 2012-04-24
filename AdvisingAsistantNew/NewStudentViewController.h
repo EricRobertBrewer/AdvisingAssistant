@@ -12,6 +12,7 @@
 //#import "ScheduleBuilderViewController.h"
 //#import "Department.h"
 #import "LoginViewController.h"
+#import "TemplateRepo.h"
 
 @class LoginViewController;
 
@@ -20,10 +21,15 @@
     IBOutlet UITextField *studentIDField;
     IBOutlet UITextField *studentName;
     IBOutlet UITextField *semesterStarted;
+    IBOutlet UITextField *templateField;
+    
+    UIPickerView *pickerView1, *pickerView2;
+    NSArray *templates;
     LoginViewController *parentController;
 }
 
 @property (nonatomic, retain) NSString *year, *season;
+@property (nonatomic, retain) Template *T;
 @property (nonatomic, retain) LoginViewController *parentController;
 
 - (id) initWithStudentID: (int) ID;
