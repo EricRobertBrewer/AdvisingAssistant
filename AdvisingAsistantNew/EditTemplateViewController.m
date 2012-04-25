@@ -116,6 +116,7 @@
     {
         submit = YES;
         TemplateRepo *repo = [TemplateRepo defaultRepo];
+        [repo saveTemplate:editedTemplate];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
