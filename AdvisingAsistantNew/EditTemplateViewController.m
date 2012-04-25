@@ -38,7 +38,7 @@
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    editedTemplate = [templates objectAtIndex:row];
+    editedTemplate = [[templates objectAtIndex:row] retain];
     editTemplateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 
@@ -70,6 +70,7 @@
     DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
     
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
+    editedTemplate = [[templates objectAtIndex:0] retain];
     
     UIPickerView *pickerView = [[[UIPickerView alloc] init] autorelease];
     pickerView.delegate = self;
@@ -114,6 +115,7 @@
     if ([createTemplateField.text length] > 0)
     {
         submit = YES;
+        TemplateRepo *repo = [TemplateRepo defaultRepo];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
