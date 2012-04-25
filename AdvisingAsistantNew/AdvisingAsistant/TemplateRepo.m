@@ -25,7 +25,7 @@ static TemplateRepo *instance = nil;
 
 -(Template *)templateFromDict:(NSDictionary *)dict {
     Template *template = [[Template alloc] init];
-    template.id = [[dict objectForKey:@"TemplateId"] intValue];
+    template.id = [[dict objectForKey:@"TemplateID"] intValue];
     template.name = [dict objectForKey:@"Name"];
     NSString *department = [dict objectForKey:@"DepartmentID"];
     template.department = [[DepartmentRepo defaultRepo] departmentWithCode:department];
@@ -35,7 +35,7 @@ static TemplateRepo *instance = nil;
 -(NSMutableDictionary *)dictFromTemplate:(Template *)template {
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	if (template.id > 0) {
-		[dict setInt:template.id forKey:@"TemplateId"];
+		[dict setInt:template.id forKey:@"TemplateID"];
 	}
 	[dict setValue:template.name forKey:@"Name"];
 	[dict setValue:template.department.code forKey:@"DepartmentID"];
