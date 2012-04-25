@@ -55,7 +55,7 @@
 - (void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
+        ScheduleBuilderViewController *nextController = [[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate];
         parentController.nextController = nextController;
         [parentController.navigationController pushViewController:nextController animated:YES];
     }
@@ -103,7 +103,7 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
-    if ([editTemplateField.text length] > 0 && [templates containsObject:editTemplateField.text])
+    if ([editTemplateField.text length] > 0)
     {
         submit = YES;
         [self dismissModalViewControllerAnimated:YES];
