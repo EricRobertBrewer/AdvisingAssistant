@@ -53,9 +53,12 @@
 }
 
 - (void) viewDidDisappear:(BOOL)animated {
-    ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
-    parentController.nextController = nextController;
-    [parentController.navigationController pushViewController:nextController animated:YES];
+    if (submit)
+    {
+        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
+        parentController.nextController = nextController;
+        [parentController.navigationController pushViewController:nextController animated:YES];
+    }
 }
 
 - (void)viewDidLoad
@@ -100,11 +103,11 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
-   if ([editTemplateField.text length] > 0 && [templates containsObject:editTemplateField.text])
-   {
-       submit = YES;
-       [self dismissModalViewControllerAnimated:YES];
-   }
+    if ([editTemplateField.text length] > 0 && [templates containsObject:editTemplateField.text])
+    {
+        submit = YES;
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)didTapCreate:(id)sender {
