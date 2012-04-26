@@ -129,9 +129,22 @@
 - (IBAction)addCourseClicked:(id)sender {
     for (Semester *sem in modifiedSemesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            [sem.courses addObject:currentCourse];
+            if ([self isValidForSemester:sem])
+                [sem.courses addObject:currentCourse];
         }
     }
+    [self dismissModalViewControllerAnimated:NO];
+}
+
+// Checks to see if class is already in this semester
+- (BOOL)isValidForSemester:(Semester *)selectedSem {
+    for (Course *c in selectedSem.courses) {
+        if ([c.name isEqualToString:currentCourse.name]) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (IBAction)StepperPressed:(id)sender {
@@ -143,5 +156,12 @@
 - (IBAction)tappedCloseView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+/*
+- (void)viewWillDisappear:(BOOL)animated {
+    
+// call some method on semester table view controller. probably want to store a pointer to it globally somewhere (singleton)    
+}
+ */
 
 @end
