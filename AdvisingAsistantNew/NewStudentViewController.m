@@ -184,7 +184,6 @@
     pickerView2.showsSelectionIndicator = YES;
     [pickerView2 selectRow:0 inComponent:0 animated:YES];
     templateField.inputView = pickerView2;
-    self.T = [Template new];
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
     assert(templates);
     Template *n = [templates lastObject];
@@ -259,6 +258,7 @@
     [templateField release];
     [GEPatternField release];
     [templates release];
+    [T release];
     [super dealloc];
 }
 @end

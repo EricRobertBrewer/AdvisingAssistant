@@ -37,7 +37,5 @@
 
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;
-- (IBAction)didTapSavvy:(id)sender;
-- (IBAction)didtapDanny:(id)sender;
 
 @end
