@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Semester.h"
+#import "GEPattern.h"
 
 @interface Student : NSObject
 
 @property (nonatomic, assign) int id; // SSU Student ID#
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, assign) SemesterDate started;
+@property (nonatomic, assign) GEPattern pattern;
 
 @end

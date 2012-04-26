@@ -7,3 +7,11 @@
 //
 
 #import "GEPattern.h"
+
+NSString* FormatGEPattern(GEPattern pattern) {
+    return (pattern == GEPatternFreshman) ? @"Freshman" : @"Transfer";
+}
+
+GEPattern GEPatternFromString(NSString *s) {
+    return [s isEqualToString:@"Freshman"] ? GEPatternFreshman : GEPatternTransfer;
+}

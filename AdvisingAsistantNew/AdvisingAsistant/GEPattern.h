@@ -11,3 +11,7 @@ typedef enum {
 	GEPatternFreshman,
 	GEPatternTransfer
 } GEPattern;
+
+
+NSString* FormatGEPattern(GEPattern pattern);
+GEPattern GEPatternFromString(NSString *s);
