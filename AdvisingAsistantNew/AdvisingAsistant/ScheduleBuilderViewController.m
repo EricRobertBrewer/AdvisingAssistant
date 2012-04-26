@@ -89,7 +89,7 @@
         NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForStudent:student]];
         numberOfSemesters = [semArray count];
         
-        if (numberOfSemesters == 0) {
+        /*if (numberOfSemesters == 0) {
             int startFallYear = student.started.year;
             if (student.started.season == SeasonSpring)
                 startFallYear--;
@@ -106,7 +106,7 @@
             }
             
             numberOfSemesters = [semArray count];
-        }
+        }*/
         
         scrollView.contentSize = CGSizeMake(673, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
         
