@@ -7,12 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AreaRepo.h"
+#import "Area.h"
+#import "SecondSideTableViewController.h"
+#import "GEPattern.h"
+#import "SemesterDate.h"
+#import "Department.h"
 
 @interface SideTableViewController : UITableViewController {
+    AreaRepo *tempRepo;
+    
     NSArray *GEArray;
     NSArray *DepartmentSectionsArray;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title;
+- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date andDepartment:(Department *)dept;
 
 @end

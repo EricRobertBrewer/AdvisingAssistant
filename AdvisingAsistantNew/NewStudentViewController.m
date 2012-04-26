@@ -31,7 +31,7 @@
 }
 
 - (IBAction)didTapSubmit:(id)sender {
-    if ([studentName.text length] > 0 && [studentIDField.text length] > 0 && [semesterStarted.text length] > 0)
+    if ([studentName.text length] > 0 && [studentIDField.text length] > 0 && [semesterStarted.text length] > 0 && [GEPatternField.text length] > 0)
     {
         submit = YES;
         Student * stud = [[[Student alloc] init] autorelease];
@@ -39,9 +39,20 @@
         stud.id = [studentIDField.text intValue];
         Season t = (season == @"Fall") ? SeasonFall: SeasonSpring;
         stud.started = SemesterDateMake(t, [year intValue]);
+        if ([GEPatternField.text isEqualToString:@"Freshman Pattern"])
+            stud.pattern = GEPatternFreshman;
+        else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
+            stud.pattern = GEPatternTransfer;
         
         StudentRepo *repo = [StudentRepo defaultRepo];
         [repo saveStudent:stud];
+        
+        if ([templateField.text length] > 0)
+        {
+            SemesterRepo *sRepo = [SemesterRepo defaultRepo];
+            NSArray *schedule = [sRepo semestersForTemplate:T]; 
+            [sRepo saveSemesters:schedule forStudent:stud];
+        }
         if (repo.error != nil)
         {
             NSLog(@"%@", repo.error);
@@ -68,7 +79,9 @@
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 2;
+    if (pickerView == pickerView1)
+        return 2;
+    return 1;
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
@@ -80,6 +93,8 @@
     }
     else if (pickerView == pickerView2)
         return [templates count];
+    else if (pickerView == pickerView3)
+        return 2;
     return 0;
 }
 
@@ -98,10 +113,24 @@
     }
     else if (pickerView == pickerView2)
     {
+        if (row == 0)
+            return @"";
         Template *temp = [templates objectAtIndex:row];
         return temp.name;
     }
+    else if (pickerView == pickerView3)
+    {
+        if (row == 0)
+            return @"Freshmen Pattern";
+        return @"Transfer Pattern";
+    }
     return  @"WRONG PICKERVIEW";
+}
+
+- (float)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    if (pickerView == pickerView1)
+        return self.view.frame.size.width/2;
+    return self.view.frame.size.width;
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -117,6 +146,10 @@
     {
         self.T = [templates objectAtIndex:row];
         templateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    }
+    else if (pickerView == pickerView3)
+    {
+        GEPatternField.text = [self pickerView:pickerView3 titleForRow:row forComponent:component];
     }
 }
 
@@ -143,10 +176,12 @@
     self.season = [self pickerView:pickerView1 titleForRow:seasonRow forComponent:0];
     semesterStarted.inputView = pickerView1;
     semesterStarted.text = [NSString stringWithFormat:@"%@ %@", season, year];
+    semesterStarted.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
     
     pickerView2 = [[UIPickerView alloc] init];
     pickerView2.delegate = self;
     pickerView2.dataSource = self;
+    pickerView2.showsSelectionIndicator = YES;
     [pickerView2 selectRow:0 inComponent:0 animated:YES];
     templateField.inputView = pickerView2;
     self.T = [Template new];
@@ -155,7 +190,17 @@
     Template *n = [templates lastObject];
     NSLog(@"%@", @"YES");
     NSLog(@"%@", n.name);
-    templateField.text = n.name;
+    templateField.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
+    
+    pickerView3 = [[UIPickerView alloc] init];
+    pickerView3.delegate = self;
+    pickerView3.dataSource = self;
+    pickerView3.showsSelectionIndicator = YES;
+    [pickerView3 selectRow:0 inComponent:0 animated:YES];
+    GEPatternField.inputView = pickerView3;
+    GEPatternField.text = [self pickerView:pickerView3 titleForRow:0 forComponent:0];
+    GEPatternField.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
+    
     
 }
 
@@ -169,6 +214,11 @@
         return YES;
     }
     if (textField == semesterStarted) {
+        [GEPatternField becomeFirstResponder];
+        return YES;
+    }
+    if (textField == GEPatternField)
+    {
         [templateField becomeFirstResponder];
         return YES;
     }
@@ -190,6 +240,8 @@
     studentIDField = nil;
     [templateField release];
     templateField = nil;
+    [GEPatternField release];
+    GEPatternField = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -205,6 +257,7 @@
     [semesterStarted release];
     [studentIDField release];
     [templateField release];
+    [GEPatternField release];
     [super dealloc];
 }
 @end

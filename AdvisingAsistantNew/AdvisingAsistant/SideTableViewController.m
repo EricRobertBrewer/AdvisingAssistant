@@ -10,27 +10,18 @@
 
 @implementation SideTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style andTitle:(NSString *)title
+- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date andDepartment:(Department *)dept
 {
-    self = [super initWithStyle:style];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.title = title;
+        self.title = @"Required Courses";
         [self.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
-        GEArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
-        DepartmentSectionsArray = [[NSArray alloc] initWithObjects:@"A", @"B", @"C", @"D", @"E", @"Ethnic Studies", @"Lab Requirement", nil];
+        tempRepo = [[AreaRepo alloc] init];
+        GEArray = [[NSArray alloc] initWithArray:[tempRepo areasForGEPattern:pattern date:date]];
+        DepartmentSectionsArray = [[NSArray alloc] initWithArray:[tempRepo areasForDepartment:dept date:date]];
     }
     return self;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -38,50 +29,29 @@
 
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (self.title == @"Required Courses") {
-        if (section == 0)
-            return @"General Education Courses";
+    if (section == 0)
+        return @"General Education Courses";
 
-        if (section == 1)
-            return @"Deprtment Courses";
-    }
-    
-    if (self.title == @"Second") {
-        if (section == 0)
-            return @"A";
-    }
+    if (section == 1)
+        return @"Deprtment Courses"; // Pull department name
     
     return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (self.title == @"Required Courses") {
-        return 2;
-    }
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.title == @"Required Courses") {
-        if (section == 0)
-            return 7;
+    if (section == 0)
+        return [GEArray count];
     
-        else if (section == 1)
-            return 3;
-    }
-    
-    return 1;
+    else if (section == 1)
+        return [DepartmentSectionsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,28 +63,30 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if (self.title == @"Required Courses") {
-        if (indexPath.section == 0) {
-            cell.textLabel.text = [GEArray objectAtIndex:indexPath.row];
-            cell.textLabel.textAlignment = UITextAlignmentCenter;
-        }
-        if (indexPath.section == 1) {
-            
-        }
+    if (indexPath.section == 0) {
+        cell.textLabel.text = [GEArray objectAtIndex:indexPath.row];
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+    }
+    
+    if (indexPath.section == 1) {
+        cell.textLabel.text = [DepartmentSectionsArray objectAtIndex:indexPath.row];
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
     
     return cell;
 }
 
-
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    SideTableViewController *temp = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Second"];
+    SecondSideTableViewController *temp;
+    if (indexPath.section == 0)
+        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]]];
     
+    else if (indexPath.section == 1)
+        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]]];
+        
     [self.navigationController pushViewController:temp animated:YES];
 }
 

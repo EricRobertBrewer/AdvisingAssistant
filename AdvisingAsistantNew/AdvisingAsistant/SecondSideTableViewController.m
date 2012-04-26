@@ -1,33 +1,25 @@
 //
-//  SemesterTableViewController.m
+//  SecondSideTableViewController.m
 //  AdvisingAsistant
 //
-//  Created by student on 4/18/12.
+//  Created by student on 4/25/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SemesterTableViewController.h"
+#import "SecondSideTableViewController.h"
 
-@implementation SemesterTableViewController
+@implementation SecondSideTableViewController
 
-- (id)initWithSemester:(Semester *)semester andSemesterArray:(NSArray *)semesters{
-    self = [super init];
+- (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSArray *)semesters
+{
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        courses = [semester.courses retain];
-        semesterArray = [[NSMutableArray alloc] initWithArray:semesters];
+        // Takes array of areas, call function with each area for array of courses
+        areaArray = [areas retain];
+        semesterArray = [[NSArray alloc] initWithArray:semesters];
     }
     return self;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
@@ -40,21 +32,20 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    // Return YES for supported orientations
+	return YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [areaArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [courses count];
+    return [[areaArray objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,11 +54,10 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[courses objectAtIndex:indexPath.row] name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Units: %i", [[courses objectAtIndex:indexPath.row] units]];
+    cell.textLabel.text = [[areaArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -76,7 +66,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[[[areaArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:indexPath.row] andSemesters:semesterArray];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:courseDetail animated:YES];
 }
