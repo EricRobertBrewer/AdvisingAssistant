@@ -13,6 +13,7 @@
 @synthesize id;
 @synthesize name;
 @synthesize started;
+@synthesize pattern;
 
 -(void)dealloc {
 	self.name = nil;

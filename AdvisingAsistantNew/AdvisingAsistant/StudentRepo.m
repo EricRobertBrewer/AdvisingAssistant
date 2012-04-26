@@ -23,6 +23,7 @@ static StudentRepo *instance = nil;
 	Season season = [[dict objectForKey:@"StartSemester"] isEqualToString:@"F"] ? SeasonFall : SeasonSpring;
 	int year = [[dict objectForKey:@"StartYear"] intValue];
 	student.started = SemesterDateMake(season, year);
+    student.pattern = GEPatternFromString([dict objectForKey:@"Pattern"]);
 	return [student autorelease];
 }
 
@@ -31,10 +32,12 @@ static StudentRepo *instance = nil;
 	NSString *id = [NSString stringWithFormat:@"%i", student.id];
 	NSString *season = (student.started.season == SeasonFall) ? @"F" : @"S";
 	NSString *year = [NSString stringWithFormat:@"%i", student.started.year];
+    NSString *pattern = FormatGEPattern(student.pattern);
 	[dict setValue:id forKey:@"StudentID"];
 	[dict setValue:student.name forKey:@"Name"];
 	[dict setValue:season forKey:@"StartSemester"];
 	[dict setValue:year forKey:@"StartYear"];
+    [dict setValue:pattern forKey:@"Pattern"];
 	return [dict autorelease];
 }
 
