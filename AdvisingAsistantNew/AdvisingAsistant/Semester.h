@@ -14,6 +14,6 @@
 @property (nonatomic, assign) SemesterDate date;
 @property (nonatomic, retain) NSMutableArray *courses;
 
--(NSString *)getDateAsString;
+- (NSString *)getDateAsString;
 
 @end

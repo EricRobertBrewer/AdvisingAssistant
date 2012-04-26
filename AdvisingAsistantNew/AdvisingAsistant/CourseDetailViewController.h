@@ -26,7 +26,9 @@
     IBOutlet UIButton *closeView;
     
     NSMutableArray *semesters;
+    NSMutableArray *modifiedSemesters;
     Course *currentCourse;
+    SemesterRepo *dbSemester;
     
     /*
     UIImageView *iconPicView;
@@ -39,7 +41,7 @@
 - (IBAction)StepperPressed:(id)sender;
 - (IBAction)tappedCloseView:(id)sender;
 
-- (id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems;
+- (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
 - (void)showGrade:(NSString *)grade;
 
 @end

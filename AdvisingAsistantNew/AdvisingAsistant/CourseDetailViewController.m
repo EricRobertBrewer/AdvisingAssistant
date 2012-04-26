@@ -11,16 +11,21 @@
 @implementation CourseDetailViewController
 @synthesize semesters;
 
--(id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems
+-(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
     self = [super init];
     if (self) {
         currentCourse = course;
         
+        // semesters is what is passed in only.
+        // modifiedSemesters is the array after user adds course
         semesters = [[NSMutableArray alloc] init];
         for (Semester *sem in sems) {
             [semesters addObject:sem];
         }
+        modifiedSemesters = sems;
+        
+        dbSemester = [SemesterRepo defaultRepo];
     }
     return self;
 }
@@ -118,7 +123,15 @@
     [closeView release];
     [super dealloc];
 }
+
+// This is the function that will set into motion saving the course into the database
+// and visually displaying it on the schedule
 - (IBAction)addCourseClicked:(id)sender {
+    for (Semester *sem in modifiedSemesters) {
+        if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+            [sem.courses addObject:currentCourse];
+        }
+    }
 }
 
 - (IBAction)StepperPressed:(id)sender {
@@ -130,4 +143,5 @@
 - (IBAction)tappedCloseView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
+
 @end
