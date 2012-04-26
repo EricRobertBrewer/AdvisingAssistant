@@ -258,6 +258,7 @@
     [studentIDField release];
     [templateField release];
     [GEPatternField release];
+    [templates release];
     [super dealloc];
 }
 @end
