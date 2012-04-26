@@ -41,7 +41,7 @@
 - (IBAction)StepperPressed:(id)sender;
 - (IBAction)tappedCloseView:(id)sender;
 
-- (BOOL)isValidForSemester:(Semester *)selectedSem
+- (BOOL)isValidForSemester:(Semester *)selectedSem;
 - (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
 - (void)showGrade:(NSString *)grade;
 

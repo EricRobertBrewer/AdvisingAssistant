@@ -18,6 +18,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.hidesBackButton = YES;    
     UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
                                   initWithTitle:@"Logout"                                            
                                   style:UIBarButtonItemStyleBordered 
