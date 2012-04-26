@@ -11,16 +11,21 @@
 @implementation CourseDetailViewController
 @synthesize semesters;
 
--(id)initWithCourse:(Course *)course andSemesters:(NSArray *)sems
+-(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
     self = [super init];
     if (self) {
         currentCourse = course;
         
+        // semesters is what is passed in only.
+        // modifiedSemesters is the array after user adds course
         semesters = [[NSMutableArray alloc] init];
         for (Semester *sem in sems) {
             [semesters addObject:sem];
         }
+        modifiedSemesters = sems;
+        
+        dbSemester = [SemesterRepo defaultRepo];
     }
     return self;
 }
@@ -118,7 +123,28 @@
     [closeView release];
     [super dealloc];
 }
+
+// This is the function that will set into motion saving the course into the database
+// and visually displaying it on the schedule
 - (IBAction)addCourseClicked:(id)sender {
+    for (Semester *sem in modifiedSemesters) {
+        if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+            if ([self isValidForSemester:sem])
+                [sem.courses addObject:currentCourse];
+        }
+    }
+    [self dismissModalViewControllerAnimated:NO];
+}
+
+// Checks to see if class is already in this semester
+- (BOOL)isValidForSemester:(Semester *)selectedSem {
+    for (Course *c in selectedSem.courses) {
+        if ([c.name isEqualToString:currentCourse.name]) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 - (IBAction)StepperPressed:(id)sender {
@@ -130,4 +156,12 @@
 - (IBAction)tappedCloseView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+/*
+- (void)viewWillDisappear:(BOOL)animated {
+    
+// call some method on semester table view controller. probably want to store a pointer to it globally somewhere (singleton)    
+}
+ */
+
 @end
