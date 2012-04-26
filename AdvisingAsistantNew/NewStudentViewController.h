@@ -22,8 +22,9 @@
     IBOutlet UITextField *studentName;
     IBOutlet UITextField *semesterStarted;
     IBOutlet UITextField *templateField;
+    IBOutlet UITextField *GEPatternField;
     
-    UIPickerView *pickerView1, *pickerView2;
+    UIPickerView *pickerView1, *pickerView2, *pickerView3;
     NSArray *templates;
     LoginViewController *parentController;
     BOOL submit;

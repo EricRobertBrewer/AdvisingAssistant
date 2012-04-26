@@ -42,6 +42,22 @@
     editTemplateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 
+/*- (UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *lab;
+    if (view)
+        lab = (UILabel *)view;
+    else
+        lab = [[[UILabel alloc] init] autorelease];
+    Template *temp = [templates objectAtIndex:row];
+    lab.text = temp.name;
+    [lab sizeToFit];
+    return lab;
+}*/
+
+- (float) pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    return self.view.frame.size.width;
+}
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     if (textField == createTemplateField)
     {
@@ -55,7 +71,7 @@
 - (void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        ScheduleBuilderViewController *nextController = [[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate];
+        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
         parentController.nextController = nextController;
         [parentController.navigationController pushViewController:nextController animated:YES];
     }
@@ -72,12 +88,14 @@
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
     editedTemplate = [[templates objectAtIndex:0] retain];
     
-    UIPickerView *pickerView = [[[UIPickerView alloc] init] autorelease];
+    UIPickerView *pickerView = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
     pickerView.delegate = self;
     pickerView.dataSource = self;
+    pickerView.showsSelectionIndicator = YES;
     
     [pickerView selectRow:0 inComponent:0 animated:YES];
     editTemplateField.inputView = pickerView;
+    editTemplateField.inputView.frame = CGRectMake(0, 0, 100, 100);
     editTemplateField.text = [self pickerView:pickerView titleForRow:0 forComponent:0];
 }
 
@@ -116,7 +134,13 @@
     {
         submit = YES;
         TemplateRepo *repo = [TemplateRepo defaultRepo];
-        [repo saveTemplate:editedTemplate];
+        DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
+        
+        Template *temp = [[[Template alloc] init] autorelease];
+        temp.name = createTemplateField.text;
+        temp.department = [dRepo departmentWithCode:@"CS"];
+        [repo saveTemplate:temp];
+        editedTemplate = [repo templateForName:temp.name inDepartment:temp.department];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
