@@ -24,21 +24,6 @@
                                   target:self
                                   action:@selector(didTapLogout:)];
     self.navigationItem.rightBarButtonItem = logoutBtn;
-    
-    if (!sideNavBarController) {
-        
-        sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
-        // Call initWithStudent or initWithTemplate
-        
-        sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
-        sideNavBarController.view.autoresizingMask = UIViewAutoresizingNone;
-        
-        [self.view addSubview:sideNavBarController.view];
-        [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
-        //[self.view addSubview:sideTable.tableView];
-        //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
-        
-    }
 }
 
 - (void)viewDidUnload
@@ -62,6 +47,22 @@
     self = [super init];
     if (self) {
         
+        if (!sideNavBarController) {
+            
+            //sideTable = [[SideTableViewController alloc] initWithGEPattern:student. date:<#(SemesterDate)#> andDepartment:<#(Department *)#>
+            
+            // Call initWithStudent or initWithTemplate
+            
+            sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
+            sideNavBarController.view.autoresizingMask = UIViewAutoresizingNone;
+            
+            [self.view addSubview:sideNavBarController.view];
+            [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
+            //[self.view addSubview:sideTable.tableView];
+            //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
+            
+        }
+        
         scrollView = [[UIScrollView alloc] init];
         scrollView.frame = CGRectMake(0, 0, 673, 1000);
         scrollView.alwaysBounceVertical = YES;
@@ -72,41 +73,10 @@
         // Make a semester repo with student, returns array of semesters
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
-        
-        /*if (!sideNavBarController) {
-            sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
-            // Call initWithStudent or initWithTemplate
-         
-            sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
-         
-            [self.view addSubview:sideNavBarController.view];
-            [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
-            //[self.view addSubview:sideTable.tableView];
-            //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
-        }*/
 
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForStudent:student]];
         numberOfSemesters = [semArray count];
-        
-        /*if (numberOfSemesters == 0) {
-            int startFallYear = student.started.year;
-            if (student.started.season == SeasonSpring)
-                startFallYear--;
-            for (int i = 0; i < 4; i++) {
-                Semester *tempFall = [[Semester alloc] init];
-                tempFall.date = SemesterDateMake(SeasonFall, startFallYear);
-                [semArray addObject:tempFall];
-                
-                startFallYear++;
-                
-                Semester *tempSpring = [[Semester alloc] init];
-                tempSpring.date = SemesterDateMake(SeasonSpring, startFallYear);
-                [semArray addObject:tempSpring];
-            }
-            
-            numberOfSemesters = [semArray count];
-        }*/
         
         scrollView.contentSize = CGSizeMake(673, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
         
@@ -164,6 +134,22 @@
 - (id)initWithTemplate:(Template *)temp {
     self = [super init];
     if (self) {
+        
+        if (!sideNavBarController) {
+            
+            sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped Title:@"Required Courses"];
+            
+            // Call initWithStudent or initWithTemplate
+            
+            sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
+            sideNavBarController.view.autoresizingMask = UIViewAutoresizingNone;
+            
+            [self.view addSubview:sideNavBarController.view];
+            [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
+            //[self.view addSubview:sideTable.tableView];
+            //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
+            
+        }
         
         scrollView = [[UIScrollView alloc] init];
         scrollView.frame = CGRectMake(0, 0, 673, 1000);

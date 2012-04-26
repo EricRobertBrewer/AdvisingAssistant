@@ -13,6 +13,7 @@
 		3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC0152FB77000835DBA /* InfoPlist.strings */; };
 		3F5C6BC4152FB77000835DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC3152FB77000835DBA /* main.m */; };
 		3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC7152FB77000835DBA /* AppDelegate.m */; };
+		3F8AC3B01548CED000FC4F81 /* SecondSideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */; };
 		3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3565153FB4B5002FB67B /* SideTableViewController.m */; };
 		3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */; };
 		3FD0B4C91536608C00C938E2 /* ScheduleBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */; };
@@ -80,6 +81,8 @@
 		3F5C6BC5152FB77000835DBA /* AdvisingAsistant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdvisingAsistant-Prefix.pch"; sourceTree = "<group>"; };
 		3F5C6BC6152FB77000835DBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5C6BC7152FB77000835DBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F8AC3AE1548CECF00FC4F81 /* SecondSideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondSideTableViewController.h; sourceTree = "<group>"; };
+		3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondSideTableViewController.m; sourceTree = "<group>"; };
 		3F9C3564153FB4B5002FB67B /* SideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideTableViewController.h; sourceTree = "<group>"; };
 		3F9C3565153FB4B5002FB67B /* SideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideTableViewController.m; sourceTree = "<group>"; };
 		3F9C3567153FBCB1002FB67B /* SemesterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableViewController.h; sourceTree = "<group>"; };
@@ -278,10 +281,12 @@
 				3FD0B4C61536608C00C938E2 /* ScheduleBuilderViewController.h */,
 				3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */,
 				3FD0B4C81536608C00C938E2 /* test.xib */,
-				3F9C3564153FB4B5002FB67B /* SideTableViewController.h */,
-				3F9C3565153FB4B5002FB67B /* SideTableViewController.m */,
 				3F9C3567153FBCB1002FB67B /* SemesterTableViewController.h */,
 				3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */,
+				3F9C3564153FB4B5002FB67B /* SideTableViewController.h */,
+				3F9C3565153FB4B5002FB67B /* SideTableViewController.m */,
+				3F8AC3AE1548CECF00FC4F81 /* SecondSideTableViewController.h */,
+				3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -550,6 +555,7 @@
 				E324D6B21545BC9000CFA21D /* AreaRepo.m in Sources */,
 				E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */,
 				E0AE350E15475B4D006CACEB /* EditTemplateViewController.m in Sources */,
+				3F8AC3B01548CED000FC4F81 /* SecondSideTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
