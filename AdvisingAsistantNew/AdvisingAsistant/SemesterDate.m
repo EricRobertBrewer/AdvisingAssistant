@@ -26,3 +26,7 @@ NSString *FormatSemesterDate(SemesterDate d) {
 	NSString *season = FormatSeason(d.season);
 	return [NSString stringWithFormat:@"%@ %i", season, d.year];
 }
+
+SemesterDate SemesterDateNow() {
+    return SemesterDateMake(SeasonSpring, 2012);
+}

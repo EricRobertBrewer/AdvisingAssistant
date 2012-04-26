@@ -10,11 +10,12 @@
 
 @implementation SideTableViewController
 
-- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date andDepartment:(Department *)dept
+- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date Department:(Department *)dept andSemesterArray:(NSMutableArray *)semArray
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.title = @"Required Courses";
+        semesterArray = semArray;
         [self.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
         tempRepo = [[AreaRepo alloc] init];
         GEArray = [[NSArray alloc] initWithArray:[tempRepo areasForGEPattern:pattern date:date]];
@@ -52,6 +53,7 @@
     
     else if (section == 1)
         return [DepartmentSectionsArray count];
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,10 +84,10 @@
     
     SecondSideTableViewController *temp;
     if (indexPath.section == 0)
-        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]]];
+        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray];
     
     else if (indexPath.section == 1)
-        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]]];
+        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[DepartmentSectionsArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray];
         
     [self.navigationController pushViewController:temp animated:YES];
 }

@@ -11,9 +11,9 @@
 
 @interface SecondSideTableViewController : UITableViewController {
     NSArray *areaArray;
-    NSArray *semesterArray;
+    NSMutableArray *semesterArray;
 }
 
-- (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSArray *)semesters;
+- (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters;
 
 @end

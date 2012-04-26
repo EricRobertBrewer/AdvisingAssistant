@@ -133,6 +133,7 @@
                 [sem.courses addObject:currentCourse];
         }
     }
+    
     [self dismissModalViewControllerAnimated:NO];
 }
 

@@ -48,11 +48,12 @@
     self = [super init];
     if (self) {
         
+        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
+        NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForStudent:student]];
+        
         if (!sideNavBarController) {
             
-            //sideTable = [[SideTableViewController alloc] initWithGEPattern:student. date:<#(SemesterDate)#> andDepartment:<#(Department *)#>
-            
-            // Call initWithStudent or initWithTemplate
+            sideTable = [[SideTableViewController alloc] initWithGEPattern:student.pattern date:SemesterDateNow() Department:department andSemesterArray:semArray];
             
             sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
             sideNavBarController.view.autoresizingMask = UIViewAutoresizingNone;
@@ -75,8 +76,6 @@
         // Each semester is an array of courses and has a date (term and year)
         self.title = student.name;
 
-        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
-        NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForStudent:student]];
         numberOfSemesters = [semArray count];
         
         scrollView.contentSize = CGSizeMake(673, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
@@ -136,9 +135,12 @@
     self = [super init];
     if (self) {
         
+        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
+        NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForTemplate:temp]];
+        
         if (!sideNavBarController) {
             
-            sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped Title:@"Required Courses"];
+            sideTable = [[SideTableViewController alloc] initWithGEPattern:GEPatternFreshman date:SemesterDateNow() Department:temp.department andSemesterArray:semArray];
             
             // Call initWithStudent or initWithTemplate
             
@@ -163,20 +165,6 @@
         // Each semester is an array of courses and has a date (term and year)
         self.title = temp.name;
         
-        /*if (!sideNavBarController) {
-         sideTable = [[SideTableViewController alloc] initWithStyle:UITableViewStyleGrouped andTitle:@"Required Courses"];
-         // Call initWithStudent or initWithTemplate
-         
-         sideNavBarController = [[UINavigationController alloc] initWithRootViewController:sideTable];
-         
-         [self.view addSubview:sideNavBarController.view];
-         [sideNavBarController.view setFrame:CGRectMake(673, 0, 351, 1000)];
-         //[self.view addSubview:sideTable.tableView];
-         //[sideNavBarController.navigationBar setFrame:CGRectMake(673, 0, 351, 44)];
-         }*/
-        
-        SemesterRepo *semRepo = [SemesterRepo defaultRepo];
-        NSMutableArray *semArray = [[NSMutableArray alloc] initWithArray:[semRepo semestersForTemplate:temp]];
         numberOfSemesters = [semArray count];
         
         // Edit scrollview size based on number of semesters

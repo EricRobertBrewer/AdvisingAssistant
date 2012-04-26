@@ -10,13 +10,13 @@
 
 @implementation SecondSideTableViewController
 
-- (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSArray *)semesters
+- (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Takes array of areas, call function with each area for array of courses
         areaArray = [areas retain];
-        semesterArray = [[NSArray alloc] initWithArray:semesters];
+        semesterArray = semesters;
     }
     return self;
 }
@@ -24,12 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
