@@ -17,10 +17,12 @@
 @interface SideTableViewController : UITableViewController {
     AreaRepo *tempRepo;
     
+    NSMutableArray *semesterArray;
+    
     NSArray *GEArray;
     NSArray *DepartmentSectionsArray;
 }
 
-- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date andDepartment:(Department *)dept;
+- (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date Department:(Department *)dept andSemesterArray:(NSMutableArray *)semArray;
 
 @end
