@@ -38,7 +38,7 @@
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    editedTemplate = [templates objectAtIndex:row];
+    editedTemplate = [[templates objectAtIndex:row] retain];
     editTemplateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 
@@ -55,7 +55,7 @@
 - (void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
+        ScheduleBuilderViewController *nextController = [[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate];
         parentController.nextController = nextController;
         [parentController.navigationController pushViewController:nextController animated:YES];
     }
@@ -70,6 +70,7 @@
     DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
     
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
+    editedTemplate = [[templates objectAtIndex:0] retain];
     
     UIPickerView *pickerView = [[[UIPickerView alloc] init] autorelease];
     pickerView.delegate = self;
@@ -103,7 +104,7 @@
 }
 
 - (IBAction)didTapEdit:(id)sender {
-    if ([editTemplateField.text length] > 0 && [templates containsObject:editTemplateField.text])
+    if ([editTemplateField.text length] > 0)
     {
         submit = YES;
         [self dismissModalViewControllerAnimated:YES];
@@ -114,6 +115,8 @@
     if ([createTemplateField.text length] > 0)
     {
         submit = YES;
+        TemplateRepo *repo = [TemplateRepo defaultRepo];
+        [repo saveTemplate:editedTemplate];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
