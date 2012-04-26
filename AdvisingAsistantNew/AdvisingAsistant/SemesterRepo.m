@@ -96,6 +96,7 @@ static SemesterRepo *instance = nil;
 	}
 	
 	// Fill in any gaps with blank semesters
+    // TODO: get rid of 1st blank fall
 	for (int i=0; i < semesters.count; i++) {
 		Semester *semester = [semesters objectAtIndex:i];
 		if (semester.date.season == SeasonSpring && i % 2 == 0) {
