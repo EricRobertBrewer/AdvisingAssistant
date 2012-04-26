@@ -137,7 +137,7 @@
             
             if (tempSemester.date.season == SeasonSpring) {
                 semesterLabel.text = [NSString stringWithFormat:@"Spring %i", tempSemester.date.year];
-                if (i == 1) {
+                if (i == 0) {
                    // special case - no need to multiply
                     semesterLabel.frame = CGRectMake(442, 88, 100, 21);             
                 }

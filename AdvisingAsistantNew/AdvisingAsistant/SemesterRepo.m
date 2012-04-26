@@ -74,52 +74,53 @@ static SemesterRepo *instance = nil;
 // We group the courses by (Semester,Year) here
 // And make sure we return them in a normalized fashion
 -(NSArray *)semestersFromDicts:(NSArray *)dicts startDate:(SemesterDate)start {
-	NSMutableArray *normal = [NSMutableArray array];
+	NSMutableArray *semesters = [NSMutableArray array];
 	
 	// Start with initial 8 semesters
-	for (int i=0; i < 8; i++) {
+    int startSemester = (start.season == SeasonFall) ? 0 : 1;
+    int year = start.year;
+	for (int i=startSemester; i < 8; i++) {
 		Semester *semester = [[Semester alloc] init];
 		Season season = (i % 2 == 0) ? SeasonFall : SeasonSpring;
-		int year = start.year + (i/2);
+        if (season == SeasonSpring && i > 0) year++;
 		semester.date = SemesterDateMake(season, year);
-		[normal addObject:semester];
+		[semesters addObject:semester];
 		[semester release];
 	}
 	
 	// Add courses
 	for (NSDictionary *dict in dicts) {
 		SemesterDate date = [self semesterDateFromDict:dict];
-		Semester *semester = [self semesterForDate:date inArray:normal];
+		Semester *semester = [self semesterForDate:date inArray:semesters];
 		[semester.courses addObject:[self courseFromDict:dict]];
 	}
 	
 	// Fill in any gaps with blank semesters
-	for (int i=0; i < normal.count; i++) {
-		Semester *semester = [normal objectAtIndex:i];
+	for (int i=0; i < semesters.count; i++) {
+		Semester *semester = [semesters objectAtIndex:i];
 		if (semester.date.season == SeasonSpring && i % 2 == 0) {
 			Semester *blankFall = [[Semester alloc] init];
 			blankFall.date = SemesterDateMake(SeasonFall, semester.date.year-1);
-			[normal insertObject:blankFall atIndex:i];
+			[semesters insertObject:blankFall atIndex:i];
 			[blankFall release];
 		} else if (semester.date.season == SeasonFall && i % 2 == 1) {
 			Semester *blankSpring = [[Semester alloc] init];
 			blankSpring.date = SemesterDateMake(SeasonSpring, semester.date.year+1);
-			[normal insertObject:blankSpring atIndex:i];
+			[semesters insertObject:blankSpring atIndex:i];
 			[blankSpring release];
 		}
 	}
 	
 	// Make sure we end with spring and not fall
-	if (normal.count % 2 == 1) {
-		Semester *lastSemester = [normal objectAtIndex:(normal.count-1)];
-		//assert(lastSemester.date.season == SeasonFall);
+    Semester *lastSemester = [semesters objectAtIndex:(semesters.count-1)];
+	if (lastSemester.date.season == SeasonFall) {
 		Semester *blankSpring = [[Semester alloc] init];
 		blankSpring.date = SemesterDateMake(SeasonSpring, lastSemester.date.year+1);
-		[normal addObject:blankSpring];
+		[semesters addObject:blankSpring];
 		[blankSpring release];
 	}
 
-	return normal;
+	return semesters;
 }
 
 -(NSArray*)semestersForStudent:(Student*)student {
