@@ -11,14 +11,13 @@
 #import "Department.h"
 #import "Template.h"
 
-@interface TemplateRepo : Repo {
-	NSArray *_allTemplates;
-}
+@interface TemplateRepo : Repo
 
 +(TemplateRepo *)defaultRepo;
 
 -(NSArray *)allTemplates;
 -(NSArray *)templatesForDepartment:(Department *)department;
 -(void)saveTemplate:(Template *)template;
+-(Template *)templateForName:(NSString *)name inDepartment:(Department *)department;
 
 @end

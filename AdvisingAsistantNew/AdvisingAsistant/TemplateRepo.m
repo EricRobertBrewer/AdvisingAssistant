@@ -14,11 +14,6 @@ static TemplateRepo *instance = nil;
 
 @implementation TemplateRepo
 
--(void)dealloc {
-    [_allTemplates release];
-    [super dealloc];
-}
-
 /*
 	SERIALIZING TO/FROM DICTIONARIES
 */
@@ -47,18 +42,16 @@ static TemplateRepo *instance = nil;
 */
 
 -(NSArray *)allTemplates {
-	if (!_allTemplates) {
-		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullTemplate.php"];
-		NSArray *dicts = [self connect:options];
-		if (dicts) {
-			NSMutableArray *templates = [[NSMutableArray alloc] init];
-			for (NSDictionary *dict in dicts) {
-				[templates addObject:[self templateFromDict:dict]];
-			}
-			_allTemplates = templates;
-		}
-	}
-	return _allTemplates;
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullTemplate.php"];
+    NSArray *dicts = [self connect:options];
+    if (dicts) {
+        NSMutableArray *templates = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in dicts) {
+            [templates addObject:[self templateFromDict:dict]];
+        }
+        return [templates autorelease];
+    }
+    return nil;
 }
 
 -(NSArray *)templatesForDepartment:(Department *)department {
@@ -69,6 +62,13 @@ static TemplateRepo *instance = nil;
 		}
 	}
 	return templates;
+}
+
+-(Template *)templateForName:(NSString *)name inDepartment:(Department *)department {
+    for (Template *t in [self templatesForDepartment:department]) {
+        if ([t.name isEqualToString:name]) return t;
+    }
+    return nil;
 }
 
 /*
