@@ -136,6 +136,7 @@
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
             if (![self getSemesterWithCourse]) {
                 [sem.courses addObject:currentCourse];
+                [self.delegate didTapSave:currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
             }
             else {
@@ -205,7 +206,6 @@
                     [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
                     [sem.courses addObject:currentCourse];
                     
-                    [self.delegate didTapDelete:courseToBeRemoved];
                     [self.delegate didTapSave:currentCourse];
                     [self dismissModalViewControllerAnimated:NO];
                 }
