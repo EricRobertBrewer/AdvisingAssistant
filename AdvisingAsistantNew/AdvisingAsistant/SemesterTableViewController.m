@@ -65,14 +65,14 @@
     units.text = [NSString stringWithFormat:@"%i", [[courses objectAtIndex:indexPath.row] units]];
     cell.accessoryView = units;
     
-    return cell;
+    return [cell autorelease];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:courseDetail animated:YES];
 }

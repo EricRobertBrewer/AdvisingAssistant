@@ -16,7 +16,12 @@
     if (self) {
         // Takes array of areas, call function with each area for array of courses
         areaArray = [areas retain];
-        semesterArray = semesters;
+        semesterArray = [semesters retain];
+        areaCourses =[NSMutableArray new];
+        CourseRepo *repo = [CourseRepo defaultRepo];
+        
+        for (int i = 0; i < [areas count]; i++)
+            [areaCourses addObject:(NSArray *)[repo coursesForArea:[areas objectAtIndex:i]]];
     }
     return self;
 }
@@ -39,7 +44,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[areaArray objectAtIndex:section] count];
+    return [[areaCourses objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -51,7 +56,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[areaArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -60,7 +65,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[[[areaArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[[[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:courseDetail animated:YES];
 }
