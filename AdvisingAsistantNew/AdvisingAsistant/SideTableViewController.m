@@ -105,6 +105,8 @@
 	
     SecondSideTableViewController *temp = [[SecondSideTableViewController alloc] initWithAreas:areas andSemesterArray:self.semesterArray];
     temp.delagate = self.delagate;
+    temp.title = [NSString stringWithFormat:@"%@ (%i units)", area.title, area.units];
+    
     [self.navigationController pushViewController:temp animated:YES];
 	[temp release];
 }
