@@ -10,6 +10,7 @@
 
 @implementation CourseDetailViewController
 @synthesize semesters;
+@synthesize delegate;
 
 -(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
@@ -100,6 +101,8 @@
     btnAddCourse = nil;
     [closeView release];
     closeView = nil;
+    [btnMoveCourse release];
+    btnMoveCourse = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -121,6 +124,7 @@
     [btnAddCourse release];
     [semesters release];
     [closeView release];
+    [btnMoveCourse release];
     [super dealloc];
 }
 
@@ -129,7 +133,7 @@
 - (IBAction)addCourseClicked:(id)sender {
     for (Semester *sem in modifiedSemesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            if ([self isDuplicateCourse] == NO) {
+            if (![self isDuplicateCourse]) {
                 [sem.courses addObject:currentCourse];
                 [self dismissModalViewControllerAnimated:NO];
             }
@@ -147,14 +151,24 @@
     
 }
 
-- (BOOL)isDuplicateCourse {
+- (Semester *)isDuplicateCourse {
     for (Semester *sem in modifiedSemesters) {
         if ([self isValidForSemester:sem] == NO) {
-            return YES;
+            return sem;
         }
     }
     
-    return NO;
+    return nil;
+}
+
+- (Course *)getCourseFromSemester:(Semester *)semester {
+    for (Course *c in semester.courses) {
+        if ([c.name isEqualToString:currentCourse.name]) {
+            return c;
+        }
+    }
+    
+    return nil;
 }
 
 // Checks to see if class is already in this semester
@@ -176,6 +190,30 @@
 
 - (IBAction)tappedCloseView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+// This is for users to move courses that are already in the schedule
+- (IBAction)moveCourseClicked:(id)sender {
+    
+    Course *courseToBeRemoved = nil;
+    
+    for (Semester *sem in modifiedSemesters) {
+        if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+            if ([self getCourseFromSemester:sem] != nil) {
+                [sem.courses removeObject:[self getCourseFromSemester:sem]];
+                [sem.courses addObject:currentCourse];
+                [self dismissModalViewControllerAnimated:NO];
+            }
+            else {
+                UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course already added" 
+                                                                  message:@"The course you selected is already in the schedule" 
+                                                                 delegate:self 
+                                                        cancelButtonTitle:@"OK" 
+                                                        otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+    }
 }
 
 /*

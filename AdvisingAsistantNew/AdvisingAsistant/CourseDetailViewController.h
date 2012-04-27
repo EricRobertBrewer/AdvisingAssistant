@@ -12,6 +12,7 @@
 #import "Student.h"
 #import "Semester.h"
 #import "Department.h"
+#import "ScheduleBuilderViewController.h"
 
 @interface CourseDetailViewController : UIViewController
 {
@@ -23,6 +24,7 @@
     IBOutlet UIStepper *semesterStepper;
     IBOutlet UILabel *semesterLabel;
     IBOutlet UIButton *btnAddCourse;
+    IBOutlet UIButton *btnMoveCourse;
     IBOutlet UIButton *closeView;
     
     NSMutableArray *semesters;
@@ -35,13 +37,17 @@
     UIImage *iconPic;
      */
 }
+
+@property (nonatomic, retain) ScheduleBuilderViewController *delegate;
 @property (atomic, retain) NSMutableArray *semesters;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
 - (IBAction)tappedCloseView:(id)sender;
+- (IBAction)moveCourseClicked:(id)sender;
 
-- (BOOL)isDuplicateCourse;
+- (Course *)getCourseFromSemester:(Semester *)semester;
+- (Semester *)isDuplicateCourse;
 - (BOOL)isValidForSemester:(Semester *)selectedSem;
 - (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
 - (void)showGrade:(NSString *)grade;
