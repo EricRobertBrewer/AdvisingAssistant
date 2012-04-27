@@ -55,7 +55,7 @@ static CourseRepo *instance = nil;
 
 -(NSArray *)coursesForArea:(Area *)area {
     ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getCoursesForArea.php"];
-    [options setValue:area.name forKey:@"Area"];
+    [options.postData setValue:area.name forKey:@"Area"];
 	return [self coursesFromDicts:[self connect:options]];
 }
 
