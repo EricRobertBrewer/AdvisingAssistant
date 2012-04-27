@@ -86,7 +86,9 @@ static TemplateRepo *instance = nil;
 */
 
 -(void)deleteTemplate:(Template *)template {
-    self.error = @"Not yet implemented";
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"deleteTemplate.php"];
+    [options.postData setInt:template.id forKey:@"TemplateID"];
+    [self connect:options];
 }
 
 /*
