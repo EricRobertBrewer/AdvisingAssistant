@@ -88,7 +88,7 @@
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
     editedTemplate = [[templates objectAtIndex:0] retain];
     
-    UIPickerView *pickerView = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
+    pickerView = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
     pickerView.delegate = self;
     pickerView.dataSource = self;
     pickerView.showsSelectionIndicator = YES;
@@ -150,6 +150,10 @@
     [repo deleteTemplate:editedTemplate];
     [templates release];
     templates = [[repo allTemplates] retain];
+    [pickerView reloadAllComponents];
+    [pickerView selectRow:0 inComponent:0 animated:YES];
+    editTemplateField.text = [self pickerView:pickerView titleForRow:0 forComponent:0];
+    
 }
 
 - (IBAction)didTapExit:(id)sender {

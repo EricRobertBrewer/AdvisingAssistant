@@ -22,6 +22,7 @@
     LoginViewController *parentController;
     BOOL submit;
     Template *editedTemplate;
+    UIPickerView *pickerView;
 }
 
 @property (nonatomic, retain) LoginViewController  *parentController;
