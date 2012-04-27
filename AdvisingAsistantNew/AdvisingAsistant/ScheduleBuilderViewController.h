@@ -23,6 +23,8 @@
 @property (nonatomic, retain) NSMutableArray *semesters;
 @property (nonatomic, retain) NSMutableArray *semesterTables;
 @property (nonatomic, retain) UINavigationController *sideNavController;
+@property (nonatomic, retain) Student *currentStudent;
+@property (nonatomic, retain) Template *currentTemplate;
 
 - (void)didTapLogout:(id)sender;
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;

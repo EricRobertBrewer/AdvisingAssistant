@@ -20,6 +20,7 @@ static AreaRepo *instance = nil;
     Area *area = [[Area alloc] init];
     area.name = [dict objectForKey:@"Area"];
     area.title = [dict objectForKey:@"Title"];
+    area.units = [[dict objectForKey:@"Units"] intValue];
     return [area autorelease];
 }
 

@@ -22,12 +22,14 @@
     LoginViewController *parentController;
     BOOL submit;
     Template *editedTemplate;
+    UIPickerView *pickerView;
 }
 
 @property (nonatomic, retain) LoginViewController  *parentController;
 
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapCreate:(id)sender;
+- (IBAction)didTapDelete:(id)sender;
 - (IBAction)didTapExit:(id)sender;
 
 @end

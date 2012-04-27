@@ -12,6 +12,7 @@
 @synthesize semesters = _semesters;
 @synthesize semesterTables = _semesterTables;
 @synthesize sideNavController = _sideNavController;
+@synthesize currentTemplate, currentStudent;
 
 -(void)dealloc {
 	self.semesters = nil;
@@ -35,6 +36,8 @@
 	self.sideNavController.view.autoresizingMask = UIViewAutoresizingNone;
 	[self.sideNavController.view setFrame:CGRectMake(673, 0, 351, 1000)];
 	[self.view addSubview:self.sideNavController.view];
+    self.currentStudent = nil;
+    self.currentTemplate = nil;
 }
 
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department {
@@ -44,6 +47,7 @@
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForStudent:student]];
 		[self initSideTableWithPattern:student.pattern date:student.started department:department semesters:self.semesters];
 		self.title = student.name;
+        self.currentStudent = student;
     }
     return self;
 }
@@ -54,6 +58,8 @@
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForTemplate:template]];
 		[self initSideTableWithPattern:GEPatternFreshman date:SemesterDateNow() department:template.department semesters:self.semesters];
+        self.title = template.name;
+        self.currentTemplate = template;
     }
     return self;
 }
@@ -122,10 +128,16 @@
 }
  
 - (void) didTapSave:(Course *)course {
+    SemesterRepo *repo = [SemesterRepo defaultRepo];
+    if (self.currentStudent != nil)
+        [repo saveSemesters:self.semesters forStudent:self.currentStudent];
+    else
+        [repo saveSemesters:self.semesters forTemplate:self.currentTemplate];
     
 }
 
 - (void) didTapDelete:(Course *)course {
+    [self didTapSave:course];
     
 }
 

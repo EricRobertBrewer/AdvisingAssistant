@@ -11,6 +11,7 @@
 @implementation Area
 @synthesize name = _name;
 @synthesize title = _title;
+@synthesize units = _units;
 
 -(void)dealloc {
 	self.name = nil;
