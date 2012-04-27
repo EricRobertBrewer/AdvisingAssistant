@@ -28,6 +28,7 @@
 
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapCreate:(id)sender;
+- (IBAction)didTapDelete:(id)sender;
 - (IBAction)didTapExit:(id)sender;
 
 @end

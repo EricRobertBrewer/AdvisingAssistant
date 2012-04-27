@@ -145,6 +145,11 @@
     }
 }
 
+- (IBAction)didTapDelete:(id)sender {
+    TemplateRepo *repo = [TemplateRepo defaultRepo];
+    
+}
+
 - (IBAction)didTapExit:(id)sender {
     submit = NO;
     [self dismissModalViewControllerAnimated:YES];
