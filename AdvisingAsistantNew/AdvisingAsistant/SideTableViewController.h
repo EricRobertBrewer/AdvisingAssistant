@@ -15,13 +15,12 @@
 #import "Department.h"
 
 @interface SideTableViewController : UITableViewController {
-    AreaRepo *tempRepo;
-    
-    NSMutableArray *semesterArray;
-    
-    NSArray *GEArray;
-    NSArray *DepartmentSectionsArray;
+	
 }
+
+@property (nonatomic, retain) NSMutableArray *semesterArray;
+@property (nonatomic, retain) NSArray *GEArray;
+@property (nonatomic, retain) NSArray *DepartmentSectionsArray;
 
 - (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date Department:(Department *)dept andSemesterArray:(NSMutableArray *)semArray;
 

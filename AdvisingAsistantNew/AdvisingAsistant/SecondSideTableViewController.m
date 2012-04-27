@@ -27,17 +27,6 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [areaCourses count];
@@ -62,7 +51,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.textLabel.text = course.title;
     
     return cell;
 }

@@ -10,11 +10,11 @@
 
 @implementation SemesterTableViewController
 
-- (id)initWithSemester:(Semester *)semester andSemesterArray:(NSArray *)semesters{
+- (id)initWithSemester:(Semester *)semester andSemesterArray:(NSMutableArray *)semesters {
     self = [super init];
     if (self) {
         courses = [semester.courses retain];
-        semesterArray = [[NSMutableArray alloc] initWithArray:semesters];
+        semesterArray = [semesters retain];
     }
     return self;
 }

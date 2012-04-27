@@ -17,16 +17,12 @@
 #import "SemesterTableViewController.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
-    
-    UIScrollView *scrollView;
-    
-    UINavigationController *sideNavBarController;
-    SideTableViewController *sideTable;
-    
-    int numberOfSemesters;
-    NSMutableArray *semesterTables;
-    
+
 }
+
+@property (nonatomic, retain) NSMutableArray *semesters;
+@property (nonatomic, retain) NSMutableArray *semesterTables;
+@property (nonatomic, retain) UINavigationController *sideNavController;
 
 - (void)didTapLogout:(id)sender;
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;

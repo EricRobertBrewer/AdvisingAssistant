@@ -62,7 +62,7 @@ static CourseRepo *instance = nil;
 -(NSArray *)allCourses {
 	if (!_allCourses) {
 		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullCourse.php"];
-        _allCourses = [self coursesFromDicts:[self connect:options]];
+        _allCourses = [[self coursesFromDicts:[self connect:options]] retain];
 	}
 	return _allCourses;
 }
