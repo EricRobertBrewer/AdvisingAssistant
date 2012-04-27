@@ -10,7 +10,7 @@
 #import "CourseDetailViewController.h"
 #import "CourseRepo.h"
 
-@interface SecondSideTableViewController : UITableViewController <UINavigationBarDelegate> {
+@interface SecondSideTableViewController : UITableViewController {
     NSArray *areaArray;
     NSMutableArray *semesterArray, *areaCourses;
 }
