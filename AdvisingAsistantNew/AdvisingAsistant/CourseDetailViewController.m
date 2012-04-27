@@ -174,7 +174,6 @@
 }
 
 - (IBAction)StepperPressed:(id)sender {
-    NSLog(@"Value of stepper: %d", (int)semesterStepper.value);
     Semester *newSelectedSemester = [semesters objectAtIndex:(int)semesterStepper.value];
     [semesterLabel setText:[newSelectedSemester getDateAsString]];
 }

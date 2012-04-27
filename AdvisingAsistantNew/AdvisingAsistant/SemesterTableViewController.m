@@ -63,19 +63,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = nil; //@"Cell";
-    
-    UITableViewCell *cell = nil; //[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
     
     cell.textLabel.text = [[self.semester.courses objectAtIndex:indexPath.row] name];
     UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];
     units.text = [NSString stringWithFormat:@"%i", [[self.semester.courses objectAtIndex:indexPath.row] units]];
     cell.accessoryView = units;
     
-    return [cell autorelease];
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
