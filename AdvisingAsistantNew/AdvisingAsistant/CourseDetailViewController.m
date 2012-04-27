@@ -145,6 +145,7 @@
                                                         cancelButtonTitle:@"OK" 
                                                         otherButtonTitles:nil];
                 [alert show];
+                [alert release];
                 break;
             }
         }
@@ -190,24 +191,28 @@
     Semester *semesterToMoveFrom = nil;
     Course *courseToBeRemoved = nil;
     
-    // the semester to
+    // the semester to get course from... if it can't be found
+    // ALREADY in schedule, no move can be done.
     if ((semesterToMoveFrom = [self getSemesterWithCourse])) {
         if ((courseToBeRemoved = [self getCourseFromSemester:semesterToMoveFrom])) {
             NSLog(@"CourseToBeRemoved contains the course to be removed successfully!");
+            
+            // Search for semester object that the user selected in the array of semesters
+            // Do the move TO that semester FROM "semesterToMoveFrom"
+            for (Semester *sem in modifiedSemesters) {
+                
+                if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+                    [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
+                    [sem.courses addObject:currentCourse];
+                    
+                    [self.delegate didTapDelete:courseToBeRemoved];
+                    [self.delegate didTapSave:currentCourse];
+                    [self dismissModalViewControllerAnimated:NO];
+                }
+            }
         }
         else {
             NSLog(@"Did not find the course to be REMOVED (or error)");
-        }
-        
-        // Search for semester object that the user selected in the array of semesters
-        // Do the move TO that semester FROM "semesterToMoveFrom"
-        for (Semester *sem in modifiedSemesters) {
-            
-            if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-                [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
-                [sem.courses addObject:currentCourse];
-                [self dismissModalViewControllerAnimated:NO];
-            }
         }
     }
     else {
@@ -217,15 +222,9 @@
                                                 cancelButtonTitle:@"OK" 
                                                 otherButtonTitles:nil];
         [alert show];
+        [alert release];
     }
     
 }
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    
-// call some method on semester table view controller. probably want to store a pointer to it globally somewhere (singleton)    
-}
- */
 
 @end
