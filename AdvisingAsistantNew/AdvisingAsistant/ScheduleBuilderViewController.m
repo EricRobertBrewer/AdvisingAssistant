@@ -82,7 +82,7 @@
 	
 	int numberOfSemesters = [self.semesters count];
 	
-	scrollView.contentSize = CGSizeMake(673, (383*((numberOfSemesters/2)+(numberOfSemesters%2))*1.2));
+	scrollView.contentSize = CGSizeMake(673, 48+295+((numberOfSemesters/2)*295));
 	
 	for (int i = 0; i < numberOfSemesters; i++) {
 		// Create tables for scrollview
@@ -106,8 +106,8 @@
 		}
 
 		int multiplier = (i/2);
-		[semesterLabel setFrame:CGRectMake(labelX, ((295*multiplier)+88), 100, 21)];
-		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, ((295*multiplier)+123), 236, 230)];
+		[semesterLabel setFrame:CGRectMake(labelX, ((295*multiplier)+48), 100, 21)];
+		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, ((295*multiplier)+83), 236, 230)];
 		
 		[scrollView addSubview:semesterLabel];
 		[self.semesterTables addObject:tempSemesterTable];
