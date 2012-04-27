@@ -104,6 +104,7 @@
     }
 	
     SecondSideTableViewController *temp = [[SecondSideTableViewController alloc] initWithAreas:areas andSemesterArray:self.semesterArray];
+    temp.delagate = self.delagate;
     [self.navigationController pushViewController:temp animated:YES];
 	[temp release];
 }
