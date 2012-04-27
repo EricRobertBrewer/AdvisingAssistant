@@ -134,27 +134,30 @@
 - (IBAction)addCourseClicked:(id)sender {
     for (Semester *sem in modifiedSemesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            if (![self isDuplicateCourse]) {
+            if (![self getSemesterWithCourse]) {
                 [sem.courses addObject:currentCourse];
+                [self.delegate didTapSave:currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
             }
             else {
                 UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course already added" 
-                                                            message:@"The course you selected is already in the schedule" 
-                                                            delegate:self 
-                                                            cancelButtonTitle:@"OK" 
+                                                                  message:@"The course you selected is already in the schedule" 
+                                                                 delegate:self 
+                                                        cancelButtonTitle:@"OK" 
                                                         otherButtonTitles:nil];
                 [alert show];
+                [alert release];
+                break;
             }
         }
     }
-    
-    
 }
 
-- (Semester *)isDuplicateCourse {
+// checks to see if a course is already in some semester
+// if it is, RETURNS that semester
+- (Semester *)getSemesterWithCourse {
     for (Semester *sem in modifiedSemesters) {
-        if ([self isValidForSemester:sem] == NO) {
+        if ([self getCourseFromSemester:sem]) {
             return sem;
         }
     }
@@ -162,6 +165,7 @@
     return nil;
 }
 
+// just a little helper function
 - (Course *)getCourseFromSemester:(Semester *)semester {
     for (Course *c in semester.courses) {
         if ([c.name isEqualToString:currentCourse.name]) {
@@ -170,17 +174,6 @@
     }
     
     return nil;
-}
-
-// Checks to see if class is already in this semester
-- (BOOL)isValidForSemester:(Semester *)selectedSem {
-    for (Course *c in selectedSem.courses) {
-        if ([c.name isEqualToString:currentCourse.name]) {
-            return NO;
-        }
-    }
-    
-    return YES;
 }
 
 - (IBAction)StepperPressed:(id)sender {
@@ -196,32 +189,42 @@
 // This is for users to move courses that are already in the schedule
 - (IBAction)moveCourseClicked:(id)sender {
     
+    Semester *semesterToMoveFrom = nil;
     Course *courseToBeRemoved = nil;
     
-    for (Semester *sem in modifiedSemesters) {
-        if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            if ([self getCourseFromSemester:sem] != nil) {
-                [sem.courses removeObject:[self getCourseFromSemester:sem]];
-                [sem.courses addObject:currentCourse];
-                [self dismissModalViewControllerAnimated:NO];
-            }
-            else {
-                UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course already added" 
-                                                                  message:@"The course you selected is already in the schedule" 
-                                                                 delegate:self 
-                                                        cancelButtonTitle:@"OK" 
-                                                        otherButtonTitles:nil];
-                [alert show];
+    // the semester to get course from... if it can't be found
+    // ALREADY in schedule, no move can be done.
+    if ((semesterToMoveFrom = [self getSemesterWithCourse])) {
+        if ((courseToBeRemoved = [self getCourseFromSemester:semesterToMoveFrom])) {
+            NSLog(@"CourseToBeRemoved contains the course to be removed successfully!");
+            
+            // Search for semester object that the user selected in the array of semesters
+            // Do the move TO that semester FROM "semesterToMoveFrom"
+            for (Semester *sem in modifiedSemesters) {
+                
+                if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+                    [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
+                    [sem.courses addObject:currentCourse];
+                    
+                    [self.delegate didTapSave:currentCourse];
+                    [self dismissModalViewControllerAnimated:NO];
+                }
             }
         }
+        else {
+            NSLog(@"Did not find the course to be REMOVED (or error)");
+        }
     }
-}
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
+    else {
+        UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course can't be moved" 
+                                                          message:@"The course you selected is not currently in the schedule and is not able to be moved." 
+                                                         delegate:self 
+                                                cancelButtonTitle:@"OK" 
+                                                otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
     
-// call some method on semester table view controller. probably want to store a pointer to it globally somewhere (singleton)    
 }
- */
 
 @end

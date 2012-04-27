@@ -134,6 +134,12 @@
     else
         [repo saveSemesters:self.semesters forTemplate:self.currentTemplate];
     
+    for (int i = 0; i < [self.semesterTables count]; i++)
+    {
+        SemesterTableViewController *temp = [self.semesterTables objectAtIndex:i];
+        [temp.tableView reloadData];
+    }
+    
 }
 
 - (void) didTapDelete:(Course *)course {

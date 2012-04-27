@@ -140,7 +140,7 @@
         temp.name = createTemplateField.text;
         temp.department = [dRepo departmentWithCode:@"CS"];
         [repo saveTemplate:temp];
-        editedTemplate = [repo templateForName:temp.name inDepartment:temp.department];
+        editedTemplate = [[repo templateForName:temp.name inDepartment:temp.department] retain];;
         [self dismissModalViewControllerAnimated:YES];
     }
 }

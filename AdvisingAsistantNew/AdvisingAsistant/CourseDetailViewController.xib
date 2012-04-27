@@ -279,7 +279,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{290, 457}, {201, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="425380121"/>
+						<reference key="NSNextKeyView" ref="153800285"/>
 						<string key="NSReuseIdentifierKey">_NS:241</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -299,11 +299,11 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="773976184">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="237090511">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="980922683">
+						<object class="NSFont" key="IBUIFont" id="401137094">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -361,7 +361,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="425380121">
+					<object class="IBUIButton" id="153800285">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{290, 502}, {201, 37}}</string>
@@ -380,8 +380,8 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="560091223"/>
-						<reference key="IBUIFontDescription" ref="773976184"/>
-						<reference key="IBUIFont" ref="980922683"/>
+						<reference key="IBUIFontDescription" ref="237090511"/>
+						<reference key="IBUIFont" ref="401137094"/>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {540, 600}}</string>
@@ -496,7 +496,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">btnMoveCourse</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="425380121"/>
+						<reference key="destination" ref="153800285"/>
 					</object>
 					<int key="connectionID">30</int>
 				</object>
@@ -530,7 +530,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">moveCourseClicked:</string>
-						<reference key="source" ref="425380121"/>
+						<reference key="source" ref="153800285"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -571,7 +571,7 @@
 							<reference ref="925980056"/>
 							<reference ref="823994933"/>
 							<reference ref="785741888"/>
-							<reference ref="425380121"/>
+							<reference ref="153800285"/>
 							<reference ref="317009409"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -638,7 +638,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="425380121"/>
+						<reference key="object" ref="153800285"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>

@@ -75,6 +75,7 @@
     // Pull up daniel's view (course description) - send course and array of semesters
     CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
+    courseDetail.delegate = self.delagate;
     [self presentModalViewController:courseDetail animated:YES];
 }
 
