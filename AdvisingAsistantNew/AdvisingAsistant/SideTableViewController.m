@@ -15,11 +15,11 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         self.title = @"Required Courses";
-        semesterArray = semArray;
+        semesterArray = [semArray retain];
         [self.tableView setFrame:CGRectMake(673, 44, 351, 1000)];
-        tempRepo = [[AreaRepo alloc] init];
-        GEArray = [[NSArray alloc] initWithArray:[tempRepo areasForGEPattern:pattern date:date]];
-        DepartmentSectionsArray = [[NSArray alloc] initWithArray:[tempRepo areasForDepartment:dept date:date]];
+        tempRepo = [AreaRepo defaultRepo];
+        GEArray = [[tempRepo areasForGEPattern:pattern date:date] retain];
+        DepartmentSectionsArray = [[tempRepo areasForDepartment:dept date:date] retain];
     }
     return self;
 }
@@ -29,6 +29,8 @@
     [super viewDidLoad];
 
 }
+
+
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -45,6 +47,7 @@
 {
     return 2;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -66,12 +69,16 @@
     }
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = [GEArray objectAtIndex:indexPath.row];
+        assert(GEArray);
+        Area *tempArea = [GEArray objectAtIndex:indexPath.row]; 
+        cell.textLabel.text = tempArea.title;
         cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
     
     if (indexPath.section == 1) {
-        cell.textLabel.text = [DepartmentSectionsArray objectAtIndex:indexPath.row];
+        assert(DepartmentSectionsArray);
+        Area *tempArea= [DepartmentSectionsArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = tempArea.title;
         cell.textLabel.textAlignment = UITextAlignmentCenter;
     }
     
@@ -84,10 +91,10 @@
     
     SecondSideTableViewController *temp;
     if (indexPath.section == 0)
-        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray];
+        temp = [[[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[GEArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray] autorelease];
     
-    else if (indexPath.section == 1)
-        temp = [[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[DepartmentSectionsArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray];
+    else
+        temp = [[[SecondSideTableViewController alloc] initWithAreas:[tempRepo areasForArea:[DepartmentSectionsArray objectAtIndex:indexPath.row]] andSemesterArray:semesterArray] autorelease];
         
     [self.navigationController pushViewController:temp animated:YES];
 }

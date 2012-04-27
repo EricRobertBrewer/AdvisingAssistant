@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CourseDetailViewController.h"
+#import "CourseRepo.h"
 
 @interface SecondSideTableViewController : UITableViewController {
     NSArray *areaArray;
-    NSMutableArray *semesterArray;
+    NSMutableArray *semesterArray, *areaCourses;
 }
 
 - (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters;

@@ -24,7 +24,7 @@ static TemplateRepo *instance = nil;
     template.name = [dict objectForKey:@"Name"];
     NSString *department = [dict objectForKey:@"DepartmentID"];
     template.department = [[DepartmentRepo defaultRepo] departmentWithCode:department];
-    return template;
+    return [template autorelease];
 }
 
 -(NSMutableDictionary *)dictFromTemplate:(Template *)template {
@@ -61,7 +61,7 @@ static TemplateRepo *instance = nil;
 			[templates addObject:t];
 		}
 	}
-	return templates;
+	return [templates autorelease];
 }
 
 -(Template *)templateForName:(NSString *)name inDepartment:(Department *)department {

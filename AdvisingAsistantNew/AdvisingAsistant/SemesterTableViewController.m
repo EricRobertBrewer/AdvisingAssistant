@@ -32,12 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -63,20 +57,22 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     cell.textLabel.text = [[courses objectAtIndex:indexPath.row] name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Units: %i", [[courses objectAtIndex:indexPath.row] units]];
+    UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];
+    units.text = [NSString stringWithFormat:@"%i", [[courses objectAtIndex:indexPath.row] units]];
+    cell.accessoryView = units;
     
-    return cell;
+    return [cell autorelease];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:courseDetail animated:YES];
 }
