@@ -106,7 +106,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{293, 182}, {72, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSNextKeyView" ref="226136459"/>
+						<reference key="NSNextKeyView" ref="1013328028"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -217,7 +217,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="226136459">
+					<object class="IBUIButton" id="1013328028">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{398, 182}, {72, 37}}</string>
@@ -343,7 +343,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">didTapDelete:</string>
-						<reference key="source" ref="226136459"/>
+						<reference key="source" ref="1013328028"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -379,7 +379,7 @@
 							<reference ref="667643749"/>
 							<reference ref="778065742"/>
 							<reference ref="1008391745"/>
-							<reference ref="226136459"/>
+							<reference ref="1013328028"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -415,7 +415,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
-						<reference key="object" ref="226136459"/>
+						<reference key="object" ref="1013328028"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>

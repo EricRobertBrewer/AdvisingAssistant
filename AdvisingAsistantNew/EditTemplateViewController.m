@@ -147,7 +147,9 @@
 
 - (IBAction)didTapDelete:(id)sender {
     TemplateRepo *repo = [TemplateRepo defaultRepo];
-    
+    [repo deleteTemplate:editedTemplate];
+    [templates release];
+    templates = [[repo allTemplates] retain];
 }
 
 - (IBAction)didTapExit:(id)sender {
