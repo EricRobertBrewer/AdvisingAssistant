@@ -47,8 +47,7 @@
 - (IBAction)moveCourseClicked:(id)sender;
 
 - (Course *)getCourseFromSemester:(Semester *)semester;
-- (Semester *)isDuplicateCourse;
-- (BOOL)isValidForSemester:(Semester *)selectedSem;
+- (Semester *)getSemesterWithCourse;
 - (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
 - (void)showGrade:(NSString *)grade;
 
