@@ -10,12 +10,21 @@
 
 @implementation SemesterTableViewController
 @synthesize delagate;
+@synthesize semester = _semester;
+@synthesize semesterArray = _semesterArray;
+
+-(void)dealloc {
+    self.delagate = nil;
+    self.semester = nil;
+    self.semesterArray = nil;
+    [super dealloc];
+}
 
 - (id)initWithSemester:(Semester *)semester andSemesterArray:(NSMutableArray *)semesters {
     self = [super init];
     if (self) {
-        courses = [semester.courses retain];
-        semesterArray = [semesters retain];
+        self.semester = semester;
+        self.semesterArray = semesters;
     }
     return self;
 }
@@ -49,21 +58,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [courses count];
+    return [self.semester.courses count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = nil; //@"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = nil; //[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[courses objectAtIndex:indexPath.row] name];
+    cell.textLabel.text = [[self.semester.courses objectAtIndex:indexPath.row] name];
     UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];
-    units.text = [NSString stringWithFormat:@"%i", [[courses objectAtIndex:indexPath.row] units]];
+    units.text = [NSString stringWithFormat:@"%i", [[self.semester.courses objectAtIndex:indexPath.row] units]];
     cell.accessoryView = units;
     
     return [cell autorelease];
@@ -73,7 +82,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[courses objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
+    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[self.semester.courses objectAtIndex:indexPath.row] andSemesters:self.semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     courseDetail.delegate = self.delagate;
     [self presentModalViewController:courseDetail animated:YES];

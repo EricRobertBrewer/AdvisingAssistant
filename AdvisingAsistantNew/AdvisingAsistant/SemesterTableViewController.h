@@ -12,11 +12,12 @@
 #import "CourseDetailViewController.h"
 
 @interface SemesterTableViewController : UITableViewController {
-    NSMutableArray *courses;
-    NSMutableArray *semesterArray;
+    
 }
 
 @property (nonatomic, retain) ScheduleBuilderViewController *delagate;
+@property (nonatomic, retain) Semester *semester;
+@property (nonatomic, retain) NSMutableArray *semesterArray;
 
 - (id)initWithSemester:(Semester *)semester andSemesterArray:(NSMutableArray *)semesters;
 

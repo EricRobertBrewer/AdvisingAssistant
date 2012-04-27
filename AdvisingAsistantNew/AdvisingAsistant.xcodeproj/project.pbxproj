@@ -248,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E3861E3C153163F700D9073A /* Model */,
-				E3CB4F1A1531756900D766DD /* DanielsWork */,
+				E3CB4F1A1531756900D766DD /* CourseDetailViewController */,
 				E09988471533953600C56ADC /* LoginViewController */,
 				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
 				3F5C6BBE152FB77000835DBA /* Supporting Files */,
@@ -441,14 +441,14 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		E3CB4F1A1531756900D766DD /* DanielsWork */ = {
+		E3CB4F1A1531756900D766DD /* CourseDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E3CB4F1F1531758100D766DD /* CourseDetailViewController.h */,
 				E3CB4F201531758100D766DD /* CourseDetailViewController.m */,
 				E3CB4F211531758100D766DD /* CourseDetailViewController.xib */,
 			);
-			name = DanielsWork;
+			name = CourseDetailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

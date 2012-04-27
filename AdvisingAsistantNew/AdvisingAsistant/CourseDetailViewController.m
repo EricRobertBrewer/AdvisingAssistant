@@ -12,22 +12,30 @@
 @implementation CourseDetailViewController
 @synthesize semesters;
 @synthesize delegate;
+@synthesize currentCourse = _currentCourse;
+
+- (void)dealloc {
+    [lblCourseName release];
+    [lblUnits release];
+    [lblGrade release];
+    [txtCourseDesc release];
+    [semesterStepper release];
+    [semesterLabel release];
+    [btnAddCourse release];
+    [semesters release];
+    [closeView release];
+    [btnMoveCourse release];
+    self.delegate = nil;
+    self.currentCourse = nil;
+    [super dealloc];
+}
 
 -(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
     self = [super init];
     if (self) {
-        currentCourse = course;
-        
-        // semesters is what is passed in only.
-        // modifiedSemesters is the array after user adds course
-        semesters = [[NSMutableArray alloc] init];
-        for (Semester *sem in sems) {
-            [semesters addObject:sem];
-        }
-        modifiedSemesters = sems;
-        
-        dbSemester = [SemesterRepo defaultRepo];
+        self.currentCourse = course;
+        self.semesters = sems;
     }
     return self;
 }
@@ -71,9 +79,9 @@
     [semesterLabel setText:[initialSemester getDateAsString]];
     
     // set course name title to course name passed in
-    [lblCourseName setText:currentCourse.name];
-    [lblUnits setText:[NSString stringWithFormat:@"%d",currentCourse.units]];
-    [txtCourseDesc setText:currentCourse.description];
+    [lblCourseName setText:self.currentCourse.name];
+    [lblUnits setText:[NSString stringWithFormat:@"%d",self.currentCourse.units]];
+    [txtCourseDesc setText:self.currentCourse.description];
     
     // set up stepper
     [semesterStepper setMinimumValue:0];
@@ -84,6 +92,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+/*
 - (void)viewDidUnload
 {
     [lblCourseName release];
@@ -108,6 +117,8 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+*/
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -115,28 +126,14 @@
 	return YES;
 }
 
-- (void)dealloc {
-    [lblCourseName release];
-    [lblUnits release];
-    [lblGrade release];
-    [txtCourseDesc release];
-    [semesterStepper release];
-    [semesterLabel release];
-    [btnAddCourse release];
-    [semesters release];
-    [closeView release];
-    [btnMoveCourse release];
-    [super dealloc];
-}
-
 // This is the function that will set into motion saving the course into the database
 // and visually displaying it on the schedule
 - (IBAction)addCourseClicked:(id)sender {
-    for (Semester *sem in modifiedSemesters) {
+    for (Semester *sem in self.semesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
             if (![self getSemesterWithCourse]) {
-                [sem.courses addObject:currentCourse];
-                [self.delegate didTapSave:currentCourse]; 
+                [sem.courses addObject:self.currentCourse];
+                [self.delegate didTapSave:self.currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
             }
             else {
@@ -156,7 +153,7 @@
 // checks to see if a course is already in some semester
 // if it is, RETURNS that semester
 - (Semester *)getSemesterWithCourse {
-    for (Semester *sem in modifiedSemesters) {
+    for (Semester *sem in self.semesters) {
         if ([self getCourseFromSemester:sem]) {
             return sem;
         }
@@ -168,7 +165,7 @@
 // just a little helper function
 - (Course *)getCourseFromSemester:(Semester *)semester {
     for (Course *c in semester.courses) {
-        if ([c.name isEqualToString:currentCourse.name]) {
+        if ([c.name isEqualToString:self.currentCourse.name]) {
             return c;
         }
     }
@@ -200,13 +197,13 @@
             
             // Search for semester object that the user selected in the array of semesters
             // Do the move TO that semester FROM "semesterToMoveFrom"
-            for (Semester *sem in modifiedSemesters) {
+            for (Semester *sem in self.semesters) {
                 
                 if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
                     [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
-                    [sem.courses addObject:currentCourse];
+                    [sem.courses addObject:self.currentCourse];
                     
-                    [self.delegate didTapSave:currentCourse];
+                    [self.delegate didTapSave:self.currentCourse];
                     [self dismissModalViewControllerAnimated:NO];
                 }
             }

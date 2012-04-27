@@ -28,20 +28,11 @@
     IBOutlet UIButton *btnAddCourse;
     IBOutlet UIButton *btnMoveCourse;
     IBOutlet UIButton *closeView;
-    
-    NSMutableArray *semesters;
-    NSMutableArray *modifiedSemesters;
-    Course *currentCourse;
-    SemesterRepo *dbSemester;
-    
-    /*
-    UIImageView *iconPicView;
-    UIImage *iconPic;
-     */
 }
 
+@property (nonatomic, retain) Course *currentCourse;
 @property (nonatomic, retain) ScheduleBuilderViewController *delegate;
-@property (atomic, retain) NSMutableArray *semesters;
+@property (nonatomic, retain) NSMutableArray *semesters;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
