@@ -129,12 +129,32 @@
 - (IBAction)addCourseClicked:(id)sender {
     for (Semester *sem in modifiedSemesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            if ([self isValidForSemester:sem])
+            if ([self isDuplicateCourse] == NO) {
                 [sem.courses addObject:currentCourse];
+                [self dismissModalViewControllerAnimated:NO];
+            }
+            else {
+                UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course already added" 
+                                                            message:@"The course you selected is already in the schedule" 
+                                                            delegate:self 
+                                                            cancelButtonTitle:@"OK" 
+                                                        otherButtonTitles:nil];
+                [alert show];
+            }
         }
     }
     
-    [self dismissModalViewControllerAnimated:NO];
+    
+}
+
+- (BOOL)isDuplicateCourse {
+    for (Semester *sem in modifiedSemesters) {
+        if ([self isValidForSemester:sem] == NO) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 // Checks to see if class is already in this semester
