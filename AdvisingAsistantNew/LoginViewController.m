@@ -49,6 +49,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     repo = [StudentRepo defaultRepo];
+	[stndIDTextField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
