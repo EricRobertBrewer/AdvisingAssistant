@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSMutableArray *semesterArray;
 @property (nonatomic, retain) NSArray *GEArray;
 @property (nonatomic, retain) NSArray *DepartmentSectionsArray;
+@property (nonatomic, retain) ScheduleBuilderViewController *delagate;
 
 - (id)initWithGEPattern:(GEPattern)pattern date:(SemesterDate)date Department:(Department *)dept andSemesterArray:(NSMutableArray *)semArray;
 

@@ -82,6 +82,16 @@ static TemplateRepo *instance = nil;
 }
 
 /*
+    DELETING TEMPLATES
+*/
+
+-(void)deleteTemplate:(Template *)template {
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"deleteTemplate.php"];
+    [options.postData setInt:template.id forKey:@"TemplateID"];
+    [self connect:options];
+}
+
+/*
 	SINGLETON STUFF
 */
 

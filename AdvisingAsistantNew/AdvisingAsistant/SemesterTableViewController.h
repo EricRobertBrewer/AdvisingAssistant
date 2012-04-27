@@ -16,6 +16,8 @@
     NSMutableArray *semesterArray;
 }
 
+@property (nonatomic, retain) ScheduleBuilderViewController *delagate;
+
 - (id)initWithSemester:(Semester *)semester andSemesterArray:(NSMutableArray *)semesters;
 
 

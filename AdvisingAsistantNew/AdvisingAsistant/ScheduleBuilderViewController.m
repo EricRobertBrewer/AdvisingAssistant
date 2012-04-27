@@ -30,6 +30,7 @@
 
 -(void)initSideTableWithPattern:(GEPattern)pattern date:(SemesterDate)date department:(Department *)department semesters:(NSMutableArray *)semesters {
 	SideTableViewController *sideTable = [[SideTableViewController alloc] initWithGEPattern:pattern date:date Department:department andSemesterArray:semesters];
+    sideTable.delagate = self;
 	self.sideNavController = [[[UINavigationController alloc] initWithRootViewController:sideTable] autorelease];
 	self.sideNavController.view.autoresizingMask = UIViewAutoresizingNone;
 	[self.sideNavController.view setFrame:CGRectMake(673, 0, 351, 1000)];
@@ -88,7 +89,8 @@
 		// Create tables for scrollview
 		Semester *tempSemester = [self.semesters objectAtIndex:i];
 		SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:tempSemester andSemesterArray:self.semesters];
-		
+		tempSemesterTable.delagate = self;
+        
 		// for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)
 		// EDIT talk to someone from group, fall always even?
 		

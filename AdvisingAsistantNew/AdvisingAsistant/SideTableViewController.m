@@ -15,6 +15,7 @@
 @synthesize semesterArray = _semesterArray;
 @synthesize GEArray = _GEArray;
 @synthesize DepartmentSectionsArray = _DepartmentSectionsArray;
+@synthesize delagate;
 
 -(void)dealloc {
 	self.semesterArray = nil;
@@ -103,6 +104,7 @@
     }
 	
     SecondSideTableViewController *temp = [[SecondSideTableViewController alloc] initWithAreas:areas andSemesterArray:self.semesterArray];
+    temp.delagate = self.delagate;
     [self.navigationController pushViewController:temp animated:YES];
 	[temp release];
 }

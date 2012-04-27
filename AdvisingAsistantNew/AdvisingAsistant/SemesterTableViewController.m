@@ -9,6 +9,7 @@
 #import "SemesterTableViewController.h"
 
 @implementation SemesterTableViewController
+@synthesize delagate;
 
 - (id)initWithSemester:(Semester *)semester andSemesterArray:(NSMutableArray *)semesters {
     self = [super init];
