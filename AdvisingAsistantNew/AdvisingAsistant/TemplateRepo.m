@@ -82,6 +82,14 @@ static TemplateRepo *instance = nil;
 }
 
 /*
+    DELETING TEMPLATES
+*/
+
+-(void)deleteTemplate:(Template *)template {
+    self.error = @"Not yet implemented";
+}
+
+/*
 	SINGLETON STUFF
 */
 

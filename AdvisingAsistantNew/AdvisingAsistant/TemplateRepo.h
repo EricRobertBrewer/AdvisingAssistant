@@ -18,6 +18,7 @@
 -(NSArray *)allTemplates;
 -(NSArray *)templatesForDepartment:(Department *)department;
 -(void)saveTemplate:(Template *)template;
+-(void)deleteTemplate:(Template *)template;
 -(Template *)templateForName:(NSString *)name inDepartment:(Department *)department;
 
 @end
