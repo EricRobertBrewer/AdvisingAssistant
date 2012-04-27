@@ -41,26 +41,28 @@ static CourseRepo *instance = nil;
 	return [course autorelease];
 }
 
+-(NSArray *)coursesFromDicts:(NSArray *)dicts {
+    NSMutableArray *courses = [NSMutableArray array];
+    for (NSDictionary *dict in dicts) {
+        [courses addObject:[self courseFromDict:dict]];
+    }
+    return courses;
+}
+
 /*
 	GETTING COURSES
 */
 
 -(NSArray *)coursesForArea:(Area *)area {
-	self.error = @"Not yet implemented";
-	return [NSArray array];
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getCoursesForArea.php"];
+    [options setValue:area.name forKey:@"Area"];
+	return [self coursesFromDicts:[self connect:options]];
 }
 
 -(NSArray *)allCourses {
 	if (!_allCourses) {
 		ConnectOptions *options = [ConnectOptions optionsWithUrl:@"fullCourse.php"];
-		NSArray *dicts = [self connect:options];
-		if (dicts) {
-			NSMutableArray *courses = [[NSMutableArray alloc] init];
-			for (NSDictionary *dict in dicts) {
-				[courses addObject:[self courseFromDict:dict]];
-			}
-			_allCourses = courses;
-		}
+        _allCourses = [self coursesFromDicts:[self connect:options]];
 	}
 	return _allCourses;
 }
