@@ -37,9 +37,9 @@
     return temp.name;
 }
 
-- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+- (void) pickerView:(UIPickerView *)pv didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     editedTemplate = [[templates objectAtIndex:row] retain];
-    editTemplateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    editTemplateField.text = [self pickerView:pv titleForRow:row forComponent:component];
 }
 
 /*- (UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
@@ -71,7 +71,7 @@
 - (void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:(Template *)editedTemplate] autorelease];
+        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:editedTemplate] autorelease];
         parentController.nextController = nextController;
         [parentController.navigationController pushViewController:nextController animated:YES];
     }
