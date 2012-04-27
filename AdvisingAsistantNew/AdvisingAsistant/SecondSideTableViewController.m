@@ -40,7 +40,7 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     Area *temp = [areaArray objectAtIndex:section];
-    return temp.title;
+    return [NSString stringWithFormat:@"%@ (%i units)", temp.title, temp.units];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
