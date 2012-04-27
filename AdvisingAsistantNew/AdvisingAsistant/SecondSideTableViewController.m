@@ -52,7 +52,7 @@
     }
     
 	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.textLabel.text = course.title;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
     
     return cell;
 }
@@ -61,7 +61,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[[[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectAtIndex:indexPath.row] andSemesters:semesterArray] autorelease];
+    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] andSemesters:semesterArray];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentModalViewController:courseDetail animated:YES];
 }

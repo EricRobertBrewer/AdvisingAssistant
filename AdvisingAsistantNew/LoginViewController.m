@@ -14,7 +14,7 @@
 @end
 
 @implementation LoginViewController
-@synthesize nextController, stndIDTextField;
+@synthesize nextController, studentIDTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,21 +27,16 @@
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == usrnmTextField) {
-        usrnm = usrnmTextField.text;
-        [psswrdTextField becomeFirstResponder];
-        return YES;
-    }
-    else if (textField == psswrdTextField) {
-        [stndIDTextField becomeFirstResponder];
-        psswrd = psswrdTextField.text;
-        return YES;
-    }
-    if (textField == stndIDTextField) {
+    if (textField == studentIDTextField) {
         [self didTapGo:(UITextField *)textField];
         return YES;
     }
     return NO;
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [studentIDTextField becomeFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -49,23 +44,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     repo = [StudentRepo defaultRepo];
-	[stndIDTextField becomeFirstResponder];
+	[studentIDTextField becomeFirstResponder];
 }
 
 - (void)viewDidUnload
 {
-    [usrnmTextField release];
-    usrnmTextField = nil;
-    [psswrdTextField release];
-    psswrdTextField = nil;
-    [stndIDTextField release];
-    stndIDTextField = nil;
+    [studentIDTextField release];
+    studentIDTextField = nil;
     [goBttn release];
     goBttn = nil;
     [editBttn release];
     editBttn = nil;
-    [savvyButtn release];
-    savvyButtn = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -77,25 +66,20 @@
 }
 
 - (void)dealloc {
-    [usrnmTextField release];
-    [psswrdTextField release];
-    [stndIDTextField release];
+
+    [studentIDTextField release];
     [goBttn release];
     [editBttn release];
-    
-    [savvyButtn release];
     [super dealloc];
 }
 - (IBAction)didTapGo:(id)sender {
-    [usrnmTextField resignFirstResponder];
-    [psswrdTextField resignFirstResponder];
-    [stndIDTextField resignFirstResponder];
+    [studentIDTextField resignFirstResponder];
     
-    if ([stndIDTextField.text length] <= 0)
+    if ([studentIDTextField.text length] <= 0)
         return;
     
     NSLog(@"User did tap go.\n");
-    studentID = [stndIDTextField.text intValue];
+    studentID = [studentIDTextField.text intValue];
     Student *temp = [repo studentWithId:studentID];
     if (temp == nil)
     {
@@ -115,7 +99,7 @@
     {
         DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
         ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[dRepo departmentWithCode:@"CS"]] autorelease];
-        stndIDTextField.text = @"";
+        studentIDTextField.text = @"";
         [self.navigationController pushViewController:schedule animated:YES];
     }
     

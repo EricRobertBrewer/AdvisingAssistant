@@ -118,5 +118,13 @@
 	
 	[scrollView release];
 }
+ 
+- (void) didTapSave:(Course *)course {
+    
+}
+
+- (void) didTapDelete:(Course *)course {
+    
+}
 
 @end

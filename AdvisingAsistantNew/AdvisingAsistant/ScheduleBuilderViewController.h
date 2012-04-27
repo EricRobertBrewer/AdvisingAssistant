@@ -28,4 +28,6 @@
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;
 - (id)initWithTemplate:(Template *)temp;
 
+- (void) didTapSave: (Course *)course;
+- (void) didTapDelete: (Course *) course;
 @end
