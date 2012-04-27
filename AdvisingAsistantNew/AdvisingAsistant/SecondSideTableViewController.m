@@ -52,7 +52,7 @@
     }
     
 	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.textLabel.text = course.title;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
     
     return cell;
 }
