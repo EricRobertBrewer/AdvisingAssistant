@@ -17,7 +17,7 @@
 
 -(void)setValues:(NSDictionary *)other {
 	for (NSString *key in other.allKeys) {
-		id value = [other objectForKey:value];
+		id value = [other objectForKey:key];
 		[self setValue:value forKey:key];
 	}
 }
