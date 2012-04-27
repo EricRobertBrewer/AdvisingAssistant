@@ -73,7 +73,7 @@
 -(void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        parentController.stndIDTextField.text = @"";
+        parentController.studentIDTextField.text = @"";
         [parentController.navigationController pushViewController:parentController.nextController animated:YES];
     }
 }
