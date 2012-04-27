@@ -9,6 +9,7 @@
 #import "SecondSideTableViewController.h"
 
 @implementation SecondSideTableViewController
+@synthesize delagate;
 
 - (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters
 {

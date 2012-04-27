@@ -12,7 +12,9 @@
 #import "Student.h"
 #import "Semester.h"
 #import "Department.h"
-#import "ScheduleBuilderViewController.h"
+//#import "ScheduleBuilderViewController.h"
+
+@class ScheduleBuilderViewController;
 
 @interface CourseDetailViewController : UIViewController
 {

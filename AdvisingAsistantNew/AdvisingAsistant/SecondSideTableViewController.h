@@ -17,4 +17,6 @@
 
 - (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters;
 
+@property (nonatomic, retain) ScheduleBuilderViewController *delagate;
+
 @end

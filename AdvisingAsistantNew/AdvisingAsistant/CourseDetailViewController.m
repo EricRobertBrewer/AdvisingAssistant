@@ -7,6 +7,7 @@
 //
 
 #import "CourseDetailViewController.h"
+#import "ScheduleBuilderViewController.h"
 
 @implementation CourseDetailViewController
 @synthesize semesters;

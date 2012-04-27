@@ -15,6 +15,7 @@
 @synthesize semesterArray = _semesterArray;
 @synthesize GEArray = _GEArray;
 @synthesize DepartmentSectionsArray = _DepartmentSectionsArray;
+@synthesize delagate;
 
 -(void)dealloc {
 	self.semesterArray = nil;
