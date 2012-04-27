@@ -23,6 +23,7 @@
         for (int i = 0; i < [areas count]; i++)
             [areaCourses addObject:(NSArray *)[repo coursesForArea:[areas objectAtIndex:i]]];
     }
+    NSLog(@"Number of sections is %d", [areaCourses count]);
     return self;
 }
 
@@ -39,12 +40,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [areaArray count];
+    return [areaCourses count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[areaCourses objectAtIndex:section] count];
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    Area *temp = [areaArray objectAtIndex:section];
+    return temp.title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
