@@ -20,6 +20,7 @@
 
 }
 
+@property (nonatomic, retain) NSString *barTitle;
 @property (nonatomic, retain) NSMutableArray *semesters;
 @property (nonatomic, retain) NSMutableArray *semesterTables;
 @property (nonatomic, retain) UINavigationController *sideNavController;

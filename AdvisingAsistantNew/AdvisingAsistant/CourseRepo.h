@@ -17,6 +17,10 @@
 
 +(CourseRepo *)defaultRepo;
 
+// Returns array of courses
+-(NSArray *)prereqsForCourse:(Course *)course;
+-(NSArray *)coreqsForCourse:(Course *)course;
+
 -(NSArray *)coursesForArea:(Area *)area;
 -(Course *)courseWithDepartment:(Department *)department andNumber:(NSString *)number;
 
