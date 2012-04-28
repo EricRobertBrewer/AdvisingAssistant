@@ -70,7 +70,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    assert(self.currentStudent);
 	
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
 	topBar.backgroundColor = [UIColor colorWithRed:0 green:81/255.0 blue:164/255.0 alpha:1];

@@ -50,6 +50,7 @@
         
         if ([templateField.text length] > 0)
         {
+			// TODO: This won't work if student starts in the spring
             SemesterRepo *sRepo = [SemesterRepo defaultRepo];
             NSArray *schedule = [sRepo semestersForTemplate:T];
             for (int i = 0; i < [schedule count]; i++)
