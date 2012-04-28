@@ -13,6 +13,7 @@
 @synthesize semesters;
 @synthesize delegate;
 @synthesize currentCourse = _currentCourse;
+@synthesize addCourse = _addCourse;
 
 - (void)dealloc {
     [lblCourseName release];
@@ -27,6 +28,7 @@
     [btnMoveCourse release];
     self.delegate = nil;
     self.currentCourse = nil;
+    [btnRemoveCourse release];
     [super dealloc];
 }
 
@@ -88,7 +90,12 @@
     [semesterStepper setMaximumValue:(double)[semesters count]-1];
     [semesterStepper setValue:0];
     
-    
+    if (self.addCourse) {
+        btnMoveCourse.hidden = YES;
+        btnRemoveCourse.hidden = YES;
+    } else {
+        btnAddCourse.hidden = YES;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -223,4 +230,13 @@
     
 }
 
+- (IBAction)removeCourseClicked:(id)sender {
+    // TODO
+}
+
+- (void)viewDidUnload {
+    [btnRemoveCourse release];
+    btnRemoveCourse = nil;
+    [super viewDidUnload];
+}
 @end

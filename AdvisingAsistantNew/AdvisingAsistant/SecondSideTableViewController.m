@@ -65,6 +65,7 @@
     CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] andSemesters:semesterArray];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     courseDetail.delegate = self.delagate;
+    courseDetail.addCourse = YES;
     [self presentModalViewController:courseDetail animated:YES];
 }
 
