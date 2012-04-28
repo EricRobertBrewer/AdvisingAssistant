@@ -33,8 +33,18 @@
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (pickerView == pickerView1)
+    {
     Template *temp = [templates objectAtIndex:row];
     return temp.name;
+    }
+    else if (pickerView == pickerView2)
+    {
+        if (row == 0)
+            return @"Freshmen Pattern";
+        return @"Transfer Pattern";
+    }
+    return @"WRONG PICKERVIEW";
 }
 
 - (void) pickerView:(UIPickerView *)pv didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
@@ -159,6 +169,11 @@
         Template *temp = [[[Template alloc] init] autorelease];
         temp.name = createTemplateField.text;
         temp.department = [dRepo departmentWithCode:@"CS"];
+        if ([gePatternField.text isEqualToString:@"Freshman Pattern"])
+            temp.pattern = GEPatternFreshman;
+        else if ([gePatternField.text isEqualToString:@"Transfer Pattern"])
+            temp.pattern = GEPatternTransfer;
+
         [repo saveTemplate:temp];
         editedTemplate = [[repo templateForName:temp.name inDepartment:temp.department] retain];;
         [self dismissModalViewControllerAnimated:YES];
