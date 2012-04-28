@@ -13,6 +13,7 @@
 //#import "Department.h"
 #import "LoginViewController.h"
 
+
 @class LoginViewController;
 @class Template;
 
@@ -25,11 +26,10 @@
     IBOutlet UITextField *GEPatternField;
     
     UIPickerView *pickerView1, *pickerView2, *pickerView3;
-    NSArray *templates;
-    LoginViewController *parentController;
     BOOL submit;
 }
 
+@property (nonatomic, retain) NSArray *templates;
 @property (nonatomic, retain) NSString *year, *season;
 @property (nonatomic, retain) Template *T;
 @property (nonatomic, retain) LoginViewController *parentController;

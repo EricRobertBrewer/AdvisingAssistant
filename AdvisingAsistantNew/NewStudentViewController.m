@@ -9,9 +9,10 @@
 #import "NewStudentViewController.h"
 #import "LoginViewController.h"
 #import "ScheduleBuilderViewController.h"
+#import "Semester.h"
 
 @implementation NewStudentViewController
-@synthesize season, year, parentController, T;
+@synthesize season, year, parentController, T, templates;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +51,12 @@
         if ([templateField.text length] > 0)
         {
             SemesterRepo *sRepo = [SemesterRepo defaultRepo];
-            NSArray *schedule = [sRepo semestersForTemplate:T]; 
+            NSArray *schedule = [sRepo semestersForTemplate:T];
+            for (int i = 0; i < [schedule count]; i++)
+            {
+                Semester *s = [schedule objectAtIndex:i];
+                s.date = SemesterDateMake(s.date.season, s.date.year+stud.started.year);
+            }
             [sRepo saveSemesters:schedule forStudent:stud];
         }
         if (repo.error != nil)
@@ -59,7 +65,8 @@
             return;
         }
         
-        ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] initWithStudent:stud andDepartment:[[[Department alloc] init] autorelease]] autorelease];
+        DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
+        ScheduleBuilderViewController *temp = [[[ScheduleBuilderViewController alloc] initWithStudent:stud andDepartment:[dRepo departmentWithCode:@"CS"]] autorelease];
         parentController.nextController = temp;
         [self dismissModalViewControllerAnimated:YES];
     }
@@ -92,7 +99,7 @@
         return 50;
     }
     else if (pickerView == pickerView2)
-        return [templates count];
+        return [templates count]+1;
     else if (pickerView == pickerView3)
         return 2;
     return 0;
@@ -115,7 +122,7 @@
     {
         if (row == 0)
             return @"";
-        Template *temp = [templates objectAtIndex:row];
+        Template *temp = [self.templates objectAtIndex:row-1];
         return temp.name;
     }
     else if (pickerView == pickerView3)
@@ -184,8 +191,7 @@
     pickerView2.showsSelectionIndicator = YES;
     [pickerView2 selectRow:0 inComponent:0 animated:YES];
     templateField.inputView = pickerView2;
-    templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
-    assert(templates);
+    self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]];
     Template *n = [templates lastObject];
     NSLog(@"%@", @"YES");
     NSLog(@"%@", n.name);
