@@ -33,8 +33,18 @@
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (pickerView == pickerView1)
+    {
     Template *temp = [templates objectAtIndex:row];
     return temp.name;
+    }
+    else if (pickerView == pickerView2)
+    {
+        if (row == 0)
+            return @"Freshmen Pattern";
+        return @"Transfer Pattern";
+    }
+    return @"WRONG PICKERVIEW";
 }
 
 - (void) pickerView:(UIPickerView *)pv didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
