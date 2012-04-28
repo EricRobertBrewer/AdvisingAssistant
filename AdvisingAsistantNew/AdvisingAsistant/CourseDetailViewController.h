@@ -16,7 +16,7 @@
 
 @class ScheduleBuilderViewController;
 
-@interface CourseDetailViewController : UIViewController
+@interface CourseDetailViewController : UIViewController <UITextFieldDelegate>
 {
     
     IBOutlet UILabel *lblCourseName;

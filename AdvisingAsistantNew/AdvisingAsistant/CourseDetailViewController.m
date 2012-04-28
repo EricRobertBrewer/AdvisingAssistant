@@ -34,6 +34,39 @@
     [super dealloc];
 }
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [textField resignFirstResponder];
+
+        return YES;
+    }
+    return  YES;
+}
+
+- (BOOL) disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [UIView beginAnimations:nil context:nil];
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y+200);
+        [UIView commitAnimations];
+    }
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [UIView beginAnimations:nil context:nil];
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y-200);
+        [UIView commitAnimations];
+    }
+}
+
+
 -(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
     self = [super init];
