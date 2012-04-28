@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleBuilderViewController.h"
+#import "QuartzCore/QuartzCore.h"
 
 #define BAR_HEIGHT 66
 
@@ -15,11 +16,15 @@
 @synthesize semesterTables = _semesterTables;
 @synthesize sideNavController = _sideNavController;
 @synthesize currentTemplate, currentStudent;
+@synthesize barTitle = _barTitle;
 
 -(void)dealloc {
 	self.semesters = nil;
 	self.semesterTables = nil;
 	self.sideNavController = nil;
+    self.currentStudent = nil;
+    self.currentTemplate = nil;
+    self.barTitle = nil;
 	[super dealloc];
 }
 
@@ -38,8 +43,6 @@
 	self.sideNavController.view.autoresizingMask = UIViewAutoresizingNone;
 	[self.sideNavController.view setFrame:CGRectMake(673, BAR_HEIGHT, 351, 1000)];
 	[self.view addSubview:self.sideNavController.view];
-    self.currentStudent = nil;
-    self.currentTemplate = nil;
 }
 
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department {
@@ -48,7 +51,7 @@
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForStudent:student]];
 		[self initSideTableWithPattern:student.pattern date:student.started department:department semesters:self.semesters];
-		self.title = student.name;
+		self.barTitle = student.name;
         self.currentStudent = student;
     }
     return self;
@@ -60,7 +63,7 @@
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForTemplate:template]];
 		[self initSideTableWithPattern:GEPatternFreshman date:SemesterDateNow() department:template.department semesters:self.semesters];
-        self.title = template.name;
+        self.barTitle = template.name;
         self.currentTemplate = template;
     }
     return self;
@@ -69,6 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /*
     self.navigationItem.hidesBackButton = YES;    
     UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
                                   initWithTitle:@"Logout"                                            
@@ -76,11 +80,29 @@
                                   target:self
                                   action:@selector(didTapLogout:)];
     self.navigationItem.rightBarButtonItem = logoutBtn;
+    */
+    
     
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
-    topBar.backgroundColor = [UIColor colorWithRed:0 green:85/255.0 blue:165/255.0 alpha:1];
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = topBar.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0 green:120/255.0 blue:200/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:0 green:60/255.0 blue:140/255.0 alpha:1] CGColor], nil];
+    [topBar.layer insertSublayer:gradient atIndex:0];
     [self.view addSubview:topBar];
     [topBar release];
+    
+    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [logoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
+    [logoutBtn addTarget:self action:@selector(didTapLogout:) forControlEvents:UIControlEventTouchDown];
+    logoutBtn.frame = CGRectMake(900, 15, 80, 40);
+    [self.view addSubview:logoutBtn];
+    
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(62, 15, 400, 40)];
+    titleLbl.text = self.barTitle;
+    titleLbl.textColor = [UIColor whiteColor];
+    titleLbl.backgroundColor = [UIColor clearColor];
+    titleLbl.font = [UIFont systemFontOfSize:30];
+    [self.view addSubview:titleLbl];
 	
 	self.semesterTables = [NSMutableArray array];
 	

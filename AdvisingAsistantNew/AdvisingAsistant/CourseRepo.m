@@ -53,6 +53,13 @@ static CourseRepo *instance = nil;
 	GETTING COURSES
 */
 
+-(NSArray *)prereqsForCourse:(Course *)course {
+    return [NSArray array];
+}
+-(NSArray *)coreqsForCourse:(Course *)course {
+    return [NSArray array];
+}
+
 -(NSArray *)coursesForArea:(Area *)area {
     ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getCoursesForArea.php"];
     [options.postData setValue:area.name forKey:@"Area"];

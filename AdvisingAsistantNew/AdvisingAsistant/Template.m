@@ -13,6 +13,7 @@
 @synthesize id;
 @synthesize department;
 @synthesize name;
+@synthesize pattern;
 
 -(void)dealloc {
 	self.department = nil;

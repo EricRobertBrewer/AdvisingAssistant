@@ -24,6 +24,7 @@ static TemplateRepo *instance = nil;
     template.name = [dict objectForKey:@"Name"];
     NSString *department = [dict objectForKey:@"DepartmentID"];
     template.department = [[DepartmentRepo defaultRepo] departmentWithCode:department];
+    template.pattern = GEPatternFromString([dict objectForKey:@"Pattern"]);
     return [template autorelease];
 }
 
@@ -34,6 +35,7 @@ static TemplateRepo *instance = nil;
 	}
 	[dict setValue:template.name forKey:@"Name"];
 	[dict setValue:template.department.code forKey:@"DepartmentID"];
+    [dict setValue:FormatGEPattern(template.pattern) forKey:@"Pattern"];
 	return dict;
 }
 
