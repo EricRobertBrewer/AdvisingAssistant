@@ -240,7 +240,7 @@
 						<string key="NSFrame">{{129, 289}, {362, 162}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="823994933"/>
+						<reference key="NSNextKeyView" ref="153800285"/>
 						<string key="NSReuseIdentifierKey">_NS:640</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -289,14 +289,14 @@
 						<string key="NSFrame">{{290, 474}, {201, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="153800285"/>
+						<reference key="NSNextKeyView" ref="1060187169"/>
 						<string key="NSReuseIdentifierKey">_NS:241</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Add Course To Schedule</string>
+						<string key="IBUINormalTitle">Add To Schedule</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="554015201">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -379,14 +379,14 @@
 						<string key="NSFrame">{{290, 474}, {201, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="265266732"/>
+						<reference key="NSNextKeyView" ref="823994933"/>
 						<string key="NSReuseIdentifierKey">_NS:241</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Move Course To Semester</string>
+						<string key="IBUINormalTitle">Move To Semester</string>
 						<reference key="IBUIHighlightedTitleColor" ref="554015201"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -396,7 +396,7 @@
 						<reference key="IBUIFontDescription" ref="237090511"/>
 						<reference key="IBUIFont" ref="401137094"/>
 					</object>
-					<object class="IBUIButton" id="265266732">
+					<object class="IBUIButton" id="1060187169">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{170, 543}, {201, 37}}</string>
@@ -541,7 +541,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">btnRemoveCourse</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="265266732"/>
+						<reference key="destination" ref="1060187169"/>
 					</object>
 					<int key="connectionID">34</int>
 				</object>
@@ -584,7 +584,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">removeCourseClicked:</string>
-						<reference key="source" ref="265266732"/>
+						<reference key="source" ref="1060187169"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">1</int>
 					</object>
@@ -625,7 +625,7 @@
 							<reference ref="925980056"/>
 							<reference ref="823994933"/>
 							<reference ref="785741888"/>
-							<reference ref="265266732"/>
+							<reference ref="1060187169"/>
 							<reference ref="317009409"/>
 							<reference ref="153800285"/>
 						</array>
@@ -698,7 +698,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">32</int>
-						<reference key="object" ref="265266732"/>
+						<reference key="object" ref="1060187169"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>
