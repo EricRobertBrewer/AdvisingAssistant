@@ -8,6 +8,8 @@
 
 #import "ScheduleBuilderViewController.h"
 
+#define BAR_HEIGHT 66
+
 @implementation ScheduleBuilderViewController
 @synthesize semesters = _semesters;
 @synthesize semesterTables = _semesterTables;
@@ -34,7 +36,7 @@
     sideTable.delagate = self;
 	self.sideNavController = [[[UINavigationController alloc] initWithRootViewController:sideTable] autorelease];
 	self.sideNavController.view.autoresizingMask = UIViewAutoresizingNone;
-	[self.sideNavController.view setFrame:CGRectMake(673, 0, 351, 1000)];
+	[self.sideNavController.view setFrame:CGRectMake(673, BAR_HEIGHT, 351, 1000)];
 	[self.view addSubview:self.sideNavController.view];
     self.currentStudent = nil;
     self.currentTemplate = nil;
@@ -74,11 +76,16 @@
                                   target:self
                                   action:@selector(didTapLogout:)];
     self.navigationItem.rightBarButtonItem = logoutBtn;
+    
+    UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
+    topBar.backgroundColor = [UIColor colorWithRed:0 green:85/255.0 blue:165/255.0 alpha:1];
+    [self.view addSubview:topBar];
+    [topBar release];
 	
 	self.semesterTables = [NSMutableArray array];
 	
 	UIScrollView *scrollView = [[UIScrollView alloc] init];
-	scrollView.frame = CGRectMake(0, 0, 673, 1000);
+	scrollView.frame = CGRectMake(0, BAR_HEIGHT, 673, 1000);
 	scrollView.alwaysBounceVertical = YES;
 	scrollView.scrollEnabled = YES;
 	scrollView.backgroundColor = [UIColor whiteColor];
@@ -89,7 +96,7 @@
 	
 	int numberOfSemesters = [self.semesters count];
 	
-	scrollView.contentSize = CGSizeMake(673, 48+295+((numberOfSemesters/2)*295));
+	scrollView.contentSize = CGSizeMake(673, BAR_HEIGHT+15+295+((numberOfSemesters/2)*295));
 	
 	for (int i = 0; i < numberOfSemesters; i++) {
 		// Create tables for scrollview
@@ -114,8 +121,8 @@
 		}
 
 		int multiplier = (i/2);
-		[semesterLabel setFrame:CGRectMake(labelX, ((295*multiplier)+48), 100, 21)];
-		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, ((295*multiplier)+83), 236, 230)];
+		[semesterLabel setFrame:CGRectMake(labelX, BAR_HEIGHT+((295*multiplier)+15), 100, 21)];
+		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, BAR_HEIGHT+((295*multiplier)+50), 236, 230)];
 		
 		[scrollView addSubview:semesterLabel];
 		[self.semesterTables addObject:tempSemesterTable];

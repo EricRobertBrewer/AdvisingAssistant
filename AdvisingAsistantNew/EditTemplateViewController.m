@@ -105,6 +105,8 @@
     createTemplateField = nil;
     [editTemplateField release];
     editTemplateField = nil;
+    [gePatternField release];
+    gePatternField = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -118,6 +120,7 @@
 - (void)dealloc {
     [createTemplateField release];
     [editTemplateField release];
+    [gePatternField release];
     [super dealloc];
 }
 

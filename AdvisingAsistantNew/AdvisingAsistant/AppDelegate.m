@@ -28,6 +28,7 @@
     self.login = [[[LoginViewController alloc] init] autorelease];
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:self.login] autorelease];
     self.navigationController.navigationItem.backBarButtonItem.title = @"Logout";
+    self.navigationController.navigationBarHidden = YES;
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
 	
