@@ -20,13 +20,13 @@
     IBOutlet UITextField *gePatternField;
     
     NSArray *templates;
-    LoginViewController *parentController;
     BOOL submit;
     Template *editedTemplate;
 }
 
 @property (nonatomic, retain) LoginViewController  *parentController;
 @property (nonatomic, retain) UIPickerView *pickerView1, *pickerView2;
+@property (nonatomic, retain) Template *editedTemplate;
 
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapCreate:(id)sender;

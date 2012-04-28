@@ -13,7 +13,7 @@
 @end
 
 @implementation EditTemplateViewController
-@synthesize parentController, pickerView1, pickerView2;
+@synthesize parentController, pickerView1, pickerView2, editedTemplate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +50,7 @@
 - (void) pickerView:(UIPickerView *)pv didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (pv == self.pickerView1)
     {
-        editedTemplate = [[templates objectAtIndex:row] retain];
+        self.editedTemplate = [templates objectAtIndex:row];
         editTemplateField.text = [self pickerView:pv titleForRow:row forComponent:component];
     }
     else if (pv == self.pickerView2)
@@ -88,7 +88,7 @@
 - (void) viewDidDisappear:(BOOL)animated {
     if (submit)
     {
-        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:editedTemplate] autorelease];
+        ScheduleBuilderViewController *nextController = [[[ScheduleBuilderViewController alloc] initWithTemplate:self.editedTemplate] autorelease];
         parentController.nextController = nextController;
         [parentController.navigationController pushViewController:nextController animated:YES];
     }
@@ -103,7 +103,7 @@
     DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
     
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
-    editedTemplate = [[templates objectAtIndex:0] retain];
+    self.editedTemplate = [templates objectAtIndex:0];
     
     self.pickerView1 = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
     self.pickerView1.delegate = self;
@@ -145,6 +145,10 @@
 }
 
 - (void)dealloc {
+    self.pickerView1 = nil;
+    self.pickerView2 = nil;
+    self.editedTemplate = nil;
+    [self.parentController release];
     [createTemplateField release];
     [editTemplateField release];
     [gePatternField release];
@@ -175,14 +179,14 @@
             temp.pattern = GEPatternTransfer;
 
         [repo saveTemplate:temp];
-        editedTemplate = [[repo templateForName:temp.name inDepartment:temp.department] retain];;
+        self.editedTemplate = [repo templateForName:temp.name inDepartment:temp.department];
         [self dismissModalViewControllerAnimated:YES];
     }
 }
 
 - (IBAction)didTapDelete:(id)sender {
     TemplateRepo *repo = [TemplateRepo defaultRepo];
-    [repo deleteTemplate:editedTemplate];
+    [repo deleteTemplate:self.editedTemplate];
     [templates release];
     templates = [[repo allTemplates] retain];
     [self.pickerView1 reloadAllComponents];

@@ -12,7 +12,7 @@
 #import "Semester.h"
 
 @implementation NewStudentViewController
-@synthesize season, year, parentController, T, templates;
+@synthesize season, year, parentController, T, templates, transferTemplates, freshmenTemplates;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,8 +38,8 @@
         Student * stud = [[[Student alloc] init] autorelease];
         stud.name = studentName.text;
         stud.id = [studentIDField.text intValue];
-        Season t = (season == @"Fall") ? SeasonFall: SeasonSpring;
-        stud.started = SemesterDateMake(t, [year intValue]);
+        Season t = (self.season == @"Fall") ? SeasonFall: SeasonSpring;
+        stud.started = SemesterDateMake(t, [self.year intValue]);
         if ([GEPatternField.text isEqualToString:@"Freshman Pattern"])
             stud.pattern = GEPatternFreshman;
         else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
@@ -99,7 +99,12 @@
         return 50;
     }
     else if (pickerView == pickerView2)
-        return [templates count]+1;
+    {
+        if ([GEPatternField.text isEqualToString:@"Freshmen Pattern"])
+            return [self.freshmenTemplates count]+1;
+        else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
+            return [self.transferTemplates count]+1;
+    }
     else if (pickerView == pickerView3)
         return 2;
     return 0;
@@ -122,7 +127,11 @@
     {
         if (row == 0)
             return @"";
-        Template *temp = [self.templates objectAtIndex:(row-1)];
+        Template *temp;
+        if ([GEPatternField.text isEqualToString:@"Freshmen Pattern"])
+            temp = [self.freshmenTemplates objectAtIndex:row-1];
+        else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
+            temp = [self.transferTemplates objectAtIndex:row-1];
         return temp.name;
     }
     else if (pickerView == pickerView3)
@@ -152,12 +161,22 @@
     else if (pickerView == pickerView2)
     {
         if (row > 0)
-            self.T = [templates objectAtIndex:(row-1)];
+        {
+            if ([GEPatternField.text isEqualToString:@"Freshmen Pattern"])
+                self.T = [freshmenTemplates objectAtIndex:(row-1)];
+            else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
+            {
+                self.T = [transferTemplates objectAtIndex:row-1];
+            }
+        }
         templateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     }
     else if (pickerView == pickerView3)
     {
         GEPatternField.text = [self pickerView:pickerView3 titleForRow:row forComponent:component];
+        [pickerView2 selectRow:0 inComponent:0 animated:NO];
+        templateField.text = [self pickerView:pickerView2 titleForRow:0 forComponent:0];
+        [pickerView2 reloadAllComponents];
     }
 }
 
@@ -186,16 +205,26 @@
     semesterStarted.text = [NSString stringWithFormat:@"%@ %@", season, year];
     semesterStarted.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
     
+    self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]];
+    self.freshmenTemplates = [NSMutableArray new];
+    self.transferTemplates = [NSMutableArray new];
+    for (int i = 0; i < [self.templates count]; i++)
+    {
+        Template *t = [self.templates objectAtIndex:i];
+        if (t.pattern == GEPatternFreshman)
+            [self.freshmenTemplates addObject:t];
+        else if (t.pattern == GEPatternTransfer)
+            [self.transferTemplates addObject:t];
+    }
+    
+    self.templates = nil;
+    
     pickerView2 = [[UIPickerView alloc] init];
     pickerView2.delegate = self;
     pickerView2.dataSource = self;
     pickerView2.showsSelectionIndicator = YES;
     [pickerView2 selectRow:0 inComponent:0 animated:YES];
     templateField.inputView = pickerView2;
-    self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]];
-    Template *n = [templates lastObject];
-    NSLog(@"%@", @"YES");
-    NSLog(@"%@", n.name);
     templateField.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
     
     pickerView3 = [[UIPickerView alloc] init];
@@ -235,37 +264,21 @@
     return NO;
 }
 
-
-- (void)viewDidUnload
-{
-    [studentName release];
-    studentName = nil;
-    [semesterStarted release];
-    semesterStarted = nil;
-    [studentIDField release];
-    studentIDField = nil;
-    [templateField release];
-    templateField = nil;
-    [GEPatternField release];
-    GEPatternField = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
-}
-
 - (void)dealloc {
+    self.freshmenTemplates = nil;
+    self.transferTemplates = nil;
+    self.T = nil;
+    self.year = nil;
+    self.season = nil;
+    [pickerView1 release];
+    [pickerView2 release];
+    [pickerView3 release];
+    [parentController release];
     [studentName release];
     [semesterStarted release];
     [studentIDField release];
     [templateField release];
     [GEPatternField release];
-    [templates release];
-    [T release];
     [super dealloc];
 }
 @end

@@ -30,6 +30,7 @@
 }
 
 @property (nonatomic, retain) NSArray *templates;
+@property (nonatomic, retain) NSMutableArray *freshmenTemplates, *transferTemplates;
 @property (nonatomic, retain) NSString *year, *season;
 @property (nonatomic, retain) Template *T;
 @property (nonatomic, retain) LoginViewController *parentController;
