@@ -17,6 +17,7 @@
     
     IBOutlet UITextField *createTemplateField;
     IBOutlet UITextField *editTemplateField;
+    IBOutlet UITextField *gePatternField;
     
     NSArray *templates;
     LoginViewController *parentController;
