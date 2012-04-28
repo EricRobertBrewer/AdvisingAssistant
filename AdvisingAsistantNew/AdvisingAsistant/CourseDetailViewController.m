@@ -63,19 +63,6 @@
 
     assert(semesters);
     
-    /*
-    // set up the image
-    if (currentCourse.department.code == @"CS")
-        iconPic = [UIImage imageNamed:@"comppic.png"];
-    else
-        iconPic = [UIImage imageNamed:@"Sonoma_State_University.gif"];
-    
-    iconPicView = [[UIImageView alloc] initWithImage:iconPic];
-    iconPicView.frame = CGRectMake(25, 25, iconPic.size.width*0.7, iconPic.size.height*0.7);
-    [self.view addSubview:iconPicView];
-     */
-        
-    
     // set initial semester setting
     Semester *initialSemester = [semesters objectAtIndex:0];
     [semesterLabel setText:[initialSemester getDateAsString]];
@@ -193,30 +180,23 @@
 - (IBAction)moveCourseClicked:(id)sender {
     
     Semester *semesterToMoveFrom = nil;
-    Course *courseToBeRemoved = nil;
     
     // the semester to get course from... if it can't be found
     // ALREADY in schedule, no move can be done.
     if ((semesterToMoveFrom = [self getSemesterWithCourse])) {
-        if ((courseToBeRemoved = [self getCourseFromSemester:semesterToMoveFrom])) {
             NSLog(@"CourseToBeRemoved contains the course to be removed successfully!");
             
             // Search for semester object that the user selected in the array of semesters
             // Do the move TO that semester FROM "semesterToMoveFrom"
             for (Semester *sem in self.semesters) {
-                
                 if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-                    [semesterToMoveFrom.courses removeObject:courseToBeRemoved];
+                    [semesterToMoveFrom.courses removeObject:self.currentCourse];
                     [sem.courses addObject:self.currentCourse];
                     
                     [self.delegate didTapSave:self.currentCourse];
                     [self dismissModalViewControllerAnimated:NO];
                 }
             }
-        }
-        else {
-            NSLog(@"Did not find the course to be REMOVED (or error)");
-        }
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course can't be moved" 
@@ -231,7 +211,25 @@
 }
 
 - (IBAction)removeCourseClicked:(id)sender {
-    // TODO
+    
+    Semester *semesterToRemoveFrom = nil;
+    
+    if ((semesterToRemoveFrom = [self getSemesterWithCourse])) {
+        
+        [semesterToRemoveFrom.courses removeObject:self.currentCourse];
+        [self.delegate didTapSave:self.currentCourse];
+        [self dismissModalViewControllerAnimated:NO];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course can't be removed" 
+                                                          message:@"The course you selected is not currently in the schedule and is not able to be removed." 
+                                                         delegate:self 
+                                                cancelButtonTitle:@"OK" 
+                                                otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+
 }
 
 - (void)viewDidUnload {
