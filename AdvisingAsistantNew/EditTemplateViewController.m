@@ -169,6 +169,11 @@
         Template *temp = [[[Template alloc] init] autorelease];
         temp.name = createTemplateField.text;
         temp.department = [dRepo departmentWithCode:@"CS"];
+        if ([gePatternField.text isEqualToString:@"Freshman Pattern"])
+            temp.pattern = GEPatternFreshman;
+        else if ([gePatternField.text isEqualToString:@"Transfer Pattern"])
+            temp.pattern = GEPatternTransfer;
+
         [repo saveTemplate:temp];
         editedTemplate = [[repo templateForName:temp.name inDepartment:temp.department] retain];;
         [self dismissModalViewControllerAnimated:YES];
