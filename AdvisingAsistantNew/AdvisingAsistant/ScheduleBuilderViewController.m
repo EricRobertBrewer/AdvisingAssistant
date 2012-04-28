@@ -15,7 +15,8 @@
 @synthesize semesters = _semesters;
 @synthesize semesterTables = _semesterTables;
 @synthesize sideNavController = _sideNavController;
-@synthesize currentTemplate, currentStudent;
+@synthesize currentTemplate = _currentTemplate;
+@synthesize currentStudent = _currentStudent;
 @synthesize barTitle = _barTitle;
 
 -(void)dealloc {
@@ -72,17 +73,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    self.navigationItem.hidesBackButton = YES;    
-    UIBarButtonItem *logoutBtn = [[UIBarButtonItem alloc] 
-                                  initWithTitle:@"Logout"                                            
-                                  style:UIBarButtonItemStyleBordered 
-                                  target:self
-                                  action:@selector(didTapLogout:)];
-    self.navigationItem.rightBarButtonItem = logoutBtn;
-    */
-    
-    
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = topBar.bounds;
@@ -91,10 +81,12 @@
     [self.view addSubview:topBar];
     [topBar release];
     
-    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [logoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
     [logoutBtn addTarget:self action:@selector(didTapLogout:) forControlEvents:UIControlEventTouchDown];
-    logoutBtn.frame = CGRectMake(900, 15, 80, 40);
+    logoutBtn.frame = CGRectMake(900, 15, 107, 38);
+    [logoutBtn setImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
+    logoutBtn.alpha = 0.7;
     [self.view addSubview:logoutBtn];
     
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(62, 15, 400, 40)];
