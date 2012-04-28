@@ -13,7 +13,7 @@
 @end
 
 @implementation EditTemplateViewController
-@synthesize parentController;
+@synthesize parentController, pickerView1, pickerView2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,8 +38,15 @@
 }
 
 - (void) pickerView:(UIPickerView *)pv didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    editedTemplate = [[templates objectAtIndex:row] retain];
-    editTemplateField.text = [self pickerView:pv titleForRow:row forComponent:component];
+    if (pv == self.pickerView1)
+    {
+        editedTemplate = [[templates objectAtIndex:row] retain];
+        editTemplateField.text = [self pickerView:pv titleForRow:row forComponent:component];
+    }
+    else if (pv == self.pickerView2)
+    {
+        gePatternField.text = [self pickerView:pv titleForRow:row forComponent:component];
+    }
 }
 
 /*- (UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
@@ -88,15 +95,25 @@
     templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
     editedTemplate = [[templates objectAtIndex:0] retain];
     
-    pickerView = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
-    pickerView.delegate = self;
-    pickerView.dataSource = self;
-    pickerView.showsSelectionIndicator = YES;
+    self.pickerView1 = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
+    self.pickerView1.delegate = self;
+    self.pickerView1.dataSource = self;
+    self.pickerView1.showsSelectionIndicator = YES;
     
-    [pickerView selectRow:0 inComponent:0 animated:YES];
-    editTemplateField.inputView = pickerView;
+    [self.pickerView1 selectRow:0 inComponent:0 animated:YES];
+    editTemplateField.inputView = self.pickerView1;
     editTemplateField.inputView.frame = CGRectMake(0, 0, 100, 100);
-    editTemplateField.text = [self pickerView:pickerView titleForRow:0 forComponent:0];
+    editTemplateField.text = [self pickerView:self.pickerView1 titleForRow:0 forComponent:0];
+    
+    self.pickerView2 = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
+    self.pickerView2.delegate = self;
+    self.pickerView2.dataSource = self;
+    self.pickerView2.showsSelectionIndicator = YES;
+    
+    [self. pickerView2 selectRow:0 inComponent:0 animated:YES];
+    gePatternField.inputView = self.pickerView2;
+    gePatternField.inputView.frame = CGRectMake(0, 0, 100, 100);
+    gePatternField.text = [self pickerView:self.pickerView2 titleForRow:0 forComponent:0];
 }
 
 - (void)viewDidUnload
@@ -153,9 +170,9 @@
     [repo deleteTemplate:editedTemplate];
     [templates release];
     templates = [[repo allTemplates] retain];
-    [pickerView reloadAllComponents];
-    [pickerView selectRow:0 inComponent:0 animated:YES];
-    editTemplateField.text = [self pickerView:pickerView titleForRow:0 forComponent:0];
+    [self.pickerView1 reloadAllComponents];
+    [self.pickerView1 selectRow:0 inComponent:0 animated:YES];
+    editTemplateField.text = [self pickerView:self.pickerView1 titleForRow:0 forComponent:0];
     
 }
 

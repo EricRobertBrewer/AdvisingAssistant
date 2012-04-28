@@ -29,8 +29,43 @@
     self.delegate = nil;
     self.currentCourse = nil;
     [btnRemoveCourse release];
+    [customCourseName release];
+    [txtCoursePrereqs release];
     [super dealloc];
 }
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [textField resignFirstResponder];
+
+        return YES;
+    }
+    return  YES;
+}
+
+- (BOOL) disablesAutomaticKeyboardDismissal {
+    return NO;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [UIView beginAnimations:nil context:nil];
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y+200);
+        [UIView commitAnimations];
+    }
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == customCourseName)
+    {
+        [UIView beginAnimations:nil context:nil];
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y-200);
+        [UIView commitAnimations];
+    }
+}
+
 
 -(id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems
 {
@@ -126,6 +161,12 @@
     for (Semester *sem in self.semesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
             if (![self getSemesterWithCourse]) {
+                
+                // User may have accidentally typed in 1 or 2 characters lol
+                if (customCourseName.text.length > 2) {
+                    self.currentCourse.customName = customCourseName.text;
+                }
+                
                 [sem.courses addObject:self.currentCourse];
                 [self.delegate didTapSave:self.currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
@@ -235,6 +276,10 @@
 - (void)viewDidUnload {
     [btnRemoveCourse release];
     btnRemoveCourse = nil;
+    [customCourseName release];
+    customCourseName = nil;
+    [txtCoursePrereqs release];
+    txtCoursePrereqs = nil;
     [super viewDidUnload];
 }
 @end
