@@ -73,6 +73,10 @@
     if (self) {
         self.currentCourse = course;
         self.semesters = sems;
+        
+        CourseRepo *cr = [CourseRepo defaultRepo];
+        
+        prereqs = [cr prereqsForCourse:self.currentCourse];
     }
     return self;
 }
@@ -158,7 +162,18 @@
 // This is the function that will set into motion saving the course into the database
 // and visually displaying it on the schedule
 - (IBAction)addCourseClicked:(id)sender {
+    
+    int numPrereqs = [prereqs count];
+    int prereqsSatisfied = 0; // counter for prereqs
+
     for (Semester *sem in self.semesters) {
+        
+        // count those prereqs
+        for (Course *c in prereqs) {
+            if ([sem.courses containsObject:c])
+                prereqsSatisfied++;
+        }
+        
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
             if (![self getSemesterWithCourse]) {
                 
@@ -167,13 +182,25 @@
                     self.currentCourse.customName = customCourseName.text;
                 }
                 
-                [sem.courses addObject:self.currentCourse];
-                [self.delegate didTapSave:self.currentCourse]; 
-                [self dismissModalViewControllerAnimated:NO];
+                // This check makes sure the prereqs are satisfied!
+                if (prereqsSatisfied >= numPrereqs) {
+                    [sem.courses addObject:self.currentCourse];
+                    [self.delegate didTapSave:self.currentCourse]; 
+                    [self dismissModalViewControllerAnimated:NO];
+                }
+                else {
+                    UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Prerequisites Not Satisfied" 
+                                                                      message:@"You have not met the course's prerequisites." 
+                                                                     delegate:self 
+                                                            cancelButtonTitle:@"OK" 
+                                                            otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
+                }
             }
             else {
                 UIAlertView *alert = [[UIAlertView alloc]   initWithTitle:@"Course already added" 
-                                                                  message:@"The course you selected is already in the schedule" 
+                                                                  message:@"The course you selected is already in the schedule." 
                                                                  delegate:self 
                                                         cancelButtonTitle:@"OK" 
                                                         otherButtonTitles:nil];
