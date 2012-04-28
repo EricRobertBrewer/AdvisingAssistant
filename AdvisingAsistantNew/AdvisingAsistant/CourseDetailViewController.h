@@ -29,6 +29,8 @@
     IBOutlet UIButton *btnMoveCourse;
     IBOutlet UIButton *btnRemoveCourse;
     IBOutlet UIButton *closeView;
+    IBOutlet UITextField *customCourseName;
+    IBOutlet UITextView *txtCoursePrereqs;
 }
 
 @property (nonatomic, assign) BOOL addCourse;

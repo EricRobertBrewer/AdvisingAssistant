@@ -29,6 +29,8 @@
     self.delegate = nil;
     self.currentCourse = nil;
     [btnRemoveCourse release];
+    [customCourseName release];
+    [txtCoursePrereqs release];
     [super dealloc];
 }
 
@@ -126,6 +128,12 @@
     for (Semester *sem in self.semesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
             if (![self getSemesterWithCourse]) {
+                
+                // User may have accidentally typed in 1 or 2 characters lol
+                if (customCourseName.text.length > 2) {
+                    self.currentCourse.customName = customCourseName.text;
+                }
+                
                 [sem.courses addObject:self.currentCourse];
                 [self.delegate didTapSave:self.currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
@@ -235,6 +243,10 @@
 - (void)viewDidUnload {
     [btnRemoveCourse release];
     btnRemoveCourse = nil;
+    [customCourseName release];
+    customCourseName = nil;
+    [txtCoursePrereqs release];
+    txtCoursePrereqs = nil;
     [super viewDidUnload];
 }
 @end
