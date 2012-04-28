@@ -31,6 +31,8 @@
     IBOutlet UIButton *closeView;
     IBOutlet UITextField *customCourseName;
     IBOutlet UITextView *txtCoursePrereqs;
+    
+    NSArray *prereqs;
 }
 
 @property (nonatomic, assign) BOOL addCourse;
