@@ -73,10 +73,13 @@
     assert(self.currentStudent);
 	
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
+	topBar.backgroundColor = [UIColor colorWithRed:0 green:81/255.0 blue:164/255.0 alpha:1];
+	/*
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = topBar.bounds;
     gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:0 green:120/255.0 blue:200/255.0 alpha:1] CGColor], (id)[[UIColor colorWithRed:0 green:60/255.0 blue:140/255.0 alpha:1] CGColor], nil];
     [topBar.layer insertSublayer:gradient atIndex:0];
+	*/
     [self.view addSubview:topBar];
     [topBar release];
     

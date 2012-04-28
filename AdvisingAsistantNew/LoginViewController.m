@@ -16,48 +16,18 @@
 @implementation LoginViewController
 @synthesize nextController, studentIDTextField;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == studentIDTextField) {
         [self didTapGo:(UITextField *)textField];
-        return YES;
     }
     return NO;
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    [studentIDTextField becomeFirstResponder];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     repo = [StudentRepo defaultRepo];
 	[studentIDTextField becomeFirstResponder];
-}
-
-- (void)viewDidUnload
-{
-    [studentIDTextField release];
-    studentIDTextField = nil;
-    [goBttn release];
-    goBttn = nil;
-    [editBttn release];
-    editBttn = nil;
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -65,16 +35,16 @@
 	return YES;
 }
 
-- (void)dealloc {
-
+- (void)dealloc
+{
     [studentIDTextField release];
     [goBttn release];
     [editBttn release];
     [super dealloc];
 }
-- (IBAction)didTapGo:(id)sender {
-    [studentIDTextField resignFirstResponder];
-    
+
+- (IBAction)didTapGo:(id)sender
+{
     if ([studentIDTextField.text length] <= 0)
         return;
     
@@ -106,7 +76,8 @@
     
 }
 
-- (IBAction)didTapEdit:(id)sender {
+- (IBAction)didTapEdit:(id)sender
+{
     EditTemplateViewController *modalView = [[[EditTemplateViewController alloc] init] autorelease];
     modalView.parentController = self;
     modalView.modalPresentationStyle = UIModalPresentationFormSheet;
