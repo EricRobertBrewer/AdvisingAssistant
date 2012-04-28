@@ -27,9 +27,11 @@
     IBOutlet UILabel *semesterLabel;
     IBOutlet UIButton *btnAddCourse;
     IBOutlet UIButton *btnMoveCourse;
+    IBOutlet UIButton *btnRemoveCourse;
     IBOutlet UIButton *closeView;
 }
 
+@property (nonatomic, assign) BOOL addCourse;
 @property (nonatomic, retain) Course *currentCourse;
 @property (nonatomic, retain) ScheduleBuilderViewController *delegate;
 @property (nonatomic, retain) NSMutableArray *semesters;
@@ -38,6 +40,7 @@
 - (IBAction)StepperPressed:(id)sender;
 - (IBAction)tappedCloseView:(id)sender;
 - (IBAction)moveCourseClicked:(id)sender;
+- (IBAction)removeCourseClicked:(id)sender;
 
 - (Course *)getCourseFromSemester:(Semester *)semester;
 - (Semester *)getSemesterWithCourse;
