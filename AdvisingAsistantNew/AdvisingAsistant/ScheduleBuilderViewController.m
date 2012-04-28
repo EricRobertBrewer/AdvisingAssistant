@@ -17,7 +17,6 @@
 @synthesize sideNavController = _sideNavController;
 @synthesize currentTemplate = _currentTemplate;
 @synthesize currentStudent = _currentStudent;
-@synthesize barTitle = _barTitle;
 
 -(void)dealloc {
 	self.semesters = nil;
@@ -25,7 +24,6 @@
 	self.sideNavController = nil;
     self.currentStudent = nil;
     self.currentTemplate = nil;
-    self.barTitle = nil;
 	[super dealloc];
 }
 
@@ -37,7 +35,7 @@
 	return YES;
 }
 
--(void)initSideTableWithPattern:(GEPattern)pattern date:(SemesterDate)date department:(Department *)department semesters:(NSMutableArray *)semesters {
+-(void)setupSideTableWithPattern:(GEPattern)pattern date:(SemesterDate)date department:(Department *)department semesters:(NSMutableArray *)semesters {
 	SideTableViewController *sideTable = [[SideTableViewController alloc] initWithGEPattern:pattern date:date Department:department andSemesterArray:semesters];
     sideTable.delagate = self;
 	self.sideNavController = [[[UINavigationController alloc] initWithRootViewController:sideTable] autorelease];
@@ -51,9 +49,9 @@
     if (self) {
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForStudent:student]];
-		[self initSideTableWithPattern:student.pattern date:student.started department:department semesters:self.semesters];
-		self.barTitle = student.name;
+		self.title = student.name;
         self.currentStudent = student;
+		[self setupSideTableWithPattern:student.pattern date:student.started department:department semesters:self.semesters];
     }
     return self;
 }
@@ -63,16 +61,17 @@
     if (self) {
         SemesterRepo *semRepo = [SemesterRepo defaultRepo];
         self.semesters = [NSMutableArray arrayWithArray:[semRepo semestersForTemplate:template]];
-		[self initSideTableWithPattern:GEPatternFreshman date:SemesterDateNow() department:template.department semesters:self.semesters];
-        self.barTitle = template.name;
+        self.title = template.name;
         self.currentTemplate = template;
+		[self setupSideTableWithPattern:GEPatternFreshman date:SemesterDateNow() department:template.department semesters:self.semesters];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    assert(self.currentStudent);
+	
     UIView *topBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, BAR_HEIGHT)];
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = topBar.bounds;
@@ -89,12 +88,15 @@
     logoutBtn.alpha = 0.7;
     [self.view addSubview:logoutBtn];
     
-    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(62, 15, 400, 40)];
-    titleLbl.text = self.barTitle;
+    UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(62, 11, 400, 40)];
+    titleLbl.text = self.title;
     titleLbl.textColor = [UIColor whiteColor];
     titleLbl.backgroundColor = [UIColor clearColor];
     titleLbl.font = [UIFont systemFontOfSize:30];
     [self.view addSubview:titleLbl];
+	titleLbl.shadowOffset = CGSizeMake(1, 1);
+	titleLbl.shadowColor = [UIColor blackColor];
+	[titleLbl release];
 	
 	self.semesterTables = [NSMutableArray array];
 	
@@ -105,21 +107,15 @@
 	scrollView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview:scrollView];
 	
-	// Make a semester repo with student, returns array of semesters
-	// Each semester is an array of courses and has a date (term and year)
-	
 	int numberOfSemesters = [self.semesters count];
 	
-	scrollView.contentSize = CGSizeMake(673, BAR_HEIGHT+15+295+((numberOfSemesters/2)*295));
+	scrollView.contentSize = CGSizeMake(673, 15+295+((numberOfSemesters/2)*295));
 	
 	for (int i = 0; i < numberOfSemesters; i++) {
-		// Create tables for scrollview
+		// Create semester tables for scrollview
 		Semester *tempSemester = [self.semesters objectAtIndex:i];
 		SemesterTableViewController *tempSemesterTable = [[SemesterTableViewController alloc] initWithSemester:tempSemester andSemesterArray:self.semesters];
 		tempSemesterTable.delagate = self;
-        
-		// for Y switch spring side to match index of fall side (-1) then divide that by 2 (except 0) and multiply by offset (295)
-		// EDIT talk to someone from group, fall always even?
 		
 		UILabel *semesterLabel = [[UILabel alloc] init];
 		semesterLabel.text = FormatSemesterDate(tempSemester.date);
@@ -135,8 +131,8 @@
 		}
 
 		int multiplier = (i/2);
-		[semesterLabel setFrame:CGRectMake(labelX, BAR_HEIGHT+((295*multiplier)+15), 100, 21)];
-		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, BAR_HEIGHT+((295*multiplier)+50), 236, 230)];
+		[semesterLabel setFrame:CGRectMake(labelX, ((295*multiplier)+15), 100, 21)];
+		[tempSemesterTable.tableView setFrame:CGRectMake(tableX, ((295*multiplier)+50), 236, 230)];
 		
 		[scrollView addSubview:semesterLabel];
 		[self.semesterTables addObject:tempSemesterTable];

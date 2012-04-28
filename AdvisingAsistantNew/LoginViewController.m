@@ -98,9 +98,10 @@
     else
     {
         DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
-        ScheduleBuilderViewController *schedule = [[[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[dRepo departmentWithCode:@"CS"]] autorelease];
+        ScheduleBuilderViewController *schedule = [[ScheduleBuilderViewController alloc] initWithStudent:temp andDepartment:[dRepo departmentWithCode:@"CS"]];
         studentIDTextField.text = @"";
         [self.navigationController pushViewController:schedule animated:YES];
+		[schedule release];
     }
     
 }
