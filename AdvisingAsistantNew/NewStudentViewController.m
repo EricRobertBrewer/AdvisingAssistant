@@ -122,7 +122,7 @@
     {
         if (row == 0)
             return @"";
-        Template *temp = [self.templates objectAtIndex:row-1];
+        Template *temp = [self.templates objectAtIndex:(row-1)];
         return temp.name;
     }
     else if (pickerView == pickerView3)
@@ -151,7 +151,8 @@
     }
     else if (pickerView == pickerView2)
     {
-        self.T = [templates objectAtIndex:row];
+        if (row > 0)
+            self.T = [templates objectAtIndex:(row-1)];
         templateField.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     }
     else if (pickerView == pickerView3)
