@@ -44,9 +44,8 @@
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
     
     Course *course = [self.semester.courses objectAtIndex:indexPath.row];
-    NSString *name = (course.customName) ? course.customName : course.name;
     
-    cell.textLabel.text = name;
+    cell.textLabel.text = course.nameOrCustomName;
     
     
     UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];

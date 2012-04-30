@@ -58,6 +58,11 @@
         && [self.number isEqualToString:course.number];
 }
 
+-(NSString *)nameOrCustomName {
+    if (self.customName) return self.customName;
+    return self.name;
+}
+
 -(NSArray *)missing:(NSArray *)criteria withSemesters:(NSArray *)semesters by:(SemesterDate)date {
     NSMutableArray *missing = [NSMutableArray array];
     for (Course *course in criteria) {
