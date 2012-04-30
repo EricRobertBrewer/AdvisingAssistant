@@ -12,6 +12,7 @@
 #import "Student.h"
 #import "Semester.h"
 #import "Department.h"
+#import "CourseWarningButtonView.h"
 //#import "ScheduleBuilderViewController.h"
 
 @class ScheduleBuilderViewController;
@@ -40,6 +41,8 @@
 @property (nonatomic, retain) NSArray *prereqs;
 @property (nonatomic, retain) NSArray *coreqs;
 @property (nonatomic, retain) NSMutableArray *semesters;
+@property (nonatomic, retain) CourseWarningButtonView *cwbv;
+@property (nonatomic, assign) SemesterDate semesterDate;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
@@ -47,7 +50,7 @@
 - (IBAction)moveCourseClicked:(id)sender;
 - (IBAction)removeCourseClicked:(id)sender;
 
-- (void)setSemesterDate:(SemesterDate)sd;
+- (Semester *)getSemesterWithDate:(SemesterDate)sd;
 - (Course *)getCourseFromSemester:(Semester *)semester;
 - (Semester *)getSemesterWithCourse;
 - (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
