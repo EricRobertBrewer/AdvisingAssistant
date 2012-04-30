@@ -76,9 +76,11 @@
         self.semesters = sems;
         
         CourseRepo *cr = [CourseRepo defaultRepo];
+        
 
         self.prereqs = [cr prereqsForCourse:self.currentCourse];
         self.coreqs = [cr coreqsForCourse:self.currentCourse];
+        prereqs = [[cr prereqsForCourse:self.currentCourse] retain];
 
     }
     return self;
@@ -199,8 +201,8 @@
 
     for (Semester *sem in self.semesters) {
         
-        //if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            //if (![self getSemesterWithCourse]) {
+        if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
+            if (![self getSemesterWithCourse]) {
                 
                 // User may have accidentally typed in 1 or 2 characters lol
                 if (customCourseName.text.length > 2) {
@@ -210,8 +212,8 @@
                 [sem.courses addObject:self.currentCourse];
                 [self.delegate didTapSave:self.currentCourse]; 
                 [self dismissModalViewControllerAnimated:NO];
-            //}
-        //}
+            }
+        }
     }
 }
 
@@ -261,11 +263,14 @@
 
     for (Semester *sem in self.semesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            [semesterToMoveFrom.courses removeObject:self.currentCourse];
-            [sem.courses addObject:self.currentCourse];
+            semesterToMoveFrom = [self getSemesterWithCourse];
+            if (semesterToMoveFrom != nil) {
+                [semesterToMoveFrom.courses removeObject:self.currentCourse];
+                [sem.courses addObject:self.currentCourse];
                     
-            [self.delegate didTapSave:self.currentCourse];
-            [self dismissModalViewControllerAnimated:NO];
+                [self.delegate didTapSave:self.currentCourse];
+                [self dismissModalViewControllerAnimated:NO];
+            }
         }
     }
 }
@@ -274,6 +279,7 @@
     
     Semester *semesterToRemoveFrom = nil;
     
+    semesterToRemoveFrom = [self getSemesterWithCourse];
     [semesterToRemoveFrom.courses removeObject:self.currentCourse];
     [self.delegate didTapSave:self.currentCourse];
     [self dismissModalViewControllerAnimated:NO];
