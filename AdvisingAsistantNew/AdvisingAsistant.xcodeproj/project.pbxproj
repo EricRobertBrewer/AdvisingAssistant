@@ -335,6 +335,13 @@
 			name = ScheduleBuilderView;
 			sourceTree = "<group>";
 		};
+		3F5FCF50154F3D490077BD31 /* EmailExporter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EmailExporter;
+			sourceTree = "<group>";
+		};
 		E09988471533953600C56ADC /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +455,7 @@
 		E3861E3C153163F700D9073A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3F5FCF50154F3D490077BD31 /* EmailExporter */,
 				E39184FF153F72E10072B49B /* Helpers */,
 				E3861E411531647600D9073A /* Student.h */,
 				E3861E421531647600D9073A /* Student.m */,
