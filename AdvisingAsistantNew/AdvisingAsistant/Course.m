@@ -7,6 +7,8 @@
 //
 
 #import "Course.h"
+#import "CourseRepo.h"
+#import "Semester.h"
 
 @implementation Course
 
@@ -28,7 +30,6 @@
 }
 
 -(NSString *)name {
-	if (self.customName && self.customName.length > 0) return self.customName;
 	return [NSString stringWithFormat:@"%@ %@", self.department.code, self.number];
 }
 
@@ -50,6 +51,37 @@
 
 +(Course *)courseWithCourse:(Course *)course {
 	return [[[Course alloc] initWithCourse:course] autorelease];
+}
+
+-(BOOL)isEqualToCourse:(Course *)course {
+    return [self.department isEqualToDepartment:course.department]
+        && [self.number isEqualToString:course.number];
+}
+
+-(BOOL)meets:(NSArray *)criteria withSemesters:(NSArray *)semesters {
+    for (Course *course in criteria) {
+        BOOL found = false;
+        for (Semester *semester in semesters) {
+            for (Course *c in semester.courses) {
+                if ([course isEqualToCourse:c]) {
+                    found = YES;
+                    break;
+                }
+            }
+        }
+        if (!found) return NO;
+    }
+    return YES;
+}
+
+-(BOOL)meetsPrereqs:(NSArray *)semesters {
+    NSArray *prereqs = [[CourseRepo defaultRepo] prereqsForCourse:self];
+    return [self meets:prereqs withSemesters:semesters];
+}
+
+-(BOOL)meetsCoreqs:(NSArray *)semesters {
+    NSArray *coreqs = [[CourseRepo defaultRepo] coreqsForCourse:self];
+    return [self meets:coreqs withSemesters:semesters];
 }
 
 @end

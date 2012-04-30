@@ -54,10 +54,16 @@ static CourseRepo *instance = nil;
 */
 
 -(NSArray *)prereqsForCourse:(Course *)course {
-    return [NSArray array];
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getPrereqsForCourse.php"];
+    [options.postData setValue:course.department.code forKey:@"DepartmentID"];
+    [options.postData setValue:course.number forKey:@"CourseID"];
+    return [self coursesFromDicts:[self connect:options]];
 }
 -(NSArray *)coreqsForCourse:(Course *)course {
-    return [NSArray array];
+    ConnectOptions *options = [ConnectOptions optionsWithUrl:@"getCoreqsForCourse.php"];
+    [options.postData setValue:course.department.code forKey:@"DepartmentID"];
+    [options.postData setValue:course.number forKey:@"CourseID"];
+    return [self coursesFromDicts:[self connect:options]];
 }
 
 -(NSArray *)coursesForArea:(Area *)area {

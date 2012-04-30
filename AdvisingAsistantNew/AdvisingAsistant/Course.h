@@ -31,4 +31,9 @@ typedef enum {
 -(id)initWithCourse:(Course *)course;
 +(Course *)courseWithCourse:(Course *)course; // Make a copy
 
+-(BOOL)isEqualToCourse:(Course *)course;
+
+-(BOOL)meetsPrereqs:(NSArray *)semesters;
+-(BOOL)meetsCoreqs:(NSArray *)semesters;
+
 @end
