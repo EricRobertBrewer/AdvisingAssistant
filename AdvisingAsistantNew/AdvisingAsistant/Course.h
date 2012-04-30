@@ -34,7 +34,9 @@ typedef enum {
 
 -(BOOL)isEqualToCourse:(Course *)course;
 
--(BOOL)meetsPrereqs:(NSArray *)semesters by:(SemesterDate)semester;
--(BOOL)meetsCoreqs:(NSArray *)semesters by:(SemesterDate)semester;
+// Returns an empty array if no missing prereqs
+// Array of courses
+-(NSArray *)missingPrereqs:(NSArray *)semesters by:(SemesterDate)semester;
+-(NSArray *)missingCoreqs:(NSArray *)semesters by:(SemesterDate)semester;
 
 @end
