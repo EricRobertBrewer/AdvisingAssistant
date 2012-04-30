@@ -31,6 +31,7 @@
     [btnRemoveCourse release];
     [customCourseName release];
     [txtCoursePrereqs release];
+    [imgIsValid release];
     [super dealloc];
 }
 
@@ -108,6 +109,18 @@
     [self.view addSubview:greenCheck];
     [self.view addSubview:redX];
     redX.hidden = YES;
+    
+    // set up course validity image
+    
+    
+    // set up prerequisites
+    NSMutableString *prereqString = [[NSMutableString alloc] init];
+    
+    for (Course *c in prereqs) {
+        [prereqString appendFormat:@"%@ ", c.name];
+    }
+    
+    [txtCoursePrereqs setText:prereqString];
     
     // set initial semester setting
     Semester *initialSemester = [semesters objectAtIndex:0];
@@ -315,6 +328,8 @@
     customCourseName = nil;
     [txtCoursePrereqs release];
     txtCoursePrereqs = nil;
+    [imgIsValid release];
+    imgIsValid = nil;
     [super viewDidUnload];
 }
 @end

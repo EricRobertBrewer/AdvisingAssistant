@@ -15,6 +15,7 @@
 			<string>IBProxyObject</string>
 			<string>IBUIStepper</string>
 			<string>IBUILabel</string>
+			<string>IBUIImageView</string>
 			<string>IBUITextField</string>
 			<string>IBUITextView</string>
 			<string>IBUIButton</string>
@@ -78,7 +79,7 @@
 					<object class="IBUILabel" id="73612589">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{73, 180}, {57, 22}}</string>
+						<string key="NSFrame">{{66, 180}, {64, 22}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="717371022"/>
@@ -92,7 +93,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Grade:</string>
+						<string key="IBUIText">Coreqs:</string>
 						<reference key="IBUITextColor" ref="1063816262"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -333,7 +334,7 @@
 						<string key="NSFrame">{{290, 453}, {135, 40}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1060187169"/>
+						<reference key="NSNextKeyView" ref="584949636"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -432,6 +433,7 @@
 						<string key="NSFrame">{{229, 554}, {262, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:320</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -532,6 +534,17 @@
 						</object>
 						<reference key="IBUIFontDescription" ref="406896426"/>
 						<reference key="IBUIFont" ref="126400401"/>
+					</object>
+					<object class="IBUIImageView" id="584949636">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{433, 455}, {35, 35}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="1060187169"/>
+						<string key="NSReuseIdentifierKey">_NS:569</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {540, 600}}</string>
@@ -676,6 +689,14 @@
 					<int key="connectionID">42</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">imgIsValid</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="584949636"/>
+					</object>
+					<int key="connectionID">45</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">addCourseClicked:</string>
 						<reference key="source" ref="317009409"/>
@@ -770,6 +791,7 @@
 							<reference ref="130494621"/>
 							<reference ref="803586203"/>
 							<reference ref="925980056"/>
+							<reference ref="584949636"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -863,6 +885,11 @@
 						<reference key="object" ref="130494621"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">44</int>
+						<reference key="object" ref="584949636"/>
+						<reference key="parent" ref="766721923"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -884,6 +911,7 @@
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="41.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="44.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -894,7 +922,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">43</int>
+			<int key="maxID">45</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -936,6 +964,7 @@
 						<string key="btnRemoveCourse">UIButton</string>
 						<string key="closeView">UIButton</string>
 						<string key="customCourseName">UITextField</string>
+						<string key="imgIsValid">UIImageView</string>
 						<string key="lblCourseName">UILabel</string>
 						<string key="lblGrade">UILabel</string>
 						<string key="lblUnits">UILabel</string>
@@ -964,6 +993,10 @@
 						<object class="IBToOneOutletInfo" key="customCourseName">
 							<string key="name">customCourseName</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="imgIsValid">
+							<string key="name">imgIsValid</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="lblCourseName">
 							<string key="name">lblCourseName</string>
