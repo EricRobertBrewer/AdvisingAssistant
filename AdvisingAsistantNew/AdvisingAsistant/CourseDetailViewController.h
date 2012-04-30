@@ -31,6 +31,7 @@
     IBOutlet UIButton *closeView;
     IBOutlet UITextField *customCourseName;
     IBOutlet UITextView *txtCoursePrereqs;
+    IBOutlet UIImageView *imgIsValid;
     
     NSArray *prereqs;
 }
