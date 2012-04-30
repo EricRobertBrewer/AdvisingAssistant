@@ -11,11 +11,19 @@
 @implementation CourseWarningButtonView
 @synthesize prereqs, coreqs;
 
+- (void)didTapWarning:(id) selector {
+    if ([prereqs count] != 0)
+        [AANotify present:CKNotifyAlertTypeInfo title:@"a string that I am going to set" body:@"a string that I'm going to set" duration:5];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self action:@selector(didTapWarning:) forControlEvents:UIControlEventTouchDown];
+        button.imageView.image = [UIImage imageNamed:@"warning"];
+        [self addSubview:button];
     }
     return self;
 }
