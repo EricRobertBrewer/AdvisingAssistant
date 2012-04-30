@@ -17,6 +17,7 @@
 @synthesize prereqs;
 @synthesize coreqs;
 @synthesize cwbv;
+@synthesize semesterDate;
 
 - (void)dealloc {
     [lblCourseName release];
@@ -92,6 +93,7 @@
 }
 
 - (void)setSemesterDate:(SemesterDate)sd {
+    semesterDate = sd;
     NSString *semDate = FormatSemesterDate(sd);
     
     for (Semester *s in self.semesters) {
@@ -219,6 +221,16 @@
     }
 }
 
+- (Semester *)getSemesterWithDate:(SemesterDate)sd {
+    for (Semester *s in self.semesters) {
+        if (SemesterDateEqual(s.date, sd)) {
+            return s;
+        }
+    }
+    
+    return nil;
+}
+
 // checks to see if a course is already in some semester
 // if it is, RETURNS that semester
 - (Semester *)getSemesterWithCourse {
@@ -284,7 +296,7 @@
     
     Semester *semesterToRemoveFrom = nil;
     
-    semesterToRemoveFrom = [self getSemesterWithCourse];
+    semesterToRemoveFrom = [self getSemesterWithDate:self.semesterDate];
     [semesterToRemoveFrom.courses removeObject:self.currentCourse];
     [self.delegate didTapSave:self.currentCourse];
     [self dismissModalViewControllerAnimated:NO];
