@@ -264,6 +264,10 @@
     return NO;
 }
 
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return YES;
+}
+
 - (void)dealloc {
     self.freshmenTemplates = nil;
     self.transferTemplates = nil;
