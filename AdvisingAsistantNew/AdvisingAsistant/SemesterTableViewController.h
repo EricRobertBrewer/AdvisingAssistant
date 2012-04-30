@@ -10,6 +10,7 @@
 #import "Semester.h"
 #import "SemesterDate.h"
 #import "CourseDetailViewController.h"
+#import "CourseWarningButtonView.h"
 
 @interface SemesterTableViewController : UITableViewController {
     

@@ -15,6 +15,7 @@
 #import "Semester.h"
 #import "SideTableViewController.h"
 #import "SemesterTableViewController.h"
+#import "CourseWarningButtonView.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
 
