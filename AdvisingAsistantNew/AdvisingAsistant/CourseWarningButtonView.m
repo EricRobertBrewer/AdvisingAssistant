@@ -13,7 +13,32 @@
 
 - (void)didTapWarning:(id) selector {
     if ([prereqs count] != 0)
-        [AANotify present:CKNotifyAlertTypeInfo title:@"a string that I am going to set" body:@"a string that I'm going to set" duration:5];
+    {
+        Course *t = [prereqs objectAtIndex:0];
+        NSString *courses = t.name;
+        for (int i = 1; i < [prereqs count]; i++)
+        {
+            if (i != [prereqs count]-1)
+                courses = [courses stringByAppendingString:@", "];
+            t = [prereqs objectAtIndex:i];
+            courses = [courses stringByAppendingString:t.name];
+        }
+        [AANotify present:CKNotifyAlertTypeInfo title:@"Prerequisits not met" body:[NSString stringWithFormat:@"Courses required:%@",courses] duration:5];
+    }
+    
+    if ([coreqs count] != 0)
+    {
+        Course *t = [coreqs objectAtIndex:0];
+        NSString *courses = t.name;
+        for (int i = 1; i < [coreqs count]; i++)
+        {
+            if (i != [coreqs count]-1)
+                courses = [courses stringByAppendingString:@", "];
+            t = [coreqs objectAtIndex:i];
+            courses = [courses stringByAppendingString:t.name];
+        }
+        [AANotify present:CKNotifyAlertTypeInfo title:@"Corequisits not met" body:[NSString stringWithFormat:@"Courses required:%@",courses] duration:5];
+    }
 }
 
 - (id)initWithFrame:(CGRect)frame
