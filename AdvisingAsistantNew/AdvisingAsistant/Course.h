@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Department.h"
+#import "SemesterDate.h"
 
 typedef enum {
 	AvailabileAll,
@@ -33,7 +34,7 @@ typedef enum {
 
 -(BOOL)isEqualToCourse:(Course *)course;
 
--(BOOL)meetsPrereqs:(NSArray *)semesters;
--(BOOL)meetsCoreqs:(NSArray *)semesters;
+-(BOOL)meetsPrereqs:(NSArray *)semesters by:(SemesterDate)semester;
+-(BOOL)meetsCoreqs:(NSArray *)semesters by:(SemesterDate)semester;
 
 @end

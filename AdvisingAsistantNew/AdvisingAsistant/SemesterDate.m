@@ -30,3 +30,19 @@ NSString *FormatSemesterDate(SemesterDate d) {
 SemesterDate SemesterDateNow(void) {
     return SemesterDateMake(SeasonSpring, 2012);
 }
+
+SemesterDate SemesterDatePrevious(SemesterDate d) {
+    if (d.season == SeasonFall) {
+        return SemesterDateMake(SeasonSpring, d.year);
+    } else {
+        return SemesterDateMake(SeasonFall, d.year-1);
+    }
+}
+
+BOOL SemesterDateGreaterThan(SemesterDate d1, SemesterDate d2) {
+    if (d1.year > d2.year) return true;
+    if (d1.year == d2.year) {
+        if (d1.season == SeasonFall && d2.season == SeasonSpring) return true;
+    }
+    return false;
+}

@@ -16,6 +16,8 @@
 		3F5C6BC4152FB77000835DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC3152FB77000835DBA /* main.m */; };
 		3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC7152FB77000835DBA /* AppDelegate.m */; };
 		3F5FCF4E154F3C420077BD31 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5FCF4D154F3C420077BD31 /* warning.png */; };
+		3F5FCF53154F3F680077BD31 /* EmailExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5FCF52154F3F680077BD31 /* EmailExporter.m */; };
+		3F5FCF55154F40650077BD31 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5FCF54154F40650077BD31 /* MessageUI.framework */; };
 		3F8AC3B01548CED000FC4F81 /* SecondSideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */; };
 		3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3565153FB4B5002FB67B /* SideTableViewController.m */; };
 		3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */; };
@@ -106,6 +108,9 @@
 		3F5C6BC6152FB77000835DBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5C6BC7152FB77000835DBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3F5FCF4D154F3C420077BD31 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		3F5FCF51154F3F680077BD31 /* EmailExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailExporter.h; sourceTree = "<group>"; };
+		3F5FCF52154F3F680077BD31 /* EmailExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailExporter.m; sourceTree = "<group>"; };
+		3F5FCF54154F40650077BD31 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3F8AC3AE1548CECF00FC4F81 /* SecondSideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondSideTableViewController.h; sourceTree = "<group>"; };
 		3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondSideTableViewController.m; sourceTree = "<group>"; };
 		3F9C3564153FB4B5002FB67B /* SideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideTableViewController.h; sourceTree = "<group>"; };
@@ -241,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5FCF55154F40650077BD31 /* MessageUI.framework in Frameworks */,
 				3F3A0993154B897900E362B9 /* QuartzCore.framework in Frameworks */,
 				E39184DE153F6CAC0072B49B /* libz.dylib in Frameworks */,
 				E39184DC153F6C9D0072B49B /* MobileCoreServices.framework in Frameworks */,
@@ -275,6 +281,7 @@
 		3F5C6BB6152FB77000835DBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F5FCF54154F40650077BD31 /* MessageUI.framework */,
 				3F3A0992154B897900E362B9 /* QuartzCore.framework */,
 				E39184DD153F6CAB0072B49B /* libz.dylib */,
 				E39184DB153F6C9D0072B49B /* MobileCoreServices.framework */,
@@ -294,6 +301,7 @@
 				E3CB4F1A1531756900D766DD /* CourseDetailViewController */,
 				E09988471533953600C56ADC /* LoginViewController */,
 				3F5C6BE6152FC27100835DBA /* ScheduleBuilderView */,
+				3F5FCF50154F3D490077BD31 /* EmailExporter */,
 				3F5C6BBE152FB77000835DBA /* Supporting Files */,
 				3F5C6BC6152FB77000835DBA /* AppDelegate.h */,
 				3F5C6BC7152FB77000835DBA /* AppDelegate.m */,
@@ -338,6 +346,8 @@
 		3F5FCF50154F3D490077BD31 /* EmailExporter */ = {
 			isa = PBXGroup;
 			children = (
+				3F5FCF51154F3F680077BD31 /* EmailExporter.h */,
+				3F5FCF52154F3F680077BD31 /* EmailExporter.m */,
 			);
 			name = EmailExporter;
 			sourceTree = "<group>";
@@ -455,7 +465,6 @@
 		E3861E3C153163F700D9073A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3F5FCF50154F3D490077BD31 /* EmailExporter */,
 				E39184FF153F72E10072B49B /* Helpers */,
 				E3861E411531647600D9073A /* Student.h */,
 				E3861E421531647600D9073A /* Student.m */,
@@ -674,6 +683,7 @@
 				E31BA4EE154C7AEE00B915CF /* CKAlertView.m in Sources */,
 				E31BA4F0154C7AEE00B915CF /* CKNotify.m in Sources */,
 				E31BA500154C7BE000B915CF /* AANotify.m in Sources */,
+				3F5FCF53154F3F680077BD31 /* EmailExporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

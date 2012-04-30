@@ -58,10 +58,11 @@
         && [self.number isEqualToString:course.number];
 }
 
--(BOOL)meets:(NSArray *)criteria withSemesters:(NSArray *)semesters {
+-(BOOL)meets:(NSArray *)criteria withSemesters:(NSArray *)semesters by:(SemesterDate)date {
     for (Course *course in criteria) {
         BOOL found = false;
         for (Semester *semester in semesters) {
+            if (SemesterDateGreaterThan(semester.date, date)) break;
             for (Course *c in semester.courses) {
                 if ([course isEqualToCourse:c]) {
                     found = YES;
@@ -74,14 +75,14 @@
     return YES;
 }
 
--(BOOL)meetsPrereqs:(NSArray *)semesters {
+-(BOOL)meetsPrereqs:(NSArray *)semesters by:(SemesterDate)date {
     NSArray *prereqs = [[CourseRepo defaultRepo] prereqsForCourse:self];
-    return [self meets:prereqs withSemesters:semesters];
+    return [self meets:prereqs withSemesters:semesters by:SemesterDatePrevious(date)];
 }
 
--(BOOL)meetsCoreqs:(NSArray *)semesters {
+-(BOOL)meetsCoreqs:(NSArray *)semesters by:(SemesterDate)date {
     NSArray *coreqs = [[CourseRepo defaultRepo] coreqsForCourse:self];
-    return [self meets:coreqs withSemesters:semesters];
+    return [self meets:coreqs withSemesters:semesters by:date];
 }
 
 @end
