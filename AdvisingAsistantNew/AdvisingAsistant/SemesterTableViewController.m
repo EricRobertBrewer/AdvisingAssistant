@@ -78,6 +78,7 @@
     CourseDetailViewController *courseDetail = [[[CourseDetailViewController alloc] initWithCourse:[self.semester.courses objectAtIndex:indexPath.row] andSemesters:self.semesterArray] autorelease];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     courseDetail.delegate = self.delagate;
+    [courseDetail setSemesterDate:self.semester.date];
     [self presentModalViewController:courseDetail animated:YES];
 }
 
