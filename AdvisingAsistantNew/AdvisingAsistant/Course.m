@@ -28,7 +28,6 @@
 }
 
 -(NSString *)name {
-	if (self.customName && self.customName.length > 0) return self.customName;
 	return [NSString stringWithFormat:@"%@ %@", self.department.code, self.number];
 }
 
