@@ -21,7 +21,7 @@
     
     IBOutlet UILabel *lblCourseName;
     IBOutlet UILabel *lblUnits;
-    IBOutlet UILabel *lblGrade;
+    IBOutlet UILabel *lblCoreqs;
     IBOutlet UITextView *txtCourseDesc;
     IBOutlet UIStepper *semesterStepper;
     IBOutlet UILabel *semesterLabel;
@@ -31,16 +31,16 @@
     IBOutlet UIButton *closeView;
     IBOutlet UITextField *customCourseName;
     IBOutlet UITextView *txtCoursePrereqs;
-    IBOutlet UIImageView *imgIsValid;
-    
-    NSArray *prereqs;
     
     UIImageView *redX, *greenCheck;
+    
 }
 
 @property (nonatomic, assign) BOOL addCourse;
 @property (nonatomic, retain) Course *currentCourse;
 @property (nonatomic, retain) ScheduleBuilderViewController *delegate;
+@property (nonatomic, retain) NSArray *prereqs;
+@property (nonatomic, retain) NSArray *coreqs;
 @property (nonatomic, retain) NSMutableArray *semesters;
 
 - (IBAction)addCourseClicked:(id)sender;
@@ -49,9 +49,9 @@
 - (IBAction)moveCourseClicked:(id)sender;
 - (IBAction)removeCourseClicked:(id)sender;
 
+- (void)setSemesterDate:(SemesterDate)sd;
 - (Course *)getCourseFromSemester:(Semester *)semester;
 - (Semester *)getSemesterWithCourse;
 - (id)initWithCourse:(Course *)course andSemesters:(NSMutableArray *)sems;
-- (void)showGrade:(NSString *)grade;
 
 @end
