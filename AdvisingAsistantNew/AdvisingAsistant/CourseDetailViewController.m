@@ -16,6 +16,7 @@
 @synthesize addCourse = _addCourse;
 @synthesize prereqs;
 @synthesize coreqs;
+@synthesize cwbv;
 
 - (void)dealloc {
     [lblCourseName release];
@@ -80,7 +81,11 @@
 
         self.prereqs = [cr prereqsForCourse:self.currentCourse];
         self.coreqs = [cr coreqsForCourse:self.currentCourse];
-        prereqs = [[cr prereqsForCourse:self.currentCourse] retain];
+
+        self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
+        
+        self.cwbv.prereqs = self.prereqs;
+        self.cwbv.coreqs = self.coreqs;
 
     }
     return self;
@@ -202,17 +207,14 @@
     for (Semester *sem in self.semesters) {
         
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            if (![self getSemesterWithCourse]) {
-                
-                // User may have accidentally typed in 1 or 2 characters lol
-                if (customCourseName.text.length > 2) {
-                    self.currentCourse.customName = customCourseName.text;
-                }
-                
-                [sem.courses addObject:self.currentCourse];
-                [self.delegate didTapSave:self.currentCourse]; 
-                [self dismissModalViewControllerAnimated:NO];
+            // User may have accidentally typed in 1 or 2 characters lol
+            if (customCourseName.text.length > 2) {
+                self.currentCourse.customName = customCourseName.text;
             }
+                
+            [sem.courses addObject:self.currentCourse];
+            [self.delegate didTapSave:self.currentCourse]; 
+            [self dismissModalViewControllerAnimated:NO];
         }
     }
 }

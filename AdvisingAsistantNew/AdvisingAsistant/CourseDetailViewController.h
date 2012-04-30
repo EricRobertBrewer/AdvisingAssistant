@@ -12,6 +12,7 @@
 #import "Student.h"
 #import "Semester.h"
 #import "Department.h"
+#import "CourseWarningButtonView.h"
 //#import "ScheduleBuilderViewController.h"
 
 @class ScheduleBuilderViewController;
@@ -40,6 +41,7 @@
 @property (nonatomic, retain) NSArray *prereqs;
 @property (nonatomic, retain) NSArray *coreqs;
 @property (nonatomic, retain) NSMutableArray *semesters;
+@property (nonatomic, retain) CourseWarningButtonView *cwbv;
 
 - (IBAction)addCourseClicked:(id)sender;
 - (IBAction)StepperPressed:(id)sender;
