@@ -15,6 +15,7 @@
 		3F5C6BC2152FB77000835DBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC0152FB77000835DBA /* InfoPlist.strings */; };
 		3F5C6BC4152FB77000835DBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC3152FB77000835DBA /* main.m */; };
 		3F5C6BC8152FB77000835DBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5C6BC7152FB77000835DBA /* AppDelegate.m */; };
+		3F5FCF4E154F3C420077BD31 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5FCF4D154F3C420077BD31 /* warning.png */; };
 		3F8AC3B01548CED000FC4F81 /* SecondSideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */; };
 		3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3565153FB4B5002FB67B /* SideTableViewController.m */; };
 		3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */; };
@@ -104,6 +105,7 @@
 		3F5C6BC5152FB77000835DBA /* AdvisingAsistant-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdvisingAsistant-Prefix.pch"; sourceTree = "<group>"; };
 		3F5C6BC6152FB77000835DBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5C6BC7152FB77000835DBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F5FCF4D154F3C420077BD31 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
 		3F8AC3AE1548CECF00FC4F81 /* SecondSideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondSideTableViewController.h; sourceTree = "<group>"; };
 		3F8AC3AF1548CED000FC4F81 /* SecondSideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondSideTableViewController.m; sourceTree = "<group>"; };
 		3F9C3564153FB4B5002FB67B /* SideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideTableViewController.h; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 		E30BD3641549EE490061A949 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3F5FCF4D154F3C420077BD31 /* warning.png */,
 				3F3A0995154B945900E362B9 /* logout.png */,
 				E30BD3651549EE490061A949 /* aa_logo.png */,
 				E30BD3661549EE490061A949 /* sonoma.gif */,
@@ -601,6 +604,7 @@
 				E31BA4FA154C7AEE00B915CF /* CKTickIcon@2x.png in Resources */,
 				E31BA4FB154C7AEE00B915CF /* CKWarningIcon.png in Resources */,
 				E31BA4FC154C7AEE00B915CF /* CKWarningIcon@2x.png in Resources */,
+				3F5FCF4E154F3C420077BD31 /* warning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

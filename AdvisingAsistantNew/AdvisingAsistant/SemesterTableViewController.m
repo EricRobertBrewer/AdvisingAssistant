@@ -29,28 +29,6 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -65,10 +43,19 @@
 {
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
     
-    cell.textLabel.text = [[self.semester.courses objectAtIndex:indexPath.row] name];
+    Course *course = [self.semester.courses objectAtIndex:indexPath.row];
+    NSString *name = (course.customName) ? course.customName : course.name;
+    
+    cell.textLabel.text = name;
+    
+    
     UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];
-    units.text = [NSString stringWithFormat:@"%i", [[self.semester.courses objectAtIndex:indexPath.row] units]];
+    
+    units.text = [NSString stringWithFormat:@"%i", course.units];
+    
     cell.accessoryView = units;
+    
+    [units release];
     
     return cell;
 }
