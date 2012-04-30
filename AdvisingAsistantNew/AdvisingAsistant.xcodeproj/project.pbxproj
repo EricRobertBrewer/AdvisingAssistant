@@ -22,6 +22,7 @@
 		3F9C3566153FB4B5002FB67B /* SideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3565153FB4B5002FB67B /* SideTableViewController.m */; };
 		3F9C3569153FBCB2002FB67B /* SemesterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */; };
 		3FD0B4C91536608C00C938E2 /* ScheduleBuilderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */; };
+		E015AA6D154F4AF800957925 /* CourseWarningButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E015AA6C154F4AF800957925 /* CourseWarningButtonView.m */; };
 		E09988441533953000C56ADC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988421533953000C56ADC /* LoginViewController.m */; };
 		E09988451533953000C56ADC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09988431533953000C56ADC /* LoginViewController.xib */; };
 		E099884B1533954B00C56ADC /* NewStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E09988491533954B00C56ADC /* NewStudentViewController.m */; };
@@ -119,6 +120,8 @@
 		3F9C3568153FBCB1002FB67B /* SemesterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterTableViewController.m; sourceTree = "<group>"; };
 		3FD0B4C61536608C00C938E2 /* ScheduleBuilderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleBuilderViewController.h; sourceTree = "<group>"; };
 		3FD0B4C71536608C00C938E2 /* ScheduleBuilderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleBuilderViewController.m; sourceTree = "<group>"; };
+		E015AA6B154F4AF800957925 /* CourseWarningButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseWarningButtonView.h; sourceTree = "<group>"; };
+		E015AA6C154F4AF800957925 /* CourseWarningButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseWarningButtonView.m; sourceTree = "<group>"; };
 		E09988411533953000C56ADC /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E09988421533953000C56ADC /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E09988431533953000C56ADC /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				E3CF9A541541DBC50091EBBE /* NSMutableDictionary+setInt.m */,
 				E31BA4FE154C7BE000B915CF /* AANotify.h */,
 				E31BA4FF154C7BE000B915CF /* AANotify.m */,
+				E015AA6B154F4AF800957925 /* CourseWarningButtonView.h */,
+				E015AA6C154F4AF800957925 /* CourseWarningButtonView.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				E31BA4F0154C7AEE00B915CF /* CKNotify.m in Sources */,
 				E31BA500154C7BE000B915CF /* AANotify.m in Sources */,
 				3F5FCF53154F3F680077BD31 /* EmailExporter.m in Sources */,
+				E015AA6D154F4AF800957925 /* CourseWarningButtonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
