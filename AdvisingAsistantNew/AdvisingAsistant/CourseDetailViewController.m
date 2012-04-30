@@ -247,10 +247,6 @@
 
 - (IBAction)tappedCloseView:(id)sender {
     
-    if (customCourseName.text.length > 2) {
-        self.currentCourse.customName = customCourseName.text;
-    }
-    
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -269,10 +265,17 @@
                 [sem.courses addObject:self.currentCourse];
                     
                 [self.delegate didTapSave:self.currentCourse];
+                
+                // save custom name
+                if (customCourseName.text.length > 2) {
+                    self.currentCourse.customName = customCourseName.text;
+                }
                 [self dismissModalViewControllerAnimated:NO];
             }
         }
     }
+    
+    
 }
 
 - (IBAction)removeCourseClicked:(id)sender {
