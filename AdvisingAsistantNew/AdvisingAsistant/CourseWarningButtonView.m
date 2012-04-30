@@ -47,7 +47,8 @@
     if (self) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button addTarget:self action:@selector(didTapWarning:) forControlEvents:UIControlEventTouchDown];
-        button.imageView.image = [UIImage imageNamed:@"warning"];
+        [button setImage:[UIImage imageNamed:@"warning"] forState:UIControlStateNormal];
+        [button setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:button];
     }
     return self;

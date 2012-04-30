@@ -55,7 +55,7 @@
     cell.accessoryView = units;
     if (
         ([[course missingCoreqs:self.semesterArray by:self.semester.date] count] != 0)
-        && 
+        || 
         ([[course missingPrereqs:self.semesterArray by:self.semester.date] count] != 0)
         )
     {
