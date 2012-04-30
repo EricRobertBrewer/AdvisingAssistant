@@ -22,3 +22,8 @@ BOOL SemesterDateEqual(SemesterDate d1, SemesterDate d2);
 
 NSString *FormatSeason(Season s);
 NSString *FormatSemesterDate(SemesterDate d);
+
+SemesterDate SemesterDatePrevious(SemesterDate date);
+
+// Returns true if d1 > d2
+BOOL SemesterDateGreaterThan(SemesterDate d1, SemesterDate d2);

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Department.h"
+#import "SemesterDate.h"
 
 typedef enum {
 	AvailabileAll,
@@ -27,13 +28,17 @@ typedef enum {
 
 @property (nonatomic, retain) NSString *customName;
 
+@property (nonatomic, readonly) NSString *nameOrCustomName;
+
 -(id)init;
 -(id)initWithCourse:(Course *)course;
 +(Course *)courseWithCourse:(Course *)course; // Make a copy
 
 -(BOOL)isEqualToCourse:(Course *)course;
 
--(BOOL)meetsPrereqs:(NSArray *)semesters;
--(BOOL)meetsCoreqs:(NSArray *)semesters;
+// Returns an empty array if no missing prereqs
+// Array of courses
+-(NSArray *)missingPrereqs:(NSArray *)semesters by:(SemesterDate)semester;
+-(NSArray *)missingCoreqs:(NSArray *)semesters by:(SemesterDate)semester;
 
 @end

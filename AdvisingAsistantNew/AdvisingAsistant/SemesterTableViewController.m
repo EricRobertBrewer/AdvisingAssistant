@@ -44,9 +44,8 @@
     UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
     
     Course *course = [self.semester.courses objectAtIndex:indexPath.row];
-    NSString *name = (course.customName) ? course.customName : course.name;
     
-    cell.textLabel.text = name;
+    cell.textLabel.text = course.nameOrCustomName;
     
     
     UILabel *units = [[UILabel alloc] initWithFrame:CGRectMake(3*cell.frame.size.width/8, cell.textLabel.frame.origin.y, cell.frame.size.width/8, cell.frame.size.height)];
@@ -54,6 +53,18 @@
     units.text = [NSString stringWithFormat:@"%i", course.units];
     
     cell.accessoryView = units;
+    if (
+        ([[course missingCoreqs:self.semesterArray by:self.semester.date] count] != 0)
+        && 
+        ([[course missingPrereqs:self.semesterArray by:self.semester.date] count] != 0)
+        )
+    {
+        CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5, 0, cell.frame.size.height, cell.frame.size.height);
+        UIButton *warningButtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        warningButtn.imageView.image = [UIImage imageNamed:@"warning"];
+        warningButtn.frame = boxFrame;
+        [cell.contentView addSubview:warningButtn];
+    }
     
     [units release];
     

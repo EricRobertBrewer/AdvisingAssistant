@@ -32,8 +32,6 @@
     IBOutlet UITextField *customCourseName;
     IBOutlet UITextView *txtCoursePrereqs;
     
-    UIImageView *redX, *greenCheck;
-    
 }
 
 @property (nonatomic, assign) BOOL addCourse;

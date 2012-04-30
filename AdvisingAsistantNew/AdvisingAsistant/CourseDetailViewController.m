@@ -76,9 +76,10 @@
         self.semesters = sems;
         
         CourseRepo *cr = [CourseRepo defaultRepo];
-        
+
         self.prereqs = [cr prereqsForCourse:self.currentCourse];
         self.coreqs = [cr coreqsForCourse:self.currentCourse];
+
     }
     return self;
 }

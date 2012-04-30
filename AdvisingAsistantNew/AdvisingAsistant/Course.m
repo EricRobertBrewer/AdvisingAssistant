@@ -58,10 +58,17 @@
         && [self.number isEqualToString:course.number];
 }
 
--(BOOL)meets:(NSArray *)criteria withSemesters:(NSArray *)semesters {
+-(NSString *)nameOrCustomName {
+    if (self.customName) return self.customName;
+    return self.name;
+}
+
+-(NSArray *)missing:(NSArray *)criteria withSemesters:(NSArray *)semesters by:(SemesterDate)date {
+    NSMutableArray *missing = [NSMutableArray array];
     for (Course *course in criteria) {
         BOOL found = false;
         for (Semester *semester in semesters) {
+            if (SemesterDateGreaterThan(semester.date, date)) break;
             for (Course *c in semester.courses) {
                 if ([course isEqualToCourse:c]) {
                     found = YES;
@@ -69,19 +76,21 @@
                 }
             }
         }
-        if (!found) return NO;
+        if (!found) {
+            [missing addObject:course];
+        }
     }
-    return YES;
+    return missing;
 }
 
--(BOOL)meetsPrereqs:(NSArray *)semesters {
+-(NSArray *)missingPrereqs:(NSArray *)semesters by:(SemesterDate)date {
     NSArray *prereqs = [[CourseRepo defaultRepo] prereqsForCourse:self];
-    return [self meets:prereqs withSemesters:semesters];
+    return [self missing:prereqs withSemesters:semesters by:SemesterDatePrevious(date)];
 }
 
--(BOOL)meetsCoreqs:(NSArray *)semesters {
+-(NSArray *)missingCoreqs:(NSArray *)semesters by:(SemesterDate)date {
     NSArray *coreqs = [[CourseRepo defaultRepo] coreqsForCourse:self];
-    return [self meets:coreqs withSemesters:semesters];
+    return [self missing:coreqs withSemesters:semesters by:date];
 }
 
 @end
