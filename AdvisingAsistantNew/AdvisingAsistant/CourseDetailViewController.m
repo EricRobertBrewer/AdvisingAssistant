@@ -101,6 +101,13 @@
     [super viewDidLoad];
 
     assert(semesters);
+    redX = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redX"]];
+    greenCheck = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"greenCheck"]];
+    CGRect boxFrame = CGRectMake(self.view.frame.size.width-25, self.view.frame.size.height-25, 25, 25);
+    redX.frame = boxFrame; greenCheck.frame = boxFrame;
+    [self.view addSubview:greenCheck];
+    [self.view addSubview:redX];
+    redX.hidden = YES;
     
     // set initial semester setting
     Semester *initialSemester = [semesters objectAtIndex:0];
