@@ -36,7 +36,14 @@
 }
 
 -(UIView *)topView {
-	return self.navigationController.topViewController.view;
+	return [[self topViewController] view];
+}
+-(UIViewController *)topViewController {
+    return self.navigationController.topViewController;
+}
+
++(AppDelegate *)sharedInstance {
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 @end

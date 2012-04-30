@@ -16,5 +16,8 @@
 @property (nonatomic, retain) UINavigationController *navigationController;
 
 -(UIView *)topView;
+-(UIViewController *)topViewController;
+
++(AppDelegate *)sharedInstance;
 
 @end
