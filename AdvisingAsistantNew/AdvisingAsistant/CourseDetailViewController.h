@@ -34,7 +34,6 @@
     
     NSArray *prereqs;
     
-    UIImageView *redX, *greenCheck;
 }
 
 @property (nonatomic, assign) BOOL addCourse;
