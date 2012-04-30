@@ -60,10 +60,10 @@
         )
     {
         CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5, 0, cell.frame.size.height, cell.frame.size.height);
-        UIButton *warningButtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        warningButtn.imageView.image = [UIImage imageNamed:@"warning"];
-        warningButtn.frame = boxFrame;
-        [cell.contentView addSubview:warningButtn];
+        CourseWarningButtonView *warningButton = [[[CourseWarningButtonView alloc] initWithFrame:boxFrame] autorelease];
+        warningButton.prereqs = [course missingPrereqs:self.semesterArray by:self.semester.date];
+        warningButton.coreqs = [course missingCoreqs:self.semesterArray by:self.semester.date];
+        [cell.contentView addSubview: warningButton];
     }
     
     [units release];
