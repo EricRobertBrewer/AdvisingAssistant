@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseWarningButtonView : UIView
+@interface CourseWarningButtonView : UIView {
+    
+}
+
+@property (nonatomic, retain) NSArray *prereqs, *coreqs;
 
 @end

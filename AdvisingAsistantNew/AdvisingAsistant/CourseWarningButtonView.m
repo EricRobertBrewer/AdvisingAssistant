@@ -9,6 +9,7 @@
 #import "CourseWarningButtonView.h"
 
 @implementation CourseWarningButtonView
+@synthesize prereqs, coreqs;
 
 - (id)initWithFrame:(CGRect)frame
 {
