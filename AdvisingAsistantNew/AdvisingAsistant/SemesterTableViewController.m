@@ -53,7 +53,11 @@
     units.text = [NSString stringWithFormat:@"%i", course.units];
     
     cell.accessoryView = units;
-    if (!([course meetsPrereqs:self.semesterArray] && [course meetsCoreqs:self.semesterArray]))
+    if (
+        ([[course missingCoreqs:self.semesterArray by:self.semester.date] count] != 0)
+        && 
+        ([[course missingPrereqs:self.semesterArray by:self.semester.date] count] != 0)
+        )
     {
         CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5, 0, cell.frame.size.height, cell.frame.size.height);
         UIButton *warningButtn = [UIButton buttonWithType:UIButtonTypeCustom];
