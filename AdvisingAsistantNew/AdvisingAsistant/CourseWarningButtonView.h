@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AANotify.h"
+#import "Course.h"
 
 @interface CourseWarningButtonView : UIView {
     
