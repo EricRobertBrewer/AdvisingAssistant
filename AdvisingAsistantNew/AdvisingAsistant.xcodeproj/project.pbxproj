@@ -45,6 +45,22 @@
 		E30BD36A1549EE490061A949 /* sonoma.gif in Resources */ = {isa = PBXBuildFile; fileRef = E30BD3661549EE490061A949 /* sonoma.gif */; };
 		E30BD36B1549EE490061A949 /* ssu_logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = E30BD3671549EE490061A949 /* ssu_logo.gif */; };
 		E30BD36C1549EE490061A949 /* state_university.gif in Resources */ = {isa = PBXBuildFile; fileRef = E30BD3681549EE490061A949 /* state_university.gif */; };
+		E31BA4EE154C7AEE00B915CF /* CKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BA4DD154C7AEE00B915CF /* CKAlertView.m */; };
+		E31BA4EF154C7AEE00B915CF /* CKAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4DE154C7AEE00B915CF /* CKAlertView.xib */; };
+		E31BA4F0154C7AEE00B915CF /* CKNotify.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BA4E0154C7AEE00B915CF /* CKNotify.m */; };
+		E31BA4F1154C7AEE00B915CF /* CKBluePanel.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E2154C7AEE00B915CF /* CKBluePanel.png */; };
+		E31BA4F2154C7AEE00B915CF /* CKBluePanel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E3154C7AEE00B915CF /* CKBluePanel@2x.png */; };
+		E31BA4F3154C7AEE00B915CF /* CKGreenPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E4154C7AEE00B915CF /* CKGreenPanel.png */; };
+		E31BA4F4154C7AEE00B915CF /* CKGreenPanel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E5154C7AEE00B915CF /* CKGreenPanel@2x.png */; };
+		E31BA4F5154C7AEE00B915CF /* CKInfoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E6154C7AEE00B915CF /* CKInfoIcon.png */; };
+		E31BA4F6154C7AEE00B915CF /* CKInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E7154C7AEE00B915CF /* CKInfoIcon@2x.png */; };
+		E31BA4F7154C7AEE00B915CF /* CKRedPanel.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E8154C7AEE00B915CF /* CKRedPanel.png */; };
+		E31BA4F8154C7AEE00B915CF /* CKRedPanel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4E9154C7AEE00B915CF /* CKRedPanel@2x.png */; };
+		E31BA4F9154C7AEE00B915CF /* CKTickIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4EA154C7AEE00B915CF /* CKTickIcon.png */; };
+		E31BA4FA154C7AEE00B915CF /* CKTickIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4EB154C7AEE00B915CF /* CKTickIcon@2x.png */; };
+		E31BA4FB154C7AEE00B915CF /* CKWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4EC154C7AEE00B915CF /* CKWarningIcon.png */; };
+		E31BA4FC154C7AEE00B915CF /* CKWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E31BA4ED154C7AEE00B915CF /* CKWarningIcon@2x.png */; };
+		E31BA500154C7BE000B915CF /* AANotify.m in Sources */ = {isa = PBXBuildFile; fileRef = E31BA4FF154C7BE000B915CF /* AANotify.m */; };
 		E324D6AF1545BBF700CFA21D /* Area.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6AE1545BBF700CFA21D /* Area.m */; };
 		E324D6B21545BC9000CFA21D /* AreaRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6B11545BC9000CFA21D /* AreaRepo.m */; };
 		E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */ = {isa = PBXBuildFile; fileRef = E324D6B41545BD3200CFA21D /* GEPattern.m */; };
@@ -142,6 +158,25 @@
 		E30BD3661549EE490061A949 /* sonoma.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sonoma.gif; sourceTree = "<group>"; };
 		E30BD3671549EE490061A949 /* ssu_logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = ssu_logo.gif; sourceTree = "<group>"; };
 		E30BD3681549EE490061A949 /* state_university.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = state_university.gif; sourceTree = "<group>"; };
+		E31BA4DC154C7AEE00B915CF /* CKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKAlertView.h; sourceTree = "<group>"; };
+		E31BA4DD154C7AEE00B915CF /* CKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKAlertView.m; sourceTree = "<group>"; };
+		E31BA4DE154C7AEE00B915CF /* CKAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CKAlertView.xib; sourceTree = "<group>"; };
+		E31BA4DF154C7AEE00B915CF /* CKNotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKNotify.h; sourceTree = "<group>"; };
+		E31BA4E0154C7AEE00B915CF /* CKNotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKNotify.m; sourceTree = "<group>"; };
+		E31BA4E2154C7AEE00B915CF /* CKBluePanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKBluePanel.png; sourceTree = "<group>"; };
+		E31BA4E3154C7AEE00B915CF /* CKBluePanel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKBluePanel@2x.png"; sourceTree = "<group>"; };
+		E31BA4E4154C7AEE00B915CF /* CKGreenPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKGreenPanel.png; sourceTree = "<group>"; };
+		E31BA4E5154C7AEE00B915CF /* CKGreenPanel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKGreenPanel@2x.png"; sourceTree = "<group>"; };
+		E31BA4E6154C7AEE00B915CF /* CKInfoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKInfoIcon.png; sourceTree = "<group>"; };
+		E31BA4E7154C7AEE00B915CF /* CKInfoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKInfoIcon@2x.png"; sourceTree = "<group>"; };
+		E31BA4E8154C7AEE00B915CF /* CKRedPanel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKRedPanel.png; sourceTree = "<group>"; };
+		E31BA4E9154C7AEE00B915CF /* CKRedPanel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKRedPanel@2x.png"; sourceTree = "<group>"; };
+		E31BA4EA154C7AEE00B915CF /* CKTickIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKTickIcon.png; sourceTree = "<group>"; };
+		E31BA4EB154C7AEE00B915CF /* CKTickIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKTickIcon@2x.png"; sourceTree = "<group>"; };
+		E31BA4EC154C7AEE00B915CF /* CKWarningIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CKWarningIcon.png; sourceTree = "<group>"; };
+		E31BA4ED154C7AEE00B915CF /* CKWarningIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CKWarningIcon@2x.png"; sourceTree = "<group>"; };
+		E31BA4FE154C7BE000B915CF /* AANotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AANotify.h; sourceTree = "<group>"; };
+		E31BA4FF154C7BE000B915CF /* AANotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AANotify.m; sourceTree = "<group>"; };
 		E324D6AD1545BBF700CFA21D /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Area.h; sourceTree = "<group>"; };
 		E324D6AE1545BBF700CFA21D /* Area.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Area.m; sourceTree = "<group>"; };
 		E324D6B01545BC9000CFA21D /* AreaRepo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaRepo.h; sourceTree = "<group>"; };
@@ -267,6 +302,7 @@
 		3F5C6BBE152FB77000835DBA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E31BA4DB154C7AEE00B915CF /* CKNotify */,
 				E30BD3641549EE490061A949 /* Images */,
 				E39184DF153F6E640072B49B /* ASIHttpRequest */,
 				E301AC4515320DC000EE05F9 /* SBJSON */,
@@ -276,6 +312,8 @@
 				3F5C6BC3152FB77000835DBA /* main.m */,
 				E3CF9A531541DBC50091EBBE /* NSMutableDictionary+setInt.h */,
 				E3CF9A541541DBC50091EBBE /* NSMutableDictionary+setInt.m */,
+				E31BA4FE154C7BE000B915CF /* AANotify.h */,
+				E31BA4FF154C7BE000B915CF /* AANotify.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -368,6 +406,38 @@
 				E30BD3661549EE490061A949 /* sonoma.gif */,
 				E30BD3671549EE490061A949 /* ssu_logo.gif */,
 				E30BD3681549EE490061A949 /* state_university.gif */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		E31BA4DB154C7AEE00B915CF /* CKNotify */ = {
+			isa = PBXGroup;
+			children = (
+				E31BA4DC154C7AEE00B915CF /* CKAlertView.h */,
+				E31BA4DD154C7AEE00B915CF /* CKAlertView.m */,
+				E31BA4DE154C7AEE00B915CF /* CKAlertView.xib */,
+				E31BA4DF154C7AEE00B915CF /* CKNotify.h */,
+				E31BA4E0154C7AEE00B915CF /* CKNotify.m */,
+				E31BA4E1154C7AEE00B915CF /* Images */,
+			);
+			path = CKNotify;
+			sourceTree = "<group>";
+		};
+		E31BA4E1154C7AEE00B915CF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E31BA4E2154C7AEE00B915CF /* CKBluePanel.png */,
+				E31BA4E3154C7AEE00B915CF /* CKBluePanel@2x.png */,
+				E31BA4E4154C7AEE00B915CF /* CKGreenPanel.png */,
+				E31BA4E5154C7AEE00B915CF /* CKGreenPanel@2x.png */,
+				E31BA4E6154C7AEE00B915CF /* CKInfoIcon.png */,
+				E31BA4E7154C7AEE00B915CF /* CKInfoIcon@2x.png */,
+				E31BA4E8154C7AEE00B915CF /* CKRedPanel.png */,
+				E31BA4E9154C7AEE00B915CF /* CKRedPanel@2x.png */,
+				E31BA4EA154C7AEE00B915CF /* CKTickIcon.png */,
+				E31BA4EB154C7AEE00B915CF /* CKTickIcon@2x.png */,
+				E31BA4EC154C7AEE00B915CF /* CKWarningIcon.png */,
+				E31BA4ED154C7AEE00B915CF /* CKWarningIcon@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -518,6 +588,19 @@
 				E30BD36B1549EE490061A949 /* ssu_logo.gif in Resources */,
 				E30BD36C1549EE490061A949 /* state_university.gif in Resources */,
 				3F3A0996154B945900E362B9 /* logout.png in Resources */,
+				E31BA4EF154C7AEE00B915CF /* CKAlertView.xib in Resources */,
+				E31BA4F1154C7AEE00B915CF /* CKBluePanel.png in Resources */,
+				E31BA4F2154C7AEE00B915CF /* CKBluePanel@2x.png in Resources */,
+				E31BA4F3154C7AEE00B915CF /* CKGreenPanel.png in Resources */,
+				E31BA4F4154C7AEE00B915CF /* CKGreenPanel@2x.png in Resources */,
+				E31BA4F5154C7AEE00B915CF /* CKInfoIcon.png in Resources */,
+				E31BA4F6154C7AEE00B915CF /* CKInfoIcon@2x.png in Resources */,
+				E31BA4F7154C7AEE00B915CF /* CKRedPanel.png in Resources */,
+				E31BA4F8154C7AEE00B915CF /* CKRedPanel@2x.png in Resources */,
+				E31BA4F9154C7AEE00B915CF /* CKTickIcon.png in Resources */,
+				E31BA4FA154C7AEE00B915CF /* CKTickIcon@2x.png in Resources */,
+				E31BA4FB154C7AEE00B915CF /* CKWarningIcon.png in Resources */,
+				E31BA4FC154C7AEE00B915CF /* CKWarningIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +659,9 @@
 				E324D6B51545BD3200CFA21D /* GEPattern.m in Sources */,
 				E0AE350E15475B4D006CACEB /* EditTemplateViewController.m in Sources */,
 				3F8AC3B01548CED000FC4F81 /* SecondSideTableViewController.m in Sources */,
+				E31BA4EE154C7AEE00B915CF /* CKAlertView.m in Sources */,
+				E31BA4F0154C7AEE00B915CF /* CKNotify.m in Sources */,
+				E31BA500154C7BE000B915CF /* AANotify.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,6 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.title = @"Required Courses";
         self.semesterArray = semArray;
         self.GEArray = [[AreaRepo defaultRepo] areasForGEPattern:pattern date:date];
         self.DepartmentSectionsArray = [[AreaRepo defaultRepo] areasForDepartment:dept date:date];

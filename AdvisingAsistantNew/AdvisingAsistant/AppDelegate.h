@@ -15,4 +15,6 @@
 @property (nonatomic, retain) UIViewController *login;
 @property (nonatomic, retain) UINavigationController *navigationController;
 
+-(UIView *)topView;
+
 @end

@@ -35,4 +35,8 @@
     return YES;
 }
 
+-(UIView *)topView {
+	return self.navigationController.topViewController.view;
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "ASIHttpRequest.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
+#import "AANotify.h"
 
 @implementation Repo
 @synthesize error = _error;
@@ -62,9 +63,16 @@
 		self.error = nil;
         NSString *response = [request responseString];
         NSLog(@"Got Response: %@", response);
-		return [response JSONValue];
+		id json = [response JSONValue];
+		if (json) {
+			return json;
+		} else {
+			self.error = response;
+		}
+	} else {
+		self.error = error.description;
 	}
-	self.error = error.description;
+	[AANotify present:CKNotifyAlertTypeError title:@"Server Error" body:self.error duration:4];
 	return nil;
 }
 
