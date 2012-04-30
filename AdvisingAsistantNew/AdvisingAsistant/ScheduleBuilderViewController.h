@@ -16,6 +16,7 @@
 #import "SideTableViewController.h"
 #import "SemesterTableViewController.h"
 #import "CourseWarningButtonView.h"
+#import "EmailExporter.h"
 
 @interface ScheduleBuilderViewController : UIViewController {
 
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) UINavigationController *sideNavController;
 @property (nonatomic, retain) Student *currentStudent;
 @property (nonatomic, retain) Template *currentTemplate;
+@property (nonatomic, retain) EmailExporter *emailExporter;
 
 - (void)didTapLogout:(id)sender;
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department;
