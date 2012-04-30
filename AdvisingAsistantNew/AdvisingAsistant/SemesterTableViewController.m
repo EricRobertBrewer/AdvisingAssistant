@@ -54,6 +54,14 @@
     units.text = [NSString stringWithFormat:@"%i", course.units];
     
     cell.accessoryView = units;
+    if (!([course meetsPrereqs:self.semesterArray] && [course meetsCoreqs:self.semesterArray]))
+    {
+        CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5, 0, cell.frame.size.height, cell.frame.size.height);
+        UIButton *warningButtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        warningButtn.imageView.image = [UIImage imageNamed:@"warning"];
+        warningButtn.frame = boxFrame;
+        [cell.contentView addSubview:warningButtn];
+    }
     
     [units release];
     

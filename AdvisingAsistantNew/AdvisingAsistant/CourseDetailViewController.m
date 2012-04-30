@@ -77,7 +77,7 @@
         
         CourseRepo *cr = [CourseRepo defaultRepo];
         
-        prereqs = [cr prereqsForCourse:self.currentCourse];
+        prereqs = [[cr prereqsForCourse:self.currentCourse] retain];
     }
     return self;
 }
@@ -102,13 +102,6 @@
     [super viewDidLoad];
 
     assert(semesters);
-    redX = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redX"]];
-    greenCheck = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"greenCheck"]];
-    CGRect boxFrame = CGRectMake(self.view.frame.size.width-25, semesterLabel.frame.origin.y, 25, 25);
-    redX.frame = boxFrame; greenCheck.frame = boxFrame;
-    [self.view addSubview:greenCheck];
-    [self.view addSubview:redX];
-    redX.hidden = YES;
     
     // set up course validity image
     
