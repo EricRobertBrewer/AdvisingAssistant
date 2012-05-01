@@ -33,8 +33,8 @@
     self.currentCourse = nil;
     [btnRemoveCourse release];
     [customCourseName release];
-    [txtCoursePrereqs release];
     [lblCoreqs release];
+    [lblPrereqs release];
     [super dealloc];
 }
 
@@ -129,32 +129,41 @@
     for (Course *c in self.prereqs) {
         [prereqString appendFormat:@"%@   ", c.name];
     }
-    [txtCoursePrereqs setText:prereqString];
+    [lblPrereqs setText:prereqString];
     
     // set initial semester setting
-    Semester *initialSemester = [self getSemesterWithDate:self.semesterDate];
-    [semesterLabel setText:[initialSemester getDateAsString]];
+    if (self.addCourse) {
+        Semester *initialSemester = [self.semesters objectAtIndex:0];
+        [semesterLabel setText:[initialSemester getDateAsString]];
+    }
+    else {
+        Semester *initialSemester = [self getSemesterWithDate:self.semesterDate];
+        [semesterLabel setText:[initialSemester getDateAsString]];
+    }
     
     // set course name title to course name passed in
     // OR to custom name
     
-    [lblCourseName setText:self.currentCourse.name];
+    NSString *courseHeading = [NSString stringWithFormat:@"%@: %@",
+                               self.currentCourse.name, self.currentCourse.title];
+    
+    [lblCourseName setText:courseHeading];
     [lblUnits setText:[NSString stringWithFormat:@"%d",self.currentCourse.units]];
     [txtCourseDesc setText:self.currentCourse.description];
     
     // set up stepper
     [semesterStepper setMinimumValue:0];
     [semesterStepper setMaximumValue:(double)[semesters count]-1];
-    [semesterStepper setValue:semesterIndexInArray];
     
     if (self.addCourse) {
         btnMoveCourse.hidden = YES;
         btnRemoveCourse.hidden = YES;
+        [semesterStepper setValue:0];
     } else {
         btnAddCourse.hidden = YES;
+        [semesterStepper setValue:semesterIndexInArray];
     }
     
-     
     self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
     [self.view addSubview:self.cwbv];
     self.cwbv.hidden = ![self shouldShowWarning:self.semesterDate];
@@ -320,10 +329,10 @@
     btnRemoveCourse = nil;
     [customCourseName release];
     customCourseName = nil;
-    [txtCoursePrereqs release];
-    txtCoursePrereqs = nil;
     [lblCoreqs release];
     lblCoreqs = nil;
+    [lblPrereqs release];
+    lblPrereqs = nil;
     [super viewDidUnload];
 }
 @end

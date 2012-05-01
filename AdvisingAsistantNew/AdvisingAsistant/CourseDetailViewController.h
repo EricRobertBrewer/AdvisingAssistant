@@ -31,7 +31,7 @@
     IBOutlet UIButton *btnRemoveCourse;
     IBOutlet UIButton *closeView;
     IBOutlet UITextField *customCourseName;
-    IBOutlet UITextView *txtCoursePrereqs;
+    IBOutlet UILabel *lblPrereqs;
     
     int semesterIndexInArray;
     
