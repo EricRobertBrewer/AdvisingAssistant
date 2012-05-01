@@ -9,38 +9,52 @@
 #import "SecondSideTableViewController.h"
 
 @implementation SecondSideTableViewController
-@synthesize delagate;
+@synthesize areaArray = _areaArray;
+@synthesize semesterArray = _semesterArray;
+@synthesize areaCourses = _areaCourses;
+@synthesize delagate = _delegate;
+
+-(void)dealloc {
+    self.areaArray = nil;
+    self.semesterArray = nil;
+    self.areaCourses = nil;
+    self.delagate = nil;
+    [super dealloc];
+}
 
 - (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
         // Takes array of areas, call function with each area for array of courses
-        areaArray = [areas retain];
-        semesterArray = [semesters retain];
-        areaCourses =[NSMutableArray new];
+        self.areaArray = areas;
+        self.semesterArray = semesters;
+        self.areaCourses =[NSMutableArray array];
         CourseRepo *repo = [CourseRepo defaultRepo];
         
         for (int i = 0; i < [areas count]; i++)
-            [areaCourses addObject:(NSArray *)[repo coursesForArea:[areas objectAtIndex:i]]];
+            [self.areaCourses addObject:[repo coursesForArea:[areas objectAtIndex:i]]];
     }
-    NSLog(@"Number of sections is %d", [areaCourses count]);
     return self;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [areaCourses count];
+    return [self.areaCourses count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[areaCourses objectAtIndex:section] count];
+    return [[self.areaCourses objectAtIndex:section] count];
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    Area *temp = [areaArray objectAtIndex:section];
+    Area *temp = [self.areaArray objectAtIndex:section];
     return [NSString stringWithFormat:@"%@ (%i units)", temp.title, temp.units];
+}
+
+-(Course *)courseAtIndexPath:(NSIndexPath *)indexPath {
+    return [[self.areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -49,11 +63,11 @@
 
     cell.textLabel.textColor= [UIColor blackColor];
     
-	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	Course *course = [self courseAtIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
     
-     for (int i = 0; i < [semesterArray count]; i++) {
-        NSArray *tempCourses = [[semesterArray objectAtIndex:i] courses];
+     for (int i = 0; i < [self.semesterArray count]; i++) {
+        NSArray *tempCourses = [[self.semesterArray objectAtIndex:i] courses];
         for (int j = 0; j < [tempCourses count]; j++) {
             if ([[tempCourses objectAtIndex:j] isEqualToCourse:course]) {
                 cell.textLabel.textColor = [UIColor grayColor];
@@ -67,12 +81,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    // Pull up daniel's view (course description) - send course and array of semesters
-    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:[[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] andSemesters:semesterArray];
+    // Pull up course description - send course and array of semesters
+    Course *course = [self courseAtIndexPath:indexPath];
+    CourseDetailViewController *courseDetail = [[CourseDetailViewController alloc] initWithCourse:course andSemesters:self.semesterArray];
     courseDetail.modalPresentationStyle = UIModalPresentationFormSheet;
     courseDetail.delegate = self.delagate;
     courseDetail.addCourse = YES;
     [self presentModalViewController:courseDetail animated:YES];
+    [courseDetail release];
 }
 
 @end

@@ -148,7 +148,7 @@
     self.pickerView1 = nil;
     self.pickerView2 = nil;
     self.editedTemplate = nil;
-    [self.parentController release];
+    self.parentController = nil;
     [createTemplateField release];
     [editTemplateField release];
     [gePatternField release];

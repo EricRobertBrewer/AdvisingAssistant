@@ -30,7 +30,7 @@
 }
 
 @property (nonatomic, retain) ScheduleBuilderViewController *nextController;
-@property (nonatomic, retain) IBOutlet UITextField *studentIDTextField;
+@property (nonatomic, readonly) IBOutlet UITextField *studentIDTextField;
 
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;

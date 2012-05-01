@@ -9,7 +9,7 @@
 #import "SemesterTableViewController.h"
 
 @implementation SemesterTableViewController
-@synthesize delagate;
+@synthesize delagate = _delagate;
 @synthesize semester = _semester;
 @synthesize semesterArray = _semesterArray;
 

@@ -21,11 +21,12 @@
 }
 
 -(NSString *)urlEncode:(NSString *)input {
-	return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
+	NSString *url = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,
 															   (CFStringRef)self,
 															   NULL,
 															   (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
 															   CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    return [url autorelease];
 }
 
 -(NSURL*)getUrl:(ConnectOptions*)options {
