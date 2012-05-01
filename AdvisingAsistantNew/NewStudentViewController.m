@@ -23,10 +23,11 @@
     return self;
 }
 
-- (id) initWithStudentID:(int)ID {
+- (id) initWithStudentID:(int)ID andDepartment:(Department *)department {
     self = [super init];
     if (self) {
         studentID = ID;
+        D = [department retain];
     }
     return self;
 }
@@ -206,7 +207,7 @@
     semesterStarted.text = [NSString stringWithFormat:@"%@ %@", season, year];
     semesterStarted.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
     
-    self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]];
+    self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:D.code]];
     self.freshmenTemplates = [NSMutableArray array];
     self.transferTemplates = [NSMutableArray array];
     for (int i = 0; i < [self.templates count]; i++)

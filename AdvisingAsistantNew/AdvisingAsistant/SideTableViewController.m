@@ -16,6 +16,7 @@
 @synthesize GEArray = _GEArray;
 @synthesize DepartmentSectionsArray = _DepartmentSectionsArray;
 @synthesize delagate = _delagate;
+@synthesize currentDepartment;
 
 -(void)dealloc {
 	self.semesterArray = nil;
@@ -32,6 +33,7 @@
         self.semesterArray = semArray;
         self.GEArray = [[AreaRepo defaultRepo] areasForGEPattern:pattern date:date];
         self.DepartmentSectionsArray = [[AreaRepo defaultRepo] areasForDepartment:dept date:date];
+        self.currentDepartment = dept;
     }
     return self;
 }
@@ -43,8 +45,7 @@
     if (section == GE_SECTION)
         return @"General Education Courses";
     if (section == DEPARTMENT_SECTION)
-        return @"Deprtment Courses"; // Pull department name
-    
+        return [NSString stringWithFormat:@"%@ Courses", self.currentDepartment.name];
     return 0;
 }
 

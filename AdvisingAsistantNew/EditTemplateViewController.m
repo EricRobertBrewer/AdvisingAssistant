@@ -13,7 +13,7 @@
 @end
 
 @implementation EditTemplateViewController
-@synthesize parentController, pickerView1, pickerView2, editedTemplate;
+@synthesize parentController, pickerView1, pickerView2, editedTemplate, D;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,19 +24,31 @@
     return self;
 }
 
+- (id) initWithDepartment:(Department *)department {
+    if (self = [super init])
+    {
+        self.D = department;
+    }
+    return  self;
+}
+
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if ([templates count] == 0)
+        return 1;
     return [templates count];
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (pickerView == pickerView1)
     {
-    Template *temp = [templates objectAtIndex:row];
-    return temp.name;
+        if ([templates count] == 0)
+            return @"";
+        Template *temp = [templates objectAtIndex:row];
+        return temp.name;
     }
     else if (pickerView == pickerView2)
     {
@@ -60,16 +72,16 @@
 }
 
 /*- (UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
-    UILabel *lab;
-    if (view)
-        lab = (UILabel *)view;
-    else
-        lab = [[[UILabel alloc] init] autorelease];
-    Template *temp = [templates objectAtIndex:row];
-    lab.text = temp.name;
-    [lab sizeToFit];
-    return lab;
-}*/
+ UILabel *lab;
+ if (view)
+ lab = (UILabel *)view;
+ else
+ lab = [[[UILabel alloc] init] autorelease];
+ Template *temp = [templates objectAtIndex:row];
+ lab.text = temp.name;
+ [lab sizeToFit];
+ return lab;
+ }*/
 
 - (float) pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
     return self.view.frame.size.width;
@@ -102,8 +114,9 @@
     TemplateRepo *repo = [TemplateRepo defaultRepo];
     DepartmentRepo *dRepo = [DepartmentRepo defaultRepo];
     
-    templates = [[repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]] retain];
-    self.editedTemplate = [templates objectAtIndex:0];
+    templates = [[repo templatesForDepartment:[dRepo departmentWithCode:self.D.code]] retain];
+    if ([templates count] != 0)
+        self.editedTemplate = [templates objectAtIndex:0];
     
     self.pickerView1 = [[[UIPickerView alloc] initWithFrame:CGRectZero] autorelease];
     self.pickerView1.delegate = self;
@@ -177,7 +190,7 @@
             temp.pattern = GEPatternFreshman;
         else if ([gePatternField.text isEqualToString:@"Transfer Pattern"])
             temp.pattern = GEPatternTransfer;
-
+        
         [repo saveTemplate:temp];
         self.editedTemplate = [repo templateForName:temp.name inDepartment:temp.department];
         [self dismissModalViewControllerAnimated:YES];
@@ -185,6 +198,8 @@
 }
 
 - (IBAction)didTapDelete:(id)sender {
+    if ([editTemplateField.text length] <= 0)
+        return;
     TemplateRepo *repo = [TemplateRepo defaultRepo];
     [repo deleteTemplate:self.editedTemplate];
     [templates release];
@@ -192,7 +207,10 @@
     [self.pickerView1 reloadAllComponents];
     [self.pickerView1 selectRow:0 inComponent:0 animated:YES];
     editTemplateField.text = [self pickerView:self.pickerView1 titleForRow:0 forComponent:0];
-    
+    if ([templates count] != 0)
+        self.editedTemplate = [templates objectAtIndex:0];
+    else
+        self.editedTemplate = nil;
 }
 
 - (IBAction)didTapExit:(id)sender {

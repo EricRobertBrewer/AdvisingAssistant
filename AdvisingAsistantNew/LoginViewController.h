@@ -31,6 +31,8 @@
 
 @property (nonatomic, retain) ScheduleBuilderViewController *nextController;
 @property (nonatomic, readonly) IBOutlet UITextField *studentIDTextField;
+@property (nonatomic, retain) NSArray *departments;
+@property (nonatomic, retain) Department *currentDepartment;
 
 - (IBAction)didTapGo:(id)sender;
 - (IBAction)didTapEdit:(id)sender;
