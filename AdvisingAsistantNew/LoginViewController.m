@@ -40,6 +40,7 @@
     [studentIDTextField release];
     [goBttn release];
     [editBttn release];
+    [departmentField release];
     [super dealloc];
 }
 
@@ -76,6 +77,10 @@
     
 }
 
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 2;
+}
+
 - (IBAction)didTapEdit:(id)sender
 {
     EditTemplateViewController *modalView = [[[EditTemplateViewController alloc] init] autorelease];
@@ -84,4 +89,9 @@
     [self presentModalViewController:modalView animated:YES];
 }
 
+- (void)viewDidUnload {
+    [departmentField release];
+    departmentField = nil;
+    [super viewDidUnload];
+}
 @end

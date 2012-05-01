@@ -17,11 +17,12 @@
 
 @class ScheduleBuilderViewController;
 
-@interface LoginViewController : UIViewController <UITextFieldDelegate> {
+@interface LoginViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     
     IBOutlet UITextField *studentIDTextField;
     IBOutlet UIButton *goBttn;
     IBOutlet UIButton *editBttn;
+    IBOutlet UITextField *departmentField;
 
     int studentID;
     StudentRepo *repo;
