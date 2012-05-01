@@ -156,6 +156,7 @@
     
      
     self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
+    [self.view addSubview:self.cwbv];
     self.cwbv.hidden = ![self shouldShowWarning:self.semesterDate];
 }
 
