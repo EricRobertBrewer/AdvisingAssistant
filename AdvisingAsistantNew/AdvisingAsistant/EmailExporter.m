@@ -37,6 +37,7 @@
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     [[[AppDelegate sharedInstance] topViewController] dismissModalViewControllerAnimated:YES];
     if (error) [AANotify present:CKNotifyAlertTypeError title:@"Error Sending Email" body:error.description duration:5];
+    else [AANotify present:CKNotifyAlertTypeSuccess title:@"Email Sent!" body:nil duration:3];
 }
 
 @end
