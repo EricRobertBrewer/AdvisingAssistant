@@ -79,15 +79,10 @@
         
         CourseRepo *cr = [CourseRepo defaultRepo];
         
-
         self.prereqs = [cr prereqsForCourse:self.currentCourse];
         self.coreqs = [cr coreqsForCourse:self.currentCourse];
 
-        self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
-        
-        self.cwbv.prereqs = self.prereqs;
-        self.cwbv.coreqs = self.coreqs;
-
+        semesterIndexInArray = -1;
     }
     return self;
 }
@@ -137,7 +132,7 @@
     [txtCoursePrereqs setText:prereqString];
     
     // set initial semester setting
-    Semester *initialSemester = [semesters objectAtIndex:0];
+    Semester *initialSemester = [self getSemesterWithDate:self.semesterDate];
     [semesterLabel setText:[initialSemester getDateAsString]];
     
     // set course name title to course name passed in
@@ -150,7 +145,7 @@
     // set up stepper
     [semesterStepper setMinimumValue:0];
     [semesterStepper setMaximumValue:(double)[semesters count]-1];
-    [semesterStepper setValue:0];
+    [semesterStepper setValue:semesterIndexInArray];
     
     if (self.addCourse) {
         btnMoveCourse.hidden = YES;
@@ -159,13 +154,9 @@
         btnAddCourse.hidden = YES;
     }
     
-    /*
      
-     Stick Garrett's custom button here
-     Give it the array of prereqs and coreqs
-     
-     */
-     
+    self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
+    self.cwbv.hidden = ![self shouldShowWarning:self.semesterDate];
 }
 
 /*
@@ -221,8 +212,21 @@
     }
 }
 
+- (BOOL)shouldShowWarning:(SemesterDate)sd {
+    self.cwbv.prereqs = [self.currentCourse missingPrereqs:self.semesters by:sd];
+    self.cwbv.coreqs = [self.currentCourse missingCoreqs:self.semesters by:sd];
+    
+    if ([self.cwbv.prereqs count] > 0 || [self.cwbv.coreqs count] > 0)
+        return YES;
+    else
+        return NO;
+}
+
 - (Semester *)getSemesterWithDate:(SemesterDate)sd {
+    
+    semesterIndexInArray = -1;
     for (Semester *s in self.semesters) {
+        semesterIndexInArray++;
         if (SemesterDateEqual(s.date, sd)) {
             return s;
         }
@@ -257,6 +261,12 @@
 - (IBAction)StepperPressed:(id)sender {
     Semester *newSelectedSemester = [semesters objectAtIndex:(int)semesterStepper.value];
     [semesterLabel setText:[newSelectedSemester getDateAsString]];
+    
+    // Makes sure warning is updated when user selects diff semester
+    if ([self shouldShowWarning:newSelectedSemester.date] == YES)
+        self.cwbv.hidden = NO;
+    else
+        self.cwbv.hidden = YES;
 }
 
 - (IBAction)tappedCloseView:(id)sender {
