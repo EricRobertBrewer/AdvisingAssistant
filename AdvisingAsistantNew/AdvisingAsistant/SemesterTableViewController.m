@@ -59,7 +59,7 @@
         ([[course missingPrereqs:self.semesterArray by:self.semester.date] count] != 0)
         )
     {
-        CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5, 0, cell.frame.size.height, cell.frame.size.height);
+        CGRect boxFrame = CGRectMake(2*cell.frame.size.width/5+18, 18/2, cell.frame.size.height-18, cell.frame.size.height-18);
         CourseWarningButtonView *warningButton = [[[CourseWarningButtonView alloc] initWithFrame:boxFrame] autorelease];
         warningButton.prereqs = [course missingPrereqs:self.semesterArray by:self.semester.date];
         warningButton.coreqs = [course missingCoreqs:self.semesterArray by:self.semester.date];
