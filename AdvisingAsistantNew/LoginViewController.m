@@ -21,6 +21,7 @@
     [studentIDTextField release];
     [goBttn release];
     [editBttn release];
+    [departmentField release];
     self.nextController = nil;
     [super dealloc];
 }
