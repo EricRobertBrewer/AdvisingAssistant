@@ -11,12 +11,14 @@
 #import "CourseRepo.h"
 
 @interface SecondSideTableViewController : UITableViewController {
-    NSArray *areaArray;
-    NSMutableArray *semesterArray, *areaCourses;
+    
 }
 
 - (id)initWithAreas:(NSArray *)areas andSemesterArray:(NSMutableArray *)semesters;
 
+@property (nonatomic, retain) NSArray *areaArray;
+@property (nonatomic, retain) NSMutableArray *semesterArray;
+@property (nonatomic, retain) NSMutableArray *areaCourses;
 @property (nonatomic, retain) ScheduleBuilderViewController *delagate;
 
 @end

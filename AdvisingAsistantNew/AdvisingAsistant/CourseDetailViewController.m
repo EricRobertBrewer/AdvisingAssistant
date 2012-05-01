@@ -117,7 +117,7 @@
     assert(semesters);
     
     // set up prerequisites and corequisites
-    NSMutableString *coreqString = [[NSMutableString alloc] init];
+    NSMutableString *coreqString = [NSMutableString string];
     
     for (Course *c in self.coreqs) {
         [coreqString appendFormat:@"%@   ", c.name];
@@ -125,7 +125,7 @@
     if (coreqString.length > 0)
     [lblCoreqs setText:coreqString];
     
-    NSMutableString *prereqString = [[NSMutableString alloc] init];
+    NSMutableString *prereqString = [NSMutableString string];
     
     for (Course *c in self.prereqs) {
         [prereqString appendFormat:@"%@   ", c.name];
@@ -171,7 +171,7 @@
     }
     
     // set up Course Warning Button
-    self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
+    self.cwbv = [[[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)] autorelease];
     [self.view addSubview:self.cwbv];
     self.cwbv.hidden = ![self shouldShowWarning:self.semesterDate];
 }

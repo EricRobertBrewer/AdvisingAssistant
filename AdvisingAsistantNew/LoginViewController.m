@@ -16,6 +16,15 @@
 @implementation LoginViewController
 @synthesize nextController, studentIDTextField;
 
+- (void)dealloc
+{
+    [studentIDTextField release];
+    [goBttn release];
+    [editBttn release];
+    self.nextController = nil;
+    [super dealloc];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == studentIDTextField) {
         [self didTapGo:(UITextField *)textField];
@@ -33,14 +42,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
-}
-
-- (void)dealloc
-{
-    [studentIDTextField release];
-    [goBttn release];
-    [editBttn release];
-    [super dealloc];
 }
 
 - (IBAction)didTapGo:(id)sender

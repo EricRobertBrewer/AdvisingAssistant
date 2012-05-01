@@ -128,7 +128,7 @@
     {
         if (row == 0)
             return @"";
-        Template *temp;
+        Template *temp = nil;
         if ([GEPatternField.text isEqualToString:@"Freshmen Pattern"])
             temp = [self.freshmenTemplates objectAtIndex:row-1];
         else if ([GEPatternField.text isEqualToString:@"Transfer Pattern"])
@@ -207,8 +207,8 @@
     semesterStarted.inputView.frame = CGRectMake(0, 0, self.view.frame.size.width, 100);
     
     self.templates = [repo templatesForDepartment:[dRepo departmentWithCode:@"CS"]];
-    self.freshmenTemplates = [NSMutableArray new];
-    self.transferTemplates = [NSMutableArray new];
+    self.freshmenTemplates = [NSMutableArray array];
+    self.transferTemplates = [NSMutableArray array];
     for (int i = 0; i < [self.templates count]; i++)
     {
         Template *t = [self.templates objectAtIndex:i];

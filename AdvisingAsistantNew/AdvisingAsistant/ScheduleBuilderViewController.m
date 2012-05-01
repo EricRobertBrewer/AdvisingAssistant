@@ -45,6 +45,7 @@
 	self.sideNavController.view.autoresizingMask = UIViewAutoresizingNone;
 	[self.sideNavController.view setFrame:CGRectMake(673, BAR_HEIGHT, 351, 1000)];
 	[self.view addSubview:self.sideNavController.view];
+    [sideTable release];
 }
 
 - (id)initWithStudent:(Student *)student andDepartment:(Department *)department {
@@ -150,6 +151,7 @@
 		[scrollView addSubview:tempSemesterTable.tableView];
 		
 		[semesterLabel release];
+        [tempSemesterTable release];
 	}
 	
 	[scrollView release];

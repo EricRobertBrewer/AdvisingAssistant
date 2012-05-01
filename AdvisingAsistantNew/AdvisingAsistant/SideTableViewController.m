@@ -15,12 +15,13 @@
 @synthesize semesterArray = _semesterArray;
 @synthesize GEArray = _GEArray;
 @synthesize DepartmentSectionsArray = _DepartmentSectionsArray;
-@synthesize delagate;
+@synthesize delagate = _delagate;
 
 -(void)dealloc {
 	self.semesterArray = nil;
 	self.GEArray = nil;
 	self.DepartmentSectionsArray = nil;
+    self.delagate = nil;
 	[super dealloc];
 }
 
