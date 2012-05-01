@@ -122,6 +122,7 @@
     for (Course *c in self.coreqs) {
         [coreqString appendFormat:@"%@   ", c.name];
     }
+    if (coreqString.length > 0)
     [lblCoreqs setText:coreqString];
     
     NSMutableString *prereqString = [[NSMutableString alloc] init];
@@ -129,7 +130,8 @@
     for (Course *c in self.prereqs) {
         [prereqString appendFormat:@"%@   ", c.name];
     }
-    [lblPrereqs setText:prereqString];
+    if (prereqString.length > 0)
+        [lblPrereqs setText:prereqString];
     
     // set initial semester setting
     if (self.addCourse) {
@@ -142,7 +144,6 @@
     }
     
     // set course name title to course name passed in
-    // OR to custom name
     
     NSString *courseHeading = [NSString stringWithFormat:@"%@: %@",
                                self.currentCourse.name, self.currentCourse.title];
@@ -150,6 +151,11 @@
     [lblCourseName setText:courseHeading];
     [lblUnits setText:[NSString stringWithFormat:@"%d",self.currentCourse.units]];
     [txtCourseDesc setText:self.currentCourse.description];
+    
+    // display custom name if there is one
+    if (self.currentCourse.customName.length > 0) {
+        [customCourseName setText:self.currentCourse.customName];
+    }
     
     // set up stepper
     [semesterStepper setMinimumValue:0];
@@ -164,6 +170,7 @@
         [semesterStepper setValue:semesterIndexInArray];
     }
     
+    // set up Course Warning Button
     self.cwbv = [[CourseWarningButtonView alloc] initWithFrame:CGRectMake(390, 460, 35, 35)];
     [self.view addSubview:self.cwbv];
     self.cwbv.hidden = ![self shouldShowWarning:self.semesterDate];

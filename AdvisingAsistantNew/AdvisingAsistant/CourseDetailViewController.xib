@@ -77,7 +77,7 @@
 						<string key="NSFrame">{{66, 180}, {64, 22}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="39317216"/>
+						<reference key="NSNextKeyView" ref="582869380"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -451,10 +451,10 @@
 					<object class="IBUILabel" id="707103400">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{59, 210}, {71, 21}}</string>
+						<string key="NSFrame">{{61, 209}, {69, 21}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="256092555"/>
+						<reference key="NSNextKeyView" ref="799337186"/>
 						<string key="NSReuseIdentifierKey">_NS:345</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -469,7 +469,7 @@
 						<reference key="IBUIFontDescription" ref="953313514"/>
 						<reference key="IBUIFont" ref="433553788"/>
 					</object>
-					<object class="IBUILabel" id="39317216">
+					<object class="IBUILabel" id="582869380">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{138, 180}, {337, 21}}</string>
@@ -490,7 +490,7 @@
 						<reference key="IBUIFontDescription" ref="406896426"/>
 						<reference key="IBUIFont" ref="126400401"/>
 					</object>
-					<object class="IBUILabel" id="256092555">
+					<object class="IBUILabel" id="799337186">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{138, 209}, {337, 21}}</string>
@@ -641,7 +641,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lblCoreqs</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="39317216"/>
+						<reference key="destination" ref="582869380"/>
 					</object>
 					<int key="connectionID">49</int>
 				</object>
@@ -649,7 +649,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lblPrereqs</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="256092555"/>
+						<reference key="destination" ref="799337186"/>
 					</object>
 					<int key="connectionID">51</int>
 				</object>
@@ -741,13 +741,13 @@
 							<reference ref="443831706"/>
 							<reference ref="73612589"/>
 							<reference ref="984589477"/>
-							<reference ref="707103400"/>
 							<reference ref="803586203"/>
 							<reference ref="925980056"/>
-							<reference ref="39317216"/>
+							<reference ref="582869380"/>
 							<reference ref="823994933"/>
 							<reference ref="785741888"/>
-							<reference ref="256092555"/>
+							<reference ref="707103400"/>
+							<reference ref="799337186"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -833,12 +833,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">48</int>
-						<reference key="object" ref="39317216"/>
+						<reference key="object" ref="582869380"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">50</int>
-						<reference key="object" ref="256092555"/>
+						<reference key="object" ref="799337186"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>
