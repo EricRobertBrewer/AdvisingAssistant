@@ -296,27 +296,26 @@
     
     Semester *semesterToMoveFrom = nil;
 
-    NSLog(@"CourseToBeRemoved contains the course to be removed successfully!");
-
     for (Semester *sem in self.semesters) {
         if ([[sem getDateAsString] isEqualToString:semesterLabel.text]) {
-            semesterToMoveFrom = [self getSemesterWithCourse];
+            semesterToMoveFrom = [self getSemesterWithDate:self.semesterDate];
             if (semesterToMoveFrom != nil) {
                 [semesterToMoveFrom.courses removeObject:self.currentCourse];
                 [sem.courses addObject:self.currentCourse];
                     
-                [self.delegate didTapSave:self.currentCourse];
-                
                 // save custom name
                 if (customCourseName.text.length > 2) {
                     self.currentCourse.customName = customCourseName.text;
                 }
+                else if (customCourseName.text.length == 0) {
+                    self.currentCourse.customName = @"";
+                }
+                [self.delegate didTapSave:self.currentCourse];
+                
                 [self dismissModalViewControllerAnimated:NO];
             }
         }
     }
-    
-    
 }
 
 - (IBAction)removeCourseClicked:(id)sender {
@@ -327,7 +326,6 @@
     [semesterToRemoveFrom.courses removeObject:self.currentCourse];
     [self.delegate didTapSave:self.currentCourse];
     [self dismissModalViewControllerAnimated:NO];
-
 }
 
 

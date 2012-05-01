@@ -59,7 +59,7 @@
 }
 
 -(NSString *)nameOrCustomName {
-    if (self.customName) return self.customName;
+    if (self.customName && self.customName != @"") return self.customName;
     return self.name;
 }
 
