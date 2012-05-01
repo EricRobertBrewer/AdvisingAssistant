@@ -55,6 +55,15 @@
 	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
     
+     for (int i = 0; i < [semesterArray count]; i++) {
+        NSArray *tempCourses = [[semesterArray objectAtIndex:i] courses];
+        for (int j = 0; j < [tempCourses count]; j++) {
+            if ([[tempCourses objectAtIndex:j] isEqualToCourse:course]) {
+                cell.textLabel.textColor = [UIColor grayColor];
+            }
+        }
+    }
+    
     return cell;
 }
 
@@ -67,6 +76,8 @@
     courseDetail.delegate = self.delagate;
     courseDetail.addCourse = YES;
     [self presentModalViewController:courseDetail animated:YES];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
