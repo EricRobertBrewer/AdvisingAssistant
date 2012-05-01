@@ -39,6 +39,7 @@
 }
 
 -(void)setupSideTableWithPattern:(GEPattern)pattern date:(SemesterDate)date department:(Department *)department semesters:(NSMutableArray *)semesters {
+    NSLog(@"%@", department.code);
 	SideTableViewController *sideTable = [[SideTableViewController alloc] initWithGEPattern:pattern date:date Department:department andSemesterArray:semesters];
     sideTable.delagate = self;
 	self.sideNavController = [[[UINavigationController alloc] initWithRootViewController:sideTable] autorelease];

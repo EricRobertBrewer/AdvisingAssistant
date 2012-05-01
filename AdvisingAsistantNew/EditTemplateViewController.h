@@ -27,10 +27,12 @@
 @property (nonatomic, retain) LoginViewController  *parentController;
 @property (nonatomic, retain) UIPickerView *pickerView1, *pickerView2;
 @property (nonatomic, retain) Template *editedTemplate;
+@property (nonatomic, retain) Department *D;
 
 - (IBAction)didTapEdit:(id)sender;
 - (IBAction)didTapCreate:(id)sender;
 - (IBAction)didTapDelete:(id)sender;
 - (IBAction)didTapExit:(id)sender;
 
+- (id) initWithDepartment:(Department *)department;
 @end

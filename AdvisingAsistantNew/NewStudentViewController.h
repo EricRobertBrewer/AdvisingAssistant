@@ -16,9 +16,11 @@
 
 @class LoginViewController;
 @class Template;
+@class Department;
 
 @interface NewStudentViewController : UIViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource> {
     int studentID;
+    Department *D;
     IBOutlet UITextField *studentIDField;
     IBOutlet UITextField *studentName;
     IBOutlet UITextField *semesterStarted;
@@ -35,7 +37,7 @@
 @property (nonatomic, retain) Template *T;
 @property (nonatomic, retain) LoginViewController *parentController;
 
-- (id) initWithStudentID: (int) ID;
+- (id) initWithStudentID: (int)ID andDepartment:(Department *)department;
 - (IBAction)didTapSubmit:(id)sender;
 - (IBAction)didTapExit:(id)sender;
 
