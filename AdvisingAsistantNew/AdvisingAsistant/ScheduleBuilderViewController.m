@@ -17,6 +17,7 @@
 @synthesize sideNavController = _sideNavController;
 @synthesize currentTemplate = _currentTemplate;
 @synthesize currentStudent = _currentStudent;
+@synthesize emailExporter = _emailExporter;
 
 -(void)dealloc {
 	self.semesters = nil;
@@ -24,6 +25,7 @@
 	self.sideNavController = nil;
     self.currentStudent = nil;
     self.currentTemplate = nil;
+    self.emailExporter = nil;
 	[super dealloc];
 }
 
@@ -83,12 +85,19 @@
     [topBar release];
     
     UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [logoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
     [logoutBtn addTarget:self action:@selector(didTapLogout:) forControlEvents:UIControlEventTouchDown];
     logoutBtn.frame = CGRectMake(900, 15, 107, 38);
     [logoutBtn setImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
     logoutBtn.alpha = 0.7;
     [self.view addSubview:logoutBtn];
+    
+    UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    exportBtn.frame = CGRectMake(780, 15, 100, 38);
+    [exportBtn setTitle:@"Export" forState:UIControlStateNormal];
+    [exportBtn addTarget:self action:@selector(didTapExport) forControlEvents:UIControlEventTouchDown];
+    if (self.currentStudent) {
+        [self.view addSubview:exportBtn];
+    }
     
     UILabel *titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(62, 11, 400, 40)];
     titleLbl.text = self.title;
@@ -144,6 +153,13 @@
 	}
 	
 	[scrollView release];
+}
+
+-(void)didTapExport {
+    if (!self.emailExporter) {
+        self.emailExporter = [[[EmailExporter alloc] init] autorelease];
+    }
+    [self.emailExporter exportStudent:self.currentStudent withSemesters:self.semesters];
 }
  
 - (void) didTapSave:(Course *)course {

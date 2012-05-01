@@ -15,12 +15,13 @@
 
 -(void)exportStudent:(Student *)student withSemesters:(NSArray *)semesters {
     
-    NSString *m = [NSString stringWithFormat:@"Student ID: %i\n",
-                   "Student Name: %@\n", student.id, student.name];
+    NSString *m = [NSString stringWithFormat:@"Student ID: %i\nStudent Name: %@\n", student.id, student.name];
     for (Semester *semester in semesters) {
-        [m stringByAppendingFormat:@"\n-- %@ --\n", FormatSemesterDate(semester.date)];
-        for (Course *course in semester.courses) {
-            [m stringByAppendingFormat:@"%@ (%i units)\n", course.nameOrCustomName, course.units];
+        if ([semester.courses count] > 0) {
+            m = [m stringByAppendingFormat:@"\n-- %@ --\n", FormatSemesterDate(semester.date)];
+            for (Course *course in semester.courses) {
+                m = [m stringByAppendingFormat:@"%@ (%i units)\n", course.nameOrCustomName, course.units];
+            }
         }
     }
     
