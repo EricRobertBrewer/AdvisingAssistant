@@ -33,6 +33,8 @@
     IBOutlet UITextField *customCourseName;
     IBOutlet UITextView *txtCoursePrereqs;
     
+    int semesterIndexInArray;
+    
 }
 
 @property (nonatomic, assign) BOOL addCourse;
@@ -50,6 +52,7 @@
 - (IBAction)moveCourseClicked:(id)sender;
 - (IBAction)removeCourseClicked:(id)sender;
 
+- (BOOL)shouldShowWarning:(SemesterDate)sd;
 - (Semester *)getSemesterWithDate:(SemesterDate)sd;
 - (Course *)getCourseFromSemester:(Semester *)semester;
 - (Semester *)getSemesterWithCourse;
