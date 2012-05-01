@@ -45,12 +45,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+
+    cell.textLabel.textColor= [UIColor blackColor];
     
 	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
@@ -76,8 +73,6 @@
     courseDetail.delegate = self.delagate;
     courseDetail.addCourse = YES;
     [self presentModalViewController:courseDetail animated:YES];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

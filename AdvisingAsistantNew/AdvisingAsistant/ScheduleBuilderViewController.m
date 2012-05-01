@@ -8,6 +8,7 @@
 
 #import "ScheduleBuilderViewController.h"
 #import "QuartzCore/QuartzCore.h"
+#import "SecondSideTableViewController.h"
 
 #define BAR_HEIGHT 66
 
@@ -175,6 +176,11 @@
         [temp.tableView reloadData];
     }
     
+    UIViewController *sideNav = self.sideNavController.topViewController;
+    if ([sideNav isKindOfClass:[SecondSideTableViewController class]]) {
+        SecondSideTableViewController *svc = (SecondSideTableViewController *)sideNav;
+        [svc.tableView reloadData];
+    }
 }
 
 - (void) didTapDelete:(Course *)course {
