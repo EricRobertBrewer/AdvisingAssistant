@@ -84,11 +84,10 @@
     [self.view addSubview:topBar];
     [topBar release];
     
-    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *logoutBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [logoutBtn addTarget:self action:@selector(didTapLogout:) forControlEvents:UIControlEventTouchDown];
     logoutBtn.frame = CGRectMake(900, 15, 107, 38);
-    [logoutBtn setImage:[UIImage imageNamed:@"logout"] forState:UIControlStateNormal];
-    logoutBtn.alpha = 0.7;
+    [logoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
     [self.view addSubview:logoutBtn];
     
     UIButton *exportBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
