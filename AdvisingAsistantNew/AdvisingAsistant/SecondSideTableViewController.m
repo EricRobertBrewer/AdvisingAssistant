@@ -45,15 +45,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+
+    cell.textLabel.textColor= [UIColor blackColor];
     
 	Course *course = [[areaCourses objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", course.name, course.title];
+    
+     for (int i = 0; i < [semesterArray count]; i++) {
+        NSArray *tempCourses = [[semesterArray objectAtIndex:i] courses];
+        for (int j = 0; j < [tempCourses count]; j++) {
+            if ([[tempCourses objectAtIndex:j] isEqualToCourse:course]) {
+                cell.textLabel.textColor = [UIColor grayColor];
+            }
+        }
+    }
     
     return cell;
 }
