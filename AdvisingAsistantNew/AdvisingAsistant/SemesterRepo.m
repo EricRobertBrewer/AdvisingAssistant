@@ -162,7 +162,7 @@ static SemesterRepo *instance = nil;
 			ConnectOptions *localOptions = [ConnectOptions optionsWithOptions:options]; // Make a copy
 			[localOptions.postData setValues:semesterDate];
 			[localOptions.postData setValues:[self dictForCourse:course]];
-			if (![self connect:localOptions]) return;
+			[self connect:localOptions];
 		}
 	}
 }
