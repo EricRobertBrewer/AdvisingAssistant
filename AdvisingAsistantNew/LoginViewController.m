@@ -28,6 +28,7 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == studentIDTextField) {
+        [textField resignFirstResponder];
         [self didTapGo:(UITextField *)textField];
     }
     return NO;
@@ -62,7 +63,7 @@
 
 - (IBAction)didTapGo:(id)sender
 {
-    if ([studentIDTextField.text length] <= 0 && [departmentField.text length] <=0)
+    if ([studentIDTextField.text length] <= 0 || [departmentField.text length] <=0)
         return;
     
     NSLog(@"User did tap go.\n");

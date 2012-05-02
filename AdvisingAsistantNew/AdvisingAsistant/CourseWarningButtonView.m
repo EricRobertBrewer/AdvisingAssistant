@@ -22,7 +22,7 @@
             t = [prereqs objectAtIndex:i];
             courses = [courses stringByAppendingString:t.name];
         }
-        [AANotify present:CKNotifyAlertTypeInfo title:@"Prerequisits not met" body:[NSString stringWithFormat:@"Courses required: %@",courses] duration:5];
+        [AANotify present:CKNotifyAlertTypeInfo title:@"Prerequisite(s) not met" body:[NSString stringWithFormat:@"Courses required: %@",courses] duration:5];
     }
     
     if ([coreqs count] != 0)
@@ -35,7 +35,7 @@
             t = [coreqs objectAtIndex:i];
             courses = [courses stringByAppendingString:t.name];
         }
-        [AANotify present:CKNotifyAlertTypeInfo title:@"Corequisits not met" body:[NSString stringWithFormat:@"Courses required: %@",courses] duration:5];
+        [AANotify present:CKNotifyAlertTypeInfo title:@"Corequisite(s) not met" body:[NSString stringWithFormat:@"Courses required: %@",courses] duration:5];
     }
 }
 
