@@ -251,8 +251,6 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<bool key="IBUIContinuous">NO</bool>
-						<bool key="IBUIAutorepeat">NO</bool>
 						<double key="IBUIMaximumValue">12</double>
 					</object>
 					<object class="IBUIButton" id="317009409">
@@ -396,7 +394,6 @@
 						<string key="NSFrame">{{229, 554}, {262, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:320</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
