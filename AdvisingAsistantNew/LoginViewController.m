@@ -16,6 +16,11 @@
 @implementation LoginViewController
 @synthesize nextController, departments, studentIDTextField, currentDepartment;
 
+
+- (void) viewWillAppear:(BOOL)animated {
+    [studentIDTextField becomeFirstResponder];
+}
+
 - (void)dealloc
 {
     [studentIDTextField release];
