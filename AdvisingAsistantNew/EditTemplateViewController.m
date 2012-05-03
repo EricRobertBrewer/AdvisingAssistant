@@ -37,9 +37,13 @@
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if ([templates count] == 0)
-        return 1;
-    return [templates count];
+    if (pickerView == pickerView1)
+    {
+        if ([templates count] == 0)
+            return 1;
+        return [templates count];
+    }
+    return 2;
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
