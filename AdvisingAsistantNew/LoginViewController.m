@@ -50,7 +50,7 @@
     Department *temp2 = [dRepo departmentWithCode:@"ES"];
     self.departments = [[NSArray alloc] initWithObjects:temp1, temp2, nil];
     
-    UIPickerView *pickerView = [UIPickerView new];
+    UIPickerView *pickerView = [[[UIPickerView alloc] init] autorelease];
     pickerView.delegate = self;
     pickerView.dataSource = self;
     pickerView.showsSelectionIndicator = YES;
